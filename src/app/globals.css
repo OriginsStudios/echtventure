@@ -1,7 +1,50 @@
 @import "tailwindcss";
+/* src/app/globals.css */
 
-body {
-  font-size: 20px;
-  line-height: 1.5;
-  color: #5f5f5f; /* Your default body text color */
+/* Hide the default cursor on devices that have a mouse */
+@media (pointer: fine) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: 9999;
+  display: none; /* Hide by default */
+}
+
+/* Styles for the inner dot */
+.cursor-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #232323;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease; /* Add transition for dot's opacity */
+}
+
+/* Styles for the outer ring */
+.cursor-ring {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #535353; /* Default border */
+  background-color: transparent; /* Ensure it's transparent by default */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  /* GSAP will handle the scale, background-color, and border-color transitions */
+}
+
+/* Only display the custom cursor on non-touch devices */
+@media (pointer: fine) {
+  .cursor-dot,
+  .cursor-ring {
+    display: block;
+  }
 }
