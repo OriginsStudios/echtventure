@@ -1,7 +1,39 @@
-@import "tailwindcss";
-/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Hide the default cursor on devices that have a mouse */
+/* Lenis smooth scrolling styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.bg-five-lines {
+  background-image: linear-gradient(#eae8e7, #eae8e7),
+    linear-gradient(#eae8e7, #eae8e7), linear-gradient(#eae8e7, #eae8e7),
+    linear-gradient(#eae8e7, #eae8e7), linear-gradient(#eae8e7, #eae8e7);
+  background-size: 3px 100%;
+  background-repeat: no-repeat;
+  background-position: 2% 0, 25% 0, 50% 0, 75% 0, 98% 0;
+}
+.bg-black {
+  background-color: #0e0e0e;
+}
 @media (pointer: fine) {
   body,
   a,
@@ -15,33 +47,32 @@
   position: fixed;
   top: 0;
   left: 0;
-  pointer-events: none; /* Allows clicks to pass through */
-  z-index: 9999;
-  display: none; /* Hide by default */
+  pointer-events: none;
+  display: none;
+  transform: translate(-50%, -50%);
 }
 
-/* Styles for the inner dot */
+/* Dot with inversion */
 .cursor-dot {
   width: 12px;
   height: 12px;
-  background-color: #232323;
+  background: white; /* white + difference = inversion */
+  mix-blend-mode: difference;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease; /* Add transition for dot's opacity */
+  z-index: 10000;
 }
 
-/* Styles for the outer ring */
+/* Ring with transparent border */
 .cursor-ring {
-  width: 30px;
-  height: 30px;
-  border: 2px solid #535353; /* Default border */
-  background-color: transparent; /* Ensure it's transparent by default */
+  width: 40px;
+  height: 40px;
+  border: 2px solid #535353;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  /* GSAP will handle the scale, background-color, and border-color transitions */
+  background: transparent;
+  z-index: 9999;
 }
 
-/* Only display the custom cursor on non-touch devices */
+/* Only show custom cursor on fine pointers */
 @media (pointer: fine) {
   .cursor-dot,
   .cursor-ring {

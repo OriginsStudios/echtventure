@@ -1,26 +1,29 @@
 import type { Metadata } from "next";
-// 1. Import all the fonts you need
-import { Bowlby_One, Crimson_Text, Roboto_Condensed } from "next/font/google";
+import {
+  Bowlby_One_SC,
+  Crimson_Text,
+  Roboto_Condensed,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/CustomCursor";
+import LenisScrollProvider from "@/components/LenisScrollProvider";
 
-// 2. Configure each font and assign a CSS variable
-const bowlby = Bowlby_One({
+const bowlbyOneSc = Bowlby_One_SC({
+  weight: "400",
   subsets: ["latin"],
-  weight: "400", // Bowlby One only has the 400 weight
-  variable: "--font-bowlby-one",
+  variable: "--font-bowlby-one-sc",
 });
 
-const crimson = Crimson_Text({
-  subsets: ["latin"],
+const crimsonText = Crimson_Text({
   weight: ["400", "600", "700"],
+  subsets: ["latin"],
   variable: "--font-crimson-text",
 });
 
-const roboto = Roboto_Condensed({
+const robotoCondensed = Roboto_Condensed({
+  weight: ["300", "400", "700"],
   subsets: ["latin"],
-  weight: ["400", "700"],
   variable: "--font-roboto-condensed",
 });
 
@@ -36,13 +39,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* 3. Apply the font variables to the body tag */}
       <body
-        className={`${bowlby.variable} ${crimson.variable} ${roboto.variable}`}
+        className={`${bowlbyOneSc.variable} ${crimsonText.variable} ${robotoCondensed.variable} antialiased `}
       >
+        <LenisScrollProvider />
         <Navbar />
         <CustomCursor />
-        <main>{children}</main>
+        <main className="bg-five-lines bg-black">{children}</main>
       </body>
     </html>
   );

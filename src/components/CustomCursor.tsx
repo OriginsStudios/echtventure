@@ -13,76 +13,65 @@ const CustomCursor = () => {
     const dot = dotRef.current;
     const ring = ringRef.current;
 
-    if (!dot || !ring) return; // Ensure refs are available
+    if (!dot || !ring) return;
 
-    // Initial GSAP setup for the ring's scale (useful for hover effect)
+    gsap.set(dot, { scale: 1 });
     gsap.set(ring, { scale: 1 });
 
     const onMouseMove = (e: MouseEvent) => {
-      // Animate the dot
+      // dot sticks to mouse immediately
       gsap.to(dot, {
         x: e.clientX,
         y: e.clientY,
-        duration: 0.2,
-        ease: "power2.out",
+        duration: 0,
       });
 
-      // Animate the ring
+      // ring follows the dot’s position instead of mouse directly
       gsap.to(ring, {
         x: e.clientX,
         y: e.clientY,
-        duration: 0.6,
+        duration: 0.3,
         ease: "power3.out",
       });
     };
 
     const onMouseEnter = () => {
-      // Animate the ring to become a larger, solid circle (by scaling it up)
-      gsap.to(ring, {
-        scale: 1.5, // Make the ring significantly larger
-        backgroundColor: "#232323", // Change background to black
-        borderColor: "transparent", // Hide the border
+      gsap.to(dot, {
+        scale: 3, // expand dot (inverted area grows too)
         duration: 0.3,
         ease: "power2.out",
       });
-      // Optionally hide the dot, or make it blend in
-      gsap.to(dot, {
-        opacity: 0, // Make the dot disappear
+      gsap.to(ring, {
+        scale: 0, // hide ring when dot expands
         duration: 0.3,
+        ease: "power2.out",
       });
     };
 
     const onMouseLeave = () => {
-      // Animate the ring back to its original state
-      gsap.to(ring, {
-        scale: 1, // Reset scale
-        backgroundColor: "transparent", // Reset background
-        borderColor: "#535353", // Reset border
+      gsap.to(dot, {
+        scale: 1,
         duration: 0.3,
         ease: "power2.out",
       });
-      // Bring the dot back
-      gsap.to(dot, {
-        opacity: 1, // Make the dot reappear
+      gsap.to(ring, {
+        scale: 1, // restore ring when dot returns to normal
         duration: 0.3,
+        ease: "power2.out",
       });
     };
 
-    // Add mousemove listener
     window.addEventListener("mousemove", onMouseMove);
 
-    // Get all elements that should trigger the hover effect
     const hoverableElements = document.querySelectorAll(
-      "a, button, [data-hover-cursor]" // Add custom data attribute for more control
+      "a, button, [data-hover-cursor]"
     );
 
-    // Attach event listeners to hoverable elements
     hoverableElements.forEach((el) => {
       el.addEventListener("mouseenter", onMouseEnter);
       el.addEventListener("mouseleave", onMouseLeave);
     });
 
-    // Cleanup function
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       hoverableElements.forEach((el) => {

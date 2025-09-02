@@ -1,73 +1,89 @@
+// src/components/Navbar.tsx
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, ArrowUpRight } from "lucide-react"; // Using lucide-react for icons
+import { gsap } from "gsap";
+import { Menu, X } from "lucide-react";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   const navLinks = [
-    {
-      title: "PROJECTS",
-      href: "/projects",
-      superscript: "10",
-    },
-    {
-      title: "ABOUT",
-      href: "/about",
-    },
-    {
-      title: "RÉSUMÉ",
-      href: "/resume.pdf", // Example link to a PDF
-      external: true,
-    },
-    {
-      title: "CONTACT",
-      href: "/contact",
-    },
+    { title: "about", href: "/about" },
+    { title: "intensive", href: "/intensive" },
+    { title: "the studio", href: "/studio" },
+    { title: "programs", href: "/programs" },
+    { title: "contact", href: "/contact" },
   ];
 
+  const handleMouseEnter = (index: number) => {
+    const line = lineRefs.current[index];
+    if (line) {
+      gsap.killTweensOf(line);
+      gsap.to(line, {
+        scaleX: 1,
+        transformOrigin: "left center",
+        duration: 0.2,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleMouseLeave = (index: number) => {
+    const line = lineRefs.current[index];
+    if (line) {
+      gsap.killTweensOf(line);
+      gsap.to(line, {
+        scaleX: 0,
+        transformOrigin: "right center",
+        duration: 0.2,
+        ease: "power2.in",
+      });
+    }
+  };
+
   return (
-    <nav className="bg-white w-full z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Left Side: Logo and Name */}
+    <nav className="bg-backgroundColorWhite w-full sticky top-0 border-b border-lineColor">
+      <div className="mx-auto container-padding ">
+        <div className="flex items-center justify-between h-20 hover:bg-transparent">
           <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full border-2 border-black flex items-center justify-center">
-              {/* You can place a logo initial or icon here */}
-              <div className="w-3 h-3 bg-black rounded-full"></div>
-            </div>
-            <span className="font-semibold text-lg tracking-widest">
-              KATHERINE LE
+            <span className="font-crimson text-2xl font-extrabold tracking-wider text-black ">
+              echtventure
             </span>
           </Link>
 
-          {/* Right Side: Desktop Navigation Links */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            {navLinks.map((link) => (
-              <Link
+          <div className="hidden md:flex md:items-center md:space-x-8 ">
+            {navLinks.map((link, index) => (
+              <div
                 key={link.title}
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className="text-gray-800 hover:text-gray-500 text-sm font-medium tracking-widest flex items-center"
+                className="relative group "
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={() => handleMouseLeave(index)}
               >
-                {link.title}
-                {link.superscript && (
-                  <sup className="ml-1 text-xs">{link.superscript}</sup>
-                )}
-                {link.external && <ArrowUpRight className="ml-1 h-4 w-4" />}
-              </Link>
+                <Link
+                  href={link.href}
+                  className="font-crimson text-gray-800  relative  text-xl font-extrabold tracking-widest pb-2 transition-colors duration-300 "
+                >
+                  {link.title}
+                </Link>
+                <span
+                  ref={(el) => {
+                    if (el) lineRefs.current[index] = el;
+                  }}
+                  className="absolute bottom-0 left-0 h-[2px]  w-full bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 transform scale-x-0"
+                />
+              </div>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center ">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-gray-500 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-800  focus:outline-none"
               aria-controls="mobile-menu"
-              aria-expanded="false"
+              aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
@@ -80,23 +96,17 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden" id="mobile-menu">
+        <div className="md:hidden bg-[#fcfaf8]" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <Link
                 key={link.title}
                 href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className="text-gray-800 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium tracking-widest flex items-center"
+                onClick={() => setIsOpen(false)}
+                className="font-roboto text-gray-800  block px-3 py-2 rounded-md text-base font-medium tracking-widest"
               >
                 {link.title}
-                {link.superscript && (
-                  <sup className="ml-1 text-xs">{link.superscript}</sup>
-                )}
-                {link.external && <ArrowUpRight className="ml-1 h-4 w-4" />}
               </Link>
             ))}
           </div>
