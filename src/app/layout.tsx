@@ -4,14 +4,26 @@ import {
   Crimson_Text,
   Roboto_Condensed,
 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import LenisScrollProvider from "@/components/LenisScrollProvider";
+import Footer from "@/components/layout/Footer";
 
-const bowlbyOneSc = Bowlby_One_SC({
-  weight: "400",
-  subsets: ["latin"],
+const bowlbyOneSc = localFont({
+  src: [
+    {
+      path: "./fonts/DrukText.otf",
+      weight: "400",
+      style: "normal",
+    },
+
+    { path: "./fonts/DrukText.otf", weight: "600", style: "normal" },
+
+    { path: "./fonts/DrukText.otf", weight: "700", style: "normal" },
+  ],
+  display: "swap",
   variable: "--font-bowlby-one-sc",
 });
 
@@ -40,12 +52,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bowlbyOneSc.variable} ${crimsonText.variable} ${robotoCondensed.variable} antialiased `}
+        className={`${bowlbyOneSc.variable} ${crimsonText.variable} ${robotoCondensed.variable} antialiased bg-five-lines`}
       >
         <LenisScrollProvider />
         <Navbar />
         <CustomCursor />
-        <main className="bg-five-lines bg-black">{children}</main>
+        <main className="bg-five-lines relative z-10 rounded-b-[100px]">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

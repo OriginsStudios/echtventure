@@ -3,7 +3,7 @@ import React from "react";
 
 const Mission = () => {
   return (
-    <div className="bg-backgroundColorBlack text-[#f5f5f5] font-crimson py-20 px-6 sm:px-12 lg:px-24 flex items-center justify-center container-padding">
+    <div className="bg-backgroundColorBlack bg-five-lines-blackbg text-[#f5f5f5] font-crimson py-20  flex items-center justify-center container-padding">
       <div className="mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-start">
           {/* Left Column */}

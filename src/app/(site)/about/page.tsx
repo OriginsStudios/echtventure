@@ -105,13 +105,13 @@ const SocialProof = () => {
 
 // --- Impact Section ---
 const ImpactSection = () => {
-  const sectionRef = useRef(null);
-  const individualsRef = useRef(null);
-  const corporateRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const individualsRef = useRef<HTMLSpanElement>(null);
+  const corporateRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const animateNumber = (
-      ref: React.RefObject<HTMLSpanElement>,
+      ref: React.RefObject<HTMLSpanElement | null>,
       endValue: number
     ) => {
       const counter = { value: 0 };

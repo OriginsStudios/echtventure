@@ -3,7 +3,7 @@ import React from "react";
 
 const ProgramsSection = () => {
   return (
-    <div className="bg-backgroundColorWhite text-black font-sans flex items-center justify-center py-28 sm:py-40 px-8 sm:px-16">
+    <div className=" text-black font-sans flex items-center justify-center py-28 sm:py-40 px-8 sm:px-16 rounded-b-xl ">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-none">
           OUR

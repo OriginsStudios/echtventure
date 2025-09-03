@@ -13,7 +13,7 @@ module.exports = {
         lineColor: "#eae8e7",
         textColorWhite: "#f0eeeb",
         backgroundColorBlack: "#0e0e0e",
-        backgroundColorWhite: "#fcfaf8;",
+        backgroundColorWhite: "#f0eeeb",
       },
       fontFamily: {
         bowlby: ["var(--font-bowlby-one-sc)", "sans-serif"],

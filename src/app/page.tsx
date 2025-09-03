@@ -1,3 +1,4 @@
+import Approach from "@/components/Homepage/sections/Approach";
 import HomePageHero from "@/components/Homepage/sections/Hero";
 import Mission from "@/components/Homepage/sections/Mission";
 import Program from "@/components/Homepage/sections/Program";
@@ -8,9 +9,9 @@ const page = () => {
   return (
     <section>
       <HomePageHero />
+      <Approach />
       <Mission />
       <Program />
-      <Footer />
     </section>
   );
 };

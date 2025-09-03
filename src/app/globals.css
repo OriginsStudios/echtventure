@@ -24,15 +24,23 @@ html.lenis {
 }
 
 .bg-five-lines {
+  background-color: #f0eeeb;
   background-image: linear-gradient(#eae8e7, #eae8e7),
     linear-gradient(#eae8e7, #eae8e7), linear-gradient(#eae8e7, #eae8e7),
     linear-gradient(#eae8e7, #eae8e7), linear-gradient(#eae8e7, #eae8e7);
-  background-size: 3px 100%;
+  background-size: 2px 100%;
   background-repeat: no-repeat;
   background-position: 2% 0, 25% 0, 50% 0, 75% 0, 98% 0;
 }
-.bg-black {
+
+.bg-five-lines-blackbg {
   background-color: #0e0e0e;
+  background-image: linear-gradient(#eae8e727, #eae8e727),
+    linear-gradient(#eae8e727, #eae8e727), linear-gradient(#eae8e727, #eae8e727),
+    linear-gradient(#eae8e727, #eae8e727), linear-gradient(#eae8e727, #eae8e727);
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: 2% 0, 25% 0, 50% 0, 75% 0, 98% 0;
 }
 @media (pointer: fine) {
   body,

@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-backgroundColorWhite w-full sticky top-0 border-b border-lineColor">
+    <nav className="bg-backgroundColorWhite w-full sticky top-0 border-b  z-20 border-lineColor">
       <div className="mx-auto container-padding ">
         <div className="flex items-center justify-between h-20 hover:bg-transparent">
           <Link href="/" className="flex-shrink-0 flex items-center gap-2">
@@ -53,7 +53,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <div className="hidden md:flex md:items-center md:space-x-8 ">
+          <div className="hidden lg:flex md:items-center md:space-x-8 ">
             {navLinks.map((link, index) => (
               <div
                 key={link.title}
@@ -77,7 +77,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="md:hidden flex items-center ">
+          <div className="lg:hidden flex items-center ">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
@@ -97,7 +97,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-[#fcfaf8]" id="mobile-menu">
+        <div className="lg:hidden bg-[#fcfaf8]" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <Link
