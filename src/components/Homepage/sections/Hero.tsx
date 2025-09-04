@@ -73,7 +73,7 @@ const HomePageHero = () => {
           className="flex-none flex flex-col 2xl:items-start items-center text-center lg:text-left
                      lg:max-w-sm" // Max-width on large screens for better readability
         >
-          <p className="hero-description text-center  font-crimson text-gray-700 text-lg md:text-xl mb-8">
+          <p className="hero-description text-center 2xl:text-start  font-crimson text-gray-700 text-lg md:text-xl mb-8">
             Authentic support, adding value, right resources, maximizing
             business potential.
           </p>
