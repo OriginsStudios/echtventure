@@ -61,7 +61,7 @@ const HomePageHero = () => {
             ref={headlineRef}
             className="hero-headline block font-extrabold text-black leading-none whitespace-pre-wrap 
                        break-words uppercase font-bowlby tracking-tighter text-center lg:text-left
-                       text-[4.5rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] "
+                       text-[4rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] "
           >
             echtventure
           </span>
@@ -70,15 +70,15 @@ const HomePageHero = () => {
         {/* Right Section: Description and Button */}
         <div
           // Alignment: Centers content on mobile, left-aligns on large screens
-          className="flex-none flex flex-col items-center lg:items-start text-center lg:text-left
+          className="flex-none flex flex-col 2xl:items-start items-center text-center lg:text-left
                      lg:max-w-sm" // Max-width on large screens for better readability
         >
-          <p className="hero-description font-crimson text-gray-700 text-lg md:text-xl mb-8">
+          <p className="hero-description text-center  font-crimson text-gray-700 text-lg md:text-xl mb-8">
             Authentic support, adding value, right resources, maximizing
             business potential.
           </p>
-          <div className="hero-button">
-            <Button>View Coaches</Button>
+          <div className="hero-button ">
+            <Button className="">View Coaches</Button>
           </div>
         </div>
       </div>
