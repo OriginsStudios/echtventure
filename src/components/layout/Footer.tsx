@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
           />
         </div>
         <div className="overflow-hidden mb-12">
-          <h1 className="font-bowlby tracking-wider font-black uppercase 2xl:text-[7rem] xl:text-[6rem] lg:text-[5rem] text-[3rem] ">
+          <h1 className="font-bowlby tracking-wider font-black uppercase 2xl:text-[6rem] xl:text-[5rem] lg:text-[4rem] text-[3rem] ">
             Join The Mailing List
           </h1>
         </div>
