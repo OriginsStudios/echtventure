@@ -27,13 +27,13 @@ export default function Gallary() {
 
       if (!hero) return;
 
-      // initial states
+      // initial states: hero starts almost flush to the top (tiny gap), then moves down while shrinking
       gsap.set(hero, {
-        // Make the hero very large at the top-right to start
         scale: 2.6,
         xPercent: 0,
-        yPercent: 0,
-        transformOrigin: "100% 0%",
+        yPercent: -160, // push extremely close to the very top
+        y: 2, // tiny visual gap from the edge
+        transformOrigin: "50% 0%",
       });
       if (center) gsap.set(center, { autoAlpha: 0, y: 20 });
       if (cards.length) gsap.set(cards, { autoAlpha: 0, y: 60, scale: 0.96 });
@@ -50,10 +50,10 @@ export default function Gallary() {
         },
       });
 
-      // 1) HERO: smoothly shrink in place (top-right)
-      tl.to(hero, { scale: 1, duration: 0.55, ease: "power2.out" });
+      // 1) HERO: shrink a bit while staying up top
+      tl.to(hero, { scale: 1.4, duration: 0.45, ease: "power2.out" });
 
-      // 2) Surrounding photos start appearing during hero scale-down
+      // 2) Surrounding photos appear during the initial shrink
       if (cards.length)
         tl.to(
           cards,
@@ -65,10 +65,15 @@ export default function Gallary() {
             duration: 0.35,
             ease: "power1.out",
           },
-          "<+0.15"
+          "<+0.1"
         );
 
-      // 3) (removed lateral move) keep hero in top-right; just reveal center after
+      // 3) HERO: move down into its bottom grid slot and finish shrinking
+      tl.to(
+        hero,
+        { yPercent: 0, y: 0, scale: 1, duration: 0.4, ease: "power2.out" },
+        ">-0.1"
+      );
 
       // 4) Reveal center text after images settle
       if (center)
@@ -101,10 +106,10 @@ export default function Gallary() {
             priority
           />
 
-          {/* Top-right family image (moved to avoid overlap with hero) */}
+          {/* Top-right family image */}
           <PhotoCard
             data-card
-            className="md:col-span-3 md:col-start-7 md:row-start-1 md:-mt-12"
+            className="md:col-span-3 md:col-start-10 md:row-start-1 md:-mt-12"
             src="/cover2.jpg"
             alt="Family"
             width={640}
@@ -176,10 +181,10 @@ export default function Gallary() {
             height={800}
           />
 
-          {/* HERO now lives in the top-right grid slot */}
+          {/* Bottom-center large image (HERO) */}
           <PhotoCard
             data-hero
-            className="md:col-span-3 md:col-start-10 md:row-start-1 md:-mt-12 z-20"
+            className="md:col-span-6 md:col-start-4 md:row-start-4 md:mt-10 z-20"
             src="/cover4.jpeg"
             alt="Team"
             width={1200}
