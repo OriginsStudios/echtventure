@@ -5,26 +5,28 @@ import Button from "@/components/ui/Button"; // Assuming you have this Button co
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TextPlugin } from "gsap/TextPlugin";
 
 // Register GSAP plugins
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const HomePageHero = () => {
   const containerRef = useRef<HTMLElement>(null);
+  const headlineRef = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
-      // Animate the main headline
-      gsap.from(".hero-headline", {
-        opacity: 0,
-        y: 80,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%", // Start animation when 80% of the hero is visible
-        },
-      });
+      // Typewriting animation for the main headline on initial load
+      const fullText = "echtventure";
+      if (headlineRef.current) {
+        gsap.set(headlineRef.current, { text: "" });
+        gsap.to(headlineRef.current, {
+          text: fullText,
+          duration: 1.6,
+          ease: "none",
+          delay: 0.2,
+        });
+      }
 
       // Animate the description and button
       gsap.from([".hero-description", ".hero-button"], {
@@ -33,7 +35,7 @@ const HomePageHero = () => {
         duration: 0.8,
         ease: "power3.out",
         stagger: 0.2, // Animate them one after the other
-        delay: 0.3, // Wait for the headline animation to start
+        delay: 0.2, // Wait for the headline animation to start
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 80%",
@@ -55,13 +57,14 @@ const HomePageHero = () => {
       >
         {/* Left Section: Main Headline */}
         <div className="flex-1 min-w-0">
-          <h1
-            className="hero-headline font-extrabold text-black leading-none whitespace-pre-wrap 
-                       break-words uppercase font-bowlby tracking-wide text-center lg:text-left
-                       text-[4.5rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem]"
+          <span
+            ref={headlineRef}
+            className="hero-headline block font-extrabold text-black leading-none whitespace-pre-wrap 
+                       break-words uppercase font-bowlby tracking-tighter text-center lg:text-left
+                       text-[4.5rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] "
           >
             echtventure
-          </h1>
+          </span>
         </div>
 
         {/* Right Section: Description and Button */}

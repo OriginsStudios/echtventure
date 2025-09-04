@@ -287,7 +287,7 @@ const MobileNav = ({
           {/* Brand Piece */}
           <div className="brand-piece relative col-span-2 bg-gradient-to-br from-[#fcfaf8] to-[#f5f3f1] shadow-xl border border-gray-200/50 flex items-left justify-start pl-6 rounded-none py-6">
             <div className="brand-text text-left">
-              <h2 className="font-bowlby uppercase text-3xl font-extrabold tracking-wider text-black">
+              <h2 className="text-3xl font-mono font-bold tracking-tight text-black">
                 echtventure
               </h2>
               <div className="w-24 h-0.5 bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 mt-2"></div>
@@ -312,7 +312,7 @@ const MobileNav = ({
                   onClick={handleClose}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
-                  className="mobile-nav-link relative block text-2xl font-bowlby font-black uppercase tracking-wider transition-colors duration-200  cursor-pointer pb-1"
+                  className="mobile-nav-link relative block  transition-colors duration-200  cursor-pointer pb-1 font-roboto text-3xl font-semibold tracking-wider text-black"
                 >
                   {link.title}
                   <span
@@ -336,7 +336,7 @@ const MobileNav = ({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               <div className="absolute bottom-4 left-4 text-white">
-                <p className="text-sm font-crimson font-semibold">Transform</p>
+                <p className="text-sm font-bowlby font-semibold">Transform</p>
                 <p className="text-xs opacity-90">Your Journey</p>
               </div>
             </div>
@@ -381,7 +381,7 @@ const Navbar = () => {
               href="/"
               className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
             >
-              <span className="font-crimson  text-2xl font-extrabold tracking-wider text-black">
+              <span className=" text-3xl font-mono font-bold tracking-tight text-black">
                 echtventure
               </span>
             </Link>
@@ -396,7 +396,7 @@ const Navbar = () => {
                 >
                   <Link
                     href={link.href}
-                    className="font-crimson text-gray-800 relative text-xl font-extrabold tracking-widest pb-2 transition-colors duration-300 hover:text-gray-600 cursor-pointer uppercase"
+                    className=" relative  pb-2 transition-colors duration-300 hover:text-gray-600 cursor-pointer text-[1.4rem] font-mono font-[600] tracking-tight text-black "
                   >
                     {link.title}
                   </Link>

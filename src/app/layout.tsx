@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   Bowlby_One_SC,
+  Ramabhadra,
   Crimson_Text,
   Roboto_Condensed,
 } from "next/font/google";
@@ -11,28 +12,32 @@ import CustomCursor from "@/components/CustomCursor";
 import LenisScrollProvider from "@/components/LenisScrollProvider";
 import Footer from "@/components/layout/Footer";
 
-const bowlbyOneSc = localFont({
-  src: [
-    {
-      path: "./fonts/DrukText.otf",
-      weight: "400",
-      style: "normal",
-    },
+// const bowlbyOneSc = localFont({
+//   src: [
+//     {
+//       path: "./fonts/DrukText.otf",
+//       weight: "400",
+//       style: "normal",
+//     },
+//     { path: "./fonts/DrukText.otf", weight: "500", style: "normal" },
+//     { path: "./fonts/DrukText.otf", weight: "600", style: "normal" },
+//     { path: "./fonts/DrukText.otf", weight: "700", style: "normal" },
+//   ],
+//   display: "swap",
+//   variable: "--font-bowlby-one-sc",
+// });
 
-    { path: "./fonts/DrukText.otf", weight: "600", style: "normal" },
-
-    { path: "./fonts/DrukText.otf", weight: "700", style: "normal" },
-  ],
-  display: "swap",
-  variable: "--font-bowlby-one-sc",
-});
-
-const crimsonText = Crimson_Text({
+const bowlbyOneSc = Crimson_Text({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
   variable: "--font-crimson-text",
 });
 
+const crimsonText = Ramabhadra({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-crimson-text",
+});
 const robotoCondensed = Roboto_Condensed({
   weight: ["300", "400", "700"],
   subsets: ["latin"],
