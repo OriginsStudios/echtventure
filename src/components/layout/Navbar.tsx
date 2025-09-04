@@ -11,7 +11,7 @@ const scrollLockStyles = `
     overflow: hidden !important;
     height: 100% !important;
   }
-  
+ 
   .no-scroll body {
     overflow: hidden !important;
     position: fixed !important;
@@ -39,8 +39,28 @@ const MobileNav = ({
   setIsOpen: (isOpen: boolean) => void;
 }) => {
   const container = useRef<HTMLDivElement>(null);
-  const timeline = useRef<gsap.core.Timeline | null>(null);
+  const openTl = useRef<gsap.core.Timeline | null>(null);
+  const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  // FIX 1: Add a ref to track if the menu has been opened at least once
+  const hasRunOnce = useRef(false);
 
+  const handleMouseEnter = useCallback((index: number) => {
+    gsap.to(lineRefs.current[index], {
+      scaleX: 1,
+      transformOrigin: "left center",
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  }, []);
+
+  const handleMouseLeave = useCallback((index: number) => {
+    gsap.to(lineRefs.current[index], {
+      scaleX: 0,
+      transformOrigin: "right center",
+      duration: 0.3,
+      ease: "power2.in",
+    });
+  }, []);
   const handleClose = useCallback(() => setIsOpen(false), [setIsOpen]);
 
   useGSAP(
@@ -65,91 +85,148 @@ const MobileNav = ({
       )
         return;
 
-      timeline.current = gsap
+      // Opening timeline: pieces come together simultaneously
+      openTl.current = gsap
         .timeline({ paused: true })
-        .fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.3 })
+        .fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.25 })
+        .addLabel("enter")
         .fromTo(
           brandPiece,
           { y: -100, opacity: 0, scale: 0.95 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }
-        )
-        .fromTo(
-          closeButton,
-          { scale: 0.5, opacity: 0, rotation: -45 },
-          {
-            scale: 1,
-            opacity: 1,
-            rotation: 0,
-            duration: 0.3,
-            ease: "back.out(1.7)",
-          },
-          "-=0.2"
+          { y: 0, opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
+          "enter"
         )
         .fromTo(
           navPiece,
-          { x: -100, y: 100, rotation: 15, opacity: 0, scale: 0.95 },
+          { x: -100, y: 60, rotation: 10, opacity: 0, scale: 0.95 },
           {
             x: 0,
             y: 0,
             rotation: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.4,
-            ease: "back.out(1.7)",
+            duration: 0.35,
+            ease: "power2.out", // Changed ease for quicker entry
           },
-          "-=0.3"
+          "enter"
         )
         .fromTo(
           imagePiece,
-          { x: 100, y: 100, rotation: -15, opacity: 0, scale: 0.95 },
+          { x: 100, y: 60, rotation: -10, opacity: 0, scale: 0.95 },
           {
             x: 0,
             y: 0,
             rotation: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.4,
-            ease: "back.out(1.7)",
+            duration: 0.35,
+            ease: "power2.out", // Changed ease for quicker entry
           },
-          "-=0.3"
+          "enter"
         )
         .fromTo(
-          brandText,
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.3, ease: "power2.out" },
-          "-=0.2"
-        )
-        .fromTo(
-          navLinksArr,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.3,
-            stagger: 0.05,
-            ease: "power2.out",
-          },
-          "-=0.2"
-        )
-        .fromTo(
-          coverImage,
-          { scale: 0.8, opacity: 0, rotation: 10 },
+          closeButton,
+          { scale: 0.7, opacity: 0, rotation: -30 },
           {
             scale: 1,
             opacity: 1,
             rotation: 0,
-            duration: 0.3,
-            ease: "power2.out",
+            duration: 0.25,
+            ease: "power2.out", // Changed ease for quicker entry
           },
-          "-=0.2"
+          "enter" // Start at the same time as "enter" label
+        )
+        .fromTo(
+          brandText,
+          { y: 14, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.25, ease: "power2.out" },
+          "enter" // Start at the same time as "enter" label
+        )
+        .fromTo(
+          navLinksArr,
+          { y: 18, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.25,
+            ease: "power2.out", // Removed stagger
+          },
+          "enter" // Start at the same time as "enter" label
+        )
+        .fromTo(
+          coverImage,
+          { scale: 0.9, opacity: 0, rotation: 6 },
+          {
+            scale: 1,
+            opacity: 1,
+            rotation: 0,
+            duration: 0.25,
+            ease: "power2.out", // Changed ease for quicker entry
+          },
+          "enter" // Start at the same time as "enter" label
         );
     },
     { scope: container }
   );
 
-  // UPDATED useEffect for robust scroll lock
+  const runCloseAnimation = useCallback(() => {
+    const root = container.current;
+    if (!root) return Promise.resolve();
+
+    const backdrop = root.querySelector(".menu-backdrop") as HTMLElement | null;
+    const brandPiece = root.querySelector(".brand-piece") as HTMLElement | null;
+    const navPiece = root.querySelector(".nav-piece") as HTMLElement | null;
+    const imagePiece = root.querySelector(".image-piece") as HTMLElement | null;
+    const closeButton = root.querySelector(
+      ".close-button"
+    ) as HTMLElement | null;
+    const navLinksArr = gsap.utils.toArray<HTMLElement>(".mobile-nav-link");
+    const brandText = root.querySelector(".brand-text") as HTMLElement | null;
+
+    if (!backdrop || !brandPiece || !navPiece || !imagePiece)
+      return Promise.resolve();
+
+    return new Promise<void>((resolve) => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.inOut" },
+        onComplete: () => {
+          gsap.set([brandPiece, navPiece, imagePiece], {
+            clearProps: "transform,opacity",
+          });
+          openTl.current?.progress(0).pause();
+          resolve();
+        },
+      });
+
+      tl.to([closeButton, brandText], { opacity: 0, duration: 0.15 }, 0)
+        .to(
+          navLinksArr,
+          { opacity: 0, y: -8, duration: 0.15, stagger: 0.03 },
+          0
+        )
+        .to(imagePiece, {
+          xPercent: 120,
+          opacity: 0.9,
+          duration: 0.35,
+          ease: "power3.in",
+        })
+        .to(navPiece, {
+          xPercent: -200,
+          opacity: 0.9,
+          duration: 0.35,
+          ease: "power3.in",
+        })
+        .to(brandPiece, {
+          yPercent: -120,
+          opacity: 0.95,
+          duration: 0.35,
+          ease: "power3.in",
+        })
+        .to(backdrop, { opacity: 0, duration: 0.25, ease: "power2.out" });
+    });
+  }, []);
+
   useEffect(() => {
-    // Inject CSS styles if not already present
     if (!document.getElementById("scroll-lock-styles")) {
       const styleElement = document.createElement("style");
       styleElement.id = "scroll-lock-styles";
@@ -162,43 +239,37 @@ const MobileNav = ({
     const containerEl = container.current;
 
     if (isOpen) {
-      // Store current scroll position
+      hasRunOnce.current = true; // Mark as opened
       const scrollY = window.scrollY;
 
-      // Add classes to prevent scrolling
       htmlElement.classList.add("no-scroll");
       bodyElement.classList.add("no-scroll");
       bodyElement.style.top = `-${scrollY}px`;
 
       if (containerEl) containerEl.style.pointerEvents = "auto";
-      timeline.current?.play();
+      openTl.current?.restart();
     } else {
-      // Get the scroll position from the body's top style
-      const scrollY = bodyElement.style.top;
-
-      // Remove classes to re-enable scrolling
-      htmlElement.classList.remove("no-scroll");
-      bodyElement.classList.remove("no-scroll");
-      bodyElement.style.top = "";
-
-      // Restore scroll position
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      // FIX 1: Only run close animation if it has been opened before
+      if (hasRunOnce.current) {
+        runCloseAnimation().finally(() => {
+          const scrollY = bodyElement.style.top;
+          htmlElement.classList.remove("no-scroll");
+          bodyElement.classList.remove("no-scroll");
+          bodyElement.style.top = "";
+          if (scrollY) {
+            window.scrollTo(0, parseInt(scrollY || "0") * -1);
+          }
+          if (containerEl) containerEl.style.pointerEvents = "none";
+        });
       }
-
-      timeline.current?.reverse();
-      setTimeout(() => {
-        if (containerEl) containerEl.style.pointerEvents = "none";
-      }, 500);
     }
 
-    // Cleanup function to ensure scrolling is re-enabled on component unmount
     return () => {
       htmlElement.classList.remove("no-scroll");
       bodyElement.classList.remove("no-scroll");
       bodyElement.style.top = "";
     };
-  }, [isOpen]);
+  }, [isOpen, runCloseAnimation]);
 
   return (
     <div
@@ -214,12 +285,12 @@ const MobileNav = ({
       <div className="absolute inset-0 flex justify-end">
         <div className="grid h-full w-[95vw] sm:w-[85vw] md:w-[70vw] grid-cols-2 grid-rows-[auto,1fr] gap-2">
           {/* Brand Piece */}
-          <div className="brand-piece relative col-span-2 bg-gradient-to-br from-[#fcfaf8] to-[#f5f3f1] shadow-xl border border-gray-200/50 flex items-center justify-center rounded-none py-6">
-            <div className="brand-text text-center">
-              <h2 className="font-crimson text-3xl font-extrabold tracking-wider text-black">
+          <div className="brand-piece relative col-span-2 bg-gradient-to-br from-[#fcfaf8] to-[#f5f3f1] shadow-xl border border-gray-200/50 flex items-left justify-start pl-6 rounded-none py-6">
+            <div className="brand-text text-left">
+              <h2 className="font-bowlby uppercase text-3xl font-extrabold tracking-wider text-black">
                 echtventure
               </h2>
-              <div className="w-12 h-0.5 bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 mx-auto mt-2"></div>
+              <div className="w-24 h-0.5 bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 mt-2"></div>
             </div>
             <button
               onClick={handleClose}
@@ -233,26 +304,35 @@ const MobileNav = ({
           {/* Navigation Piece */}
           <div className="nav-piece bg-gradient-to-br from-[#fcfaf8] to-[#f5f3f1] shadow-xl border border-gray-200/50 p-6 flex flex-col justify-center rounded-none">
             <div className="space-y-4">
-              {navLinks.map((link) => (
+              {navLinks.map((link, index) => (
+                // FIX 2: Added event handlers and necessary classes for hover effect
                 <Link
                   key={link.title}
                   href={link.href}
                   onClick={handleClose}
-                  className="mobile-nav-link block text-2xl font-bowlby font-black uppercase tracking-wider transition-all duration-200 hover:text-red-500 hover:translate-x-2 cursor-pointer"
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={() => handleMouseLeave(index)}
+                  className="mobile-nav-link relative block text-2xl font-bowlby font-black uppercase tracking-wider transition-colors duration-200  cursor-pointer pb-1"
                 >
                   {link.title}
+                  <span
+                    ref={(el) => {
+                      if (el) lineRefs.current[index] = el;
+                    }}
+                    className="absolute bottom-0 left-0 h-[2px] w-1/2 bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 transform scale-x-0 origin-left"
+                  />
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Image Piece */}
-          <div className="image-piece bg-gradient-to-br from-[#fcfaf8] to-[#f5f3f1] shadow-xl border border-gray-200/50 p-2 flex items-center justify-center overflow-hidden rounded-none">
-            <div className="cover-image relative w-full h-full overflow-hidden rounded-none">
+          <div className="image-piece bg-gradient-to-br from-[#fcfaf8] to-[#f5f3f1] shadow-xl flex items-center justify-center overflow-hidden rounded-none ">
+            <div className="cover-image relative w-full h-full overflow-hidden rounded-none ">
               <img
                 src="/cover3.jpeg"
                 alt="Echtventure Cover"
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                className="w-full h-full object-[25%_45%] object-cover transition-transform duration-300 "
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               <div className="absolute bottom-4 left-4 text-white">
@@ -301,7 +381,7 @@ const Navbar = () => {
               href="/"
               className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
             >
-              <span className="font-crimson text-2xl font-extrabold tracking-wider text-black">
+              <span className="font-crimson  text-2xl font-extrabold tracking-wider text-black">
                 echtventure
               </span>
             </Link>
@@ -316,7 +396,7 @@ const Navbar = () => {
                 >
                   <Link
                     href={link.href}
-                    className="font-crimson text-gray-800 relative text-xl font-extrabold tracking-widest pb-2 transition-colors duration-300 hover:text-gray-600 cursor-pointer"
+                    className="font-crimson text-gray-800 relative text-xl font-extrabold tracking-widest pb-2 transition-colors duration-300 hover:text-gray-600 cursor-pointer uppercase"
                   >
                     {link.title}
                   </Link>
@@ -334,7 +414,7 @@ const Navbar = () => {
               <button
                 onClick={toggleMobileMenu}
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition-all duration-300 hover:bg-gray-100/80"
+                className="inline-flex items-center justify-center p-2 rounded-md transition-all duration-300 hover:bg-gray-100/80"
                 aria-controls="mobile-menu"
                 aria-expanded={isOpen}
                 aria-label={isOpen ? "Open menu" : "Close menu"}

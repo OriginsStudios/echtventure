@@ -64,7 +64,7 @@ const CustomCursor = () => {
     window.addEventListener("mousemove", onMouseMove);
 
     const hoverableElements = document.querySelectorAll(
-      "a, button, [data-hover-cursor]"
+      "a, button, img, [data-hover-cursor], [style*='background-image']"
     );
 
     hoverableElements.forEach((el) => {
