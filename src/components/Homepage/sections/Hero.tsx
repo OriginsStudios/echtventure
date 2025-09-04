@@ -61,7 +61,7 @@ const HomePageHero = () => {
             ref={headlineRef}
             className="hero-headline block font-extrabold text-black leading-none whitespace-pre-wrap 
                        break-words uppercase font-bowlby tracking-tighter text-center lg:text-left
-                       text-[4rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] "
+                       text-[3rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] "
           >
             echtventure
           </span>

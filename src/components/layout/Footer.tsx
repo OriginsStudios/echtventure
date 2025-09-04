@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
           />
         </div>
         <div className="overflow-hidden mb-12">
-          <h1 className="font-bowlby tracking-wider font-black uppercase 2xl:text-[6rem] xl:text-[5rem] lg:text-[4rem] text-[3rem] ">
+          <h1 className="font-bowlby tracking-wider font-black uppercase 2xl:text-[6rem] xl:text-[5rem] lg:text-[4rem] text-[1.5rem] ">
             Join The Mailing List
           </h1>
         </div>
@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
               className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-3 transition-colors duration-300 text-lg"
             />
           </div>
-          <div className="flex justify-end pt-4">
+          <div className="flex justify-end sm:pt-4  ">
             <button
               type="submit"
               className="bg-white text-black font-semibold py-3 px-8 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white transition-all duration-300 transform hover:scale-105"
