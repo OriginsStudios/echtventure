@@ -24,9 +24,11 @@ const scrollLockStyles = `
 // Data for navigation links
 const navLinks = [
   { title: "about", href: "/about" },
-  { title: "intensive", href: "/intensive" },
-  { title: "the studio", href: "/studio" },
-  { title: "programs", href: "/programs" },
+  { title: "coaches", href: "/coaches" },
+  { title: "services", href: "/services" },
+  { title: "success stories", href: "/success-stories" },
+  { title: "blog", href: "/resources/blog" },
+  { title: "podcast", href: "/resources/podcast" },
   { title: "contact", href: "/contact" },
 ] as const;
 
@@ -271,6 +273,19 @@ const MobileNav = ({
     };
   }, [isOpen, runCloseAnimation]);
 
+  const handleNavigate = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      try {
+        (window as any).__overlayNavigate?.(href);
+      } catch {
+        // fallback if overlay not ready
+        window.location.href = href;
+      }
+    },
+    []
+  );
+
   return (
     <div
       ref={container}
@@ -309,7 +324,7 @@ const MobileNav = ({
                 <Link
                   key={link.title}
                   href={link.href}
-                  onClick={handleClose}
+                  onClick={(e) => handleNavigate(e, link.href)}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
                   className="mobile-nav-link relative block  transition-colors duration-200  cursor-pointer pb-1 font-roboto text-3xl font-semibold tracking-wider text-black"
@@ -372,6 +387,18 @@ const Navbar = () => {
 
   const toggleMobileMenu = useCallback(() => setIsOpen((prev) => !prev), []);
 
+  const handleLinkClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      try {
+        (window as any).__overlayNavigate?.(href);
+      } catch {
+        window.location.href = href;
+      }
+    },
+    []
+  );
+
   return (
     <>
       <nav className="bg-backgroundColorWhite w-full sticky top-0 border-b z-40 border-lineColor">
@@ -380,9 +407,10 @@ const Navbar = () => {
             <Link
               href="/"
               className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+              onClick={(e) => handleLinkClick(e, "/")}
             >
-              <span className=" text-3xl font-mono font-bold tracking-tight text-black">
-                echtventure
+              <span className=" text-3xl font-bowlby font-semibold tracking-tight text-black">
+                Echtventure
               </span>
             </Link>
 
@@ -396,7 +424,8 @@ const Navbar = () => {
                 >
                   <Link
                     href={link.href}
-                    className=" relative  pb-2 transition-colors duration-300 hover:text-gray-600 cursor-pointer text-[1.4rem] font-mono font-[600] tracking-tight text-black "
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className=" relative  pb-2 transition-colors duration-300 hover:text-gray-600 cursor-pointer text-[1.4rem] font-bowlby font-[600] tracking-tight text-black "
                   >
                     {link.title}
                   </Link>
@@ -417,7 +446,7 @@ const Navbar = () => {
                 className="inline-flex items-center justify-center p-2 rounded-md transition-all duration-300 hover:bg-gray-100/80"
                 aria-controls="mobile-menu"
                 aria-expanded={isOpen}
-                aria-label={isOpen ? "Open menu" : "Close menu"}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
               >
                 <span className="sr-only">Open main menu</span>
                 <div className="text-gray-800">
