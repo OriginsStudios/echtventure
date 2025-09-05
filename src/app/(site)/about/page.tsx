@@ -42,9 +42,9 @@ const HeroSection = () => (
         About Echtventure
       </h1>
       <p className="mt-8 font-roboto text-[24px] leading-[1.5em] text-gray-700 max-w-4xl mx-auto">
-        Authenticity in Action. Since 2019, we've been helping working millennials 
-        and business leaders unlock their full potential through purpose-driven coaching 
-        and corporate training.
+        Authenticity in Action. Since 2019, we've been helping working
+        millennials and business leaders unlock their full potential through
+        purpose-driven coaching and corporate training.
       </p>
       <div className="mt-10">
         <button className="bg-[#6a3a3a] text-white font-roboto text-[18px] font-bold py-4 px-10 rounded-full hover:bg-[#7a4a4a] transition-colors duration-300">

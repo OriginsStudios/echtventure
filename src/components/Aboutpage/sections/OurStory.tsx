@@ -54,26 +54,27 @@ const OurStorySection = () => {
             </h2>
           </AnimatedTitle>
         </div>
-        
+
         <div ref={contentRef} className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="font-roboto text-[20px] text-gray-700 leading-[1.6em]">
-                Founded in 2019, Echtventure emerged from a clear and compelling mission: 
-                to help working millennials progressively realize their passion and purpose in life.
+                Founded in 2019, Echtventure emerged from a clear and compelling
+                mission: to help working millennials progressively realize their
+                passion and purpose in life.
               </p>
               <p className="font-roboto text-[20px] text-gray-700 leading-[1.6em]">
-                Our journey began with the recognition that many talented professionals 
-                were struggling to find meaning and fulfillment in their careers, despite 
-                their success on paper.
+                Our journey began with the recognition that many talented
+                professionals were struggling to find meaning and fulfillment in
+                their careers, despite their success on paper.
               </p>
               <p className="font-roboto text-[20px] text-gray-700 leading-[1.6em]">
-                We believe that when individuals align their work with their authentic 
-                selves and deeper purpose, they don't just succeed—they thrive and 
-                create lasting positive impact.
+                We believe that when individuals align their work with their
+                authentic selves and deeper purpose, they don't just
+                succeed—they thrive and create lasting positive impact.
               </p>
             </div>
-            
+
             <div className="bg-backgroundColorWhite border border-lineColor p-8 rounded-lg">
               <div className="text-center">
                 <div className="font-crimson text-[64px] font-bold text-[#6a3a3a] leading-none">
@@ -83,7 +84,8 @@ const OurStorySection = () => {
                   Year Founded
                 </p>
                 <p className="mt-2 font-roboto text-[16px] text-gray-600">
-                  With a mission to help working millennials realize their passion and purpose
+                  With a mission to help working millennials realize their
+                  passion and purpose
                 </p>
               </div>
             </div>

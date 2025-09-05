@@ -108,14 +108,16 @@ const MeetTheTeamSection = () => {
 
             <div className="space-y-4">
               <p className="font-roboto text-[20px] text-gray-700 leading-[1.6em]">
-                A Thought Leader, International Speaker, and certified professional coach, 
-                Keith has been passionately training the next generation of leaders since 2005.
+                A Thought Leader, International Speaker, and certified
+                professional coach, Keith has been passionately training the
+                next generation of leaders since 2005.
               </p>
-              
+
               <p className="font-roboto text-[18px] text-gray-700 leading-[1.6em]">
-                With extensive corporate management experience and deep expertise in personality 
-                profiling, Keith brings a unique blend of practical business acumen and 
-                psychological insights to every coaching engagement.
+                With extensive corporate management experience and deep
+                expertise in personality profiling, Keith brings a unique blend
+                of practical business acumen and psychological insights to every
+                coaching engagement.
               </p>
             </div>
 
@@ -146,7 +148,8 @@ const MeetTheTeamSection = () => {
                 <li className="flex items-start">
                   <span className="w-2 h-2 bg-[#6a3a3a] rounded-full mt-3 mr-3 flex-shrink-0"></span>
                   <span className="font-roboto text-[16px] text-gray-700">
-                    Featured speaker at international conferences and corporate events
+                    Featured speaker at international conferences and corporate
+                    events
                   </span>
                 </li>
               </ul>
@@ -175,13 +178,13 @@ const MeetTheTeamSection = () => {
               Our Extended Network
             </h3>
           </AnimatedTitle>
-          
+
           <p className="font-roboto text-[20px] text-gray-700 leading-[1.6em] max-w-3xl mx-auto mb-8">
-            Keith leads a network of experienced coaches and trainers, each bringing 
-            specialized expertise to serve our diverse client needs across different 
-            industries and leadership levels.
+            Keith leads a network of experienced coaches and trainers, each
+            bringing specialized expertise to serve our diverse client needs
+            across different industries and leadership levels.
           </p>
-          
+
           <Link href="/coaches">
             <button className="bg-backgroundColorWhite border border-[#6a3a3a] text-[#6a3a3a] font-roboto text-[16px] font-bold py-3 px-8 rounded-full hover:bg-[#6a3a3a] hover:text-white transition-colors duration-300">
               Explore Our Full Team

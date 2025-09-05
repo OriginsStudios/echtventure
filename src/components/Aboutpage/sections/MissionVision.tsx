@@ -70,35 +70,52 @@ const MissionVisionSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Mission */}
-          <div ref={missionRef} className="bg-white p-12 rounded-lg border border-lineColor">
+          <div
+            ref={missionRef}
+            className="bg-white p-12 rounded-lg border border-lineColor"
+          >
             <div className="text-center">
               <div className="w-16 h-16 bg-[#6a3a3a] rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z"/>
+                <svg
+                  className="w-8 h-8 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z" />
                 </svg>
               </div>
               <h3 className="font-crimson text-[32px] font-semibold text-black mb-6">
                 Our Mission
               </h3>
               <p className="font-roboto text-[22px] text-gray-700 leading-[1.5em] font-medium">
-                "To provide the right resources at the right time to maximise our clients' business potential."
+                "To provide the right resources at the right time to maximise
+                our clients' business potential."
               </p>
             </div>
           </div>
 
           {/* Vision */}
-          <div ref={visionRef} className="bg-white p-12 rounded-lg border border-lineColor">
+          <div
+            ref={visionRef}
+            className="bg-white p-12 rounded-lg border border-lineColor"
+          >
             <div className="text-center">
               <div className="w-16 h-16 bg-[#6a3a3a] rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5S21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12S9.24 7 12 7S17 9.24 17 12S14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z"/>
+                <svg
+                  className="w-8 h-8 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5S21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12S9.24 7 12 7S17 9.24 17 12S14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z" />
                 </svg>
               </div>
               <h3 className="font-crimson text-[32px] font-semibold text-black mb-6">
                 Our Vision
               </h3>
               <p className="font-roboto text-[22px] text-gray-700 leading-[1.5em] font-medium">
-                "To be the catalyst for a generation of authentic leaders who create meaningful impact in their organizations and communities."
+                "To be the catalyst for a generation of authentic leaders who
+                create meaningful impact in their organizations and
+                communities."
               </p>
             </div>
           </div>
@@ -111,32 +128,35 @@ const MissionVisionSection = () => {
               Our Core Values
             </h3>
           </AnimatedTitle>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6">
               <div className="font-crimson text-[24px] font-semibold text-[#6a3a3a] mb-4">
                 Authenticity
               </div>
               <p className="font-roboto text-[18px] text-gray-700 leading-[1.5em]">
-                We believe in being genuine, real, and true to oneself in all interactions.
+                We believe in being genuine, real, and true to oneself in all
+                interactions.
               </p>
             </div>
-            
+
             <div className="text-center p-6">
               <div className="font-crimson text-[24px] font-semibold text-[#6a3a3a] mb-4">
                 Excellence
               </div>
               <p className="font-roboto text-[18px] text-gray-700 leading-[1.5em]">
-                We are committed to delivering exceptional value and results for our clients.
+                We are committed to delivering exceptional value and results for
+                our clients.
               </p>
             </div>
-            
+
             <div className="text-center p-6">
               <div className="font-crimson text-[24px] font-semibold text-[#6a3a3a] mb-4">
                 Growth
               </div>
               <p className="font-roboto text-[18px] text-gray-700 leading-[1.5em]">
-                We foster continuous learning and development for sustainable success.
+                We foster continuous learning and development for sustainable
+                success.
               </p>
             </div>
           </div>

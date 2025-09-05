@@ -70,66 +70,86 @@ const UniqueApproachSection = () => {
 
         <div ref={approachRef} className="max-w-4xl mx-auto text-center mb-16">
           <p className="font-roboto text-[24px] text-gray-700 leading-[1.6em] mb-8">
-            We leverage a unique blend of corporate management experience and holistic 
-            development, using powerful tools like the Enneagram Personality Profiling 
-            to forge deeper connections in both professional and personal relationships.
+            We leverage a unique blend of corporate management experience and
+            holistic development, using powerful tools like the Enneagram
+            Personality Profiling to forge deeper connections in both
+            professional and personal relationships.
           </p>
-          
+
           <div className="bg-backgroundColorWhite border border-lineColor p-8 rounded-lg">
             <h3 className="font-crimson text-[28px] font-semibold text-black mb-4">
               Our Philosophy
             </h3>
             <p className="font-roboto text-[20px] text-gray-700 leading-[1.5em]">
-              Authentic leadership starts from within. By understanding your core motivations, 
-              fears, and desires, you can lead with genuine confidence and create meaningful 
-              impact in every relationship and situation.
+              Authentic leadership starts from within. By understanding your
+              core motivations, fears, and desires, you can lead with genuine
+              confidence and create meaningful impact in every relationship and
+              situation.
             </p>
           </div>
         </div>
 
-        <div ref={methodsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          ref={methodsRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {/* Corporate Experience */}
           <div className="method-card bg-white border border-lineColor p-8 rounded-lg hover:shadow-lg transition-shadow duration-300">
             <div className="w-16 h-16 bg-[#6a3a3a] rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M4 4H20V6H21V20C21 20.6 20.6 21 20 21H4C3.4 21 3 20.6 3 20V6H4V4M5 8V19H19V8H5M7 10H9V12H7V10M11 10H13V12H11V10M15 10H17V12H15V10Z"/>
+              <svg
+                className="w-8 h-8 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M4 4H20V6H21V20C21 20.6 20.6 21 20 21H4C3.4 21 3 20.6 3 20V6H4V4M5 8V19H19V8H5M7 10H9V12H7V10M11 10H13V12H11V10M15 10H17V12H15V10Z" />
               </svg>
             </div>
             <h3 className="font-crimson text-[24px] font-semibold text-black mb-4 text-center">
               Corporate Management Experience
             </h3>
             <p className="font-roboto text-[18px] text-gray-700 leading-[1.5em] text-center">
-              Real-world business insights from years of corporate leadership and management experience.
+              Real-world business insights from years of corporate leadership
+              and management experience.
             </p>
           </div>
 
           {/* Holistic Development */}
           <div className="method-card bg-white border border-lineColor p-8 rounded-lg hover:shadow-lg transition-shadow duration-300">
             <div className="w-16 h-16 bg-[#6a3a3a] rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M12 20C7.6 20 4 16.4 4 12S7.6 4 12 4 20 7.6 20 12 16.4 20 12 20M7 13H9V15H7V13M15 11H17V13H15V11M11 15H13V17H11V15Z"/>
+              <svg
+                className="w-8 h-8 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M12 20C7.6 20 4 16.4 4 12S7.6 4 12 4 20 7.6 20 12 16.4 20 12 20M7 13H9V15H7V13M15 11H17V13H15V11M11 15H13V17H11V15Z" />
               </svg>
             </div>
             <h3 className="font-crimson text-[24px] font-semibold text-black mb-4 text-center">
               Holistic Development
             </h3>
             <p className="font-roboto text-[18px] text-gray-700 leading-[1.5em] text-center">
-              A comprehensive approach that addresses personal, professional, and relational growth.
+              A comprehensive approach that addresses personal, professional,
+              and relational growth.
             </p>
           </div>
 
           {/* Enneagram Profiling */}
           <div className="method-card bg-white border border-lineColor p-8 rounded-lg hover:shadow-lg transition-shadow duration-300 md:col-span-2 lg:col-span-1">
             <div className="w-16 h-16 bg-[#6a3a3a] rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L14.09 8.26L22 9L14.09 9.74L12 16L9.91 9.74L2 9L9.91 8.26L12 2Z"/>
+              <svg
+                className="w-8 h-8 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2L14.09 8.26L22 9L14.09 9.74L12 16L9.91 9.74L2 9L9.91 8.26L12 2Z" />
               </svg>
             </div>
             <h3 className="font-crimson text-[24px] font-semibold text-black mb-4 text-center">
               Enneagram Personality Profiling
             </h3>
             <p className="font-roboto text-[18px] text-gray-700 leading-[1.5em] text-center">
-              Deep personality insights that unlock authentic self-awareness and improved relationships.
+              Deep personality insights that unlock authentic self-awareness and
+              improved relationships.
             </p>
           </div>
         </div>
@@ -141,7 +161,7 @@ const UniqueApproachSection = () => {
               Our Process
             </h3>
           </AnimatedTitle>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-12 h-12 bg-[#6a3a3a] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-roboto font-bold text-xl">
@@ -154,7 +174,7 @@ const UniqueApproachSection = () => {
                 Understand current state and identify opportunities
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-12 h-12 bg-[#6a3a3a] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-roboto font-bold text-xl">
                 2
@@ -166,7 +186,7 @@ const UniqueApproachSection = () => {
                 Connect values, purpose, and goals
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-12 h-12 bg-[#6a3a3a] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-roboto font-bold text-xl">
                 3
@@ -178,7 +198,7 @@ const UniqueApproachSection = () => {
                 Implement strategies and build new habits
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-12 h-12 bg-[#6a3a3a] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-roboto font-bold text-xl">
                 4
