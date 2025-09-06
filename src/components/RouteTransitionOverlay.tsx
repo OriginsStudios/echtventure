@@ -117,7 +117,7 @@ export default function RouteTransitionOverlay() {
   }, [pathname, isTransitioning, nextUrl, completeTransition]);
 
   // Helper: determine if anchor is internal and navigable
-  const getInternalHref = (anchor: HTMLAnchorElement) => {
+  const getInternalHref = useCallback((anchor: HTMLAnchorElement) => {
     const hrefAttr = anchor.getAttribute("href");
     if (!hrefAttr) return null;
     if (hrefAttr.startsWith("#")) return null; // in-page
@@ -151,7 +151,7 @@ export default function RouteTransitionOverlay() {
     if (pathname === "/" && url.pathname === "/") return null;
 
     return to;
-  };
+  }, [pathname]);
 
   const closeMobileMenuIfOpen = () => {
     const closeBtn = document.querySelector(
@@ -177,7 +177,6 @@ export default function RouteTransitionOverlay() {
       }
 
       try {
-        // @ts-ignore
         router.prefetch?.(to);
       } catch {}
       closeMobileMenuIfOpen();
@@ -229,7 +228,7 @@ export default function RouteTransitionOverlay() {
       document.removeEventListener("mousedown", handler as any, opts);
       document.removeEventListener("click", handler as any, opts);
     };
-  }, []);
+  }, [getInternalHref]);
 
   // Keyboard accessibility
   useEffect(() => {
@@ -254,7 +253,7 @@ export default function RouteTransitionOverlay() {
       document.removeEventListener("keydown", onKeyDown, {
         capture: true,
       } as any);
-  }, []);
+  }, [getInternalHref]);
 
   return (
     <div
