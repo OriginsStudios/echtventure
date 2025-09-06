@@ -17,6 +17,19 @@ export default function RouteTransitionOverlay() {
   const [nextUrl, setNextUrl] = useState<string | null>(null);
   const isAnimatingRef = useRef(false);
   const hasInitialLoadRun = useRef(false);
+  const isReloading = useRef(false);
+
+  // Detect page reload/refresh
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      isReloading.current = true;
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   const completeTransition = useCallback(async () => {
     // Animate overlay out
@@ -42,7 +55,14 @@ export default function RouteTransitionOverlay() {
 
   const startTransition = useCallback(
     async (url: string) => {
-      if (isAnimatingRef.current || isTransitioning) return;
+      if (isAnimatingRef.current || isTransitioning || isReloading.current)
+        return;
+
+      // Don't transition if user is already on "/" and trying to navigate to "/"
+      const targetUrl = new URL(url, window.location.origin);
+      if (pathname === "/" && targetUrl.pathname === "/") {
+        return;
+      }
 
       setIsTransitioning(true);
       setNextUrl(url);
@@ -69,27 +89,19 @@ export default function RouteTransitionOverlay() {
       // Now navigate
       router.push(url);
     },
-    [router, isTransitioning]
+    [router, isTransitioning, pathname]
   );
 
-  // Initial page load animation: made faster
+  // Skip initial page load animation since preloader handles it
   useEffect(() => {
     const el = overlayRef.current;
     if (!el || hasInitialLoadRun.current) {
       return;
     }
 
-    // Set initial state to visible (yPercent: 0) and animate it out
-    gsap.set(el, { yPercent: 0, pointerEvents: "auto" });
-    gsap.to(el, {
-      yPercent: -100,
-      duration: 0.4, // Faster duration
-      ease: "power2.out", // Faster starting ease
-      onComplete: () => {
-        gsap.set(el, { yPercent: 100, pointerEvents: "none" });
-        hasInitialLoadRun.current = true;
-      },
-    });
+    // Set initial state to hidden and mark as complete
+    gsap.set(el, { yPercent: 100, pointerEvents: "none" });
+    hasInitialLoadRun.current = true;
   }, []);
 
   // Complete transition when pathname changes
@@ -134,6 +146,10 @@ export default function RouteTransitionOverlay() {
     }
     // ignore same URL
     if (to === current.pathname + current.search + current.hash) return null;
+
+    // Don't transition if user is already on "/" and trying to navigate to "/"
+    if (pathname === "/" && url.pathname === "/") return null;
+
     return to;
   };
 
@@ -151,8 +167,15 @@ export default function RouteTransitionOverlay() {
   // Provide an explicit navigation API for reliability
   useEffect(() => {
     window.__overlayNavigate = async (to: string) => {
-      // Don't start a new navigation if we're already animating
-      if (isAnimatingRef.current) return;
+      // Don't start a new navigation if we're already animating or reloading
+      if (isAnimatingRef.current || isReloading.current) return;
+
+      // Don't transition if user is already on "/" and trying to navigate to "/"
+      const targetUrl = new URL(to, window.location.origin);
+      if (pathname === "/" && targetUrl.pathname === "/") {
+        return;
+      }
+
       try {
         // @ts-ignore
         router.prefetch?.(to);
@@ -163,7 +186,7 @@ export default function RouteTransitionOverlay() {
     return () => {
       delete window.__overlayNavigate;
     };
-  }, [router, startTransition]);
+  }, [router, startTransition, pathname]);
 
   // Intercept navigation
   useEffect(() => {

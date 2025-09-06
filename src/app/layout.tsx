@@ -12,6 +12,7 @@ import CustomCursor from "@/components/CustomCursor";
 import LenisScrollProvider from "@/components/LenisScrollProvider";
 import Footer from "@/components/layout/Footer";
 import RouteTransitionOverlay from "@/components/RouteTransitionOverlay";
+import Preloader from "@/components/Preload/Preloader";
 
 // const bowlbyOneSc = localFont({
 //   src: [
@@ -64,6 +65,7 @@ export default function RootLayout({
         <Navbar />
         <CustomCursor />
         {/* Page transition overlay */}
+        <Preloader />
         <RouteTransitionOverlay />
         <main className="bg-five-lines relative z-10 rounded-b-[100px]">
           {children}

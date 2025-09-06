@@ -26,7 +26,6 @@ export default function Gallary() {
 
       if (!wrapper || !hero || !center || !cards.length) return;
 
-      // Set initial state of surrounding elements to be invisible
       gsap.set([cards, center], { autoAlpha: 0 });
 
       const tl = gsap.timeline({
@@ -36,30 +35,27 @@ export default function Gallary() {
           start: "top top",
           end: "+=1000", // Controls the scroll duration of the zoom
           pin: true,
-          scrub: 1, // Smooths the scroll animation
+          scrub: 1.5, // Smooths the scroll animation
         },
       });
 
-      // Start zoomed in on the hero image
       tl.from(wrapper, {
-        scale: 2.5,
-        // Further adjusted yPercent to move the initial view even higher
-        yPercent: -90,
+        scale: 3.5,
+        // Adjusted xPercent and yPercent to center the new hero image on load
+        xPercent: 90,
+        yPercent: -80,
         duration: 1,
         ease: "power2.inOut",
-      })
-        // As it zooms out, fade in the other elements
-        .to(
-          [cards, center],
-          {
-            autoAlpha: 1,
-            stagger: 0.05,
-            duration: 0.6,
-            ease: "power2.inOut",
-          },
-          // Start the fade-in 0.2s into the zoom-out animation
-          0.2
-        );
+      }).to(
+        [cards, center],
+        {
+          autoAlpha: 1,
+          stagger: 0.05,
+          duration: 0.6,
+          ease: "power2.inOut",
+        },
+        0.2 // Start the fade-in early in the zoom-out
+      );
     },
     { scope: sectionRef }
   );
@@ -68,20 +64,20 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#F5F1EA] py-12 md:py-16"
+      className="relative flex h-screen items-center justify-center overflow-hidden bg-[#F5F1EA]"
     >
-      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6">
-        {/* The new wrapper element that will be scaled */}
+      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6">
+        {/* This wrapper is scaled to make the entire grid smaller */}
         <div data-grid-wrapper>
-          <div className="relative grid grid-cols-4 gap-4 md:grid-cols-12 md:gap-8">
+          <div className="relative grid grid-cols-4 md:grid-cols-12 md:gap-4 gap-12">
             {/* Top-left image */}
             <PhotoCard
               data-card
-              className="col-span-2 md:col-span-3 md:col-start-1 md:row-start-1 md:mt-16"
+              className="col-span-2 md:col-span-3 md:col-start-1 md:row-start-1 md:mt-12"
               src="/gallery/4.jpg"
               alt="Portrait"
-              width={640}
-              height={800}
+              width={320}
+              height={400}
               priority
             />
 
@@ -91,62 +87,53 @@ export default function Gallary() {
               className="col-span-2 md:col-span-3 md:col-start-10 md:row-start-1"
               src="/gallery/3.jpg"
               alt="Family"
-              width={640}
-              height={800}
+              width={320}
+              height={400}
             />
 
             {/* Center content */}
             <div
               data-center
-              className="relative z-10 col-span-4 row-start-2 md:col-span-6 md:col-start-4 md:row-start-2 text-center px-2 md:pb-24"
+              className="relative z-10 col-span-4 row-start-2 md:col-span-6 md:col-start-4 md:row-start-2 text-center px-2 md:pb-12"
             >
-              <h2 className="font-serif text-3xl leading-tight tracking-tight text-neutral-900 sm:text-4xl md:text-6xl">
+              <h2 className="font-serif text-xl leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-6xl">
                 Building brands
                 <br className="hidden sm:block" />
                 from the inside out
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-neutral-600 sm:mt-5 sm:text-lg">
+              <p className="mx-auto mt-2 max-w-xl text-xs leading-relaxed text-neutral-600 sm:mt-3 sm:text-base">
                 Hi! We’re Becca and Yoni — the husband and wife duo behind Skye
                 High.
               </p>
-              <div className="mt-6 sm:mt-8">
+              <div className="mt-4 sm:mt-5">
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40"
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40"
                 >
                   Our process
                 </Link>
               </div>
             </div>
 
-            {/* Middle-left image */}
+            {/* Middle-left image (NEW HERO) */}
             <PhotoCard
-              data-card
-              className="col-span-2 row-start-3 md:col-span-4 md:col-start-2 md:-mt-24"
+              data-hero // This is the new hero image for the zoom effect
+              className="col-span-2 row-start-3 md:col-span-4 md:col-start-2 md:-mt-12 z-20"
               src="/gallery/5.jpg"
               alt="Creative at work"
-              width={900}
-              height={600}
+              width={450}
+              height={300}
+              priority
             />
 
             {/* Middle-right image */}
             <PhotoCard
               data-card
-              className="col-span-2 row-start-3 md:col-span-3 md:col-start-9 md:-mt-16"
+              className="col-span-2 row-start-3 md:col-span-3 md:col-start-9 md:-mt-8"
               src="/gallery/2.jpg"
               alt="Portrait with hat"
-              width={640}
-              height={800}
-            />
-
-            {/* Bottom-center large image (HERO) */}
-            <PhotoCard
-              data-hero
-              className="col-span-4 row-start-4 md:col-span-6 md:col-start-4 z-20 mt-10"
-              src="/gallery/1.jpg"
-              alt="Team"
-              width={1200}
-              height={900}
+              width={320}
+              height={400}
             />
           </div>
         </div>
@@ -175,7 +162,7 @@ function PhotoCard({
     <div
       {...rest}
       className={
-        "relative overflow-hidden rounded-xl md:rounded-2xl border border-black/5 bg-white shadow-sm transition will-change-transform hover:-translate-y-0.5 hover:shadow-md " +
+        "relative overflow-hidden rounded-lg md:rounded-xl border border-black/5 bg-white shadow-sm transition will-change-transform hover:-translate-y-0.5 hover:shadow-md " +
         className
       }
     >
