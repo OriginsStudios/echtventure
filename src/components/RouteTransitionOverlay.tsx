@@ -117,41 +117,44 @@ export default function RouteTransitionOverlay() {
   }, [pathname, isTransitioning, nextUrl, completeTransition]);
 
   // Helper: determine if anchor is internal and navigable
-  const getInternalHref = useCallback((anchor: HTMLAnchorElement) => {
-    const hrefAttr = anchor.getAttribute("href");
-    if (!hrefAttr) return null;
-    if (hrefAttr.startsWith("#")) return null; // in-page
-    if (anchor.target && anchor.target !== "" && anchor.target !== "_self")
-      return null;
-    if (anchor.hasAttribute("download")) return null;
+  const getInternalHref = useCallback(
+    (anchor: HTMLAnchorElement) => {
+      const hrefAttr = anchor.getAttribute("href");
+      if (!hrefAttr) return null;
+      if (hrefAttr.startsWith("#")) return null; // in-page
+      if (anchor.target && anchor.target !== "" && anchor.target !== "_self")
+        return null;
+      if (anchor.hasAttribute("download")) return null;
 
-    let url: URL;
-    try {
-      url = new URL(anchor.href);
-    } catch {
-      return null;
-    }
-    const current = new URL(window.location.href);
-    if (url.origin !== current.origin) return null; // external
+      let url: URL;
+      try {
+        url = new URL(anchor.href);
+      } catch {
+        return null;
+      }
+      const current = new URL(window.location.href);
+      if (url.origin !== current.origin) return null; // external
 
-    const to = url.pathname + url.search + url.hash;
-    // ignore pure hash changes
-    if (
-      url.pathname === current.pathname &&
-      url.search === current.search &&
-      url.hash &&
-      url.hash !== current.hash
-    ) {
-      return null;
-    }
-    // ignore same URL
-    if (to === current.pathname + current.search + current.hash) return null;
+      const to = url.pathname + url.search + url.hash;
+      // ignore pure hash changes
+      if (
+        url.pathname === current.pathname &&
+        url.search === current.search &&
+        url.hash &&
+        url.hash !== current.hash
+      ) {
+        return null;
+      }
+      // ignore same URL
+      if (to === current.pathname + current.search + current.hash) return null;
 
-    // Don't transition if user is already on "/" and trying to navigate to "/"
-    if (pathname === "/" && url.pathname === "/") return null;
+      // Don't transition if user is already on "/" and trying to navigate to "/"
+      if (pathname === "/" && url.pathname === "/") return null;
 
-    return to;
-  }, [pathname]);
+      return to;
+    },
+    [pathname]
+  );
 
   const closeMobileMenuIfOpen = () => {
     const closeBtn = document.querySelector(

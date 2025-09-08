@@ -86,3 +86,31 @@ html.lenis {
     display: block;
   }
 }
+
+/* Vimium Overlay Styles */
+:root {
+  --vimium-background-color: #1d1d1f;
+  --vimium-background-text-color: #e3e3e3;
+  --vimium-foreground-color: #292a2d;
+  --vimium-foreground-text-color: #e8eaed;
+  --vimium-link-color: #8ab4f8;
+}
+
+.noise-overlay {
+  font-family: "DM Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-rendering: optimizelegibility;
+  font-synthesis: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  aspect-ratio: auto 1920 / 945;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+}

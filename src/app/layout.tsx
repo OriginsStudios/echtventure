@@ -71,6 +71,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <canvas className="noise-overlay" width="1920" height="945"></canvas>
       </body>
     </html>
   );

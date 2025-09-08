@@ -90,12 +90,12 @@ const MobileNav = ({
       // Opening timeline: pieces come together simultaneously
       openTl.current = gsap
         .timeline({ paused: true })
-        .fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.25 })
+        .fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.15 })
         .addLabel("enter")
         .fromTo(
           brandPiece,
           { y: -100, opacity: 0, scale: 0.95 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
+          { y: 0, opacity: 1, scale: 1, duration: 0.25, ease: "power2.out" },
           "enter"
         )
         .fromTo(
@@ -107,7 +107,7 @@ const MobileNav = ({
             rotation: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.35,
+            duration: 0.25,
             ease: "power2.out", // Changed ease for quicker entry
           },
           "enter"
@@ -121,7 +121,7 @@ const MobileNav = ({
             rotation: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.35,
+            duration: 0.25,
             ease: "power2.out", // Changed ease for quicker entry
           },
           "enter"
@@ -133,7 +133,7 @@ const MobileNav = ({
             scale: 1,
             opacity: 1,
             rotation: 0,
-            duration: 0.25,
+            duration: 0.2,
             ease: "power2.out", // Changed ease for quicker entry
           },
           "enter" // Start at the same time as "enter" label
@@ -141,7 +141,7 @@ const MobileNav = ({
         .fromTo(
           brandText,
           { y: 14, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.25, ease: "power2.out" },
+          { y: 0, opacity: 1, duration: 0.2, ease: "power2.out" },
           "enter" // Start at the same time as "enter" label
         )
         .fromTo(
@@ -150,7 +150,7 @@ const MobileNav = ({
           {
             y: 0,
             opacity: 1,
-            duration: 0.25,
+            duration: 0.2,
             ease: "power2.out", // Removed stagger
           },
           "enter" // Start at the same time as "enter" label
@@ -162,7 +162,7 @@ const MobileNav = ({
             scale: 1,
             opacity: 1,
             rotation: 0,
-            duration: 0.25,
+            duration: 0.2,
             ease: "power2.out", // Changed ease for quicker entry
           },
           "enter" // Start at the same time as "enter" label
@@ -179,11 +179,6 @@ const MobileNav = ({
     const brandPiece = root.querySelector(".brand-piece") as HTMLElement | null;
     const navPiece = root.querySelector(".nav-piece") as HTMLElement | null;
     const imagePiece = root.querySelector(".image-piece") as HTMLElement | null;
-    const closeButton = root.querySelector(
-      ".close-button"
-    ) as HTMLElement | null;
-    const navLinksArr = gsap.utils.toArray<HTMLElement>(".mobile-nav-link");
-    const brandText = root.querySelector(".brand-text") as HTMLElement | null;
 
     if (!backdrop || !brandPiece || !navPiece || !imagePiece)
       return Promise.resolve();
@@ -200,31 +195,26 @@ const MobileNav = ({
         },
       });
 
-      tl.to([closeButton, brandText], { opacity: 0, duration: 0.15 }, 0)
-        .to(
-          navLinksArr,
-          { opacity: 0, y: -8, duration: 0.15, stagger: 0.03 },
-          0
-        )
-        .to(imagePiece, {
+      // Animate pieces one by one as blocks
+      tl.to(imagePiece, {
           xPercent: 120,
-          opacity: 0.9,
-          duration: 0.35,
+          opacity: 0,
+          duration: 0.15,
           ease: "power3.in",
         })
         .to(navPiece, {
           xPercent: -200,
-          opacity: 0.9,
-          duration: 0.35,
+          opacity: 0,
+          duration: 0.15,
           ease: "power3.in",
-        })
+        }, "-=0.05")
         .to(brandPiece, {
           yPercent: -120,
-          opacity: 0.95,
-          duration: 0.35,
+          opacity: 0,
+          duration: 0.15,
           ease: "power3.in",
-        })
-        .to(backdrop, { opacity: 0, duration: 0.25, ease: "power2.out" });
+        }, "-=0.05")
+        .to(backdrop, { opacity: 0, duration: 0.15, ease: "power2.out" });
     });
   }, []);
 
