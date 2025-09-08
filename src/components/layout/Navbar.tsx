@@ -197,23 +197,31 @@ const MobileNav = ({
 
       // Animate pieces one by one as blocks
       tl.to(imagePiece, {
-          xPercent: 120,
-          opacity: 0,
-          duration: 0.15,
-          ease: "power3.in",
-        })
-        .to(navPiece, {
-          xPercent: -200,
-          opacity: 0,
-          duration: 0.15,
-          ease: "power3.in",
-        }, "-=0.05")
-        .to(brandPiece, {
-          yPercent: -120,
-          opacity: 0,
-          duration: 0.15,
-          ease: "power3.in",
-        }, "-=0.05")
+        xPercent: 120,
+        opacity: 0,
+        duration: 0.15,
+        ease: "power3.in",
+      })
+        .to(
+          navPiece,
+          {
+            xPercent: -200,
+            opacity: 0,
+            duration: 0.15,
+            ease: "power3.in",
+          },
+          "-=0.05"
+        )
+        .to(
+          brandPiece,
+          {
+            yPercent: -120,
+            opacity: 0,
+            duration: 0.15,
+            ease: "power3.in",
+          },
+          "-=0.05"
+        )
         .to(backdrop, { opacity: 0, duration: 0.15, ease: "power2.out" });
     });
   }, []);

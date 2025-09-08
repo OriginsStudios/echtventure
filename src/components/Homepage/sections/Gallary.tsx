@@ -28,34 +28,78 @@ export default function Gallary() {
 
       gsap.set([cards, center], { autoAlpha: 0 });
 
-      const tl = gsap.timeline({
-        defaults: { ease: "none" },
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "+=1000", // Controls the scroll duration of the zoom
-          pin: true,
-          scrub: 1.5, // Smooths the scroll animation
-        },
-      });
+      // Create responsive animation based on screen width
+      const createAnimation = () => {
+        const isMobile = window.innerWidth < 768;
 
-      tl.from(wrapper, {
-        scale: 3.5,
-        // Adjusted xPercent and yPercent to center the new hero image on load
-        xPercent: 90,
-        yPercent: -80,
-        duration: 1,
-        ease: "power2.inOut",
-      }).to(
-        [cards, center],
-        {
-          autoAlpha: 1,
-          stagger: 0.05,
-          duration: 0.6,
-          ease: "power2.inOut",
-        },
-        0.2 // Start the fade-in early in the zoom-out
-      );
+        // Kill existing timeline if it exists
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+        const tl = gsap.timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: isMobile ? "+=300" : "+=1000", // Shorter scroll distance on mobile
+            pin: !isMobile, // Disable pinning on mobile for smoother performance
+            scrub: isMobile ? 0.5 : 1.5, // Faster, more responsive scrub on mobile
+            anticipatePin: isMobile ? 0 : 1,
+          },
+        });
+
+        if (isMobile) {
+          // Mobile animation - starts from top right, bigger scale, and smooth
+          tl.from(wrapper, {
+            scale: 2.5, // Bigger scale for more dramatic effect
+            xPercent: 70, // Moved to the right
+            yPercent: -105, // Start from top (moved up more)
+            duration: 1, // Longer duration for smoothness
+            ease: "power2.inOut", // Smoother easing
+          }).to(
+            [cards, center],
+            {
+              autoAlpha: 1,
+              stagger: 0.03,
+              duration: 0.5,
+              ease: "power2.out",
+            },
+            0.2
+          );
+        } else {
+          // Full animation for desktop
+          tl.from(wrapper, {
+            scale: 3.5,
+            xPercent: 90,
+            yPercent: -80,
+            duration: 1,
+            ease: "power2.inOut",
+          }).to(
+            [cards, center],
+            {
+              autoAlpha: 1,
+              stagger: 0.05,
+              duration: 0.6,
+              ease: "power2.inOut",
+            },
+            0.2
+          );
+        }
+      };
+
+      // Initial animation setup
+      createAnimation();
+
+      // Re-create animation on resize
+      const handleResize = () => {
+        createAnimation();
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      // Cleanup function
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
     },
     { scope: sectionRef }
   );
@@ -64,7 +108,7 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative flex h-screen items-center justify-center overflow-hidden bg-[#F5F1EA]"
+      className="relative flex h-screen  items-center justify-center overflow-hidden bg-[#F5F1EA]"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6">
         {/* This wrapper is scaled to make the entire grid smaller */}
