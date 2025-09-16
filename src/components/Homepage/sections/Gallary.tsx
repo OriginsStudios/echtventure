@@ -28,45 +28,22 @@ export default function Gallary() {
 
       gsap.set([cards, center], { autoAlpha: 0 });
 
-      // Create responsive animation based on screen width
-      const createAnimation = () => {
-        const isMobile = window.innerWidth < 768;
-
-        // Kill existing timeline if it exists
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-
-        const tl = gsap.timeline({
-          defaults: { ease: "none" },
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: isMobile ? "+=300" : "+=1000", // Shorter scroll distance on mobile
-            pin: !isMobile, // Disable pinning on mobile for smoother performance
-            scrub: isMobile ? 0.5 : 1.5, // Faster, more responsive scrub on mobile
-            anticipatePin: isMobile ? 0 : 1,
-          },
-        });
-
-        if (isMobile) {
-          // Mobile animation - starts from top right, bigger scale, and smooth
-          tl.from(wrapper, {
-            scale: 2.5, // Bigger scale for more dramatic effect
-            xPercent: 70, // Moved to the right
-            yPercent: -105, // Start from top (moved up more)
-            duration: 1, // Longer duration for smoothness
-            ease: "power2.inOut", // Smoother easing
-          }).to(
-            [cards, center],
-            {
-              autoAlpha: 1,
-              stagger: 0.03,
-              duration: 0.5,
-              ease: "power2.out",
+      // Use ScrollTrigger.matchMedia for responsive animations
+      ScrollTrigger.matchMedia({
+        // Desktop animation
+        "(min-width: 768px)": function () {
+          const tl = gsap.timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: {
+              trigger: section,
+              start: "top top",
+              end: "+=1000",
+              pin: true,
+              scrub: 1.5,
+              anticipatePin: 1,
             },
-            0.2
-          );
-        } else {
-          // Full animation for desktop
+          });
+
           tl.from(wrapper, {
             scale: 3.5,
             xPercent: 90,
@@ -83,23 +60,49 @@ export default function Gallary() {
             },
             0.2
           );
-        }
-      };
 
-      // Initial animation setup
-      createAnimation();
+          // Return a cleanup function to kill the timeline on resize
+          return () => {
+            tl.kill();
+          };
+        },
 
-      // Re-create animation on resize
-      const handleResize = () => {
-        createAnimation();
-      };
+        // Mobile animation
+        "(max-width: 767px)": function () {
+          const tl = gsap.timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: {
+              trigger: section,
+              start: "top top",
+              end: "+=400", // Adjusted for better feel
+              pin: false, // Pinning is often problematic on mobile
+              scrub: 0.5,
+            },
+          });
 
-      window.addEventListener("resize", handleResize);
+          tl.from(wrapper, {
+            scale: 2.5,
+            xPercent: 70,
+            yPercent: -105,
+            duration: 1,
+            ease: "power2.inOut",
+          }).to(
+            [cards, center],
+            {
+              autoAlpha: 1,
+              stagger: 0.03,
+              duration: 0.5,
+              ease: "power2.out",
+            },
+            0.2
+          );
 
-      // Cleanup function
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
+          // Return a cleanup function to kill the timeline on resize
+          return () => {
+            tl.kill();
+          };
+        },
+      });
     },
     { scope: sectionRef }
   );
