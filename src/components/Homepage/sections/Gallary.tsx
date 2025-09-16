@@ -111,7 +111,7 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative flex h-screen  items-center justify-center overflow-hidden bg-[#F5F1EA]"
+      className="relative flex h-screen items-end md:items-center justify-center overflow-hidden bg-[#F5F1EA]"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6">
         {/* This wrapper is scaled to make the entire grid smaller */}
@@ -120,7 +120,7 @@ export default function Gallary() {
             {/* Top-left image */}
             <PhotoCard
               data-card
-              className="col-span-2 md:col-span-3 md:col-start-1 md:row-start-1 md:mt-12"
+              className="hidden md:block col-span-2 md:col-span-3 md:col-start-1 md:row-start-1 md:mt-12"
               src="/gallery/4.jpg"
               alt="Portrait"
               width={320}
@@ -131,7 +131,7 @@ export default function Gallary() {
             {/* Top-right image */}
             <PhotoCard
               data-card
-              className="col-span-2 md:col-span-3 md:col-start-10 md:row-start-1"
+              className="hidden md:block col-span-2 md:col-span-3 md:col-start-10 md:row-start-1"
               src="/gallery/3.jpg"
               alt="Family"
               width={320}
