@@ -39,7 +39,7 @@ export default function Gallary() {
               start: "top top",
               end: "+=1000",
               pin: true,
-              scrub: 1.5,
+              scrub: 2.5, // smoother, more inertia
               anticipatePin: 1,
             },
           });
@@ -48,14 +48,14 @@ export default function Gallary() {
             scale: 3.5,
             xPercent: 90,
             yPercent: -80,
-            duration: 1,
+            duration: 2.2, // smoother, longer zoom
             ease: "power2.inOut",
           }).to(
             [cards, center],
             {
               autoAlpha: 1,
-              stagger: 0.05,
-              duration: 0.6,
+              stagger: 0.08,
+              duration: 0.8,
               ease: "power2.inOut",
             },
             0.2
@@ -76,7 +76,7 @@ export default function Gallary() {
               start: "top top",
               end: "+=400", // Adjusted for better feel
               pin: false, // Pinning is often problematic on mobile
-              scrub: 0.5,
+              scrub: 1.2, // smoother, more inertia
             },
           });
 
@@ -84,14 +84,14 @@ export default function Gallary() {
             scale: 2.5,
             xPercent: 70,
             yPercent: -105,
-            duration: 1,
+            duration: 1.5, // smoother, longer zoom
             ease: "power2.inOut",
           }).to(
             [cards, center],
             {
               autoAlpha: 1,
-              stagger: 0.03,
-              duration: 0.5,
+              stagger: 0.05,
+              duration: 0.7,
               ease: "power2.out",
             },
             0.2
