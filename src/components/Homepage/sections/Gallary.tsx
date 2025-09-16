@@ -111,7 +111,7 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative flex h-screen items-end md:items-center justify-center overflow-hidden bg-[#F5F1EA]"
+      className="relative flex h-[85vh] md:h-screen items-end md:items-center justify-center overflow-hidden bg-[#F5F1EA]"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6">
         {/* This wrapper is scaled to make the entire grid smaller */}
