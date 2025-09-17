@@ -4,6 +4,7 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 // CSS styles to prevent scrolling
 const scrollLockStyles = `
@@ -407,9 +408,13 @@ const Navbar = () => {
               className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
               onClick={(e) => handleLinkClick(e, "/")}
             >
-              <span className=" text-3xl font-bowlby font-semibold tracking-tight text-black">
-                Echtventure
-              </span>
+              <Image
+                src="/logo/black.svg"
+                alt="Echtventure Logo"
+                width={200}
+                height={200}
+                unoptimized
+              />
             </Link>
 
             <div className="hidden lg:flex md:items-center md:space-x-8">
