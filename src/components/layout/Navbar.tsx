@@ -24,12 +24,10 @@ const scrollLockStyles = `
 
 // Data for navigation links
 const navLinks = [
-  { title: "about", href: "/about" },
+  { title: "enneagram", href: "/enneagram" },
   { title: "coaches", href: "/coaches" },
-  { title: "services", href: "/services" },
-  { title: "success stories", href: "/success-stories" },
-  { title: "blog", href: "/resources/blog" },
-  { title: "podcast", href: "/resources/podcast" },
+  { title: "resources", href: "/resources" },
+  { title: "about", href: "/about" },
   { title: "contact", href: "/contact" },
 ] as const;
 

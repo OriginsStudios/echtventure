@@ -18,6 +18,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Echtventure",
   description: "Unlocking your full potential.",
+  icons: {
+    icon: "/logo/EVT_LOGO-WHT.svg",
+    shortcut: "/logo/EVT_LOGO-WHT.svg",
+    apple: "/logo/EVT_LOGO-WHT.svg",
+  },
 };
 
 export default function RootLayout({

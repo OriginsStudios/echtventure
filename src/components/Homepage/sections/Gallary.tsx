@@ -35,11 +35,11 @@ export default function Gallary() {
             defaults: { ease: "none" },
             scrollTrigger: {
               trigger: section,
-              start: "top top",
-              end: "+=1000",
-              pin: true,
+              start: "top 20%",
+              end: "bottom 80%",
+              pin: false,
               scrub: 2.5,
-              anticipatePin: 1,
+              anticipatePin: 0,
             },
           });
 
@@ -50,11 +50,11 @@ export default function Gallary() {
               // Start state (zoomed in and off-center)
               scale: 3.5,
               xPercent: 90,
-              yPercent: -70,
+              yPercent: -60,
             },
             {
               // End state (larger and centered)
-              scale: 0.8, // <-- The grid will be 50% larger at the end
+              scale: 0.95, // <-- The grid will be 50% larger at the end
               xPercent: 0,
               yPercent: 0,
               duration: 2.2,
@@ -82,10 +82,10 @@ export default function Gallary() {
             defaults: { ease: "none" },
             scrollTrigger: {
               trigger: section,
-              start: "top top",
-              end: "+=400",
+              start: "top 30%",
+              end: "bottom 70%",
               pin: false,
-              scrub: 1.2,
+              scrub: 2.8,
             },
           });
 
@@ -100,7 +100,7 @@ export default function Gallary() {
             },
             {
               // End state
-              scale: 0.8, // <-- The grid will be 20% larger at the end
+              scale: 1, // <-- The grid will be 15% larger at the end
               xPercent: 0,
               yPercent: 0,
               duration: 1.5,
@@ -130,7 +130,7 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative flex h-[90vh] items-end md:items-center justify-center overflow-hidden"
+      className="relative flex h-[95vh] items-end md:items-center justify-center overflow-hidden"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6  ">
         <div data-grid-wrapper>
@@ -159,21 +159,19 @@ export default function Gallary() {
             {/* Center content */}
             <div
               data-center
-              className="relative z-10 col-span-4 row-start-2 md:col-span-6 md:col-start-4 md:row-start-2 text-center px-2 md:pb-12"
+              className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:col-start-1 md:row-start-2 text-center px-2 md:pb-12"
             >
-              <h2 className="font-butler text-xl leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-6xl">
-                Building brands
-                <br className="hidden sm:block" />
-                from the inside out
+              <h2 className="text-2xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl font-bold italic">
+                Our Process
               </h2>
-              <p className="mx-auto mt-2 max-w-xl font-montserrat text-xs leading-relaxed text-neutral-600 sm:mt-3 sm:text-base">
-                Hi! We’re Becca and Yoni — the husband and wife duo behind Skye
-                High.
-              </p>
+              <h2 className="text-2xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl font-bold italic">
+                Awareness <span className="font-normal">to</span> Mastery{" "}
+                <span className="font-normal">to</span> Leadership
+              </h2>
               <div className="mt-4 sm:mt-5">
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40"
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900  text-lg font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40 px-4 py-2 sm:px-8 sm:py-4 sm:text-md"
                 >
                   Our process
                 </Link>

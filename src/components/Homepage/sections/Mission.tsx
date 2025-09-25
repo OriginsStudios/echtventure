@@ -10,25 +10,26 @@ const Mission = () => {
           <div className="flex flex-col items-start">
             <h1 className="text-5xl sm:text-6xl md:text-7xl  font-bold tracking-tight leading-tight">
               OUR MISSION IS TO{" "}
-              <span className="italic font-light">DISRUPT</span>
+              <span className="italic font-light">TRANSFORM</span>
             </h1>
             <Button className="mt-12 bg-[#6a3a3a] hover:bg-[#7a4a4a] transition-colors duration-300 text-white  text-xs font-bold tracking-widest uppercase px-10 py-4 rounded-full shadow-lg">
-              ABOUT CHILLPRENEUR
+              DISCOVER THE ENNEAGRAM
             </Button>
           </div>
 
           {/* Right Column */}
           <div className="flex items-center h-full pt-0 lg:pt-6">
             <p className="font-montserrat text-base text-gray-300 leading-relaxed">
-              Our mission here at the Chillpreneur Company is to be a disruptive
-              force in the online business world. We are here to change online
-              coaching and education, focusing on what matters and making an
-              impact. Chillpreneur is not only an education platform but also an
-              embodiment of its core beliefs of creating a fun, fulfilling, and
-              freeing business. By being an example, Erin and The Chillpreneur
-              Company aim to empower other business owners to find unique ways
-              to change the world while simultaneously releasing the need to
-              contribute to burnout culture.
+              Our mission at Echtventure is to transform how leaders understand
+              themselves and connect with others. Through the powerful lens of
+              the Enneagram personality system, we help individuals discover
+              their core motivations, fears, and desires. We believe authentic
+              leadership starts from within - by understanding who you are at
+              your deepest level, you can lead with genuine confidence and
+              create meaningful impact in every relationship and situation. Our
+              goal is to empower leaders to move beyond surface-level
+              interactions and build connections that drive real transformation
+              in their organizations and communities.
             </p>
           </div>
         </div>

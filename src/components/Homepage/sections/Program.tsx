@@ -1,30 +1,31 @@
 import Button from "@/components/ui/Button";
 import React from "react";
+import SecondProgram from "./SecondProgram";
 
 const ProgramsSection = () => {
   return (
-    <div className=" text-black font-butler flex items-center justify-center py-28 sm:py-40 px-8 sm:px-16 rounded-b-xl ">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-none">
-          OUR
-          <br />
-          PROGRAMS
-        </h2>
-        <p className="mt-8 max-w-3xl mx-auto font-montserrat text-gray-700 leading-relaxed">
-          At Chillpreneur, we offer a unique approach to creative education that
-          emphasizes building and scaling your brand without the hustle. Our
-          courses cover a range of topics, including audience growth, reaching
-          your first six figures, building unshakable confidence, and making
-          more money. Our goal is to help you build an industry-leading brand
-          that reflects your values and empowers you to change the world. Join
-          us and discover the power of building a business while embracing the
-          chillpreneur lifestyle.
-        </p>
-        <div className="mt-10">
-          <Button>FIND OUT MORE</Button>
+    <>
+      <div className=" text-black font-butler flex items-center justify-center py-24  px-4 sm:px-16 rounded-b-xl ">
+        <div className="max-w-8xl mx-auto text-center">
+          <h2 className="text-[2.4rem] sm:text-6xl md:text-7xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8">
+            The Echtventure Method
+          </h2>
+          <h3 className=" sm:mt-6 mt-2 text-[1.1rem] sm:text-4xl font-butler font-semibold text-gray-800">
+            Individual Coaching // Group Coaching // Team Building
+          </h3>
+          <p className="mt-8 max-w-3xl text-sm sm:text-base mx-auto font-montserrat text-gray-700 leading-relaxed">
+            We leverage a unique blend of corporate management experience and
+            holistic development, using powerful tools like the Enneagram
+            Personality Profiling to forge deeper connections in both
+            professional and personal relationships.
+          </p>
+          <div className="mt-10">
+            <Button>DISCOVER YOUR PATH</Button>
+          </div>
         </div>
       </div>
-    </div>
+      <SecondProgram />
+    </>
   );
 };
 

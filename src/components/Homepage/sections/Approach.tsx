@@ -2,6 +2,9 @@
 import React, { useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // An array of background images to cycle through.
 const BACKGROUND_IMAGES = [
@@ -36,6 +39,32 @@ export default function Approach() {
           opacity: 0,
           duration: 0.35,
         });
+
+      // Animate words appearing from left to right on scroll
+      gsap.set(".background-text span", {
+        opacity: 0,
+        x: -100,
+        rotationY: -90,
+      });
+
+      // ScrollTrigger setup - simplified approach
+      gsap.to(".background-text span", {
+        opacity: 1,
+        x: 0,
+        rotationY: 0,
+        duration: 1,
+        stagger: 0.4,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Refresh ScrollTrigger
+      ScrollTrigger.refresh();
     },
     { scope: container, revertOnUpdate: true }
   );
@@ -43,7 +72,7 @@ export default function Approach() {
     <main className="container-padding pb-24">
       <section
         ref={container}
-        className="relative h-64 px-8 py-12 flex items-start pt-6 justify-center text-center text-white md:h-96 lg:h-[32rem] " // Added responsive heights
+        className="relative h-96 px-8 py-12 flex items-start pt-6 justify-center text-center text-white md:h-[40rem] lg:h-[48rem] xl:h-[56rem] " // Increased responsive heights
       >
         <div
           className="absolute inset-0 transition-all duration-300 rounded-xl  " // Changed inset-8 to inset-0 for full coverage
@@ -58,62 +87,24 @@ export default function Approach() {
           <div className="absolute inset-0 bg-black bg-opacity-60 rounded-2xl"></div>
         </div>
 
-        <div className="hidden lg:flex absolute left-16 top-1/2 transform -translate-y-1/2 flex-col gap-4 z-30">
-          {/* Button 1 */}
-          <button className="bg-black rounded-2xl px-6 py-4 w-96 text-left transition-transform duration-300 hover:translate-x-4 hover:bg-gray-800 group">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span className="text-gray-400 text-lg italic">
-                    Latest Release
-                  </span>
-                </div>
-                <div className="text-white font-semibold text-2xl">
-                  Our Approach
-                </div>
-              </div>
-              <div className="text-white text-2xl transition-transform group-hover:translate-x-1">
-                →
-              </div>
-            </div>
-          </button>
+        {/* Background text behind Keith's image */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 px-4 w-full max-w-4xl">
+          <h2 className="background-text text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[12rem] font-bold text-center font-butler leading-none">
+            <span className="word-1">PURPOSE</span>
+            <br />
+            <span className="word-2">MEETS</span>
+            <br />
+            <span className="word-3">PASSION!</span>
+          </h2>
+        </div>
 
-          {/* Button 2 */}
-          <button className="bg-black rounded-2xl px-6 py-4 w-96 text-left transition-transform duration-300 hover:translate-x-4 hover:bg-gray-800 group">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-gray-400 text-lg italic">
-                    Our Method
-                  </span>
-                </div>
-                <div className="text-white font-semibold text-2xl">
-                  Coaching
-                </div>
-              </div>
-              <div className="text-white text-2xl transition-transform group-hover:translate-x-1">
-                →
-              </div>
-            </div>
-          </button>
-
-          {/* Button 3 */}
-          <button className="bg-black rounded-2xl px-6 py-4 w-96 text-left transition-transform duration-300 hover:translate-x-4 hover:bg-gray-800 group">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-400 text-lg italic">Success</span>
-                </div>
-                <div className="text-white font-semibold text-2xl">Results</div>
-              </div>
-              <div className="text-white text-2xl transition-transform group-hover:translate-x-1">
-                →
-              </div>
-            </div>
-          </button>
+        {/* Keith's image in the center - full height */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
+          <img
+            src="/PR-KEITH.png"
+            alt="Keith"
+            className="h-full w-auto max-h-80 md:max-h-[32rem] lg:max-h-[40rem] xl:max-h-[48rem] object-cover shadow-lg"
+          />
         </div>
       </section>
     </main>

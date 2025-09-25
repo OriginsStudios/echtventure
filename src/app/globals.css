@@ -177,3 +177,5 @@ html.lenis {
   pointer-events: none;
   z-index: 999;
 }
+
+/* Carousel styles handled by GSAP */

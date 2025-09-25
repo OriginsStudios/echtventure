@@ -162,16 +162,16 @@ const UniqueApproachSection = () => {
             </h3>
           </AnimatedTitle>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-12 h-12 bg-[#6a3a3a] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-montserrat font-bold text-xl">
                 1
               </div>
               <h4 className="font-montserrat text-[20px] font-semibold text-black mb-2">
-                Assess
+                <span className="italic font-light">Awareness</span>
               </h4>
               <p className="font-montserrat text-[16px] text-gray-700">
-                Understand current state and identify opportunities
+                Develop self-understanding and recognize your potential
               </p>
             </div>
 
@@ -180,10 +180,10 @@ const UniqueApproachSection = () => {
                 2
               </div>
               <h4 className="font-montserrat text-[20px] font-semibold text-black mb-2">
-                Align
+                <span className="italic font-light">Mastery</span>
               </h4>
               <p className="font-montserrat text-[16px] text-gray-700">
-                Connect values, purpose, and goals
+                Build skills, refine capabilities, and achieve excellence
               </p>
             </div>
 
@@ -192,22 +192,10 @@ const UniqueApproachSection = () => {
                 3
               </div>
               <h4 className="font-montserrat text-[20px] font-semibold text-black mb-2">
-                Act
+                <span className="italic font-light">Leadership</span>
               </h4>
               <p className="font-montserrat text-[16px] text-gray-700">
-                Implement strategies and build new habits
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-12 h-12 bg-[#6a3a3a] text-white rounded-full flex items-center justify-center mx-auto mb-4 font-montserrat font-bold text-xl">
-                4
-              </div>
-              <h4 className="font-montserrat text-[20px] font-semibold text-black mb-2">
-                Accelerate
-              </h4>
-              <p className="font-montserrat text-[16px] text-gray-700">
-                Scale success and sustain growth
+                Inspire others and create meaningful impact
               </p>
             </div>
           </div>

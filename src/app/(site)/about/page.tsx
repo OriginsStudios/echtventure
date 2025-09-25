@@ -9,6 +9,8 @@ import OurStorySection from "@/components/Aboutpage/sections/OurStory";
 import MissionVisionSection from "@/components/Aboutpage/sections/MissionVision";
 import UniqueApproachSection from "@/components/Aboutpage/sections/UniqueApproach";
 import MeetTheTeamSection from "@/components/Aboutpage/sections/MeetTheTeam";
+import ServicesSection from "@/components/Aboutpage/sections/ServicesSection";
+import SuccessStoriesSection from "@/components/Aboutpage/sections/SuccessStoriesSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,6 +65,8 @@ const AboutPage = () => {
       <OurStorySection />
       <MissionVisionSection />
       <UniqueApproachSection />
+      <ServicesSection />
+      <SuccessStoriesSection />
       <MeetTheTeamSection />
     </main>
   );
