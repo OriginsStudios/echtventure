@@ -14,8 +14,8 @@ export default function CoachSlugPage({
   if (!coach) return notFound();
 
   return (
-    <main className="min-h-screen px-6 md:px-10 lg:px-16 py-14">
-      <article className="max-w-5xl mx-auto">
+    <main className="min-h-screen px-6 md:px-10 lg:px-16 py-14 bg-five-lines">
+      <article className="max-w-5xl mx-auto bg-five-lines">
         {/* Header */}
         <div className="grid gap-8 md:grid-cols-[280px,1fr] items-start">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100">
@@ -31,7 +31,9 @@ export default function CoachSlugPage({
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
               {coach.name}
             </h1>
-            <p className="text-neutral-700 mt-2">{coach.title}</p>
+            <p className="text-neutral-700 font-montserrat mt-2">
+              {coach.title}
+            </p>
 
             <div className="mt-6">
               <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
@@ -62,8 +64,10 @@ export default function CoachSlugPage({
               .map((t, idx) => (
                 <li key={`${t.year}-${idx}`} className="mb-5 ms-2">
                   <div className="absolute -start-[7px] h-3 w-3 rounded-full bg-black mt-1.5"></div>
-                  <p className="text-sm text-neutral-500">{t.year}</p>
-                  <p className="font-medium">
+                  <p className="text-sm font-montserrat text-neutral-500">
+                    {t.year}
+                  </p>
+                  <p className="font-medium font-montserrat">
                     {t.role}
                     {t.org ? (
                       <span className="text-neutral-600">, {t.org}</span>

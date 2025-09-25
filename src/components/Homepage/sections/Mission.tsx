@@ -3,7 +3,7 @@ import React from "react";
 
 const Mission = () => {
   return (
-    <div className="bg-backgroundColorBlack bg-five-lines-blackbg text-[#f5f5f5] font-crimson py-20  flex items-center justify-center container-padding">
+    <div className="bg-backgroundColorBlack bg-five-lines-blackbg text-[#f5f5f5] font-butler py-20  flex items-center justify-center container-padding">
       <div className="mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-start">
           {/* Left Column */}
@@ -19,7 +19,7 @@ const Mission = () => {
 
           {/* Right Column */}
           <div className="flex items-center h-full pt-0 lg:pt-6">
-            <p className=" text-base text-gray-300 leading-relaxed">
+            <p className="font-montserrat text-base text-gray-300 leading-relaxed">
               Our mission here at the Chillpreneur Company is to be a disruptive
               force in the online business world. We are here to change online
               coaching and education, focusing on what matters and making an

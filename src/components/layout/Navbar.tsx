@@ -301,7 +301,7 @@ const MobileNav = ({
           {/* Brand Piece */}
           <div className="brand-piece relative col-span-2 bg-gradient-to-br from-[#fcfaf8] to-[#f5f3f1] shadow-xl border border-gray-200/50 flex items-left justify-start pl-6 rounded-none py-6">
             <div className="brand-text text-left">
-              <h2 className="text-3xl font-mono font-bold tracking-tight text-black">
+              <h2 className="text-3xl font-butler font-bold tracking-tight text-black">
                 echtventure
               </h2>
               <div className="w-24 h-0.5 bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 mt-2"></div>
@@ -326,7 +326,7 @@ const MobileNav = ({
                   onClick={(e) => handleNavigate(e, link.href)}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
-                  className="mobile-nav-link relative block  transition-colors duration-200  cursor-pointer pb-1 font-roboto text-3xl font-semibold tracking-wider text-black"
+                  className="mobile-nav-link relative block  transition-colors duration-200  cursor-pointer pb-1 font-butler text-3xl font-semibold tracking-wider text-black"
                 >
                   {link.title}
                   <span
@@ -350,8 +350,12 @@ const MobileNav = ({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               <div className="absolute bottom-4 left-4 text-white">
-                <p className="text-sm font-bowlby font-semibold">Transform</p>
-                <p className="text-xs opacity-90">Your Journey</p>
+                <p className="text-sm font-montserrat font-semibold">
+                  Transform
+                </p>
+                <p className="text-xs font-montserrat opacity-90">
+                  Your Journey
+                </p>
               </div>
             </div>
           </div>
@@ -428,7 +432,7 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className=" relative  pb-2 transition-colors duration-300 hover:text-gray-600 cursor-pointer text-[1.4rem] font-bowlby font-[600] tracking-tight text-black "
+                    className=" relative  pb-2 transition-colors duration-300 hover:text-gray-600 cursor-pointer text-[1.4rem] font-butler font-[600] tracking-tight text-black "
                   >
                     {link.title}
                   </Link>

@@ -60,8 +60,9 @@ const HomePageHero = () => {
           <span
             ref={headlineRef}
             className="hero-headline block font-extrabold text-black leading-none whitespace-pre-wrap 
-                       break-words uppercase font-bowlby tracking-tighter text-center lg:text-left
+                       break-words uppercase tracking-tighter text-center lg:text-left
                        text-[3rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] "
+            style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
           >
             echtventure
           </span>
@@ -73,7 +74,7 @@ const HomePageHero = () => {
           className="flex-none flex flex-col 2xl:items-start items-center text-center lg:text-left
                      lg:max-w-sm" // Max-width on large screens for better readability
         >
-          <p className="hero-description text-center 2xl:text-start  font-crimson text-gray-700 text-lg md:text-xl mb-8">
+          <p className="hero-description text-center 2xl:text-start font-montserrat text-gray-700 text-lg md:text-xl mb-8">
             Authentic support, adding value, right resources, maximizing
             business potential.
           </p>

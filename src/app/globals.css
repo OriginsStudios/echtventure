@@ -1,6 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Butler Font Family */
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Ultra_Light.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base styles */
+body {
+  font-family: "Butler", serif;
+}
+
 /* Lenis smooth scrolling styles */
 html.lenis {
   height: auto;
@@ -97,7 +160,7 @@ html.lenis {
 }
 
 .noise-overlay {
-  font-family: "DM Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Butler", serif;
   text-rendering: optimizelegibility;
   font-synthesis: none;
   user-select: none;

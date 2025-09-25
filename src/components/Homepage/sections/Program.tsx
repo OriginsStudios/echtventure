@@ -3,14 +3,14 @@ import React from "react";
 
 const ProgramsSection = () => {
   return (
-    <div className=" text-black font-sans flex items-center justify-center py-28 sm:py-40 px-8 sm:px-16 rounded-b-xl ">
+    <div className=" text-black font-butler flex items-center justify-center py-28 sm:py-40 px-8 sm:px-16 rounded-b-xl ">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-none">
           OUR
           <br />
           PROGRAMS
         </h2>
-        <p className="mt-8 max-w-3xl mx-auto text-gray-700 leading-relaxed">
+        <p className="mt-8 max-w-3xl mx-auto font-montserrat text-gray-700 leading-relaxed">
           At Chillpreneur, we offer a unique approach to creative education that
           emphasizes building and scaling your brand without the hustle. Our
           courses cover a range of topics, including audience growth, reaching

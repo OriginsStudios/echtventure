@@ -28,7 +28,6 @@ export default function Gallary() {
 
       gsap.set([cards, center], { autoAlpha: 0 });
 
-      // Use ScrollTrigger.matchMedia for responsive animations
       ScrollTrigger.matchMedia({
         // Desktop animation
         "(min-width: 768px)": function () {
@@ -39,18 +38,29 @@ export default function Gallary() {
               start: "top top",
               end: "+=1000",
               pin: true,
-              scrub: 2.5, // smoother, more inertia
+              scrub: 2.5,
               anticipatePin: 1,
             },
           });
 
-          tl.from(wrapper, {
-            scale: 3.5,
-            xPercent: 90,
-            yPercent: -80,
-            duration: 2.2, // smoother, longer zoom
-            ease: "power2.inOut",
-          }).to(
+          // UPDATED: Changed from .from() to .fromTo() to control the final scale
+          tl.fromTo(
+            wrapper,
+            {
+              // Start state (zoomed in and off-center)
+              scale: 3.5,
+              xPercent: 90,
+              yPercent: -70,
+            },
+            {
+              // End state (larger and centered)
+              scale: 0.8, // <-- The grid will be 50% larger at the end
+              xPercent: 0,
+              yPercent: 0,
+              duration: 2.2,
+              ease: "power2.inOut",
+            }
+          ).to(
             [cards, center],
             {
               autoAlpha: 1,
@@ -61,7 +71,6 @@ export default function Gallary() {
             0.2
           );
 
-          // Return a cleanup function to kill the timeline on resize
           return () => {
             tl.kill();
           };
@@ -74,19 +83,30 @@ export default function Gallary() {
             scrollTrigger: {
               trigger: section,
               start: "top top",
-              end: "+=400", // Adjusted for better feel
-              pin: false, // Pinning is often problematic on mobile
-              scrub: 1.2, // smoother, more inertia
+              end: "+=400",
+              pin: false,
+              scrub: 1.2,
             },
           });
 
-          tl.from(wrapper, {
-            scale: 2.5,
-            xPercent: 70,
-            yPercent: -105,
-            duration: 1.5, // smoother, longer zoom
-            ease: "power2.inOut",
-          }).to(
+          // UPDATED: Changed from .from() to .fromTo() for mobile as well
+          tl.fromTo(
+            wrapper,
+            {
+              // Start state
+              scale: 2.5,
+              xPercent: 70,
+              yPercent: -105,
+            },
+            {
+              // End state
+              scale: 0.8, // <-- The grid will be 20% larger at the end
+              xPercent: 0,
+              yPercent: 0,
+              duration: 1.5,
+              ease: "power2.inOut",
+            }
+          ).to(
             [cards, center],
             {
               autoAlpha: 1,
@@ -97,7 +117,6 @@ export default function Gallary() {
             0.2
           );
 
-          // Return a cleanup function to kill the timeline on resize
           return () => {
             tl.kill();
           };
@@ -111,16 +130,15 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative flex h-[90vh] md:h-screen items-end md:items-center justify-center overflow-hidden bg-[#F5F1EA]"
+      className="relative flex h-[90vh] items-end md:items-center justify-center overflow-hidden"
     >
-      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6">
-        {/* This wrapper is scaled to make the entire grid smaller */}
+      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6  ">
         <div data-grid-wrapper>
           <div className="relative grid grid-cols-4 md:grid-cols-12 md:gap-4 gap-12">
             {/* Top-left image */}
             <PhotoCard
               data-card
-              className="hidden md:block col-span-2 md:col-span-3 md:col-start-1 md:row-start-1 md:mt-12"
+              className="hidden md:block col-span-2 md:col-span-3 md:col-start-1 md:row-start-1"
               src="/gallery/4.jpg"
               alt="Portrait"
               width={320}
@@ -131,11 +149,11 @@ export default function Gallary() {
             {/* Top-right image */}
             <PhotoCard
               data-card
-              className="hidden md:block col-span-2 md:col-span-3 md:col-start-10 md:row-start-1"
+              className="hidden md:block col-span-2 md:col-span-3 md:col-start-10 md:row-start-1 "
               src="/gallery/3.jpg"
               alt="Family"
               width={320}
-              height={400}
+              height={300}
             />
 
             {/* Center content */}
@@ -143,12 +161,12 @@ export default function Gallary() {
               data-center
               className="relative z-10 col-span-4 row-start-2 md:col-span-6 md:col-start-4 md:row-start-2 text-center px-2 md:pb-12"
             >
-              <h2 className="font-serif text-xl leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-6xl">
+              <h2 className="font-butler text-xl leading-tight tracking-tight text-neutral-900 sm:text-2xl md:text-6xl">
                 Building brands
                 <br className="hidden sm:block" />
                 from the inside out
               </h2>
-              <p className="mx-auto mt-2 max-w-xl text-xs leading-relaxed text-neutral-600 sm:mt-3 sm:text-base">
+              <p className="mx-auto mt-2 max-w-xl font-montserrat text-xs leading-relaxed text-neutral-600 sm:mt-3 sm:text-base">
                 Hi! We’re Becca and Yoni — the husband and wife duo behind Skye
                 High.
               </p>
@@ -164,7 +182,7 @@ export default function Gallary() {
 
             {/* Middle-left image (NEW HERO) */}
             <PhotoCard
-              data-hero // This is the new hero image for the zoom effect
+              data-hero
               className="col-span-2 row-start-3 md:col-span-4 md:col-start-2 md:-mt-12 z-20"
               src="/gallery/5.jpg"
               alt="Creative at work"

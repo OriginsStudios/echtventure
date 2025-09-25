@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       ref={container}
-      className="h-full sticky bottom-0 z-0 text-white flex flex-col items-center justify-center p-8 pt-24 font-sans antialiased bg-five-lines-blackbg "
+      className="h-full sticky bottom-0 z-0 text-white flex flex-col items-center justify-center p-8 pt-24 font-butler antialiased bg-five-lines-blackbg "
     >
       <div className="w-full mx-auto text-center ">
         <div className="flex justify-center  ">
@@ -57,13 +57,13 @@ const Footer: React.FC = () => {
           />
         </div>
         <div className="overflow-hidden mb-12">
-          <h1 className="font-bowlby tracking-wider font-black uppercase 2xl:text-[6rem] xl:text-[5rem] lg:text-[4rem] text-[1.5rem] ">
+          <h1 className="font-butler tracking-wider font-black uppercase 2xl:text-[6rem] xl:text-[5rem] lg:text-[4rem] text-[1.5rem] ">
             Join The Mailing List
           </h1>
         </div>
         {/* Quote */}
         <blockquote className="mb-16">
-          <p className="text-lg italic text-gray-400 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg italic font-montserrat text-gray-400 max-w-xl mx-auto leading-relaxed">
             “I promise not to waste your time. I'm well aware that we all get
             way too many marketing emails. I'll only write when I actually have
             something new to share.”
