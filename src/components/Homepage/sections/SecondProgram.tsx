@@ -90,7 +90,7 @@ const SecondProgram = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const textRef = useRef(null);
-  const cardsRef = useRef([]);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
   cardsRef.current = []; // Ensure it's empty on re-renders
 
   useEffect(() => {
@@ -133,7 +133,7 @@ const SecondProgram = () => {
   }, []);
 
   // Helper function to add card elements to our ref array
-  const addToRefs = (el) => {
+  const addToRefs = (el: HTMLDivElement | null) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current.push(el);
     }
