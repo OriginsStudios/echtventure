@@ -54,7 +54,7 @@ export default function Gallary() {
             },
             {
               // End state (larger and centered)
-              scale: 0.95, // <-- The grid will be 50% larger at the end
+              scale: 0.9, // <-- The grid will be 50% larger at the end
               xPercent: 0,
               yPercent: 0,
               duration: 2.2,
@@ -95,7 +95,7 @@ export default function Gallary() {
             {
               // Start state
               scale: 2.5,
-              xPercent: 70,
+              xPercent: 0,
               yPercent: -105,
             },
             {
@@ -156,6 +156,18 @@ export default function Gallary() {
               height={300}
             />
 
+            {/* Top image for mobile/tablet - was middle-right */}
+            <div className="col-span-4 row-start-1 flex justify-center md:hidden">
+              <PhotoCard
+                data-card
+                className="w-full max-w-[280px]"
+                src="/gallery/2.jpg"
+                alt="Portrait with hat"
+                width={320}
+                height={400}
+              />
+            </div>
+
             {/* Center content */}
             <div
               data-center
@@ -178,21 +190,23 @@ export default function Gallary() {
               </div>
             </div>
 
-            {/* Middle-left image (NEW HERO) */}
-            <PhotoCard
-              data-hero
-              className="col-span-2 row-start-3 md:col-span-4 md:col-start-2 md:-mt-12 z-20"
-              src="/gallery/5.jpg"
-              alt="Creative at work"
-              width={450}
-              height={300}
-              priority
-            />
+            {/* Bottom image for mobile/tablet - was middle-left hero */}
+            <div className="col-span-4 row-start-3 flex justify-center md:col-span-4 md:col-start-2 md:-mt-12 z-20">
+              <PhotoCard
+                data-hero
+                className="w-full max-w-[280px] md:max-w-none"
+                src="/gallery/5.jpg"
+                alt="Creative at work"
+                width={450}
+                height={300}
+                priority
+              />
+            </div>
 
-            {/* Middle-right image */}
+            {/* Middle-right image - desktop only now */}
             <PhotoCard
               data-card
-              className="col-span-2 row-start-3 md:col-span-3 md:col-start-9 md:-mt-8"
+              className="hidden md:block col-span-3 md:col-start-9 md:-mt-8 md:row-start-3"
               src="/gallery/2.jpg"
               alt="Portrait with hat"
               width={320}
