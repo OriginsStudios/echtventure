@@ -1,12 +1,11 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// An array of background images to cycle through.
 const BACKGROUND_IMAGES = [
   "/cover.jpg",
   "/cover1.jpeg",
@@ -14,57 +13,211 @@ const BACKGROUND_IMAGES = [
   "/cover3.jpeg",
 ];
 
+const TEXT_LINES = ["PURPOSE", "MEETS", "PASSION!"];
+
 export default function Approach() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const container = useRef(null);
 
-  // FIX 1: Provide a type for the ref that allows a GSAP Timeline or null.
-  const flashTimeline = useRef<gsap.core.Timeline | null>(null);
+  useEffect(() => {
+    const handleLoad = () => ScrollTrigger.refresh();
+    window.addEventListener("load", handleLoad);
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
 
   useGSAP(
     () => {
-      // Initialize the timeline and assign it to the ref's 'current' property.
-      flashTimeline.current = gsap
-        .timeline({ paused: true })
-        .to(".flash", {
-          opacity: 1,
-          duration: 0.15,
-          onComplete: () => {
-            setCurrentImageIndex(
-              (prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length
-            );
-          },
-        })
-        .to(".flash", {
-          opacity: 0,
-          duration: 0.35,
+      // Use matchMedia for proper responsive handling
+      const mm = gsap.matchMedia();
+
+      // Mobile (767px and below) - Vertical layout
+      mm.add("(max-width: 767px)", () => {
+        gsap.set(".keith-image-wrapper", {
+          left: "50%",
+          xPercent: -50,
+          top: "60%",
+          yPercent: -50,
+        });
+        gsap.set(".text-content", {
+          left: "50%",
+          xPercent: -50,
+          top: "88%",
+          yPercent: -50,
+          autoAlpha: 1,
         });
 
-      // Animate words appearing from left to right on scroll
-      gsap.set(".background-text span", {
-        opacity: 0,
-        x: -100,
-        rotationY: -90,
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container.current,
+            scrub: 1,
+            start: "top top",
+            end: "bottom bottom",
+          },
+        });
+
+        // Text animations for small mobile
+        tl.fromTo(
+          ".line-0 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          0.2
+        ).to(
+          ".line-0 .char",
+          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          "+=0.5"
+        );
+
+        tl.fromTo(
+          ".line-1 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          "<"
+        ).to(
+          ".line-1 .char",
+          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          "+=0.5"
+        );
+
+        tl.fromTo(
+          ".line-2 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          "<"
+        );
       });
 
-      // ScrollTrigger setup - simplified approach
-      gsap.to(".background-text span", {
-        opacity: 1,
-        x: 0,
-        rotationY: 0,
-        duration: 1,
-        stagger: 0.4,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
-        },
+      // Tablet (768px - 1023px) - Vertical layout
+      mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
+        gsap.set(".keith-image-wrapper", {
+          left: "50%",
+          xPercent: -50,
+          top: "60%",
+          yPercent: -50,
+        });
+        gsap.set(".text-content", {
+          left: "50%",
+          xPercent: -50,
+          top: "90%",
+          yPercent: -50,
+          autoAlpha: 1,
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container.current,
+            scrub: 1,
+            start: "top top",
+            end: "bottom bottom",
+          },
+        });
+
+        // Text animations for medium screens
+        tl.fromTo(
+          ".line-0 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          0.2
+        ).to(
+          ".line-0 .char",
+          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          "+=0.5"
+        );
+
+        tl.fromTo(
+          ".line-1 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          "<"
+        ).to(
+          ".line-1 .char",
+          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          "+=0.5"
+        );
+
+        tl.fromTo(
+          ".line-2 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          "<"
+        );
       });
 
-      // Refresh ScrollTrigger
-      ScrollTrigger.refresh();
+      // Desktop (1024px and above) - Horizontal layout
+      mm.add("(min-width: 1024px)", () => {
+        gsap.set(".text-content", {
+          left: "50%",
+          xPercent: -50,
+          top: "50%",
+          yPercent: -50,
+          autoAlpha: 0,
+        });
+        gsap.set(".keith-image-wrapper", {
+          left: "50%",
+          xPercent: -50,
+          top: "60%",
+          yPercent: -50,
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container.current,
+            scrub: 1,
+            start: "top top",
+            end: "bottom bottom",
+          },
+        });
+
+        tl.to(
+          ".keith-image-wrapper",
+          {
+            left: "100%",
+            xPercent: -100,
+            ease: "power1.inOut",
+          },
+          0.2
+        ).to(
+          ".text-content",
+          {
+            left: "0%",
+            xPercent: 0,
+            autoAlpha: 1,
+            ease: "power1.inOut",
+          },
+          "<"
+        );
+
+        // Text animations for desktop
+        tl.fromTo(
+          ".line-0 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          0.5
+        ).to(
+          ".line-0 .char",
+          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          "+=0.5"
+        );
+
+        tl.fromTo(
+          ".line-1 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          "<"
+        ).to(
+          ".line-1 .char",
+          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          "+=0.5"
+        );
+
+        tl.fromTo(
+          ".line-2 .char",
+          { y: 50, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          "<"
+        );
+      });
     },
     { scope: container, revertOnUpdate: true }
   );
@@ -72,39 +225,52 @@ export default function Approach() {
     <main className="container-padding pb-24">
       <section
         ref={container}
-        className="relative h-96 px-8 py-12 flex items-start pt-6 justify-center text-center text-white md:h-[40rem] lg:h-[48rem] xl:h-[56rem] " // Increased responsive heights
+        className="relative h-[200vh] sm:h-[250vh] md:h-[300vh]"
       >
-        <div
-          className="absolute inset-0 transition-all duration-300 rounded-xl  " // Changed inset-8 to inset-0 for full coverage
-          style={{
-            backgroundImage: `url(${BACKGROUND_IMAGES[currentImageIndex]})`,
-            backgroundPosition: "center", // Changed to center for better responsiveness
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div className="flash absolute inset-0 bg-white opacity-0 z-20 rounded-2xl"></div>
-          <div className="absolute inset-0 bg-black bg-opacity-60 rounded-2xl"></div>
-        </div>
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${BACKGROUND_IMAGES[currentImageIndex]})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <div className="flash absolute inset-0 bg-white opacity-0 z-30"></div>
+            <div className="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-md"></div>
+          </div>
 
-        {/* Background text behind Keith's image */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 px-4 w-full max-w-4xl">
-          <h2 className="background-text text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[12rem] font-bold text-center font-butler leading-none">
-            <span className="word-1">PURPOSE</span>
-            <br />
-            <span className="word-2">MEETS</span>
-            <br />
-            <span className="word-3">PASSION!</span>
-          </h2>
-        </div>
+          <div className="relative w-full h-full">
+            <div className="text-content absolute w-[50%] 2xl:w-[45%] h-full flex justify-center opacity-0">
+              <h2 className="text-white text-[9vw] sm:text-[8vw] md:text-[6.5vw] lg:text-[7vw] xl:text-[7vw] font-bold text-center font-butler leading-none tracking-tighter whitespace-nowrap px-2">
+                {TEXT_LINES.map((line, lineIndex) => (
+                  <div
+                    key={lineIndex}
+                    className={`line-${lineIndex} absolute inset-0 flex items-center justify-center`}
+                  >
+                    {line.split("").map((char, charIndex) => (
+                      <span
+                        key={charIndex}
+                        className="char"
+                        style={{ display: "inline-block" }}
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </h2>
+            </div>
 
-        {/* Keith's image in the center - full height */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
-          <img
-            src="/PR-KEITH.png"
-            alt="Keith"
-            className="h-full w-auto max-h-80 md:max-h-[32rem] lg:max-h-[40rem] xl:max-h-[48rem] object-cover shadow-lg"
-          />
+            <div className="keith-image-wrapper absolute w-[70%] md:w-[50%] lg:w-[55%] h-full flex justify-center">
+              <img
+                src="/PR-KEITH.png"
+                alt="Keith"
+                className="h-auto w-full max-h-[65%] md:max-h-[70%] lg:max-h-[85%] object-contain"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </main>
