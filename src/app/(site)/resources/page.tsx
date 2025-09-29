@@ -49,7 +49,7 @@ export default function ResourcesPage() {
     () => {
       // --- Initial Page Load Animation ---
       if (techTitleRef.current) {
-        let splitTitle = new SplitType(techTitleRef.current, {
+        const splitTitle = new SplitType(techTitleRef.current, {
           types: "chars",
         });
 

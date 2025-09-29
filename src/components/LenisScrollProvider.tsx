@@ -34,7 +34,7 @@ export default function LenisScrollProvider() {
     // Tell ScrollTrigger to use Lenis for scroll events
     ScrollTrigger.scrollerProxy(document.body, {
       scrollTop(value) {
-        return arguments.length
+        return arguments.length && value !== undefined
           ? lenis.scrollTo(value, { immediate: true })
           : lenis.scroll;
       },

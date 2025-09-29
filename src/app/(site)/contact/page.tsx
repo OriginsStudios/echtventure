@@ -5,14 +5,42 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger, TextPlugin } from "gsap/all";
 import Button from "@/components/ui/Button";
+import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
+// SVG component for the decorative leaf in the first section
+const LeafSVG = () => (
+  <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 1226 655"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="block"
+  >
+    <path
+      d="M1225.5 0.499939L655.034 0.499964C293.982 0.49998 0.770736 293.53 0.500244 654.5L570.966 654.5C932.018 654.5 1225.23 361.47 1225.5 0.499939Z"
+      stroke="currentColor"
+      strokeWidth="12"
+      fill="none"
+    ></path>
+  </svg>
+);
+
 export default function ContactPage() {
+  const mainRef = useRef(null);
   const heroRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLSpanElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const contactInfoRef = useRef<HTMLDivElement>(null);
+
+  // Refs for animated hero section
+  const techCoverRef = useRef(null);
+  const techTitleRef = useRef(null);
+  const techParaRef = useRef(null);
+  const leftSvgRef = useRef(null);
+  const rightSvgRef = useRef(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,125 +57,208 @@ export default function ContactPage() {
     "idle" | "success" | "error"
   >("idle");
 
-  useGSAP(() => {
-    // Hero section animations
-    const fullText = "CONTACT US";
-    if (headlineRef.current) {
-      gsap.set(headlineRef.current, { text: "" });
-      gsap.to(headlineRef.current, {
-        text: fullText,
-        duration: 2,
-        ease: "none",
-        delay: 0.3,
-      });
-    }
+  // Title and description for contact page
+  const titleText = "Contact Us";
+  const descText =
+    "Ready to transform your leadership journey? Get in touch with Keith Tay and the ECHTVENTURE team. We're here to help you discover your authentic leadership potential.";
 
-    // Animate hero content
-    gsap.from([".hero-description", ".hero-stats", ".hero-button"], {
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      ease: "power3.out",
-      stagger: 0.2,
-      delay: 2,
-    });
-
-    // Background circles animation
-    gsap.to(".bg-circle-1", {
-      rotation: 360,
-      duration: 20,
-      ease: "none",
-      repeat: -1,
-    });
-
-    gsap.to(".bg-circle-2", {
-      rotation: -360,
-      duration: 25,
-      ease: "none",
-      repeat: -1,
-    });
-
-    // Contact form animation
-    gsap.from(".form-field", {
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power3.out",
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: formRef.current,
-        start: "top 80%",
-      },
-    });
-
-    // Contact info animation
-    gsap.from(".contact-info-card", {
-      opacity: 0,
-      x: -50,
-      duration: 1,
-      ease: "power3.out",
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: contactInfoRef.current,
-        start: "top 80%",
-      },
-    });
-
-    // CTA section animation
-    gsap.from(".cta-consultation", {
-      opacity: 0,
-      scale: 0.9,
-      duration: 1,
-      ease: "back.out(1.7)",
-      scrollTrigger: {
-        trigger: ".consultation-section",
-        start: "top 80%",
-      },
-    });
-
-    // Floating elements
-    gsap.to(".floating-element", {
-      y: -15,
-      duration: 3,
-      ease: "power2.inOut",
-      yoyo: true,
-      repeat: -1,
-      stagger: 0.5,
-    });
-
-    // Magnetic effect for buttons
-    document.querySelectorAll(".magnetic-button").forEach((button) => {
-      button.addEventListener("mouseenter", () => {
-        gsap.to(button, {
-          scale: 1.05,
-          duration: 0.3,
-          ease: "power2.out",
+  useGSAP(
+    () => {
+      // --- Animated Hero Section Animation ---
+      if (techTitleRef.current) {
+        const splitTitle = new SplitType(techTitleRef.current, {
+          types: "chars",
         });
-      });
 
-      button.addEventListener("mouseleave", () => {
-        gsap.to(button, {
+        // Set initial positions for all elements
+        gsap.set(splitTitle.chars, { y: "110%", opacity: 0 });
+        gsap.set(techParaRef.current, { y: 70, opacity: 0 });
+        gsap.set(leftSvgRef.current, { x: -200, opacity: 0 });
+        gsap.set(rightSvgRef.current, { x: 200, opacity: 0 });
+
+        const tlCover = gsap.timeline({
+          defaults: { ease: "power3.out" },
+          delay: 1,
+        });
+
+        // Animate all elements into view on load
+        tlCover
+          .to([leftSvgRef.current, rightSvgRef.current], {
+            x: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: "power4.out",
+          })
+          .to(
+            splitTitle.chars,
+            {
+              y: "0%",
+              opacity: 1,
+              duration: 1,
+              stagger: 0.03,
+              ease: "power4.out",
+            },
+            "-=0.8"
+          )
+          .to(
+            techParaRef.current,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.7"
+          );
+      }
+
+      // Created a new array for elements that should disappear on scroll.
+      // The SVGs are no longer in this list.
+      const textElementsOnScroll = [techTitleRef.current, techParaRef.current];
+
+      // --- Scroll Out/In Animation (Now only for text) ---
+      gsap.fromTo(
+        textElementsOnScroll, // Use the new array here
+        {
+          opacity: 1,
           scale: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      });
-    });
+          y: 0,
+        },
+        {
+          opacity: 0,
+          scale: 0.8,
+          y: -100,
+          ease: "power2.in",
+          scrollTrigger: {
+            trigger: techCoverRef.current,
+            start: "top top",
+            end: "bottom center",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
 
-    // Scroll-triggered text reveals
-    gsap.utils.toArray(".reveal-text").forEach((text) => {
-      gsap.from(text as gsap.TweenTarget, {
+      // --- Original Hero Section Animation (for the old hero) ---
+      const fullText = "CONTACT US";
+      if (headlineRef.current) {
+        gsap.set(headlineRef.current, { text: "" });
+        gsap.to(headlineRef.current, {
+          text: fullText,
+          duration: 2,
+          ease: "none",
+          delay: 0.3,
+        });
+      }
+
+      // Animate hero content
+      gsap.from([".hero-description", ".hero-stats", ".hero-button"], {
         opacity: 0,
         y: 50,
-        duration: 1,
+        duration: 0.8,
         ease: "power3.out",
+        stagger: 0.2,
+        delay: 2,
+      });
+
+      // Background circles animation
+      gsap.to(".bg-circle-1", {
+        rotation: 360,
+        duration: 20,
+        ease: "none",
+        repeat: -1,
+      });
+
+      gsap.to(".bg-circle-2", {
+        rotation: -360,
+        duration: 25,
+        ease: "none",
+        repeat: -1,
+      });
+
+      // Contact form animation
+      gsap.from(".form-field", {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.1,
         scrollTrigger: {
-          trigger: text as gsap.DOMTarget,
-          start: "top 85%",
+          trigger: formRef.current,
+          start: "top 80%",
         },
       });
-    });
-  });
+
+      // Contact info animation
+      gsap.from(".contact-info-card", {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: contactInfoRef.current,
+          start: "top 80%",
+        },
+      });
+
+      // CTA section animation
+      gsap.from(".cta-consultation", {
+        opacity: 0,
+        scale: 0.9,
+        duration: 1,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: ".consultation-section",
+          start: "top 80%",
+        },
+      });
+
+      // Floating elements
+      gsap.to(".floating-element", {
+        y: -15,
+        duration: 3,
+        ease: "power2.inOut",
+        yoyo: true,
+        repeat: -1,
+        stagger: 0.5,
+      });
+
+      // Magnetic effect for buttons
+      document.querySelectorAll(".magnetic-button").forEach((button) => {
+        button.addEventListener("mouseenter", () => {
+          gsap.to(button, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        });
+
+        button.addEventListener("mouseleave", () => {
+          gsap.to(button, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          });
+        });
+      });
+
+      // Scroll-triggered text reveals
+      gsap.utils.toArray(".reveal-text").forEach((text) => {
+        gsap.from(text as gsap.TweenTarget, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: text as gsap.DOMTarget,
+            start: "top 85%",
+          },
+        });
+      });
+    },
+    { scope: mainRef }
+  );
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -197,79 +308,55 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-five-lines">
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative flex flex-col justify-center items-center p-6 md:p-12 2xl:py-32 2xl:pt-20 container-padding min-h-screen bg-five-lines overflow-hidden"
+    <main ref={mainRef} className="min-h-screen">
+      {/* Animated Hero Section */}
+      <div
+        ref={techCoverRef}
+        className="tech-cover-container relative h-[80vh]"
       >
-        {/* Background Elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="bg-circle-1 absolute top-20 right-20 w-96 h-96 border border-gray-300 rounded-full"></div>
-          <div className="bg-circle-2 absolute bottom-20 left-20 w-64 h-64 border border-gray-300 rounded-full"></div>
-        </div>
-
-        <div className="mx-auto w-full max-w-7xl text-center relative z-10">
-          <span
-            ref={headlineRef}
-            className="hero-headline block font-extrabold text-black leading-none uppercase tracking-tighter
-                       text-[2.5rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] xl:text-[10rem] mb-8"
-            style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-          >
-            CONTACT US
-          </span>
-
-          <p className="hero-description font-montserrat text-gray-700 text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed mb-8">
-            Ready to transform your leadership journey? Get in touch with Keith
-            Tay and the ECHTVENTURE team. We're here to help you discover your
-            authentic leadership potential.
-          </p>
-
-          <div className="hero-stats grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto">
-            <div className="floating-element">
-              <div className="text-2xl font-butler font-bold text-black mb-2">
-                📧
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="sticky left-0 top-0 w-full h-full overflow-hidden">
+              <div
+                ref={leftSvgRef}
+                className="absolute -left-[30rem] top-0 -translate-y-[30%]"
+              >
+                <div
+                  className="h-[25rem] w-[50rem] text-custom-green opacity-20 will-change-transform scale-110"
+                  style={{ filter: "drop-shadow(0 0 2px currentColor)" }}
+                >
+                  <LeafSVG />
+                </div>
               </div>
-              <p className="font-montserrat text-sm text-gray-600">
-                Email Response
-              </p>
-              <p className="font-montserrat text-xs text-gray-500">
-                Within 24 hours
-              </p>
-            </div>
-            <div className="floating-element">
-              <div className="text-2xl font-butler font-bold text-black mb-2">
-                🌍
+              <div
+                ref={rightSvgRef}
+                className="absolute -right-[30rem] bottom-0 translate-y-[30%] rotate-180"
+              >
+                <div
+                  className="h-[50rem] w-[50rem] text-custom-green opacity-20 will-change-transform scale-110"
+                  style={{ filter: "drop-shadow(0 0 2px currentColor)" }}
+                >
+                  <LeafSVG />
+                </div>
               </div>
-              <p className="font-montserrat text-sm text-gray-600">
-                Global Reach
-              </p>
-              <p className="font-montserrat text-xs text-gray-500">
-                12+ Countries
-              </p>
-            </div>
-            <div className="floating-element">
-              <div className="text-2xl font-butler font-bold text-black mb-2">
-                🤝
-              </div>
-              <p className="font-montserrat text-sm text-gray-600">
-                Free Consultation
-              </p>
-              <p className="font-montserrat text-xs text-gray-500">
-                30 minutes
-              </p>
             </div>
           </div>
-
-          <div className="hero-button">
-            <Button className="magnetic-button bg-black text-white border-black text-lg px-10 py-4 hover:bg-gray-800">
-              Start the Conversation
-            </Button>
+          <div className="relative flex flex-col items-center justify-center w-full h-full text-black text-center px-4 z-10">
+            <h1
+              ref={techTitleRef}
+              className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase mb-8 overflow-hidden"
+            >
+              {titleText}
+            </h1>
+            <p
+              ref={techParaRef}
+              className="max-w-4xl text-lg md:text-xl lg:text-2xl leading-relaxed"
+            >
+              {descText}
+            </p>
           </div>
         </div>
-      </section>
-
-      {/* Contact Form & Info Section */}
+      </div>
       <section className="py-24 bg-white bg-five-lines">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-2 gap-16">
