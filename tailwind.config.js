@@ -14,6 +14,8 @@ module.exports = {
         textColorWhite: "#f0eeeb",
         backgroundColorBlack: "#0e0e0e",
         backgroundColorWhite: "#f0eeeb",
+        "custom-green": "#2d5016",
+        "light-beige": "#f0eeeb",
       },
       fontFamily: {
         butler: ["Butler", "serif"],

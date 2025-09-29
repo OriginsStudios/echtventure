@@ -179,3 +179,23 @@ html.lenis {
 }
 
 /* Carousel styles handled by GSAP */
+
+/* SVG background styles */
+.svg-wrapper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Ensure SVG backgrounds are visible */
+.content-page-cover svg path {
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+/* SVG path styles */
+svg path {
+  stroke: currentColor;
+  stroke-width: 1;
+  fill: none;
+}

@@ -1,66 +1,399 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TextPlugin } from "gsap/TextPlugin";
+import SplitType from "split-type";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+// SVG component for the decorative leaf in the first section
+const LeafSVG = () => (
+  <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 1226 655"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="block"
+  >
+    <path
+      d="M1225.5 0.499939L655.034 0.499964C293.982 0.49998 0.770736 293.53 0.500244 654.5L570.966 654.5C932.018 654.5 1225.23 361.47 1225.5 0.499939Z"
+      stroke="currentColor"
+      strokeWidth="12"
+      fill="none"
+    ></path>
+  </svg>
+);
 
 export default function ResourcesPage() {
-  return (
-    <main className="min-h-screen bg-five-lines">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-screen text-black p-8 text-center container-padding">
-        <div className="max-w-6xl">
-          <h1 className="font-butler text-[clamp(3rem,10vw,120px)] leading-[0.9em] text-black uppercase">
-            Resources
-          </h1>
-          <p className="mt-8 font-montserrat text-[24px] leading-[1.5em] text-gray-700 max-w-4xl mx-auto">
-            Explore our collection of insights, stories, and expertise to
-            support your growth journey.
-          </p>
-        </div>
-      </section>
+  const mainRef = useRef(null);
 
-      {/* Resources Grid */}
-      <section className="py-20 container-padding">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+  // Refs for technology cover section
+  const techCoverRef = useRef(null);
+  const techTitleRef = useRef(null);
+  const techParaRef = useRef(null);
+  const leftSvgRef = useRef(null);
+  const rightSvgRef = useRef(null);
+
+  // Title and description for resources page
+  const titleText = "Resources";
+  const descText =
+    "Explore our collection of insights, stories, and expertise to support your growth journey.";
+
+  useGSAP(
+    () => {
+      // --- Initial Page Load Animation ---
+      if (techTitleRef.current) {
+        let splitTitle = new SplitType(techTitleRef.current, {
+          types: "chars",
+        });
+
+        // Set initial positions for all elements
+        gsap.set(splitTitle.chars, { y: "110%", opacity: 0 });
+        gsap.set(techParaRef.current, { y: 70, opacity: 0 });
+        gsap.set(leftSvgRef.current, { x: -200, opacity: 0 });
+        gsap.set(rightSvgRef.current, { x: 200, opacity: 0 });
+
+        const tlCover = gsap.timeline({
+          defaults: { ease: "power3.out" },
+          delay: 1,
+        });
+
+        // Animate all elements into view on load
+        tlCover
+          .to([leftSvgRef.current, rightSvgRef.current], {
+            x: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: "power4.out",
+          })
+          .to(
+            splitTitle.chars,
+            {
+              y: "0%",
+              opacity: 1,
+              duration: 1,
+              stagger: 0.03,
+              ease: "power4.out",
+            },
+            "-=0.8"
+          )
+          .to(
+            techParaRef.current,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.7"
+          );
+      }
+
+      // Created a new array for elements that should disappear on scroll.
+      // The SVGs are no longer in this list.
+      const textElementsOnScroll = [techTitleRef.current, techParaRef.current];
+
+      // --- Scroll Out/In Animation (Now only for text) ---
+      gsap.fromTo(
+        textElementsOnScroll, // Use the new array here
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        },
+        {
+          opacity: 0,
+          scale: 0.8,
+          y: -100,
+          ease: "power2.in",
+          scrollTrigger: {
+            trigger: techCoverRef.current,
+            start: "top top",
+            end: "bottom center",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    },
+    { scope: mainRef }
+  );
+
+  return (
+    <main ref={mainRef} className="min-h-screen">
+      <div
+        ref={techCoverRef}
+        className="tech-cover-container relative h-[100vh]"
+      >
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="sticky left-0 top-0 w-full h-full overflow-hidden">
+              <div
+                ref={leftSvgRef}
+                className="absolute -left-[30rem] top-0 -translate-y-[30%]"
+              >
+                <div
+                  className="h-[25rem] w-[50rem] text-custom-green opacity-20 will-change-transform scale-110"
+                  style={{ filter: "drop-shadow(0 0 2px currentColor)" }}
+                >
+                  <LeafSVG />
+                </div>
+              </div>
+              <div
+                ref={rightSvgRef}
+                className="absolute -right-[30rem] bottom-0 translate-y-[30%] rotate-180"
+              >
+                <div
+                  className="h-[25rem] w-[50rem] text-custom-green opacity-20 will-change-transform scale-110"
+                  style={{ filter: "drop-shadow(0 0 2px currentColor)" }}
+                >
+                  <LeafSVG />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="relative flex flex-col items-center justify-center w-full h-full text-black text-center px-4 z-10">
+            <h1
+              ref={techTitleRef}
+              className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase mb-8 overflow-hidden"
+            >
+              {titleText}
+            </h1>
+            <p
+              ref={techParaRef}
+              className="max-w-4xl text-lg md:text-xl lg:text-2xl leading-relaxed"
+            >
+              {descText}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Resources Section */}
+      <section className="relative py-32 bg-gradient-to-br from-slate-50 via-white to-slate-100 overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 right-20 w-96 h-96 border-2 border-slate-300 rounded-full"></div>
+          <div className="absolute bottom-20 left-20 w-64 h-64 border-2 border-slate-300 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-slate-200 rounded-full"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm mb-8">
+              <div className="w-2 h-2 bg-custom-green rounded-full mr-3"></div>
+              <span className="font-montserrat text-sm text-slate-600 font-medium">
+                FEATURED CONTENT
+              </span>
+            </div>
+            <h2 className="font-butler text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6">
+              Explore Our Content
+            </h2>
+            <p className="font-montserrat text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              Dive deep into our curated collection of insights, conversations,
+              and expertise designed to accelerate your personal and
+              professional growth.
+            </p>
+          </div>
+
+          {/* Enhanced Resource Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {/* Blog Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="h-64 bg-gradient-to-br from-blue-500 to-purple-600"></div>
+            <div className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-100">
+              {/* Card Header with Icon */}
+              <div className="relative h-80 bg-white overflow-hidden border-b border-slate-100">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-24 h-24 bg-slate-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    <svg
+                      className="w-12 h-12 text-slate-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute top-6 left-6">
+                  <span className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">
+                    Articles & Insights
+                  </span>
+                </div>
+              </div>
+
+              {/* Card Content */}
               <div className="p-8">
-                <h3 className="font-butler text-2xl font-bold text-black mb-4">
+                <h3 className="font-butler text-3xl font-bold text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300">
                   Blog
                 </h3>
-                <p className="font-montserrat text-gray-600 mb-6">
-                  Discover insights, tips, and strategies for personal and
-                  professional development.
+                <p className="font-montserrat text-slate-600 text-lg leading-relaxed mb-8">
+                  Discover thought-provoking insights, actionable strategies,
+                  and expert perspectives on leadership, personal development,
+                  and organizational transformation.
                 </p>
+
+                {/* Features List */}
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-center text-slate-600">
+                    <div className="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div>
+                    <span className="font-montserrat text-sm">
+                      Weekly insights from industry experts
+                    </span>
+                  </div>
+                  <div className="flex items-center text-slate-600">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                    <span className="font-montserrat text-sm">
+                      Practical leadership strategies
+                    </span>
+                  </div>
+                  <div className="flex items-center text-slate-600">
+                    <div className="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
+                    <span className="font-montserrat text-sm">
+                      Personal development guides
+                    </span>
+                  </div>
+                </div>
+
                 <Link
                   href="/resources/blog"
-                  className="inline-block bg-[#6a3a3a] text-white font-butler text-[16px] font-bold py-3 px-8 rounded-full hover:bg-[#7a4a4a] transition-colors duration-300"
+                  className="group/btn inline-flex items-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-butler text-lg font-bold px-8 py-4 rounded-xl hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  Read Blog
+                  Explore Articles
+                  <svg
+                    className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
                 </Link>
               </div>
             </div>
 
             {/* Podcast Card */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="h-64 bg-gradient-to-br from-green-500 to-teal-600"></div>
+            <div className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-100">
+              {/* Card Header with Icon */}
+              <div className="relative h-80 bg-white overflow-hidden border-b border-slate-100">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-24 h-24 bg-slate-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    <svg
+                      className="w-12 h-12 text-slate-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute top-6 left-6">
+                  <span className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">
+                    Audio Content
+                  </span>
+                </div>
+              </div>
+
+              {/* Card Content */}
               <div className="p-8">
-                <h3 className="font-butler text-2xl font-bold text-black mb-4">
+                <h3 className="font-butler text-3xl font-bold text-slate-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">
                   Podcast
                 </h3>
-                <p className="font-montserrat text-gray-600 mb-6">
-                  Listen to conversations with experts and thought leaders in
-                  personal development.
+                <p className="font-montserrat text-slate-600 text-lg leading-relaxed mb-8">
+                  Engage with inspiring conversations featuring thought leaders,
+                  industry pioneers, and transformation experts sharing their
+                  wisdom and experiences.
                 </p>
+
+                {/* Features List */}
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-center text-slate-600">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
+                    <span className="font-montserrat text-sm">
+                      Expert interviews & discussions
+                    </span>
+                  </div>
+                  <div className="flex items-center text-slate-600">
+                    <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
+                    <span className="font-montserrat text-sm">
+                      Leadership success stories
+                    </span>
+                  </div>
+                  <div className="flex items-center text-slate-600">
+                    <div className="w-2 h-2 bg-cyan-500 rounded-full mr-3"></div>
+                    <span className="font-montserrat text-sm">
+                      Transformation case studies
+                    </span>
+                  </div>
+                </div>
+
                 <Link
                   href="/resources/podcast"
-                  className="inline-block bg-[#6a3a3a] text-white font-butler text-[16px] font-bold py-3 px-8 rounded-full hover:bg-[#7a4a4a] transition-colors duration-300"
+                  className="group/btn inline-flex items-center bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-butler text-lg font-bold px-8 py-4 rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   Listen Now
+                  <svg
+                    className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
                 </Link>
               </div>
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-20">
+            <p className="font-montserrat text-lg text-slate-600 mb-6">
+              Want to stay updated with our latest content?
+            </p>
+            <div className="inline-flex items-center bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm">
+              <svg
+                className="w-5 h-5 text-custom-green mr-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 00-15 0v5h5l-5 5-5-5h5V7.5z"
+                />
+              </svg>
+              <span className="font-montserrat text-sm text-slate-700 font-medium">
+                Follow us for regular updates and insights
+              </span>
             </div>
           </div>
         </div>
