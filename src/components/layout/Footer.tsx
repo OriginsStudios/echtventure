@@ -56,55 +56,66 @@ const Footer: React.FC = () => {
             width={300}
           />
         </div>
-        <div className="overflow-hidden mb-12">
-          <h1 className="font-butler tracking-wider font-black uppercase 2xl:text-[6rem] xl:text-[5rem] lg:text-[4rem] text-[1.5rem] ">
-            Join The Mailing List
-          </h1>
-        </div>
         {/* Quote */}
         <blockquote className="mb-16">
           <p className="text-lg italic font-montserrat text-gray-400 max-w-xl mx-auto leading-relaxed">
-            “I promise not to waste your time. I'm well aware that we all get
-            way too many marketing emails. I'll only write when I actually have
-            something new to share.”
+            "Every transformation begins with a single step. I believe in the
+            power of authentic change and the courage it takes to step into your
+            true potential. Let's embark on this journey together."
           </p>
           <cite className="block text-gray-500 mt-6 not-italic tracking-wide">
-            — Ben Cooper (Radical Face)
+            — Keith Tay
           </cite>
         </blockquote>
-        {/* Form */}
-        <form className="space-y-12 max-w-md mx-auto">
-          <div>
-            <label htmlFor="name" className="sr-only">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              placeholder="Name"
-              className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-3 transition-colors duration-300 text-lg"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Email"
-              className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-3 transition-colors duration-300 text-lg"
-            />
-          </div>
-          <div className="flex justify-end sm:pt-4  ">
-            <button
-              type="submit"
-              className="bg-white text-black font-semibold py-3 px-8 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white transition-all duration-300 transform hover:scale-105"
-            >
-              subscribe
-            </button>
-          </div>
-        </form>
+        {/* Contact Form - Centered */}
+        <div className="max-w-sm sm:max-w-md md:max-w-lg mx-auto mb-12">
+          <h2 className="font-butler text-lg sm:text-xl md:text-2xl font-semibold text-white mb-4 sm:mb-6 text-center">
+            Send us a Message
+          </h2>
+          <form className="space-y-3 sm:space-y-4">
+            <div>
+              <label htmlFor="subject" className="sr-only">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                placeholder="Subject"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+              />
+            </div>
+            <div>
+              <label htmlFor="name" className="sr-only">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Name"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="sr-only">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+              />
+            </div>
+            <div className="flex justify-center pt-2 sm:pt-3">
+              <button
+                type="submit"
+                className="bg-white text-black font-semibold py-2 px-4 sm:py-3 sm:px-6 md:py-3 md:px-8 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </footer>
   );

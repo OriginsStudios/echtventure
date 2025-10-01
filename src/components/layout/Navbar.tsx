@@ -27,8 +27,6 @@ const navLinks = [
   { title: "enneagram", href: "/enneagram" },
   { title: "coaches", href: "/coaches" },
   { title: "resources", href: "/resources" },
-  { title: "about", href: "/about" },
-  { title: "contact", href: "/contact" },
 ] as const;
 
 // --- Mobile Navigation Component ---
