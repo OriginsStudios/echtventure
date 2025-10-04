@@ -164,8 +164,8 @@ export default function Approach() {
           scrollTrigger: {
             trigger: container.current,
             scrub: 1,
-            start: "top top",
-            end: "bottom bottom",
+            start: "top-=80px top",
+            end: "bottom-=80px bottom",
           },
         });
 
@@ -176,7 +176,7 @@ export default function Approach() {
             xPercent: -100,
             ease: "power1.inOut",
           },
-          0.2
+          0
         ).to(
           ".text-content",
           {
@@ -187,7 +187,6 @@ export default function Approach() {
           },
           "<"
         );
-
         // Text animations for desktop
         tl.fromTo(
           ".line-0 .char",
@@ -225,7 +224,7 @@ export default function Approach() {
     <main className="container-padding pb-24">
       <section
         ref={container}
-        className="relative h-[200vh] sm:h-[250vh] md:h-[300vh]"
+        className="relative h-[200vh] sm:h-[250vh] md:h-[300vh] pt-20"
       >
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <div

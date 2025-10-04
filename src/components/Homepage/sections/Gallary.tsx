@@ -54,7 +54,7 @@ export default function Gallary() {
             },
             {
               // End state (larger and centered)
-              scale: 0.9, // <-- The grid will be 50% larger at the end
+              scale: 0.8, // <-- The grid will be 50% larger at the end
               xPercent: 0,
               yPercent: 0,
               duration: 2.2,
