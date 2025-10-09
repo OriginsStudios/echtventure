@@ -1,14 +1,27 @@
-import Button from "@/components/ui/Button";
+"use client";
 import React from "react";
 import SecondProgram from "./SecondProgram";
-
+import FlowingMenu from "./Reveal";
+const demoItems = [
+  {
+    link: "#",
+    text: "Founded in 2019 by Keith Tay",
+    subtitle:
+      "A visionary leader with over 20 years of corporate experience, Keith combines strategic management expertise with holistic development approaches. As an accredited Enneagram practitioner and certified coach, he specializes in transforming leaders and teams through deeper self-awareness and authentic connections.",
+  },
+  {
+    link: "#",
+    text: "Impacted over 2500 individuals",
+    subtitle: "Accredited Trainer & Training Provider for HRDCorp",
+  },
+];
 const ProgramsSection = () => {
   return (
     <>
       <div className=" text-black font-butler flex items-center justify-center py-24  px-4 sm:px-16 rounded-b-xl ">
         <div className="max-w-8xl mx-auto text-center">
           <h2 className="text-[2.4rem] sm:text-6xl md:text-7xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8">
-            The Echtventure Method
+            The Echtventure Approach
           </h2>
           <h3 className=" sm:mt-6 mt-2 text-[1.1rem] sm:text-4xl font-butler font-semibold text-gray-800">
             Individual Coaching // Group Coaching // Team Building
@@ -19,11 +32,9 @@ const ProgramsSection = () => {
             Personality Profiling to forge deeper connections in both
             professional and personal relationships.
           </p>
-          <div className="mt-10">
-            <Button>DISCOVER YOUR PATH</Button>
-          </div>
         </div>
       </div>
+      <FlowingMenu items={demoItems} />
       <SecondProgram />
     </>
   );

@@ -152,7 +152,7 @@ const SecondProgram = () => {
               ref={titleRef}
               className="text-[2.4rem] sm:text-6xl md:text-7xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8 text-white"
             >
-              UNLOCK YOUR TRUE POTENTIAL
+              Know Yourself More
             </h2>
             <h3 className="text-xl sm:text-2xl font-butler font-semibold text-gray-300 mb-6">
               ENNEAGRAM PERSONALITY PROFILING
@@ -161,12 +161,12 @@ const SecondProgram = () => {
               ref={textRef}
               className="mt-8 max-w-3xl text-sm sm:text-base mx-auto font-montserrat text-gray-300 leading-relaxed"
             >
-              Discover the power of authentic self-awareness through the
-              Enneagram. Our comprehensive personality profiling system helps
-              you understand your core motivations, fears, and desires, enabling
-              you to lead with genuine confidence and create meaningful impact
-              in every relationship and situation. Transform your leadership
-              style by understanding not just what you do, but why you do it.
+              We leverage on “The Enneagram”, a personality profiling tool
+              designed to identify core motivations, fears, and desires,
+              enabling you to lead with genuine confidence and create meaningful
+              impact in every relationship and situation. Transform your
+              leadership style by understanding not just what you do, but why
+              you do it.
             </p>
             <div className="mt-8">
               <a

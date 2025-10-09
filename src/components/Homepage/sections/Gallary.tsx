@@ -54,9 +54,9 @@ export default function Gallary() {
             },
             {
               // End state (larger and centered)
-              scale: 0.8, // <-- The grid will be 50% larger at the end
+              scale: 0.75, // <-- The grid will be 50% larger at the end
               xPercent: 0,
-              yPercent: 0,
+              yPercent: 20,
               duration: 2.2,
               ease: "power2.inOut",
             }
@@ -130,7 +130,7 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative flex h-[95vh] items-end md:items-center justify-center overflow-hidden"
+      className="relative flex h-[110vh] items-end md:items-center justify-center overflow-hidden "
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6  ">
         <div data-grid-wrapper>
@@ -185,7 +185,7 @@ export default function Gallary() {
                   href="/services"
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-900  text-lg font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40 px-4 py-2 sm:px-8 sm:py-4 sm:text-md"
                 >
-                  Our process
+                  Learn More
                 </Link>
               </div>
             </div>

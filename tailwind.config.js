@@ -19,10 +19,19 @@ module.exports = {
       },
       fontFamily: {
         butler: ["Butler", "serif"],
-        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
         bowlby: ["var(--font-bowlby-one-sc)", "sans-serif"],
         crimson: ["var(--font-crimson-text)", "serif"],
         roboto: ["var(--font-roboto-condensed)", "sans-serif"],
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0%)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 90s linear infinite",
       },
     },
   },

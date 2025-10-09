@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/CustomCursor";
@@ -7,13 +6,6 @@ import LenisScrollProvider from "@/components/LenisScrollProvider";
 import Footer from "@/components/layout/Footer";
 import RouteTransitionOverlay from "@/components/RouteTransitionOverlay";
 import Preloader from "@/components/Preload/Preloader";
-
-// Butler font is now loaded via CSS @font-face declarations in globals.css
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["300", "400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: "Echtventure",
@@ -32,9 +24,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`font-butler ${montserrat.variable} antialiased bg-five-lines`}
-      >
+      <head>
+        {/* Preload Butler fonts for faster loading */}
+        <link
+          rel="preload"
+          href="/Fonts/butler/Butler_Bold.otf"
+          as="font"
+          type="font/opentype"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/Fonts/butler/Butler_Medium.otf"
+          as="font"
+          type="font/opentype"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/Fonts/butler/Butler_Regular.otf"
+          as="font"
+          type="font/opentype"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className={`font-butler antialiased bg-five-lines`}>
         <LenisScrollProvider />
         <Navbar />
         <CustomCursor />

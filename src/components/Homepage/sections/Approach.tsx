@@ -13,7 +13,7 @@ const BACKGROUND_IMAGES = [
   "/cover3.jpeg",
 ];
 
-const TEXT_LINES = ["PURPOSE", "MEETS", "PASSION!"];
+const TEXT_LINES = ["Awareness", "Mastery", "Leadership"];
 
 export default function Approach() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -156,7 +156,7 @@ export default function Approach() {
         gsap.set(".keith-image-wrapper", {
           left: "50%",
           xPercent: -50,
-          top: "60%",
+          top: "calc(60% + 40px)", // Account for navbar height
           yPercent: -50,
         });
 
@@ -169,24 +169,29 @@ export default function Approach() {
           },
         });
 
+        // Move Keith to the right side and keep him there (faster)
         tl.to(
           ".keith-image-wrapper",
           {
             left: "100%",
             xPercent: -100,
-            ease: "power1.inOut",
+            top: "calc(60% + 40px)", // Maintain position accounting for navbar
+            ease: "power3.out",
+            duration: 0.2,
           },
           0
-        ).to(
-          ".text-content",
-          {
-            left: "0%",
-            xPercent: 0,
-            autoAlpha: 1,
-            ease: "power1.inOut",
-          },
-          "<"
-        );
+        )
+          // Show text content
+          .to(
+            ".text-content",
+            {
+              left: "0%",
+              xPercent: 0,
+              autoAlpha: 1,
+              ease: "power1.inOut",
+            },
+            0.05
+          );
         // Text animations for desktop
         tl.fromTo(
           ".line-0 .char",
@@ -241,12 +246,12 @@ export default function Approach() {
           </div>
 
           <div className="relative w-full h-full">
-            <div className="text-content absolute w-[50%] 2xl:w-[45%] h-full flex justify-center opacity-0">
-              <h2 className="text-white text-[9vw] sm:text-[8vw] md:text-[6.5vw] lg:text-[7vw] xl:text-[7vw] font-bold text-center font-butler leading-none tracking-tighter whitespace-nowrap px-2">
+            <div className="text-content absolute w-[50%] 2xl:w-[45%] h-full flex justify-center lg:justify-start opacity-0 lg:ml-24 xl:ml-32">
+              <h2 className="text-white text-[9vw] sm:text-[10vw] md:text-[6.5vw] lg:text-[7vw] xl:text-[7vw] font-bold text-center lg:text-left font-butler leading-none tracking-tighter whitespace-nowrap px-2">
                 {TEXT_LINES.map((line, lineIndex) => (
                   <div
                     key={lineIndex}
-                    className={`line-${lineIndex} absolute inset-0 flex items-center justify-center`}
+                    className={`line-${lineIndex} absolute inset-0 flex items-center justify-center lg:justify-start`}
                   >
                     {line.split("").map((char, charIndex) => (
                       <span

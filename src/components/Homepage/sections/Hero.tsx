@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-
+import TextPressure from "../components/HeroTitle";
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -14,6 +14,7 @@ const HomePageHero = () => {
   const containerRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLSpanElement>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Custom scroll effect with resize handling
   useEffect(() => {
@@ -22,9 +23,13 @@ const HomePageHero = () => {
     };
 
     const handleResize = () => {
-      // Force re-render on resize to update responsive values
+      // Update mobile state on resize
+      setIsMobile(window.innerWidth < 768);
       setScrollY(window.scrollY);
     };
+
+    // Set initial mobile state
+    setIsMobile(window.innerWidth < 768);
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
@@ -36,7 +41,6 @@ const HomePageHero = () => {
   }, []);
 
   // Calculate diagonal opacity mask based on scroll - responsive
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   const fadeDistance = isMobile ? 400 : 800; // Shorter fade on mobile
   const scrollProgress = Math.min(scrollY / fadeDistance, 1);
   const maskMovement = isMobile ? 120 : 150; // Less movement on mobile
@@ -95,7 +99,7 @@ const HomePageHero = () => {
       >
         {/* Main Headline */}
         <div className="w-full text-center">
-          <span
+          {/* <span
             ref={headlineRef}
             className="hero-headline block font-extrabold text-black leading-none whitespace-pre-wrap 
                        break-words uppercase tracking-tighter text-center
@@ -103,14 +107,34 @@ const HomePageHero = () => {
             style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
           >
             echtventure
-          </span>
+          </span> */}
+          <div
+            style={{
+              position: "relative",
+            }}
+            className="h-32 pt-5 sm:h-36 sm:pt-6 md:h-[20vh] md:pt-7 lg:h-[26vh] lg:pt-8 xl:h-[35vh] xl:pt-10 2xl:h-[40vh] 2xl:pt-12"
+          >
+            <TextPressure
+              text="echtventure"
+              flex={true}
+              alpha={false}
+              stroke={false}
+              width={false}
+              weight={true}
+              fontFamily="Butler Variable"
+              italic={false}
+              textColor="#000000"
+              minFontSize={16}
+            />
+          </div>
         </div>
 
         {/* Description and Button */}
         <div className="flex flex-col items-center text-center max-w-2xl">
           <p className="hero-description text-center font-montserrat text-gray-700 text-lg md:text-xl mb-8">
-            Authentic support, adding value, right resources, maximizing
-            business potential.
+            Delivering authentic support that adds real value, connects you with
+            the right resources, and helps you unlock and maximize your business
+            potential!
           </p>
           <div className="hero-button">
             <Button className="">View Coaches</Button>

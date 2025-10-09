@@ -63,7 +63,7 @@ const UniqueApproachSection = () => {
         <div className="text-center mb-16">
           <AnimatedTitle>
             <h2 className="font-montserrat text-[48px] leading-[1.1em] font-normal text-black">
-              The Echtventure Method
+              The Echtventure Approach
             </h2>
           </AnimatedTitle>
         </div>
@@ -158,7 +158,7 @@ const UniqueApproachSection = () => {
         <div className="mt-20">
           <AnimatedTitle>
             <h3 className="font-montserrat text-[36px] font-normal text-black text-center mb-12">
-              Our Process
+              Learn More
             </h3>
           </AnimatedTitle>
 
