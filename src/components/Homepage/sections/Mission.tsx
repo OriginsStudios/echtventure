@@ -17,7 +17,7 @@ const Mission = () => {
     { type: "image", src: "/Bounce/Boss 1.JPG" },
     { type: "video", src: "/Bounce/20250806_084925000_iOS.mp4" },
 
-    { type: "video", src: "/Bounce/video2.mp4" },
+    { type: "video", src: "/Bounce/video3.mp4" },
     { type: "image", src: "/Bounce/Conference Speaker.jpg" },
   ];
 
