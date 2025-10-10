@@ -43,28 +43,81 @@ const Mission = () => {
         // Make sure the container is visible
         gsap.set(bounceCardsRef.current, { opacity: 1 });
 
-        cards.forEach((card: Element, index: number) => {
-          // Position cards from left to right with proper spacing
-          const cardSpacing = 400; // Increased space between cards for even bigger cards
-          const startX = -((cards.length - 1) * cardSpacing) / 2; // Center the group
-          const positionX = startX + index * cardSpacing;
-          const randomY = (Math.random() - 0.5) * 100; // Larger random Y offset
-          const randomRotation = (Math.random() - 0.5) * 15; // More rotation
+        // Function to calculate and set card positions
+        const updateCardPositions = () => {
+          cards.forEach((card: Element, index: number) => {
+            // Responsive card spacing based on screen width
+            const screenWidth = window.innerWidth;
+            let cardSpacing = 360; // Desktop spacing (>= 1550px)
+            let isVerticalLayout = false;
 
-          // Set initial state - all cards start invisible and scaled down
+            // Determine layout and spacing based on screen width
+            if (screenWidth < 640) {
+              // Mobile: vertical layout with tighter spacing
+              isVerticalLayout = true;
+              cardSpacing = 180; // Increased from 130 to prevent overlap
+            } else if (screenWidth < 768) {
+              // Tablet small: vertical layout
+              isVerticalLayout = true;
+              cardSpacing = 200; // Increased from 145 to prevent overlap
+            } else if (screenWidth < 1000) {
+              // Below 1000px: vertical layout
+              isVerticalLayout = true;
+              cardSpacing = 220; // Increased from 160 to prevent overlap
+            } else if (screenWidth < 1550) {
+              // Between 1000px and 1550px: horizontal with overlapping (reduced spacing)
+              isVerticalLayout = false;
+              cardSpacing = 200; // Reduced spacing for overlap effect
+            } else {
+              // 1550px and above: full horizontal spacing
+              isVerticalLayout = false;
+              cardSpacing = 360;
+            }
+
+            // Calculate position based on layout orientation
+            let positionX = 0;
+            let positionY = 0;
+
+            if (isVerticalLayout) {
+              // Vertical layout: stack cards vertically, more centered
+              const startY = -((cards.length - 1) * cardSpacing) / 2; // Center the group vertically
+              positionY = startY + index * cardSpacing;
+              positionX = (Math.random() - 0.5) * (screenWidth < 640 ? 10 : 20); // Even more centered
+            } else {
+              // Horizontal layout: spread cards horizontally (desktop)
+              const startX = -((cards.length - 1) * cardSpacing) / 2; // Center the group
+              positionX = startX + index * cardSpacing;
+              positionY = (Math.random() - 0.5) * 100; // Random Y for visual interest
+            }
+
+            const randomRotation =
+              (Math.random() - 0.5) * (screenWidth < 640 ? 5 : 10); // Less rotation for better centering
+
+            // Update card position (for resize)
+            gsap.set(card, {
+              x: positionX,
+              y: positionY,
+              rotation: randomRotation,
+            });
+          });
+        };
+
+        // Initial setup - set cards to invisible
+        cards.forEach((card: Element, index: number) => {
           gsap.set(card, {
             opacity: 0,
             scale: 0,
-            x: positionX,
-            y: randomY,
-            rotation: randomRotation,
           });
+        });
 
-          // Create individual scroll trigger for each card with progressive timing
-          // Cards appear one by one as you scroll down - each card needs more scroll to appear
+        // Set initial positions
+        updateCardPositions();
+
+        // Create scroll triggers for each card
+        cards.forEach((card: Element, index: number) => {
           ScrollTrigger.create({
             trigger: pinContainerRef.current,
-            start: `top+=${400 + index * 200}px top`, // Cards start appearing after text fades (400px base + 200px per card)
+            start: `top+=${400 + index * 150}px top`, // Tighter card appearance timing (150px instead of 200px)
             end: `bottom top`,
             onEnter: () => {
               // Animate card appearance with bounce effect
@@ -101,6 +154,19 @@ const Mission = () => {
             },
           });
         });
+
+        // Handle window resize - update card positions dynamically
+        const handleResize = () => {
+          updateCardPositions();
+          ScrollTrigger.refresh();
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Cleanup resize listener
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
       }
     }, pinContainerRef);
 
@@ -109,12 +175,12 @@ const Mission = () => {
 
   return (
     // The main container with natural scroll flow
-    // Increased height to allow for smooth transitions
+    // Adjusted height for better mobile/tablet experience
     <div
       ref={pinContainerRef}
-      className="min-h-[280vh] bg-backgroundColorBlack bg-five-lines-blackbg relative"
+      className="min-h-[280vh] bg-five-lines-blackbg relative"
     >
-      <div className="container-padding min-h-screen flex flex-col justify-center sticky top-0">
+      <div className="container-padding min-h-[120vh] flex flex-col justify-center sticky top-0">
         {/* 1. Text Content Section */}
         {/* This content will be centered and will fade out on scroll */}
         <div ref={textSectionRef} className="mx-auto w-full z-10">
@@ -145,13 +211,13 @@ const Mission = () => {
         {/* It starts with opacity-1 since we control individual card visibility */}
         <div
           ref={bounceCardsRef}
-          className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-1 p-2"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-1 p-2 sm:p-4 md:p-6 lg:p-6 pt-16 sm:pt-20 md:pt-24 lg:pt-28"
         >
-          <div className="relative" style={{ width: 1400, height: 700 }}>
+          <div className="relative w-full max-w-[1300px] h-[550px] sm:h-[600px] md:h-[650px] lg:h-[650px]">
             {bounceMedia.map((media, index) => (
               <div
                 key={index}
-                className="bounce-card absolute w-[380px] aspect-square border-8 border-white rounded-[30px] overflow-hidden pointer-events-auto"
+                className="bounce-card absolute w-[200px] sm:w-[240px] md:w-[280px] lg:w-[340px] max-w-[340px] aspect-square border-4 sm:border-6 md:border-8 border-white rounded-[15px] sm:rounded-[20px] md:rounded-[30px] overflow-hidden pointer-events-auto"
                 style={{
                   boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
                   left: "50%",

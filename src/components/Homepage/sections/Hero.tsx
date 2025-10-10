@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
+import Link from "next/link";
 import Button from "@/components/ui/Button"; // Assuming you have this Button component
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -112,7 +113,7 @@ const HomePageHero = () => {
             style={{
               position: "relative",
             }}
-            className="h-32 pt-5 sm:h-36 sm:pt-6 md:h-[20vh] md:pt-7 lg:h-[26vh] lg:pt-8 xl:h-[35vh] xl:pt-10 2xl:h-[40vh] 2xl:pt-12"
+            className=" pt-5 sm:pt-6 2xl:h-[40vh] md:pt-7 xl:pt-10 2xl:pt-12"
           >
             <TextPressure
               text="echtventure"
@@ -131,13 +132,15 @@ const HomePageHero = () => {
 
         {/* Description and Button */}
         <div className="flex flex-col items-center text-center max-w-2xl">
-          <p className="hero-description text-center font-montserrat text-gray-700 text-lg md:text-xl mb-8">
+          <p className="hero-description text-center font-montserrat text-gray-700 text-xl md:text-2xl mb-8">
             Delivering authentic support that adds real value, connects you with
             the right resources, and helps you unlock and maximize your business
             potential!
           </p>
-          <div className="hero-button">
-            <Button className="">View Coaches</Button>
+          <div className="hero-button ">
+            <Link href="/coaches">
+              <Button className="">View Coaches</Button>
+            </Link>
           </div>
         </div>
       </div>

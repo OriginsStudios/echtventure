@@ -2,16 +2,35 @@
 import React from "react";
 import SecondProgram from "./SecondProgram";
 import FlowingMenu from "./Reveal";
+import CountUp from "@/components/ui/CountUp";
+
 const demoItems = [
   {
-    link: "#",
+    link: "/enneagram",
     text: "Founded in 2019 by Keith Tay",
     subtitle:
       "A visionary leader with over 20 years of corporate experience, Keith combines strategic management expertise with holistic development approaches. As an accredited Enneagram practitioner and certified coach, he specializes in transforming leaders and teams through deeper self-awareness and authentic connections.",
   },
   {
-    link: "#",
-    text: "Impacted over 2500 individuals",
+    link: "/enneagram",
+    text: (
+      <div className="text-center max-w-6xl mx-auto px-4">
+        <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+          Impacted over{" "}
+        </span>
+        <CountUp
+          from={0}
+          to={2500}
+          separator=","
+          direction="up"
+          duration={2}
+          className="mx-1 sm:mx-2 text-green-500 font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block"
+        />{" "}
+        <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+          individuals
+        </span>
+      </div>
+    ),
     subtitle: "Accredited Trainer & Training Provider for HRDCorp",
   },
 ];

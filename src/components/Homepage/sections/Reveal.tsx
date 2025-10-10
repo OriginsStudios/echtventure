@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 
 interface MenuItemProps {
   link: string;
-  text: string;
+  text: string | React.ReactNode;
   subtitle?: string;
 }
 
@@ -27,6 +27,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
   const itemRef = React.useRef<HTMLDivElement>(null);
   const marqueeRef = React.useRef<HTMLDivElement>(null);
   const marqueeInnerRef = React.useRef<HTMLDivElement>(null);
+  const timelineRef = React.useRef<gsap.core.Timeline | null>(null);
 
   const animationDefaults = { duration: 0.6, ease: "expo" };
 
@@ -45,6 +46,12 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
   const handleMouseEnter = (ev: React.MouseEvent<HTMLAnchorElement>) => {
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
       return;
+
+    // Kill any existing timeline to prevent conflicts
+    if (timelineRef.current) {
+      timelineRef.current.kill();
+    }
+
     const rect = itemRef.current.getBoundingClientRect();
     const edge = findClosestEdge(
       ev.clientX - rect.left,
@@ -53,8 +60,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
       rect.height
     );
 
-    const tl = gsap.timeline({ defaults: animationDefaults });
-    tl.set(marqueeRef.current, { y: edge === "top" ? "-101%" : "101%" })
+    timelineRef.current = gsap.timeline({ defaults: animationDefaults });
+    timelineRef.current
+      .set(marqueeRef.current, { y: edge === "top" ? "-101%" : "101%" })
       .set(marqueeInnerRef.current, { y: edge === "top" ? "101%" : "-101%" })
       .to([marqueeRef.current, marqueeInnerRef.current], { y: "0%" });
   };
@@ -62,6 +70,12 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
   const handleMouseLeave = (ev: React.MouseEvent<HTMLAnchorElement>) => {
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
       return;
+
+    // Kill any existing timeline to prevent conflicts
+    if (timelineRef.current) {
+      timelineRef.current.kill();
+    }
+
     const rect = itemRef.current.getBoundingClientRect();
     const edge = findClosestEdge(
       ev.clientX - rect.left,
@@ -70,13 +84,16 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
       rect.height
     );
 
-    const tl = gsap.timeline({ defaults: animationDefaults }) as TimelineMax;
-    tl.to(marqueeRef.current, { y: edge === "top" ? "-101%" : "101%" }).to(
-      marqueeInnerRef.current,
-      {
-        y: edge === "top" ? "101%" : "-101%",
-      }
-    );
+    timelineRef.current = gsap.timeline({ defaults: animationDefaults });
+    timelineRef.current
+      .to(marqueeRef.current, { y: edge === "top" ? "-101%" : "101%" })
+      .to(
+        marqueeInnerRef.current,
+        {
+          y: edge === "top" ? "101%" : "-101%",
+        },
+        "<" // Start at the same time as the previous animation
+      );
   };
 
   const repeatedMarqueeContent = React.useMemo(() => {
@@ -94,10 +111,24 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
       </>
     );
 
-    return Array.from({ length: 10 }).map((_, idx) => (
-      <React.Fragment key={idx}>{content}</React.Fragment>
-    ));
+    // Duplicate content twice for seamless infinite loop
+    return (
+      <>
+        {Array.from({ length: 20 }).map((_, idx) => (
+          <React.Fragment key={`marquee-${idx}`}>{content}</React.Fragment>
+        ))}
+      </>
+    );
   }, [text, subtitle]);
+
+  // Cleanup on unmount
+  React.useEffect(() => {
+    return () => {
+      if (timelineRef.current) {
+        timelineRef.current.kill();
+      }
+    };
+  }, []);
 
   return (
     <div
@@ -105,7 +136,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
       ref={itemRef}
     >
       <a
-        className="flex items-center justify-center h-full w-full relative cursor-pointer uppercase no-underline font-semibold text-white text-[4vh] hover:text-black focus:text-white focus-visible:text-black"
+        className="flex items-center justify-center h-full w-full relative cursor-pointer uppercase no-underline font-semibold text-white text-[4vh] transition-colors duration-300 hover:text-white focus:text-white focus-visible:text-white"
         href={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -113,11 +144,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
         {text}
       </a>
       <div
-        className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none bg-white translate-y-[101%] flex items-center justify-center"
+        className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none bg-white translate-y-[101%] flex items-center justify-center will-change-transform"
         ref={marqueeRef}
       >
         <div
-          className="h-full flex items-center justify-center w-full"
+          className="h-full flex items-center justify-center w-full will-change-transform"
           ref={marqueeInnerRef}
         >
           <div className="flex items-center justify-center whitespace-nowrap animate-marquee">

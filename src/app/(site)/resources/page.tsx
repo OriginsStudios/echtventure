@@ -7,6 +7,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 import SplitType from "split-type";
+import Button from "@/components/ui/Button";
+import Badge from "@/components/ui/Badge";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -187,12 +189,12 @@ export default function ResourcesPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-20">
-            <div className="inline-flex items-center bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm mb-8">
-              <div className="w-2 h-2 bg-custom-green rounded-full mr-3"></div>
-              <span className="font-montserrat text-sm text-slate-600 font-medium">
-                FEATURED CONTENT
-              </span>
-            </div>
+            <Badge variant="outline" className="shadow-sm mb-8">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-custom-green rounded-full mr-3"></div>
+                <span className="font-montserrat">FEATURED CONTENT</span>
+              </div>
+            </Badge>
             <h2 className="font-butler text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6">
               Explore Our Content
             </h2>
@@ -210,9 +212,9 @@ export default function ResourcesPage() {
               {/* Card Header with Icon */}
               <div className="relative h-80 bg-white overflow-hidden border-b border-slate-100">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 bg-slate-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-24 h-24 bg-slate-700 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     <svg
-                      className="w-12 h-12 text-slate-600"
+                      className="w-12 h-12 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -227,15 +229,13 @@ export default function ResourcesPage() {
                   </div>
                 </div>
                 <div className="absolute top-6 left-6">
-                  <span className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">
-                    Articles & Insights
-                  </span>
+                  <Badge>Articles & Insights</Badge>
                 </div>
               </div>
 
               {/* Card Content */}
               <div className="p-8">
-                <h3 className="font-butler text-3xl font-bold text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300">
+                <h3 className="font-butler text-3xl font-bold text-slate-900 mb-4">
                   Blog
                 </h3>
                 <p className="font-montserrat text-slate-600 text-lg leading-relaxed mb-8">
@@ -266,24 +266,23 @@ export default function ResourcesPage() {
                   </div>
                 </div>
 
-                <Link
-                  href="/resources/blog"
-                  className="group/btn inline-flex items-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-butler text-lg font-bold px-8 py-4 rounded-xl hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  Explore Articles
-                  <svg
-                    className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+                <Link href="/resources/blog">
+                  <Button className="group/btn inline-flex items-center hover:bg-black hover:text-white">
+                    Explore Articles
+                    <svg
+                      className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </Button>
                 </Link>
               </div>
             </div>
@@ -293,9 +292,9 @@ export default function ResourcesPage() {
               {/* Card Header with Icon */}
               <div className="relative h-80 bg-white overflow-hidden border-b border-slate-100">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 bg-slate-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-24 h-24 bg-slate-700 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     <svg
-                      className="w-12 h-12 text-slate-600"
+                      className="w-12 h-12 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -310,15 +309,13 @@ export default function ResourcesPage() {
                   </div>
                 </div>
                 <div className="absolute top-6 left-6">
-                  <span className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full">
-                    Audio Content
-                  </span>
+                  <Badge>Audio Content</Badge>
                 </div>
               </div>
 
               {/* Card Content */}
               <div className="p-8">
-                <h3 className="font-butler text-3xl font-bold text-slate-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">
+                <h3 className="font-butler text-3xl font-bold text-slate-900 mb-4">
                   Podcast
                 </h3>
                 <p className="font-montserrat text-slate-600 text-lg leading-relaxed mb-8">
@@ -349,24 +346,23 @@ export default function ResourcesPage() {
                   </div>
                 </div>
 
-                <Link
-                  href="/resources/podcast"
-                  className="group/btn inline-flex items-center bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-butler text-lg font-bold px-8 py-4 rounded-xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  Listen Now
-                  <svg
-                    className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+                <Link href="/resources/podcast">
+                  <Button className="group/btn inline-flex items-center hover:bg-black hover:text-white">
+                    Listen Now
+                    <svg
+                      className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </Button>
                 </Link>
               </div>
             </div>
@@ -377,24 +373,26 @@ export default function ResourcesPage() {
             <p className="font-montserrat text-lg text-slate-600 mb-6">
               Want to stay updated with our latest content?
             </p>
-            <div className="inline-flex items-center bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm">
-              <svg
-                className="w-5 h-5 text-custom-green mr-3"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 00-15 0v5h5l-5 5-5-5h5V7.5z"
-                />
-              </svg>
-              <span className="font-montserrat text-sm text-slate-700 font-medium">
-                Follow us for regular updates and insights
-              </span>
-            </div>
+            <Badge variant="outline" className="shadow-sm">
+              <div className="flex items-center">
+                <svg
+                  className="w-5 h-5 text-custom-green mr-3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 00-15 0v5h5l-5 5-5-5h5V7.5z"
+                  />
+                </svg>
+                <span className="font-montserrat text-slate-700">
+                  Follow us for regular updates and insights
+                </span>
+              </div>
+            </Badge>
           </div>
         </div>
       </section>

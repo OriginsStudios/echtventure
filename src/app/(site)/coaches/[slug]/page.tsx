@@ -5,12 +5,13 @@ import { notFound } from "next/navigation";
 import Button from "@/components/ui/Button";
 import { getCoachBySlug } from "@/constants/coaches";
 
-export default function CoachSlugPage({
+export default async function CoachSlugPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const coach = getCoachBySlug(params.slug);
+  const { slug } = await params;
+  const coach = getCoachBySlug(slug);
   if (!coach) return notFound();
 
   return (
@@ -36,11 +37,21 @@ export default function CoachSlugPage({
             </p>
 
             <div className="mt-6">
-              <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
-                <Button className="bg-black text-white border-black hover:opacity-90">
-                  Book a Consultation with {coach.name.split(" ")[0]}
-                </Button>
-              </Link>
+              {coach.email ? (
+                <a
+                  href={`mailto:${coach.email}?subject=Consultation Request with ${coach.name}`}
+                >
+                  <Button className="bg-black text-white border-black hover:opacity-90">
+                    Book a Consultation with {coach.name.split(" ")[0]}
+                  </Button>
+                </a>
+              ) : (
+                <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
+                  <Button className="bg-black text-white border-black hover:opacity-90">
+                    Book a Consultation with {coach.name.split(" ")[0]}
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -115,11 +126,21 @@ export default function CoachSlugPage({
 
         {/* CTA bottom */}
         <div className="mt-12">
-          <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
-            <Button className="bg-black text-white border-black hover:opacity-90 w-full md:w-auto">
-              Book a Consultation with {coach.name.split(" ")[0]}
-            </Button>
-          </Link>
+          {coach.email ? (
+            <a
+              href={`mailto:${coach.email}?subject=Consultation Request with ${coach.name}`}
+            >
+              <Button className="bg-black text-white border-black hover:opacity-90 w-full md:w-auto">
+                Book a Consultation with {coach.name.split(" ")[0]}
+              </Button>
+            </a>
+          ) : (
+            <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
+              <Button className="bg-black text-white border-black hover:opacity-90 w-full md:w-auto">
+                Book a Consultation with {coach.name.split(" ")[0]}
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Back link */}

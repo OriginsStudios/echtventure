@@ -130,7 +130,7 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative flex h-[110vh] items-end md:items-center justify-center overflow-hidden "
+      className="relative flex min-h-[120vh] items-end md:items-center justify-center overflow-hidden pb-[10vh]"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6  ">
         <div data-grid-wrapper>
@@ -182,7 +182,7 @@ export default function Gallary() {
               </h2>
               <div className="mt-4 sm:mt-5">
                 <Link
-                  href="/services"
+                  href="/coaches"
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-900  text-lg font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40 px-4 py-2 sm:px-8 sm:py-4 sm:text-md"
                 >
                   Learn More
