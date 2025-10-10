@@ -117,11 +117,13 @@ const TextPressure: React.FC<TextPressureProps> = ({
   useEffect(() => {
     let rafId: number;
     let lastTime = 0;
-    const fps = 60; // Reduced from 60fps to 30fps for better mobile performance
+    // 60fps on desktop/large screens, 10fps on mobile for better performance
+    const isMobile = window.innerWidth < 768;
+    const fps = isMobile ? 10 : 60;
     const frameDuration = 1000 / fps;
 
     const animate = (currentTime: number) => {
-      // Throttle to 30fps
+      // Throttle based on device
       if (currentTime - lastTime < frameDuration) {
         rafId = requestAnimationFrame(animate);
         return;
