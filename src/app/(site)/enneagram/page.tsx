@@ -43,7 +43,6 @@ export default function CombinedPage() {
   const enneagramRef = useRef(null);
   const enneagramFirstSectionRef = useRef(null);
   const headlineRef = useRef(null);
-  const titleText = "Enneagram Test";
   const descText =
     "Discover your personality type and unlock deeper self-awareness through our comprehensive assessment";
 
@@ -164,16 +163,17 @@ export default function CombinedPage() {
               </div>
             </div>
           </div>
-          <div className="relative flex flex-col items-center justify-center w-full h-full text-black text-center px-4 z-10">
+          <div className="relative flex flex-col items-center justify-center w-full h-full text-black text-center px-4 sm:px-6 md:px-8 z-10">
             <h1
               ref={techTitleRef}
-              className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase mb-8 overflow-hidden"
+              className="text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-black uppercase mb-4 sm:mb-6 md:mb-8 overflow-hidden leading-tight flex flex-col"
             >
-              {titleText}
+              <span>Enneagram</span>
+              <span>Test</span>
             </h1>
             <p
               ref={techParaRef}
-              className="max-w-4xl text-lg md:text-xl lg:text-2xl leading-relaxed"
+              className="max-w-4xl text-xl sm:text-2xl md:text-2xl lg:text-2xl leading-relaxed px-2"
             >
               {descText}
             </p>
@@ -207,7 +207,7 @@ export default function CombinedPage() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="text-left lg:text-left">
+              <div className="text-center lg:text-left">
                 <span
                   ref={headlineRef}
                   className="block font-extrabold text-white leading-tight uppercase tracking-tight
@@ -221,7 +221,7 @@ export default function CombinedPage() {
                   <h2 className="text-2xl md:text-3xl font-butler font-bold text-slate-200 mb-4">
                     The Enneagram Assessment
                   </h2>
-                  <div className="w-16 h-1 bg-slate-600 rounded-full"></div>
+                  <div className="w-16 h-1 bg-slate-600 rounded-full mx-auto lg:mx-0"></div>
                 </div>
 
                 <p className="enneagram-description font-montserrat text-slate-300 text-lg leading-relaxed mb-10">
@@ -235,7 +235,7 @@ export default function CombinedPage() {
                   <button
                     onClick={handleStartTest}
                     className="bg-white text-slate-900 text-lg font-butler font-bold px-10 py-4 rounded-lg 
-                                       hover:bg-slate-100 transition-all duration-300 shadow-lg hover:shadow-xl mr-4"
+                                       hover:bg-slate-100 transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
                   >
                     Start the Test Now
                   </button>
@@ -250,11 +250,11 @@ export default function CombinedPage() {
                 </div>
               </div>
 
-              <div className="enneagram-expertise-card bg-slate-800 p-8 rounded-xl border border-slate-700">
-                <div className="text-center mb-8">
-                  <div className="w-20 h-20 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="enneagram-expertise-card bg-slate-800 p-4 sm:p-6 md:p-8 rounded-xl border border-slate-700">
+                <div className="text-center mb-6 sm:mb-8">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                     <svg
-                      className="w-10 h-10 text-slate-300"
+                      className="w-8 h-8 sm:w-10 sm:h-10 text-slate-300"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -267,14 +267,14 @@ export default function CombinedPage() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-butler font-bold text-white mb-2">
+                  <h3 className="text-lg sm:text-xl font-butler font-bold text-white mb-2 px-2">
                     Expert Guidance by Keith Tay
                   </h3>
                   <div className="w-12 h-0.5 bg-slate-600 mx-auto"></div>
                 </div>
 
-                <div className="space-y-6">
-                  <p className="font-montserrat text-slate-300 leading-relaxed text-center">
+                <div className="space-y-4 sm:space-y-6">
+                  <p className="font-montserrat text-sm sm:text-base text-slate-300 leading-relaxed text-center px-2">
                     Certified in{" "}
                     <strong className="text-white">
                       People Management with Enneagram
@@ -283,30 +283,30 @@ export default function CombinedPage() {
                     theological wisdom.
                   </p>
 
-                  <div className="grid grid-cols-1 gap-3">
-                    <div className="flex items-center bg-slate-700/50 px-4 py-3 rounded-lg">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                      <span className="font-montserrat text-sm text-slate-200">
+                  <div className="grid grid-cols-1 gap-2 sm:gap-3">
+                    <div className="flex items-start sm:items-center bg-slate-700/50 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 sm:mr-3 flex-shrink-0 mt-1 sm:mt-0"></div>
+                      <span className="font-montserrat text-xs sm:text-sm text-slate-200 leading-snug">
                         Certified Enneagram Practitioner
                       </span>
                     </div>
-                    <div className="flex items-center bg-slate-700/50 px-4 py-3 rounded-lg">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                      <span className="font-montserrat text-sm text-slate-200">
+                    <div className="flex items-start sm:items-center bg-slate-700/50 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 sm:mr-3 flex-shrink-0 mt-1 sm:mt-0"></div>
+                      <span className="font-montserrat text-xs sm:text-sm text-slate-200 leading-snug">
                         100+ Individuals Coached
                       </span>
                     </div>
-                    <div className="flex items-center bg-slate-700/50 px-4 py-3 rounded-lg">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                      <span className="font-montserrat text-sm text-slate-200">
+                    <div className="flex items-start sm:items-center bg-slate-700/50 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 sm:mr-3 flex-shrink-0 mt-1 sm:mt-0"></div>
+                      <span className="font-montserrat text-xs sm:text-sm text-slate-200 leading-snug">
                         International Speaker (12+ Countries)
                       </span>
                     </div>
                   </div>
 
-                  <div className="pt-4 text-center">
-                    <div className="inline-flex items-center bg-slate-900 px-4 py-2 rounded-lg">
-                      <span className="font-montserrat text-xs text-slate-400 uppercase tracking-wider">
+                  <div className="pt-2 sm:pt-4 text-center">
+                    <div className="inline-flex items-center bg-slate-900 px-3 sm:px-4 py-2 rounded-lg">
+                      <span className="font-montserrat text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">
                         LIGHT • LOVE • LEAD
                       </span>
                     </div>

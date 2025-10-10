@@ -15,7 +15,7 @@ const demoItems = [
     link: "/enneagram",
     text: (
       <div className="text-center max-w-6xl mx-auto px-4">
-        <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+        <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl ">
           Impacted over{" "}
         </span>
         <CountUp
@@ -24,9 +24,9 @@ const demoItems = [
           separator=","
           direction="up"
           duration={2}
-          className="mx-1 sm:mx-2 text-green-500 font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl inline-block"
+          className="font-bold text-3xl sm:text-4xl md:text-4xl lg:text-5xl inline-block tabular-nums min-w-[90px] sm:min-w-[120px] md:min-w-[130px] lg:min-w-[160px] underline decoration-2 sm:decoration-4"
         />{" "}
-        <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+        <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl lg:text-5xl">
           individuals
         </span>
       </div>

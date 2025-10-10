@@ -28,8 +28,20 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
   const marqueeRef = React.useRef<HTMLDivElement>(null);
   const marqueeInnerRef = React.useRef<HTMLDivElement>(null);
   const timelineRef = React.useRef<gsap.core.Timeline | null>(null);
+  const [isRevealed, setIsRevealed] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   const animationDefaults = { duration: 0.6, ease: "expo" };
+
+  // Detect mobile device
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || "ontouchstart" in window);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const findClosestEdge = (
     mouseX: number,
@@ -44,6 +56,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
   };
 
   const handleMouseEnter = (ev: React.MouseEvent<HTMLAnchorElement>) => {
+    // Disable hover on mobile
+    if (isMobile) return;
+
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
       return;
 
@@ -68,6 +83,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
   };
 
   const handleMouseLeave = (ev: React.MouseEvent<HTMLAnchorElement>) => {
+    // Disable hover on mobile
+    if (isMobile) return;
+
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
       return;
 
@@ -94,6 +112,38 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
         },
         "<" // Start at the same time as the previous animation
       );
+  };
+
+  const handleClick = (ev: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isMobile) {
+      // Prevent navigation on mobile
+      ev.preventDefault();
+
+      if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
+        return;
+
+      // Kill any existing timeline to prevent conflicts
+      if (timelineRef.current) {
+        timelineRef.current.kill();
+      }
+
+      if (!isRevealed) {
+        // Show the marquee
+        timelineRef.current = gsap.timeline({ defaults: animationDefaults });
+        timelineRef.current
+          .set(marqueeRef.current, { y: "101%" })
+          .set(marqueeInnerRef.current, { y: "-101%" })
+          .to([marqueeRef.current, marqueeInnerRef.current], { y: "0%" });
+        setIsRevealed(true);
+      } else {
+        // Hide the marquee
+        timelineRef.current = gsap.timeline({ defaults: animationDefaults });
+        timelineRef.current
+          .to(marqueeRef.current, { y: "101%" })
+          .to(marqueeInnerRef.current, { y: "-101%" }, "<");
+        setIsRevealed(false);
+      }
+    }
   };
 
   const repeatedMarqueeContent = React.useMemo(() => {
@@ -137,9 +187,10 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
     >
       <a
         className="flex items-center justify-center h-full w-full relative cursor-pointer uppercase no-underline font-semibold text-white text-[4vh] transition-colors duration-300 hover:text-white focus:text-white focus-visible:text-white"
-        href={link}
+        href={isMobile ? undefined : link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
       >
         {text}
       </a>
