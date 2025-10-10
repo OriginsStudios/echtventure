@@ -58,7 +58,7 @@ export default function CoachesPage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
-                <div className="p-5">
+                <div className="p-5 pb-8">
                   <h3 className="text-lg font-semibold">{coach.name}</h3>
                   <p className="text-sm font-montserrat text-neutral-600 mt-1">
                     {coach.title}

@@ -7,7 +7,11 @@ import CountUp from "@/components/ui/CountUp";
 const demoItems = [
   {
     link: "/enneagram",
-    text: "Founded in 2019 by Keith Tay",
+    text: (
+      <span className="text-2xl sm:text-3xl md:text-3xl">
+        Founded in 2019 by Keith Tay
+      </span>
+    ),
     subtitle:
       "A visionary leader with over 20 years of corporate experience, Keith combines strategic management expertise with holistic development approaches. As an accredited Enneagram practitioner and certified coach, he specializes in transforming leaders and teams through deeper self-awareness and authentic connections.",
   },
@@ -15,7 +19,7 @@ const demoItems = [
     link: "/enneagram",
     text: (
       <div className="text-center max-w-6xl mx-auto px-4">
-        <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl ">
+        <span className="block sm:inline text-2xl sm:text-3xl md:text-4xl ">
           Impacted over{" "}
         </span>
         <CountUp
@@ -24,9 +28,9 @@ const demoItems = [
           separator=","
           direction="up"
           duration={2}
-          className="font-bold text-3xl sm:text-4xl md:text-4xl lg:text-5xl inline-block tabular-nums min-w-[90px] sm:min-w-[120px] md:min-w-[130px] lg:min-w-[160px] underline decoration-2 sm:decoration-4"
+          className="font-bold text-2xl sm:text-3xl md:text-3xl lg:text-4xl inline-block tabular-nums min-w-[70px] sm:min-w-[90px] md:min-w-[100px] lg:min-w-[120px] underline decoration-2 sm:decoration-3"
         />{" "}
-        <span className="block sm:inline text-3xl sm:text-4xl md:text-5xl lg:text-5xl">
+        <span className="block sm:inline text-2xl sm:text-3xl md:text-4xl lg:text-4xl">
           individuals
         </span>
       </div>
