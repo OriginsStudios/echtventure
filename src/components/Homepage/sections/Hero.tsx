@@ -17,10 +17,22 @@ const HomePageHero = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Custom scroll effect with resize handling
+  // Custom scroll effect with resize handling - optimized with throttling
   useEffect(() => {
+    let rafId: number | null = null;
+    let lastScrollY = 0;
+
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (Math.abs(currentScrollY - lastScrollY) > 5) { // Only update if scrolled more than 5px
+            setScrollY(currentScrollY);
+            lastScrollY = currentScrollY;
+          }
+          rafId = null;
+        });
+      }
     };
 
     const handleResize = () => {
@@ -32,12 +44,15 @@ const HomePageHero = () => {
     // Set initial mobile state
     setIsMobile(window.innerWidth < 768);
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, []);
 

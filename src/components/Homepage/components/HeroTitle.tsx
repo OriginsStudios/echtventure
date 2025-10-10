@@ -116,7 +116,18 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
   useEffect(() => {
     let rafId: number;
-    const animate = () => {
+    let lastTime = 0;
+    const fps = 30; // Reduced from 60fps to 30fps for better mobile performance
+    const frameDuration = 1000 / fps;
+
+    const animate = (currentTime: number) => {
+      // Throttle to 30fps
+      if (currentTime - lastTime < frameDuration) {
+        rafId = requestAnimationFrame(animate);
+        return;
+      }
+      lastTime = currentTime;
+
       mouseRef.current.x += (cursorRef.current.x - mouseRef.current.x) / 15;
       mouseRef.current.y += (cursorRef.current.y - mouseRef.current.y) / 15;
 
@@ -157,7 +168,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
       rafId = requestAnimationFrame(animate);
     };
 
-    animate();
+    rafId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafId);
   }, [width, weight, italic, alpha, chars.length]);
 

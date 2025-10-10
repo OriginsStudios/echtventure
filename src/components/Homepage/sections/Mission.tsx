@@ -237,12 +237,27 @@ const Mission = () => {
                     loop
                     muted
                     playsInline
+                    webkit-playsinline="true"
+                    preload="metadata"
+                    disablePictureInPicture
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                    onLoadedData={(e) => {
+                      const video = e.currentTarget;
+                      // Optimize: Reduce quality on mobile
+                      if (window.innerWidth < 768) {
+                        video.playbackRate = 1;
+                      }
+                      video.play().catch(() => {
+                        // Fallback: try to play again after user interaction
+                      });
+                    }}
                   />
                 ) : (
                   <img
                     className="w-full h-full object-cover"
                     src={media.src}
                     alt={`card-${index}`}
+                    loading="lazy"
                   />
                 )}
               </div>

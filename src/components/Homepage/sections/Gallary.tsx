@@ -38,8 +38,9 @@ export default function Gallary() {
               start: "top 20%",
               end: "bottom 80%",
               pin: false,
-              scrub: 2.5,
+              scrub: 1.5, // Reduced from 2.5 for better performance
               anticipatePin: 0,
+              fastScrollEnd: true, // Better mobile performance
             },
           });
 
@@ -76,7 +77,7 @@ export default function Gallary() {
           };
         },
 
-        // Mobile animation
+        // Mobile animation - OPTIMIZED
         "(max-width: 767px)": function () {
           const tl = gsap.timeline({
             defaults: { ease: "none" },
@@ -85,7 +86,8 @@ export default function Gallary() {
               start: "top 30%",
               end: "bottom 70%",
               pin: false,
-              scrub: 2.8,
+              scrub: 1, // Reduced from 2.8 for better mobile performance
+              fastScrollEnd: true,
             },
           });
 

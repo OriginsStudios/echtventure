@@ -32,7 +32,7 @@ export default function Approach() {
       // Use matchMedia for proper responsive handling
       const mm = gsap.matchMedia();
 
-      // Mobile (767px and below) - Vertical layout
+      // Mobile (767px and below) - Vertical layout - OPTIMIZED
       mm.add("(max-width: 767px)", () => {
         gsap.set(".keith-image-wrapper", {
           left: "50%",
@@ -51,44 +51,45 @@ export default function Approach() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container.current,
-            scrub: 1,
+            scrub: 0.5, // Reduced from 1 for better mobile performance
             start: "top top",
             end: "bottom bottom",
+            fastScrollEnd: true, // Add this for better mobile performance
           },
         });
 
-        // Text animations for small mobile
+        // Text animations for small mobile - simplified stagger
         tl.fromTo(
           ".line-0 .char",
           { y: 50, autoAlpha: 0 },
-          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          { y: 0, autoAlpha: 1, stagger: 0.03, ease: "power2.out" }, // Simplified ease
           0.2
         ).to(
           ".line-0 .char",
-          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          { y: -50, autoAlpha: 0, stagger: 0.03, ease: "power2.in" }, // Simplified ease
           "+=0.5"
         );
 
         tl.fromTo(
           ".line-1 .char",
           { y: 50, autoAlpha: 0 },
-          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          { y: 0, autoAlpha: 1, stagger: 0.03, ease: "power2.out" },
           "<"
         ).to(
           ".line-1 .char",
-          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          { y: -50, autoAlpha: 0, stagger: 0.03, ease: "power2.in" },
           "+=0.5"
         );
 
         tl.fromTo(
           ".line-2 .char",
           { y: 50, autoAlpha: 0 },
-          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          { y: 0, autoAlpha: 1, stagger: 0.03, ease: "power2.out" },
           "<"
         );
       });
 
-      // Tablet (768px - 1023px) - Vertical layout
+      // Tablet (768px - 1023px) - Vertical layout - OPTIMIZED
       mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
         gsap.set(".keith-image-wrapper", {
           left: "50%",
@@ -107,39 +108,40 @@ export default function Approach() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container.current,
-            scrub: 1,
+            scrub: 0.5, // Reduced from 1
             start: "top top",
             end: "bottom bottom",
+            fastScrollEnd: true,
           },
         });
 
-        // Text animations for medium screens
+        // Text animations for medium screens - simplified
         tl.fromTo(
           ".line-0 .char",
           { y: 50, autoAlpha: 0 },
-          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          { y: 0, autoAlpha: 1, stagger: 0.03, ease: "power2.out" },
           0.2
         ).to(
           ".line-0 .char",
-          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          { y: -50, autoAlpha: 0, stagger: 0.03, ease: "power2.in" },
           "+=0.5"
         );
 
         tl.fromTo(
           ".line-1 .char",
           { y: 50, autoAlpha: 0 },
-          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          { y: 0, autoAlpha: 1, stagger: 0.03, ease: "power2.out" },
           "<"
         ).to(
           ".line-1 .char",
-          { y: -50, autoAlpha: 0, stagger: 0.05, ease: "power1.in" },
+          { y: -50, autoAlpha: 0, stagger: 0.03, ease: "power2.in" },
           "+=0.5"
         );
 
         tl.fromTo(
           ".line-2 .char",
           { y: 50, autoAlpha: 0 },
-          { y: 0, autoAlpha: 1, stagger: 0.05, ease: "back.out(1.7)" },
+          { y: 0, autoAlpha: 1, stagger: 0.03, ease: "power2.out" },
           "<"
         );
       });
@@ -272,6 +274,8 @@ export default function Approach() {
                 src="/PR-KEITH.png"
                 alt="Keith"
                 className="h-auto w-full max-h-[65%] md:max-h-[70%] lg:max-h-[85%] object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
