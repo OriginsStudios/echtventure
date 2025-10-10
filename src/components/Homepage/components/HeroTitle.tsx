@@ -1,6 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+"use client";
+
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import gsap from "gsap";
 
 interface TextPressureProps {
+  className?: string;
+  // Keep old props for compatibility but ignore them
   text?: string;
   fontFamily?: string;
   fontUrl?: string;
@@ -14,222 +20,82 @@ interface TextPressureProps {
   textColor?: string;
   strokeColor?: string;
   strokeWidth?: number;
-  className?: string;
   minFontSize?: number;
 }
 
-const TextPressure: React.FC<TextPressureProps> = ({
-  text = "Compressa",
-  fontFamily = "Compressa VF",
-  fontUrl = "https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2",
-  width = true,
-  weight = true,
-  italic = true,
-  alpha = false,
-  flex = true,
-  stroke = false,
-  scale = false,
-  textColor = "#FFFFFF",
-  strokeColor = "#FF0000",
-  strokeWidth = 2,
-  className = "",
-  minFontSize = 24,
-}) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const spansRef = useRef<(HTMLSpanElement | null)[]>([]);
-
-  const mouseRef = useRef({ x: 0, y: 0 });
-  const cursorRef = useRef({ x: 0, y: 0 });
-
-  const [fontSize, setFontSize] = useState(minFontSize);
-  const [scaleY, setScaleY] = useState(1);
-  const [lineHeight, setLineHeight] = useState(1);
-
-  const chars = text.split("");
-
-  const dist = (a: { x: number; y: number }, b: { x: number; y: number }) => {
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
-    return Math.sqrt(dx * dx + dy * dy);
-  };
+const TextPressure: React.FC<TextPressureProps> = ({ className = "" }) => {
+  const slidingLayerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      cursorRef.current.x = e.clientX;
-      cursorRef.current.y = e.clientY;
-    };
-    const handleTouchMove = (e: TouchEvent) => {
-      const t = e.touches[0];
-      cursorRef.current.x = t.clientX;
-      cursorRef.current.y = t.clientY;
-    };
+    if (!slidingLayerRef.current) return;
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    // Create one-time sliding animation with GSAP on page load
+    // Slide from left (-100%) to center (0%) and stay there
+    const tl = gsap.timeline({ delay: 1 });
 
-    if (containerRef.current) {
-      const { left, top, width, height } =
-        containerRef.current.getBoundingClientRect();
-      mouseRef.current.x = left + width / 2;
-      mouseRef.current.y = top + height / 2;
-      cursorRef.current.x = mouseRef.current.x;
-      cursorRef.current.y = mouseRef.current.y;
-    }
+    tl.fromTo(
+      slidingLayerRef.current,
+      {
+        x: "-100%",
+      },
+      {
+        x: "0%",
+        duration: 1.2,
+        ease: "power2.out",
+      }
+    );
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchmove", handleTouchMove);
+      tl.kill();
     };
   }, []);
 
-  const setSize = () => {
-    if (!containerRef.current || !titleRef.current) return;
-
-    const { width: containerW, height: containerH } =
-      containerRef.current.getBoundingClientRect();
-
-    let newFontSize = containerW / (chars.length / 2);
-    newFontSize = Math.max(newFontSize, minFontSize);
-
-    setFontSize(newFontSize);
-    setScaleY(1);
-    setLineHeight(1);
-
-    requestAnimationFrame(() => {
-      if (!titleRef.current) return;
-      const textRect = titleRef.current.getBoundingClientRect();
-
-      if (scale && textRect.height > 0) {
-        const yRatio = containerH / textRect.height;
-        setScaleY(yRatio);
-        setLineHeight(yRatio);
-      }
-    });
-  };
-
-  useEffect(() => {
-    setSize();
-    window.addEventListener("resize", setSize);
-    return () => window.removeEventListener("resize", setSize);
-  }, [scale, text]);
-
-  useEffect(() => {
-    let rafId: number;
-    let lastTime = 0;
-    // 60fps on desktop/large screens, 10fps on mobile for better performance
-    const isMobile = window.innerWidth < 768;
-    const fps = isMobile ? 60 : 60;
-    const frameDuration = 1000 / fps;
-
-    const animate = (currentTime: number) => {
-      // Throttle based on device
-      if (currentTime - lastTime < frameDuration) {
-        rafId = requestAnimationFrame(animate);
-        return;
-      }
-      lastTime = currentTime;
-
-      mouseRef.current.x += (cursorRef.current.x - mouseRef.current.x) / 15;
-      mouseRef.current.y += (cursorRef.current.y - mouseRef.current.y) / 15;
-
-      if (titleRef.current) {
-        const titleRect = titleRef.current.getBoundingClientRect();
-        const maxDist = titleRect.width / 2;
-
-        spansRef.current.forEach((span) => {
-          if (!span) return;
-
-          const rect = span.getBoundingClientRect();
-          const charCenter = {
-            x: rect.x + rect.width / 2,
-            y: rect.y + rect.height / 2,
-          };
-
-          const d = dist(mouseRef.current, charCenter);
-
-          const getAttr = (
-            distance: number,
-            minVal: number,
-            maxVal: number
-          ) => {
-            const val = maxVal - Math.abs((maxVal * distance) / maxDist);
-            return Math.max(minVal, val + minVal);
-          };
-
-          const wdth = width ? Math.floor(getAttr(d, 5, 200)) : 100;
-          const wght = weight ? Math.floor(getAttr(d, 100, 900)) : 400;
-          const italVal = italic ? getAttr(d, 0, 1).toFixed(2) : "0";
-          const alphaVal = alpha ? getAttr(d, 0, 1).toFixed(2) : "1";
-
-          span.style.opacity = alphaVal;
-          span.style.fontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}, 'ital' ${italVal}`;
-        });
-      }
-
-      rafId = requestAnimationFrame(animate);
-    };
-
-    rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
-  }, [width, weight, italic, alpha, chars.length]);
-
   return (
     <div
-      ref={containerRef}
-      className="relative w-full overflow-hidden bg-transparent"
+      className={`relative w-full min-h-[100px] md:min-h-[150px] ${className}`}
     >
-      <style>{`
-        @font-face {
-          font-family: '${fontFamily}';
-          src: url('${fontUrl}');
-          font-style: normal;
-        }
-        .stroke span {
-          position: relative;
-          color: ${textColor};
-        }
-        .stroke span::after {
-          content: attr(data-char);
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: transparent;
-          z-index: -1;
-          -webkit-text-stroke-width: ${strokeWidth}px;
-          -webkit-text-stroke-color: ${strokeColor};
-        }
-      `}</style>
+      <div className="relative w-full h-full">
+        {/* Asset 8 - Base layer */}
+        <div className="relative w-full h-auto">
+          <Image
+            src="/logo/hero/Asset 8.svg"
+            alt="Echtventure Logo Base"
+            width={1200}
+            height={200}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
 
-      <h1
-        ref={titleRef}
-        className={`text-pressure-title ${className} ${
-          flex ? "flex justify-between" : ""
-        } ${stroke ? "stroke" : ""} uppercase text-center`}
-        style={{
-          fontFamily,
-          fontSize: fontSize,
-          lineHeight,
-          transform: `scale(1, ${scaleY})`,
-          transformOrigin: "center top",
-          margin: 0,
-          fontWeight: 100,
-          color: stroke ? undefined : textColor,
-        }}
-      >
-        {chars.map((char, i) => (
-          <span
-            key={i}
-            ref={(el) => {
-              spansRef.current[i] = el;
-            }}
-            data-char={char}
-            className="inline-block"
+        {/* Asset 9 - Middle layer (stacked on top) */}
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
+          <Image
+            src="/logo/hero/Asset 9.svg"
+            alt="Echtventure Logo Middle"
+            width={1200}
+            height={200}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
+
+        {/* Asset 10 - Animated sliding layer (stacked on top) */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+          <div
+            ref={slidingLayerRef}
+            className="w-full h-full flex items-center justify-center"
           >
-            {char}
-          </span>
-        ))}
-      </h1>
+            <Image
+              src="/logo/hero/Asset 10.svg"
+              alt="Echtventure Logo Animated"
+              width={1200}
+              height={200}
+              className="w-full h-auto"
+              priority
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

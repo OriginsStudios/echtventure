@@ -195,9 +195,9 @@ const Mission = () => {
     // Adjusted height for better mobile/tablet experience
     <div
       ref={pinContainerRef}
-      className="min-h-[280vh] bg-five-lines-blackbg relative"
+      className="min-h-[120vh] bg-five-lines-blackbg relative"
     >
-      <div className="container-padding min-h-[120vh] flex flex-col justify-center sticky top-0">
+      <div className="container-padding min-h-[100vh] flex flex-col justify-center sticky top-0">
         {/* 1. Text Content Section */}
         {/* This content will be centered and will fade out on scroll */}
         <div ref={textSectionRef} className="mx-auto w-full z-10">
@@ -226,7 +226,7 @@ const Mission = () => {
         {/* 2. BounceCards Section */}
         {/* Positioned absolutely to sit in the center of the container */}
         {/* It starts with opacity-1 since we control individual card visibility */}
-        <div
+        {/* <div
           ref={bounceCardsRef}
           className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-1 p-2 sm:p-4 md:p-6 lg:p-6 pt-16 sm:pt-20 md:pt-24 lg:pt-28"
         >
@@ -276,7 +276,7 @@ const Mission = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

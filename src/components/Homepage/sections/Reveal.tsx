@@ -31,7 +31,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, subtitle }) => {
   const [isRevealed, setIsRevealed] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
 
-  const animationDefaults = { duration: 0.6, ease: "expo" };
+  const animationDefaults = { duration: 1.2, ease: "power2.out" };
 
   // Detect mobile device
   React.useEffect(() => {
