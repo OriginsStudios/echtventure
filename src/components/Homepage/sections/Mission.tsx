@@ -14,7 +14,7 @@ const Mission = () => {
 
   // Define the bounce media array (mix of videos and images)
   const bounceMedia = [
-    { type: "video", src: "/Bounce/1009.mp4" },
+    { type: "video", src: "/Bounce/1001.mp4" },
     { type: "image", src: "/Bounce/Boss 1.JPG" },
     { type: "video", src: "/Bounce/20250806_084925000_iOS.mp4" },
     { type: "image", src: "/Bounce/Conference Speaker.jpg" },
