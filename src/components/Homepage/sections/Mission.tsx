@@ -17,7 +17,7 @@ const Mission = () => {
     { type: "image", src: "/Bounce/Boss 1.JPG" },
     { type: "video", src: "/Bounce/20250806_084925000_iOS.mp4" },
 
-    { type: "video", src: "/Bounce/1001.mp4" },
+    { type: "video", src: "/Bounce/video2.mp4" },
     { type: "image", src: "/Bounce/Conference Speaker.jpg" },
   ];
 
@@ -43,6 +43,13 @@ const Mission = () => {
 
         // Make sure the container is visible
         gsap.set(bounceCardsRef.current, { opacity: 1 });
+
+        // Store random values for each card (so they don't change on resize)
+        const cardRandomValues = Array.from(cards).map(() => ({
+          randomX: Math.random() - 0.5,
+          randomY: Math.random() - 0.5,
+          randomRotation: Math.random() - 0.5,
+        }));
 
         // Function to calculate and set card positions
         const updateCardPositions = () => {
@@ -87,16 +94,18 @@ const Mission = () => {
               // Vertical layout: stack cards vertically, more centered
               const startY = -((cards.length - 1) * cardSpacing) / 2; // Center the group vertically
               positionY = startY + index * cardSpacing;
-              positionX = (Math.random() - 0.5) * (screenWidth < 640 ? 10 : 20); // Even more centered
+              positionX =
+                cardRandomValues[index].randomX * (screenWidth < 640 ? 10 : 20); // Use stored random value
             } else {
               // Horizontal layout: spread cards horizontally (desktop)
               const startX = -((cards.length - 1) * cardSpacing) / 2; // Center the group
               positionX = startX + index * cardSpacing;
-              positionY = (Math.random() - 0.5) * 100; // Random Y for visual interest
+              positionY = cardRandomValues[index].randomY * 100; // Use stored random value
             }
 
             const randomRotation =
-              (Math.random() - 0.5) * (screenWidth < 640 ? 5 : 10); // Less rotation for better centering
+              cardRandomValues[index].randomRotation *
+              (screenWidth < 640 ? 5 : 10); // Use stored random value
 
             // Update card position (for resize)
             gsap.set(card, {
@@ -163,7 +172,10 @@ const Mission = () => {
         // Handle window resize - update card positions dynamically
         const handleResize = () => {
           updateCardPositions();
-          ScrollTrigger.refresh();
+          // Use a slight delay to prevent jittery updates during rapid resize
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
         };
 
         window.addEventListener("resize", handleResize);
