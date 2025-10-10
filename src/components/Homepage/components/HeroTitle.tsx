@@ -119,7 +119,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
     let lastTime = 0;
     // 60fps on desktop/large screens, 10fps on mobile for better performance
     const isMobile = window.innerWidth < 768;
-    const fps = isMobile ? 10 : 60;
+    const fps = isMobile ? 60 : 60;
     const frameDuration = 1000 / fps;
 
     const animate = (currentTime: number) => {

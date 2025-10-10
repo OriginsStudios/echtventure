@@ -26,7 +26,8 @@ const HomePageHero = () => {
       if (rafId === null) {
         rafId = requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          if (Math.abs(currentScrollY - lastScrollY) > 5) { // Only update if scrolled more than 5px
+          if (Math.abs(currentScrollY - lastScrollY) > 5) {
+            // Only update if scrolled more than 5px
             setScrollY(currentScrollY);
             lastScrollY = currentScrollY;
           }
