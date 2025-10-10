@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button";
 import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import CountUp from "@/components/ui/CountUp";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -218,6 +219,19 @@ const Mission = () => {
                 individuals and teams, that when high mastery and great
                 leadership is present, their company is elevated to the next
                 level. We desire this for all who we work with.
+              </p>
+            </div>
+
+            {/* Impact Metric under description */}
+            <div className="flex flex-col items-center">
+              <p className="font-butler text-5xl sm:text-6xl md:text-7xl lg:text-8xl  text-gray-100 pb-2">
+                Impact Over
+              </p>
+              <div className="text-6xl sm:text-7xl md:text-8xl font-butler text-white leading-none ">
+                <CountUp to={2500} separator="," />
+              </div>
+              <p className="mt-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-butler text-gray-100 ">
+                Individuals
               </p>
             </div>
           </div>

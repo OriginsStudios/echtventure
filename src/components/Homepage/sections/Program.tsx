@@ -2,7 +2,6 @@
 import React from "react";
 import SecondProgram from "./SecondProgram";
 import FlowingMenu from "./Reveal";
-import CountUp from "@/components/ui/CountUp";
 
 const demoItems = [
   {
