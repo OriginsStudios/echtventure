@@ -170,9 +170,8 @@ export default function CoachesPage() {
           <div className="relative flex flex-col items-center justify-center w-full h-full text-black text-center px-4 sm:px-6 md:px-8 z-10">
             <h1
               ref={techTitleRef}
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-black uppercase mb-4 sm:mb-6 md:mb-8 overflow-hidden leading-tight flex flex-col"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-black uppercase mb-4 sm:mb-6 md:mb-8 overflow-hidden leading-tight"
             >
-              <span>Our</span>
               <span>Coaches</span>
             </h1>
             <p

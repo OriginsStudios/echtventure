@@ -322,7 +322,7 @@ const MobileNav = ({
                   onClick={(e) => handleNavigate(e, link.href)}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
-                  className="mobile-nav-link relative block  transition-colors duration-200  cursor-pointer pb-1 font-butler text-3xl font-semibold tracking-wider text-black"
+                  className="mobile-nav-link relative block  transition-colors duration-200  cursor-pointer pb-1 font-butler text-2xl font-semibold tracking-wider text-black"
                 >
                   {link.title}
                   <span

@@ -163,7 +163,7 @@ export default function ResourcesPage() {
           <div className="relative flex flex-col items-center justify-center w-full h-full text-black text-center px-4 z-10">
             <h1
               ref={techTitleRef}
-              className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase mb-8 overflow-hidden"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-black uppercase mb-4 sm:mb-6 md:mb-8 overflow-hidden leading-tight"
             >
               {titleText}
             </h1>
