@@ -208,7 +208,7 @@ export default function ResourcesPage() {
           {/* Enhanced Resource Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {/* Blog Card */}
-            <div className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-100">
+            <div className="group relative bg-white rounded-2xl transition-all duration-500 overflow-hidden border-2 border-black">
               {/* Card Header with Icon */}
               <div className="relative h-80 bg-white overflow-hidden border-b border-slate-100">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -288,7 +288,7 @@ export default function ResourcesPage() {
             </div>
 
             {/* Podcast Card */}
-            <div className="group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-100">
+            <div className="group relative bg-white rounded-2xl transition-all duration-500 overflow-hidden border-2 border-black">
               {/* Card Header with Icon */}
               <div className="relative h-80 bg-white overflow-hidden border-b border-slate-100">
                 <div className="absolute inset-0 flex items-center justify-center">
