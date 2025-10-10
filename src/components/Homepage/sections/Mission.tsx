@@ -64,10 +64,14 @@ const Mission = () => {
               // Below 1000px: vertical layout
               isVerticalLayout = true;
               cardSpacing = 220; // Increased from 160 to prevent overlap
-            } else if (screenWidth < 1550) {
+            } else if (screenWidth < 1350) {
               // Between 1000px and 1550px: horizontal with overlapping (reduced spacing)
               isVerticalLayout = false;
               cardSpacing = 200; // Reduced spacing for overlap effect
+            } else if (screenWidth < 1550) {
+              // Between 1000px and 1550px: horizontal with overlapping (reduced spacing)
+              isVerticalLayout = false;
+              cardSpacing = 300; // Reduced spacing for overlap effect
             } else {
               // 1550px and above: full horizontal spacing
               isVerticalLayout = false;
