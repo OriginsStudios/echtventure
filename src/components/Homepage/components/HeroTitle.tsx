@@ -117,7 +117,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
   useEffect(() => {
     let rafId: number;
     let lastTime = 0;
-    const fps = 30; // Reduced from 60fps to 30fps for better mobile performance
+    const fps = 60; // Reduced from 60fps to 30fps for better mobile performance
     const frameDuration = 1000 / fps;
 
     const animate = (currentTime: number) => {
