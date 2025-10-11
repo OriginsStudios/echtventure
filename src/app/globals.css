@@ -2,48 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Montserrat Font Family */
-@font-face {
-  font-family: "Montserrat";
-  src: url("/Fonts/Montserrat/static/Montserrat-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("/Fonts/Montserrat/static/Montserrat-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("/Fonts/Montserrat/static/Montserrat-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("/Fonts/Montserrat/static/Montserrat-SemiBold.ttf")
-    format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("/Fonts/Montserrat/static/Montserrat-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Butler Font Family */
 @font-face {
   font-family: "Butler";

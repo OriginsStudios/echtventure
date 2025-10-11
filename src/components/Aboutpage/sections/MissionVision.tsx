@@ -62,7 +62,7 @@ const MissionVisionSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <AnimatedTitle>
-            <h2 className="font-montserrat text-[48px] leading-[1.1em] font-normal text-black">
+            <h2 className="font-butler text-[48px] leading-[1.1em] font-normal text-black">
               Our Mission & Vision
             </h2>
           </AnimatedTitle>
@@ -84,10 +84,10 @@ const MissionVisionSection = () => {
                   <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z" />
                 </svg>
               </div>
-              <h3 className="font-montserrat text-[32px] font-semibold text-black mb-6">
+              <h3 className="font-butler text-[32px] font-semibold text-black mb-6">
                 Our Mission
               </h3>
-              <p className="font-montserrat text-[22px] text-gray-700 leading-[1.5em] font-medium">
+              <p className="font-butler text-[22px] text-gray-700 leading-[1.5em] font-medium">
                 "To provide the right resources at the right time to maximise
                 our clients' business potential."
               </p>
@@ -109,10 +109,10 @@ const MissionVisionSection = () => {
                   <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5S21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12S9.24 7 12 7S17 9.24 17 12S14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z" />
                 </svg>
               </div>
-              <h3 className="font-montserrat text-[32px] font-semibold text-black mb-6">
+              <h3 className="font-butler text-[32px] font-semibold text-black mb-6">
                 Our Vision
               </h3>
-              <p className="font-montserrat text-[22px] text-gray-700 leading-[1.5em] font-medium">
+              <p className="font-butler text-[22px] text-gray-700 leading-[1.5em] font-medium">
                 "To be the catalyst for a generation of authentic leaders who
                 create meaningful impact in their organizations and
                 communities."
@@ -124,37 +124,37 @@ const MissionVisionSection = () => {
         {/* Core Values */}
         <div className="mt-20">
           <AnimatedTitle>
-            <h3 className="font-montserrat text-[36px] font-normal text-black text-center mb-12">
+            <h3 className="font-butler text-[36px] font-normal text-black text-center mb-12">
               Our Core Values
             </h3>
           </AnimatedTitle>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6">
-              <div className="font-montserrat text-[24px] font-semibold text-[#6a3a3a] mb-4">
+              <div className="font-butler text-[24px] font-semibold text-[#6a3a3a] mb-4">
                 Authenticity
               </div>
-              <p className="font-montserrat text-[18px] text-gray-700 leading-[1.5em]">
+              <p className="font-butler text-[18px] text-gray-700 leading-[1.5em]">
                 We believe in being genuine, real, and true to oneself in all
                 interactions.
               </p>
             </div>
 
             <div className="text-center p-6">
-              <div className="font-montserrat text-[24px] font-semibold text-[#6a3a3a] mb-4">
+              <div className="font-butler text-[24px] font-semibold text-[#6a3a3a] mb-4">
                 Excellence
               </div>
-              <p className="font-montserrat text-[18px] text-gray-700 leading-[1.5em]">
+              <p className="font-butler text-[18px] text-gray-700 leading-[1.5em]">
                 We are committed to delivering exceptional value and results for
                 our clients.
               </p>
             </div>
 
             <div className="text-center p-6">
-              <div className="font-montserrat text-[24px] font-semibold text-[#6a3a3a] mb-4">
+              <div className="font-butler text-[24px] font-semibold text-[#6a3a3a] mb-4">
                 Growth
               </div>
-              <p className="font-montserrat text-[18px] text-gray-700 leading-[1.5em]">
+              <p className="font-butler text-[18px] text-gray-700 leading-[1.5em]">
                 We foster continuous learning and development for sustainable
                 success.
               </p>

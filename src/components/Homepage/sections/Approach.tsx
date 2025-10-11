@@ -13,7 +13,7 @@ const BACKGROUND_IMAGES = [
   "/cover3.jpeg",
 ];
 
-const TEXT_LINES = ["Awareness", "Mastery", "Leadership"];
+const TEXT_LINES = ["AWARENESS", "MASTERY", "LEADERSHIP"];
 
 export default function Approach() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -29,10 +29,9 @@ export default function Approach() {
 
   useGSAP(
     () => {
-      // Use matchMedia for proper responsive handling
       const mm = gsap.matchMedia();
 
-      // Mobile (767px and below) - Vertical layout - OPTIMIZED
+      // Mobile (767px and below) - Vertical layout
       mm.add("(max-width: 767px)", () => {
         gsap.set(".keith-image-wrapper", {
           left: "50%",
@@ -51,22 +50,22 @@ export default function Approach() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container.current,
-            scrub: 0.5, // Reduced from 1 for better mobile performance
+            scrub: 0.5,
             start: "top top",
             end: "bottom bottom",
-            fastScrollEnd: true, // Add this for better mobile performance
+            fastScrollEnd: true,
           },
         });
 
-        // Text animations for small mobile - simplified stagger
+        // Text animations for mobile
         tl.fromTo(
           ".line-0 .char",
           { y: 50, autoAlpha: 0 },
-          { y: 0, autoAlpha: 1, stagger: 0.03, ease: "power2.out" }, // Simplified ease
+          { y: 0, autoAlpha: 1, stagger: 0.03, ease: "power2.out" },
           0.2
         ).to(
           ".line-0 .char",
-          { y: -50, autoAlpha: 0, stagger: 0.03, ease: "power2.in" }, // Simplified ease
+          { y: -50, autoAlpha: 0, stagger: 0.03, ease: "power2.in" },
           "+=0.5"
         );
 
@@ -89,7 +88,7 @@ export default function Approach() {
         );
       });
 
-      // Tablet (768px - 1023px) - Vertical layout - OPTIMIZED
+      // Tablet (768px - 1023px) - Vertical layout
       mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
         gsap.set(".keith-image-wrapper", {
           left: "50%",
@@ -108,14 +107,14 @@ export default function Approach() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container.current,
-            scrub: 0.5, // Reduced from 1
+            scrub: 0.5,
             start: "top top",
             end: "bottom bottom",
             fastScrollEnd: true,
           },
         });
 
-        // Text animations for medium screens - simplified
+        // Text animations for tablet
         tl.fromTo(
           ".line-0 .char",
           { y: 50, autoAlpha: 0 },
@@ -158,7 +157,7 @@ export default function Approach() {
         gsap.set(".keith-image-wrapper", {
           left: "50%",
           xPercent: -50,
-          top: "calc(60% + 40px)", // Account for navbar height
+          top: "calc(60% + 40px)",
           yPercent: -50,
         });
 
@@ -171,13 +170,13 @@ export default function Approach() {
           },
         });
 
-        // Move Keith to the right side and keep him there (faster)
+        // Move Keith to the right side
         tl.to(
           ".keith-image-wrapper",
           {
             left: "100%",
             xPercent: -100,
-            top: "calc(60% + 40px)", // Maintain position accounting for navbar
+            top: "calc(60% + 40px)",
             ease: "power3.out",
             duration: 0.2,
           },
@@ -194,6 +193,7 @@ export default function Approach() {
             },
             0.05
           );
+
         // Text animations for desktop
         tl.fromTo(
           ".line-0 .char",
@@ -227,6 +227,7 @@ export default function Approach() {
     },
     { scope: container, revertOnUpdate: true }
   );
+
   return (
     <main className="container-padding pb-24">
       <section
@@ -249,7 +250,7 @@ export default function Approach() {
 
           <div className="relative w-full h-full">
             <div className="text-content absolute w-[50%] 2xl:w-[45%] h-full flex justify-center lg:justify-start opacity-0 lg:ml-24 xl:ml-32">
-              <h2 className="text-white text-[9vw] sm:text-[10vw] md:text-[6.5vw] lg:text-[7vw] xl:text-[7vw] font-bold text-center lg:text-left font-butler leading-none tracking-tighter whitespace-nowrap px-2">
+              <h2 className="text-white text-[9vw] sm:text-[10vw] md:text-[6.5vw] lg:text-[7vw] xl:text-[7vw] text-center lg:text-left font-butler font-bold leading-none tracking-tighter whitespace-nowrap px-2 uppercase">
                 {TEXT_LINES.map((line, lineIndex) => (
                   <div
                     key={lineIndex}

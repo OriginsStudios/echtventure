@@ -346,12 +346,8 @@ const MobileNav = ({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               <div className="absolute bottom-4 left-4 text-white">
-                <p className="text-sm font-montserrat font-semibold">
-                  Transform
-                </p>
-                <p className="text-xs font-montserrat opacity-90">
-                  Your Journey
-                </p>
+                <p className="text-sm font-butler font-semibold">Transform</p>
+                <p className="text-xs font-butler opacity-90">Your Journey</p>
               </div>
             </div>
           </div>
@@ -364,6 +360,7 @@ const MobileNav = ({
 // --- Main Navbar Component ---
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   const handleMouseEnter = useCallback((index: number) => {
@@ -398,6 +395,20 @@ const Navbar = () => {
     []
   );
 
+  // Add scroll listener to detect when user has scrolled
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setHasScrolled(scrollY > 50); // Show logo after scrolling 50px
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <nav className="bg-backgroundColorWhite w-full sticky top-0 border-b z-40 border-lineColor">
@@ -405,7 +416,9 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-20">
             <Link
               href="/"
-              className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+              className={`flex-shrink-0 flex items-center gap-2 cursor-pointer transition-opacity duration-300 ${
+                hasScrolled ? "opacity-100" : "opacity-0"
+              }`}
               onClick={(e) => handleLinkClick(e, "/")}
             >
               <Image

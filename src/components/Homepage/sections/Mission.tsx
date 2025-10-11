@@ -196,9 +196,9 @@ const Mission = () => {
     // Adjusted height for better mobile/tablet experience
     <div
       ref={pinContainerRef}
-      className="min-h-[120vh] bg-five-lines-blackbg relative"
+      className="min-h-[80vh] bg-five-lines-blackbg relative"
     >
-      <div className="container-padding min-h-[100vh] flex flex-col justify-center sticky top-0">
+      <div className="container-padding min-h-[80vh] flex flex-col justify-center sticky top-0">
         {/* 1. Text Content Section */}
         {/* This content will be centered and will fade out on scroll */}
         <div ref={textSectionRef} className="mx-auto w-full z-10">
@@ -213,25 +213,12 @@ const Mission = () => {
 
             {/* Description */}
             <div className="w-full max-w-3xl mx-auto">
-              <p className="font-montserrat text-lg sm:text-xl text-gray-300 leading-relaxed text-center mx-auto">
+              <p className="font-butler text-lg sm:text-xl text-gray-300 leading-relaxed text-center mx-auto">
                 Echtventure exists to create impact in every space that we are
                 able to enter. We have seen countless transformations in both
                 individuals and teams, that when high mastery and great
                 leadership is present, their company is elevated to the next
                 level. We desire this for all who we work with.
-              </p>
-            </div>
-
-            {/* Impact Metric under description */}
-            <div className="flex flex-col items-center">
-              <p className="font-butler text-5xl sm:text-6xl md:text-7xl lg:text-8xl  text-gray-100 pb-2">
-                Impact Over
-              </p>
-              <div className="text-6xl sm:text-7xl md:text-8xl font-butler text-white leading-none ">
-                <CountUp to={2500} separator="," />
-              </div>
-              <p className="mt-2 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-butler text-gray-100 ">
-                Individuals
               </p>
             </div>
           </div>

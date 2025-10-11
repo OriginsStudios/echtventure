@@ -203,7 +203,7 @@ export default function CoachesPage() {
                 </div>
                 <div className="p-5 pb-8">
                   <h3 className="text-lg font-semibold">{coach.name}</h3>
-                  <p className="text-sm font-montserrat text-neutral-600 mt-1">
+                  <p className="text-sm font-butler text-neutral-600 mt-1">
                     {coach.title}
                   </p>
                 </div>

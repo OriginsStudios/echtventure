@@ -148,7 +148,7 @@ const HomePageHero = () => {
 
         {/* Description and Button */}
         <div className="flex flex-col items-center text-center max-w-2xl">
-          <p className="hero-description text-center font-montserrat text-gray-700 text-xl md:text-2xl mb-8">
+          <p className="hero-description text-center font-butler text-gray-700 text-xl md:text-2xl mb-8">
             Delivering authentic support that adds real value, connects you with
             the right resources, and helps you unlock and maximize your business
             potential!

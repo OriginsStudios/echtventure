@@ -196,7 +196,7 @@ export default function CombinedPage() {
             <div className="text-center mb-16">
               <div className="inline-flex items-center bg-slate-800 px-6 py-3 rounded-lg border border-slate-700">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                <p className="font-montserrat text-sm text-slate-300">
+                <p className="font-butler text-sm text-slate-300">
                   <span className="font-semibold text-white">
                     Assessment Portal:
                   </span>{" "}
@@ -223,7 +223,7 @@ export default function CombinedPage() {
                   <div className="w-16 h-1 bg-slate-600 rounded-full mx-auto lg:mx-0"></div>
                 </div>
 
-                <p className="enneagram-description font-montserrat text-slate-300 text-lg leading-relaxed mb-10">
+                <p className="enneagram-description font-butler text-slate-300 text-lg leading-relaxed mb-10">
                   The Enneagram is a powerful tool for understanding your core
                   motivations and how they shape your relationships and work.
                   Take our free assessment to begin your journey of
@@ -241,7 +241,7 @@ export default function CombinedPage() {
                 </div>
 
                 <div className="enneagram-disclaimer">
-                  <p className="font-montserrat text-sm text-slate-400">
+                  <p className="font-butler text-sm text-slate-400">
                     <span className="font-semibold">Note:</span> You will be
                     redirected to our secure partner platform,
                     assessment.echtventure.com, to complete the assessment.
@@ -273,7 +273,7 @@ export default function CombinedPage() {
                 </div>
 
                 <div className="space-y-4 sm:space-y-6">
-                  <p className="font-montserrat text-sm sm:text-base text-slate-300 leading-relaxed text-center px-2">
+                  <p className="font-butler text-sm sm:text-base text-slate-300 leading-relaxed text-center px-2">
                     Certified in{" "}
                     <strong className="text-white">
                       People Management with Enneagram
@@ -285,19 +285,19 @@ export default function CombinedPage() {
                   <div className="grid grid-cols-1 gap-2 sm:gap-3">
                     <div className="flex items-start sm:items-center bg-slate-700/50 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
                       <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 sm:mr-3 flex-shrink-0 mt-1 sm:mt-0"></div>
-                      <span className="font-montserrat text-xs sm:text-sm text-slate-200 leading-snug">
+                      <span className="font-butler text-xs sm:text-sm text-slate-200 leading-snug">
                         Certified Enneagram Practitioner
                       </span>
                     </div>
                     <div className="flex items-start sm:items-center bg-slate-700/50 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
                       <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 sm:mr-3 flex-shrink-0 mt-1 sm:mt-0"></div>
-                      <span className="font-montserrat text-xs sm:text-sm text-slate-200 leading-snug">
+                      <span className="font-butler text-xs sm:text-sm text-slate-200 leading-snug">
                         100+ Individuals Coached
                       </span>
                     </div>
                     <div className="flex items-start sm:items-center bg-slate-700/50 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
                       <div className="w-2 h-2 bg-emerald-400 rounded-full mr-2 sm:mr-3 flex-shrink-0 mt-1 sm:mt-0"></div>
-                      <span className="font-montserrat text-xs sm:text-sm text-slate-200 leading-snug">
+                      <span className="font-butler text-xs sm:text-sm text-slate-200 leading-snug">
                         International Speaker (12+ Countries)
                       </span>
                     </div>
@@ -305,7 +305,7 @@ export default function CombinedPage() {
 
                   <div className="pt-2 sm:pt-4 text-center">
                     <div className="inline-flex items-center bg-slate-900 px-3 sm:px-4 py-2 rounded-lg">
-                      <span className="font-montserrat text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">
+                      <span className="font-butler text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">
                         LIGHT • LOVE • LEAD
                       </span>
                     </div>
@@ -339,7 +339,7 @@ export default function CombinedPage() {
                 <h4 className="font-butler font-bold text-lg text-white mb-3">
                   Self-Awareness
                 </h4>
-                <p className="font-montserrat text-slate-400 text-sm leading-relaxed">
+                <p className="font-butler text-slate-400 text-sm leading-relaxed">
                   Understand your core motivations, fears, and desires that
                   drive your behavior.
                 </p>
@@ -363,7 +363,7 @@ export default function CombinedPage() {
                 <h4 className="font-butler font-bold text-lg text-white mb-3">
                   Better Relationships
                 </h4>
-                <p className="font-montserrat text-slate-400 text-sm leading-relaxed">
+                <p className="font-butler text-slate-400 text-sm leading-relaxed">
                   Improve your relationships by understanding different
                   personality approaches.
                 </p>
@@ -387,7 +387,7 @@ export default function CombinedPage() {
                 <h4 className="font-butler font-bold text-lg text-white mb-3">
                   Personal Growth
                 </h4>
-                <p className="font-montserrat text-slate-400 text-sm leading-relaxed">
+                <p className="font-butler text-slate-400 text-sm leading-relaxed">
                   Identify your growth path and develop strategies to overcome
                   limiting patterns.
                 </p>

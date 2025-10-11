@@ -63,7 +63,7 @@ const ServicesSection = () => {
           <h2 className="font-butler text-[clamp(2rem,6vw,64px)] leading-[0.9em] text-black uppercase mb-6">
             Our Services
           </h2>
-          <p className="font-montserrat text-[20px] leading-[1.6em] text-gray-600 max-w-3xl mx-auto">
+          <p className="font-butler text-[20px] leading-[1.6em] text-gray-600 max-w-3xl mx-auto">
             We offer a range of services designed to unlock your potential and
             drive authentic transformation.
           </p>
@@ -79,7 +79,7 @@ const ServicesSection = () => {
               <h3 className="font-butler text-xl font-bold text-black mb-4">
                 {service.title}
               </h3>
-              <p className="font-montserrat text-gray-600 leading-relaxed">
+              <p className="font-butler text-gray-600 leading-relaxed">
                 {service.description}
               </p>
             </div>
@@ -87,7 +87,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="text-center">
-          <p className="font-montserrat text-gray-600 mb-6">
+          <p className="font-butler text-gray-600 mb-6">
             Ready to begin your transformation journey?
           </p>
           <Link

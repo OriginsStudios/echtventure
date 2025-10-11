@@ -192,13 +192,13 @@ export default function ResourcesPage() {
             <Badge variant="outline" className="shadow-sm mb-8">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-custom-green rounded-full mr-3"></div>
-                <span className="font-montserrat">FEATURED CONTENT</span>
+                <span className="font-butler">FEATURED CONTENT</span>
               </div>
             </Badge>
             <h2 className="font-butler text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6">
               Explore Our Content
             </h2>
-            <p className="font-montserrat text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="font-butler text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Dive deep into our curated collection of insights, conversations,
               and expertise designed to accelerate your personal and
               professional growth.
@@ -238,7 +238,7 @@ export default function ResourcesPage() {
                 <h3 className="font-butler text-3xl font-bold text-slate-900 mb-4">
                   Blog
                 </h3>
-                <p className="font-montserrat text-slate-600 text-lg leading-relaxed mb-8">
+                <p className="font-butler text-slate-600 text-lg leading-relaxed mb-8">
                   Discover thought-provoking insights, actionable strategies,
                   and expert perspectives on leadership, personal development,
                   and organizational transformation.
@@ -248,19 +248,19 @@ export default function ResourcesPage() {
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center text-slate-600">
                     <div className="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div>
-                    <span className="font-montserrat text-sm">
+                    <span className="font-butler text-sm">
                       Weekly insights from industry experts
                     </span>
                   </div>
                   <div className="flex items-center text-slate-600">
                     <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                    <span className="font-montserrat text-sm">
+                    <span className="font-butler text-sm">
                       Practical leadership strategies
                     </span>
                   </div>
                   <div className="flex items-center text-slate-600">
                     <div className="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
-                    <span className="font-montserrat text-sm">
+                    <span className="font-butler text-sm">
                       Personal development guides
                     </span>
                   </div>
@@ -318,7 +318,7 @@ export default function ResourcesPage() {
                 <h3 className="font-butler text-3xl font-bold text-slate-900 mb-4">
                   Podcast
                 </h3>
-                <p className="font-montserrat text-slate-600 text-lg leading-relaxed mb-8">
+                <p className="font-butler text-slate-600 text-lg leading-relaxed mb-8">
                   Engage with inspiring conversations featuring thought leaders,
                   industry pioneers, and transformation experts sharing their
                   wisdom and experiences.
@@ -328,19 +328,19 @@ export default function ResourcesPage() {
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center text-slate-600">
                     <div className="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
-                    <span className="font-montserrat text-sm">
+                    <span className="font-butler text-sm">
                       Expert interviews & discussions
                     </span>
                   </div>
                   <div className="flex items-center text-slate-600">
                     <div className="w-2 h-2 bg-teal-500 rounded-full mr-3"></div>
-                    <span className="font-montserrat text-sm">
+                    <span className="font-butler text-sm">
                       Leadership success stories
                     </span>
                   </div>
                   <div className="flex items-center text-slate-600">
                     <div className="w-2 h-2 bg-cyan-500 rounded-full mr-3"></div>
-                    <span className="font-montserrat text-sm">
+                    <span className="font-butler text-sm">
                       Transformation case studies
                     </span>
                   </div>
@@ -370,7 +370,7 @@ export default function ResourcesPage() {
 
           {/* Bottom CTA */}
           <div className="text-center mt-20">
-            <p className="font-montserrat text-lg text-slate-600 mb-6">
+            <p className="font-butler text-lg text-slate-600 mb-6">
               Want to stay updated with our latest content?
             </p>
             <Badge variant="outline" className="shadow-sm">
@@ -388,7 +388,7 @@ export default function ResourcesPage() {
                     d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 00-15 0v5h5l-5 5-5-5h5V7.5z"
                   />
                 </svg>
-                <span className="font-montserrat text-slate-700">
+                <span className="font-butler text-slate-700">
                   Follow us for regular updates and insights
                 </span>
               </div>

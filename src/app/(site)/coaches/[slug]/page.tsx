@@ -32,7 +32,7 @@ export default async function CoachSlugPage({
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               {coach.name}
             </h1>
-            <p className="text-neutral-700 font-montserrat mt-2 text-lg">
+            <p className="text-neutral-700 font-butler mt-2 text-lg">
               {coach.title}
             </p>
 
@@ -75,10 +75,10 @@ export default async function CoachSlugPage({
               .map((t, idx) => (
                 <li key={`${t.year}-${idx}`} className="mb-5 ms-2">
                   <div className="absolute -start-[7px] h-3 w-3 rounded-full bg-black mt-1.5"></div>
-                  <p className="text-sm font-montserrat text-neutral-500">
+                  <p className="text-sm font-butler text-neutral-500">
                     {t.year}
                   </p>
-                  <p className="font-medium font-montserrat">
+                  <p className="font-medium font-butler">
                     {t.role}
                     {t.org ? (
                       <span className="text-neutral-600">, {t.org}</span>

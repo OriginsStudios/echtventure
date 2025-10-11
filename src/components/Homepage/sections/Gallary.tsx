@@ -1,6 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef, type HTMLAttributes } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -15,120 +17,244 @@ export default function Gallary() {
       const section = sectionRef.current;
       if (!section) return;
 
-      const titleLines = section.querySelectorAll("[data-title-line]");
-      const videoContainer = section.querySelector("[data-video]");
-      const description = section.querySelector("[data-description]");
+      const wrapper = section.querySelector<HTMLElement>("[data-grid-wrapper]");
+      const hero = section.querySelector<HTMLElement>("[data-hero]");
+      const cards = gsap.utils.toArray<HTMLElement>(
+        section.querySelectorAll("[data-card]")
+      );
+      const center = section.querySelector<HTMLElement>("[data-center]");
 
-      if (!titleLines.length || !videoContainer || !description) return;
+      if (!wrapper || !hero || !center || !cards.length) return;
 
-      // Initial state
-      gsap.set([titleLines, videoContainer, description], {
-        autoAlpha: 0,
-        y: 50,
-      });
+      gsap.set([cards, center], { autoAlpha: 0 });
 
-      // Animation timeline
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 60%",
-          end: "top 20%",
-          scrub: 1,
+      ScrollTrigger.matchMedia({
+        // Desktop animation
+        "(min-width: 768px)": function () {
+          const tl = gsap.timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: {
+              trigger: section,
+              start: "top 20%",
+              end: "bottom 80%",
+              pin: false,
+              scrub: 1.5, // Reduced from 2.5 for better performance
+              anticipatePin: 0,
+              fastScrollEnd: true, // Better mobile performance
+            },
+          });
+
+          // UPDATED: Changed from .from() to .fromTo() to control the final scale
+          tl.fromTo(
+            wrapper,
+            {
+              // Start state (zoomed in and off-center)
+              scale: 3.5,
+              xPercent: 90,
+              yPercent: -60,
+            },
+            {
+              // End state (larger and centered)
+              scale: 0.75, // <-- The grid will be 50% larger at the end
+              xPercent: 0,
+              yPercent: 20,
+              duration: 2.2,
+              ease: "power2.inOut",
+            }
+          ).to(
+            [cards, center],
+            {
+              autoAlpha: 1,
+              stagger: 0.08,
+              duration: 0.8,
+              ease: "power2.inOut",
+            },
+            0.2
+          );
+
+          return () => {
+            tl.kill();
+          };
+        },
+
+        // Mobile animation - OPTIMIZED
+        "(max-width: 767px)": function () {
+          const tl = gsap.timeline({
+            defaults: { ease: "none" },
+            scrollTrigger: {
+              trigger: section,
+              start: "top 30%",
+              end: "bottom 70%",
+              pin: false,
+              scrub: 1, // Reduced from 2.8 for better mobile performance
+              fastScrollEnd: true,
+            },
+          });
+
+          // UPDATED: Changed from .from() to .fromTo() for mobile as well
+          tl.fromTo(
+            wrapper,
+            {
+              // Start state
+              scale: 2.5,
+              xPercent: 0,
+              yPercent: -105,
+            },
+            {
+              // End state
+              scale: 0.9, // <-- The grid will be 15% larger at the end
+              xPercent: 0,
+              yPercent: 0,
+              duration: 1.5,
+              ease: "power2.inOut",
+            }
+          ).to(
+            [cards, center],
+            {
+              autoAlpha: 1,
+              stagger: 0.05,
+              duration: 0.7,
+              ease: "power2.out",
+            },
+            0.2
+          );
+
+          return () => {
+            tl.kill();
+          };
         },
       });
-
-      tl.to(titleLines, {
-        autoAlpha: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 1,
-        ease: "power2.out",
-      })
-        .to(
-          videoContainer,
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-          },
-          "-=0.5"
-        )
-        .to(
-          description,
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-          },
-          "-=0.5"
-        );
     },
     { scope: sectionRef }
   );
 
   return (
     <section
+      id="cover"
       ref={sectionRef}
-      className="relative min-h-screen bg-black flex items-center justify-center py-20 overflow-hidden"
+      className="relative flex sm:min-h-[140vh] min-h-[120vh] md:min-h-[100vh] lg:min-h-[130vh] items-end md:items-center justify-center overflow-hidden lg:pt-12 md:pt-12"
     >
-      <div className="container-padding mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Left side - Large bold text */}
-          <div className="space-y-0 lg:space-y-2">
-            <h2
-              data-title-line
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-[#D4FF00] leading-[0.9] tracking-tight"
-              style={{ fontFamily: "Arial Black, sans-serif" }}
-            >
-              INVESTOR.
-            </h2>
-            <h2
-              data-title-line
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-[#D4FF00] leading-[0.9] tracking-tight"
-              style={{ fontFamily: "Arial Black, sans-serif" }}
-            >
-              INNOVATOR.
-            </h2>
-            <h2
-              data-title-line
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-[#D4FF00] leading-[0.9] tracking-tight"
-              style={{ fontFamily: "Arial Black, sans-serif" }}
-            >
-              DISRUPTOR.
-            </h2>
-          </div>
+      <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6  ">
+        <div data-grid-wrapper>
+          <div className="relative grid grid-cols-4 md:grid-cols-12 md:gap-4 gap-12">
+            {/* Top-left image */}
+            <PhotoCard
+              data-card
+              className="hidden md:block col-span-2 md:col-span-3 md:col-start-1 md:row-start-1"
+              src="/gallery/4.jpg"
+              alt="Portrait"
+              width={320}
+              height={400}
+              priority
+            />
 
-          {/* Right side - Video and Description */}
-          <div className="space-y-6">
-            {/* Video container */}
-            <div
-              data-video
-              className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl"
-            >
-              <video
-                className="w-full h-full object-cover"
-                src="/Bounce/video3.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
+            {/* Top-right image */}
+            <PhotoCard
+              data-card
+              className="hidden md:block col-span-2 md:col-span-3 md:col-start-10 md:row-start-1 "
+              src="/gallery/3.jpg"
+              alt="Family"
+              width={320}
+              height={300}
+            />
+
+            {/* Top image for mobile/tablet - was middle-right */}
+            <div className="col-span-4 row-start-1 flex justify-center md:hidden">
+              <PhotoCard
+                data-card
+                className="w-full max-w-[280px]"
+                src="/gallery/2.jpg"
+                alt="Portrait with hat"
+                width={320}
+                height={400}
               />
             </div>
 
-            {/* Description text */}
-            <div data-description className="text-white">
-              <p className="text-lg sm:text-xl leading-relaxed font-montserrat">
-                Steven Bartlett is an Entrepreneur, speaker, investor, author,
-                Dragon on Dragon's Den and the host of Europe's leading podcast
-                'The Diary of a CEO'.
-              </p>
+            {/* Center content */}
+            <div
+              data-center
+              className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:col-start-1 md:row-start-2 text-center px-2 md:pb-12"
+            >
+              <h2 className="text-2xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl font-bold italic">
+                Our Process
+              </h2>
+              <h2 className="text-2xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl font-bold italic">
+                Awareness <span className="font-normal">to</span> Mastery{" "}
+                <span className="font-normal">to</span> Leadership
+              </h2>
+              <div className="mt-4 sm:mt-5">
+                <Link
+                  href="/coaches"
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900  text-lg font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40 px-4 py-2 sm:px-8 sm:py-4 sm:text-md"
+                >
+                  Learn More
+                </Link>
+              </div>
             </div>
+
+            {/* Bottom image for mobile/tablet - was middle-left hero */}
+            <div className="col-span-4 row-start-3 flex justify-center md:col-span-4 md:col-start-2 md:-mt-12 z-20">
+              <PhotoCard
+                data-hero
+                className="w-full max-w-[280px] md:max-w-none"
+                src="/gallery/5.jpg"
+                alt="Creative at work"
+                width={450}
+                height={300}
+                priority
+              />
+            </div>
+
+            {/* Middle-right image - desktop only now */}
+            <PhotoCard
+              data-card
+              className="hidden md:block col-span-3 md:col-start-9 md:-mt-8 md:row-start-3"
+              src="/gallery/2.jpg"
+              alt="Portrait with hat"
+              width={320}
+              height={400}
+            />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function PhotoCard({
+  src,
+  alt,
+  width,
+  height,
+  className = "",
+  priority = false,
+  ...rest
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+  priority?: boolean;
+} & HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      {...rest}
+      className={
+        "relative overflow-hidden rounded-lg md:rounded-xl border border-black/5 bg-white shadow-sm transition will-change-transform hover:-translate-y-0.5 hover:shadow-md " +
+        className
+      }
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        unoptimized
+        sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+        className="h-full w-full object-cover"
+        priority={priority}
+      />
+    </div>
   );
 }

@@ -159,7 +159,7 @@ const SecondProgram = () => {
             </h3>
             <p
               ref={textRef}
-              className="mt-8 max-w-3xl text-sm sm:text-base mx-auto font-montserrat text-gray-300 leading-relaxed"
+              className="mt-8 max-w-3xl text-sm sm:text-base mx-auto font-butler text-gray-300 leading-relaxed"
             >
               We leverage on “The Enneagram”, a personality profiling tool
               designed to identify core motivations, fears, and desires,
@@ -193,7 +193,7 @@ const SecondProgram = () => {
               <h3 className="text-xl font-butler font-semibold leading-7 text-black tracking-tight mb-4">
                 {card.title}
               </h3>
-              <p className="text-sm sm:text-base font-montserrat text-gray-700 leading-relaxed flex-grow">
+              <p className="text-sm sm:text-base font-butler text-gray-700 leading-relaxed flex-grow">
                 {card.description}
               </p>
             </div>

@@ -66,7 +66,7 @@ const SuccessStoriesSection = () => {
           <h2 className="font-butler text-[clamp(2rem,6vw,64px)] leading-[0.9em] text-black uppercase mb-6">
             Success Stories
           </h2>
-          <p className="font-montserrat text-[20px] leading-[1.6em] text-gray-600 max-w-3xl mx-auto">
+          <p className="font-butler text-[20px] leading-[1.6em] text-gray-600 max-w-3xl mx-auto">
             Real transformations from real people who chose authenticity over
             conformity.
           </p>
@@ -79,7 +79,7 @@ const SuccessStoriesSection = () => {
               <div className="font-butler text-4xl md:text-5xl font-bold text-[#6a3a3a] mb-2">
                 {stat.number}
               </div>
-              <div className="font-montserrat text-gray-600 text-sm uppercase tracking-wide">
+              <div className="font-butler text-gray-600 text-sm uppercase tracking-wide">
                 {stat.label}
               </div>
             </div>
@@ -94,20 +94,20 @@ const SuccessStoriesSection = () => {
               className="story-card bg-white p-8 rounded-lg shadow-lg"
             >
               <div className="mb-6">
-                <p className="font-montserrat text-gray-700 italic leading-relaxed mb-4">
+                <p className="font-butler text-gray-700 italic leading-relaxed mb-4">
                   "{story.quote}"
                 </p>
                 <div className="border-l-4 border-[#6a3a3a] pl-4">
                   <div className="font-butler font-bold text-black">
                     {story.name}
                   </div>
-                  <div className="font-montserrat text-gray-600 text-sm">
+                  <div className="font-butler text-gray-600 text-sm">
                     {story.role}
                   </div>
                 </div>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="font-montserrat text-sm text-gray-600 uppercase tracking-wide mb-1">
+                <div className="font-butler text-sm text-gray-600 uppercase tracking-wide mb-1">
                   Result
                 </div>
                 <div className="font-butler font-semibold text-[#6a3a3a]">

@@ -108,7 +108,7 @@ export default function Gallaryv2() {
             data-description
             className="w-full lg:w-[400px] xl:w-[500px] text-black text-left"
           >
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl leading-relaxed font-montserrat">
+            <p className="text-md sm:text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl leading-relaxed font-butler">
               Echtventure exists to create impact in every space that we are
               able to enter. We have seen countless transformations in both
               individuals and teams.
@@ -120,7 +120,7 @@ export default function Gallaryv2() {
         <div className="flex justify-center">
           <div
             data-video
-            className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl"
+            className="relative w-full aspect-video rounded-lg overflow-hidden "
           >
             <img
               className="w-full h-full object-cover"

@@ -3,22 +3,10 @@ import React from "react";
 import SecondProgram from "./SecondProgram";
 import FlowingMenu from "./Reveal";
 
-const demoItems = [
-  {
-    link: "/enneagram",
-    text: (
-      <span className="text-2xl sm:text-3xl md:text-3xl">
-        Founded in 2019 by Keith Tay
-      </span>
-    ),
-    subtitle:
-      "A visionary leader with over 20 years of corporate experience, Keith combines strategic management expertise with holistic development approaches. As an accredited Enneagram practitioner and certified coach, he specializes in transforming leaders and teams through deeper self-awareness and authentic connections.",
-  },
-];
 const ProgramsSection = () => {
   return (
     <>
-      <div className=" text-black font-butler flex items-center justify-center py-24  px-4 sm:px-16 rounded-b-xl ">
+      <div className=" text-black font-butler flex items-center justify-center py-12 pb-16  px-4 sm:px-16 rounded-b-xl ">
         <div className="max-w-8xl mx-auto text-center">
           <h2 className="text-[2.4rem] sm:text-6xl md:text-7xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8">
             The Echtventure Approach
@@ -26,7 +14,7 @@ const ProgramsSection = () => {
           <h3 className=" sm:mt-6 mt-2 text-[1.1rem] sm:text-4xl font-butler font-semibold text-gray-800">
             Individual Coaching // Group Coaching // Team Building
           </h3>
-          <p className="mt-8 max-w-3xl text-sm sm:text-base mx-auto font-montserrat text-gray-700 leading-relaxed">
+          <p className="mt-8 max-w-3xl text-sm sm:text-base mx-auto font-butler text-gray-700 leading-relaxed">
             We leverage a unique blend of corporate management experience and
             holistic development, using powerful tools like the Enneagram
             Personality Profiling to forge deeper connections in both
@@ -34,7 +22,6 @@ const ProgramsSection = () => {
           </p>
         </div>
       </div>
-      <FlowingMenu items={demoItems} />
       <SecondProgram />
     </>
   );

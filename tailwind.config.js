@@ -22,7 +22,6 @@ module.exports = {
       },
       fontFamily: {
         butler: ["Butler", "serif"],
-        montserrat: ["Montserrat", "sans-serif"],
         bowlby: ["var(--font-bowlby-one-sc)", "sans-serif"],
         crimson: ["var(--font-crimson-text)", "serif"],
         roboto: ["var(--font-roboto-condensed)", "sans-serif"],
