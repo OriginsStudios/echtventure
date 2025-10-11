@@ -64,36 +64,7 @@ const HomePageHero = () => {
   const maskPosition = scrollProgress * maskMovement;
   const maskTransition = isMobile ? 20 : 30; // Smoother transition on mobile
 
-  useGSAP(
-    () => {
-      // Typewriting animation for the main headline on initial load
-      const fullText = "echtventure";
-      if (headlineRef.current) {
-        gsap.set(headlineRef.current, { text: "" });
-        gsap.to(headlineRef.current, {
-          text: fullText,
-          duration: 1.6,
-          ease: "none",
-          delay: 0.2,
-        });
-      }
-
-      // Animate the description and button
-      gsap.from([".hero-description", ".hero-button"], {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.2, // Animate them one after the other
-        delay: 0.2, // Wait for the headline animation to start
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        },
-      });
-    },
-    { scope: containerRef }
-  );
+  // Removed animations - assets now load without animation
 
   return (
     <section

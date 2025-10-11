@@ -42,75 +42,26 @@ const TextPressure: React.FC<TextPressureProps> = ({ className = "" }) => {
     )
       return;
 
-    // Wait for ScrollTrigger to be ready
-    const timer = setTimeout(() => {
-      // Set initial positions (off-screen)
-      gsap.set(asset8Ref.current, { x: "-100%" }); // Start off-screen left
-      gsap.set(asset9Ref.current, { x: "100%" }); // Start off-screen right
-      gsap.set(asset10Ref.current, { x: "100%" }); // Start off-screen right
+    // Set initial positions (centered)
+    gsap.set([asset8Ref.current, asset9Ref.current, asset10Ref.current], {
+      x: 0,
+      y: 0,
+    });
 
-      // Initial slide-in animation on page load
-      const tl = gsap.timeline({ delay: 0.5 }); // Small delay for page load
-
-      tl.to(asset8Ref.current, {
-        x: "0%", // Slide in from left
-        duration: 1.2,
-        ease: "power2.out",
-      })
-        .to(
-          [asset9Ref.current, asset10Ref.current],
-          {
-            x: "0%", // Slide in from right
-            duration: 1.2,
-            ease: "power2.out",
-          },
-          "-=0.6"
-        )
-        .call(() => {
-          // Create scroll-triggered animations after initial animation completes
-          // Asset 8 - Slide to the left
-          gsap.to(asset8Ref.current, {
-            x: "-100%", // Slide off to the left
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "bottom center",
-              end: "bottom top",
-              scrub: 2,
-            },
-          });
-
-          // Asset 9 - Slide to the right (with Asset 10)
-          gsap.to(asset9Ref.current, {
-            x: "100%", // Slide off to the right
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "bottom center",
-              end: "bottom top",
-              scrub: 2,
-            },
-          });
-
-          // Asset 10 - Slide to the right (with Asset 9)
-          gsap.to(asset10Ref.current, {
-            x: "100%", // Slide off to the right
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: "bottom center",
-              end: "bottom top",
-              scrub: 2,
-              onUpdate: (self) => {
-                console.log("Scroll progress:", self.progress); // Debug log
-              },
-            },
-          });
-        });
-    }, 100);
+    // Create scroll-triggered animations to push assets to top left
+    gsap.to([asset8Ref.current, asset9Ref.current, asset10Ref.current], {
+      x: "-50%", // Move to the left
+      y: "-50%", // Move up
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: 1, // Smooth scrubbing
+      },
+    });
 
     return () => {
-      clearTimeout(timer);
       ScrollTrigger.getAll().forEach((trigger) => {
         if (trigger.trigger === containerRef.current) {
           trigger.kill();
