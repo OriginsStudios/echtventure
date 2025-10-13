@@ -78,7 +78,7 @@ const HomePageHero = () => {
     <section
       ref={containerRef}
       // Responsive padding: smaller on mobile, larger on desktop
-      className="flex flex-col justify-center items-start p-6 md:p-12 2xl:py-24 2xl:pt-12 container-padding "
+      className="flex flex-col justify-center items-start p-6 md:p-12 2xl:py-12  container-padding "
     >
       <div
         // Layout: Stacks vertically in column layout
