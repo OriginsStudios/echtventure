@@ -91,7 +91,7 @@ const UniqueApproachSection = () => {
 
         <div
           ref={methodsRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 "
         >
           {/* Corporate Experience */}
           <div className="method-card bg-white border border-lineColor p-8 rounded-lg hover:shadow-lg transition-shadow duration-300">

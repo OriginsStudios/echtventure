@@ -51,7 +51,7 @@ export default function Approach() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container.current,
-            scrub: 1,
+            scrub: 1.5,
             start: "top top",
             end: "bottom bottom",
           },
@@ -107,7 +107,7 @@ export default function Approach() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container.current,
-            scrub: 1,
+            scrub: 1.5,
             start: "top top",
             end: "bottom bottom",
           },
@@ -163,7 +163,7 @@ export default function Approach() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container.current,
-            scrub: 1,
+            scrub: 1.5,
             start: "top-=80px top",
             end: "bottom-=80px bottom",
           },
@@ -174,7 +174,7 @@ export default function Approach() {
           {
             left: "100%",
             xPercent: -100,
-            ease: "power1.inOut",
+            ease: "power2.inOut",
           },
           0
         ).to(
@@ -183,7 +183,7 @@ export default function Approach() {
             left: "0%",
             xPercent: 0,
             autoAlpha: 1,
-            ease: "power1.inOut",
+            ease: "power2.inOut",
           },
           "<"
         );
@@ -262,7 +262,7 @@ export default function Approach() {
               </h2>
             </div>
 
-            <div className="keith-image-wrapper absolute w-[70%] md:w-[50%] lg:w-[55%] h-full flex justify-center">
+            <div className="keith-image-wrapper absolute w-[70%] md:w-[50%] lg:w-[55%] h-full flex justify-center p-4 md:p-6">
               <img
                 src="/PR-KEITH.png"
                 alt="Keith"

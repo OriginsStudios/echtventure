@@ -5,19 +5,20 @@ import { notFound } from "next/navigation";
 import Button from "@/components/ui/Button";
 import { getCoachBySlug } from "@/constants/coaches";
 
-export default function CoachSlugPage({
+export default async function CoachSlugPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const coach = getCoachBySlug(params.slug);
+  const { slug } = await params;
+  const coach = getCoachBySlug(slug);
   if (!coach) return notFound();
 
   return (
     <main className="min-h-screen px-6 md:px-10 lg:px-16 py-14 bg-five-lines">
       <article className="max-w-5xl mx-auto bg-five-lines">
         {/* Header */}
-        <div className="grid gap-8 md:grid-cols-[280px,1fr] items-start">
+        <div className="grid gap-8 md:grid-cols-[280px,1fr] items-center">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100">
             <Image
               src={coach.image}
@@ -27,20 +28,30 @@ export default function CoachSlugPage({
               sizes="280px"
             />
           </div>
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               {coach.name}
             </h1>
-            <p className="text-neutral-700 font-montserrat mt-2">
+            <p className="text-neutral-700 font-butler mt-2 text-lg">
               {coach.title}
             </p>
 
             <div className="mt-6">
-              <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
-                <Button className="bg-black text-white border-black hover:opacity-90">
-                  Book a Consultation with {coach.name.split(" ")[0]}
-                </Button>
-              </Link>
+              {coach.email ? (
+                <a
+                  href={`mailto:${coach.email}?subject=Consultation Request with ${coach.name}`}
+                >
+                  <Button className="bg-black text-white border-black hover:opacity-90 text-base px-6 py-2">
+                    Book a Consultation with {coach.name.split(" ")[0]}
+                  </Button>
+                </a>
+              ) : (
+                <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
+                  <Button className="bg-black text-white border-black hover:opacity-90 text-base px-6 py-2">
+                    Book a Consultation with {coach.name.split(" ")[0]}
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -64,10 +75,10 @@ export default function CoachSlugPage({
               .map((t, idx) => (
                 <li key={`${t.year}-${idx}`} className="mb-5 ms-2">
                   <div className="absolute -start-[7px] h-3 w-3 rounded-full bg-black mt-1.5"></div>
-                  <p className="text-sm font-montserrat text-neutral-500">
+                  <p className="text-sm font-butler text-neutral-500">
                     {t.year}
                   </p>
-                  <p className="font-medium font-montserrat">
+                  <p className="font-medium font-butler">
                     {t.role}
                     {t.org ? (
                       <span className="text-neutral-600">, {t.org}</span>
@@ -112,25 +123,6 @@ export default function CoachSlugPage({
             ))}
           </div>
         </section>
-
-        {/* CTA bottom */}
-        <div className="mt-12">
-          <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
-            <Button className="bg-black text-white border-black hover:opacity-90 w-full md:w-auto">
-              Book a Consultation with {coach.name.split(" ")[0]}
-            </Button>
-          </Link>
-        </div>
-
-        {/* Back link */}
-        <div className="mt-8">
-          <Link
-            href="/coaches"
-            className="text-sm text-neutral-600 hover:text-black"
-          >
-            ← Back to all coaches
-          </Link>
-        </div>
       </article>
     </main>
   );

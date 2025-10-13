@@ -161,12 +161,12 @@ const SecondProgram = () => {
               ref={textRef}
               className="mt-8 max-w-3xl text-sm sm:text-base mx-auto font-montserrat text-gray-300 leading-relaxed"
             >
-              Discover the power of authentic self-awareness through the
-              Enneagram. Our comprehensive personality profiling system helps
-              you understand your core motivations, fears, and desires, enabling
-              you to lead with genuine confidence and create meaningful impact
-              in every relationship and situation. Transform your leadership
-              style by understanding not just what you do, but why you do it.
+              We leverage on “The Enneagram”, a personality profiling tool
+              designed to identify core motivations, fears, and desires,
+              enabling you to lead with genuine confidence and create meaningful
+              impact in every relationship and situation. Transform your
+              leadership style by understanding not just what you do, but why
+              you do it.
             </p>
             <div className="mt-8">
               <a
@@ -180,7 +180,7 @@ const SecondProgram = () => {
         </div>
 
         {/* --- Cards Grid --- */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-6xl mx-auto lg:mb-16 mb-12">
           {philosophyCards.map((card, index) => (
             <div
               key={index}

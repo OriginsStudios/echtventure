@@ -35,8 +35,8 @@ export default function Gallary() {
             defaults: { ease: "none" },
             scrollTrigger: {
               trigger: section,
-              start: "top 20%",
-              end: "bottom 80%",
+              start: "top 10%",
+              end: "bottom 100%",
               pin: false,
               scrub: 2.5,
               anticipatePin: 0,
@@ -54,7 +54,7 @@ export default function Gallary() {
             },
             {
               // End state (larger and centered)
-              scale: 0.8, // <-- The grid will be 50% larger at the end
+              scale: 1, // <-- The grid will be 50% larger at the end
               xPercent: 0,
               yPercent: 0,
               duration: 2.2,
@@ -85,7 +85,7 @@ export default function Gallary() {
               start: "top 30%",
               end: "bottom 70%",
               pin: false,
-              scrub: 2.8,
+              scrub: 1,
             },
           });
 

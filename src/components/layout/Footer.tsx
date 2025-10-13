@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
       <div className="w-full mx-auto text-center ">
         <div className="flex justify-center  ">
           <Image
-            src={"./signature.svg"}
+            src={"/signature.svg"}
             alt="keithTay"
             height={200}
             width={300}
@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
         </div>
         {/* Quote */}
         <blockquote className="mb-16">
-          <p className="text-lg italic font-montserrat text-gray-400 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg italic font-butler text-gray-400 max-w-xl mx-auto leading-relaxed">
             "Every transformation begins with a single step. I believe in the
             power of authentic change and the courage it takes to step into your
             true potential. Let's embark on this journey together."

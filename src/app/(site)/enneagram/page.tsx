@@ -43,7 +43,7 @@ export default function CombinedPage() {
   const enneagramRef = useRef(null);
   const enneagramFirstSectionRef = useRef(null);
   const headlineRef = useRef(null);
-  const titleText = "Enneagram Test";
+  const titleText = "Enneagram";
   const descText =
     "Discover your personality type and unlock deeper self-awareness through our comprehensive assessment";
 
@@ -173,7 +173,7 @@ export default function CombinedPage() {
             </h1>
             <p
               ref={techParaRef}
-              className="max-w-4xl text-lg md:text-xl lg:text-2xl leading-relaxed"
+              className="max-w-4xl text-lg md:text-xl lg:text-2xl leading-relaxed font-montserrat"
             >
               {descText}
             </p>

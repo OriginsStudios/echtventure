@@ -99,7 +99,7 @@ const HomePageHero = () => {
             ref={headlineRef}
             className="hero-headline block font-extrabold text-black leading-none whitespace-pre-wrap 
                        break-words uppercase tracking-tighter text-center
-                       text-[3rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] "
+                       text-[2.25rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] pt-5"
             style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
           >
             echtventure
@@ -107,13 +107,15 @@ const HomePageHero = () => {
         </div>
 
         {/* Description and Button */}
-        <div className="flex flex-col items-center text-center max-w-2xl">
+        <div className="flex flex-col items-center text-center max-w-2xl pb-6">
           <p className="hero-description text-center font-montserrat text-gray-700 text-lg md:text-xl mb-8">
             Authentic support, adding value, right resources, maximizing
             business potential.
           </p>
           <div className="hero-button">
-            <Button className="">View Coaches</Button>
+            <Button className="text-base md:text-lg lg:text-xl px-8 md:px-10 lg:px-12 py-2.5 md:py-3 lg:py-3 font-semibold">
+              View Coaches
+            </Button>
           </div>
         </div>
       </div>
