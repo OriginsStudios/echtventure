@@ -72,24 +72,31 @@ export default function Mission2() {
           paddingLeft: "8vw",
           paddingRight: "8vw",
           paddingTop: "6vh",
-          scale: 0.95,
+          transformOrigin: "center center",
+          force3D: true,
+        });
+      }
+      if (videoImage) {
+        gsap.set(videoImage, {
+          scale: 0.92,
           transformOrigin: "center center",
           force3D: true,
         });
       }
 
       // As user scrolls through the section, scale image up smoothly
-      if (videoContainer) {
-        gsap.to(videoContainer, {
-          scale: 1,
+      if (videoImage) {
+        gsap.to(videoImage, {
+          scale: 1.06,
           ease: "none",
           transformOrigin: "center center",
           force3D: true,
           scrollTrigger: {
             trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.6, // smoother interpolation
+            start: "top 85%",
+            end: "bottom 20%",
+            scrub: 1.6,
+            invalidateOnRefresh: true,
           },
         });
       }
