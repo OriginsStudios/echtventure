@@ -97,9 +97,9 @@ const HomePageHero = () => {
         <div className="w-full text-center">
           <span
             ref={headlineRef}
-            className="hero-headline block font-extrabold text-black leading-none whitespace-pre-wrap 
-                       break-words uppercase tracking-tighter text-center
-                       text-[2.25rem] sm:text-[5.5rem] md:text-[6.5rem] lg:text-[8rem] xl:text-[10rem] pt-5"
+            className="hero-headline block font-extrabold text-black leading-none whitespace-nowrap 
+                       uppercase tracking-tighter text-center overflow-hidden max-w-[95vw] text-ellipsis
+                       text-[clamp(2.25rem,9vw,7rem)] pt-5"
             style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
           >
             echtventure

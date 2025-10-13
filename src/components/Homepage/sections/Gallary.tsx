@@ -100,9 +100,9 @@ export default function Gallary() {
             },
             {
               // End state
-              scale: 0.9, // <-- The grid will be 15% larger at the end
+              scale: 0.8, // <-- The grid will be 15% larger at the end
               xPercent: 0,
-              yPercent: 0,
+              yPercent: 20,
               duration: 1.5,
               ease: "power2.inOut",
             }
@@ -130,7 +130,7 @@ export default function Gallary() {
     <section
       id="cover"
       ref={sectionRef}
-      className="relative flex h-[95vh] items-end md:items-center justify-center overflow-hidden"
+      className="relative flex 2xl:h-[95vh] h-[105vh] pb-[10vh] sm:pb-0 items-end md:items-center justify-center overflow-hidden"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6  ">
         <div data-grid-wrapper>
@@ -182,8 +182,8 @@ export default function Gallary() {
               </h2>
               <div className="mt-4 sm:mt-5">
                 <Link
-                  href="/services"
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900  text-lg font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40 px-4 py-2 sm:px-8 sm:py-4 sm:text-md"
+                  href="/coaches"
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900  text-lg font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40 px-4 py-2 sm:px-8 sm:py-4 sm:text-md font-montserrat"
                 >
                   Our process
                 </Link>

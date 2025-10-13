@@ -63,7 +63,7 @@ export default function ResourcesPage() {
 
         const tlCover = gsap.timeline({
           defaults: { ease: "power3.out" },
-          delay: 1,
+          delay: 0.4,
         });
 
         // Animate all elements into view on load
@@ -71,7 +71,7 @@ export default function ResourcesPage() {
           .to([leftSvgRef.current, rightSvgRef.current], {
             x: 0,
             opacity: 1,
-            duration: 1.2,
+            duration: 1.0,
             ease: "power4.out",
           })
           .to(
@@ -79,8 +79,8 @@ export default function ResourcesPage() {
             {
               y: "0%",
               opacity: 1,
-              duration: 1,
-              stagger: 0.03,
+              duration: 0.7,
+              stagger: 0.02,
               ease: "power4.out",
             },
             "-=0.8"
@@ -90,7 +90,7 @@ export default function ResourcesPage() {
             {
               y: 0,
               opacity: 1,
-              duration: 0.8,
+              duration: 0.6,
               ease: "power3.out",
             },
             "-=0.7"
