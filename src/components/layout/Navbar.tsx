@@ -2,6 +2,8 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePathname } from "next/navigation";
 import { useGSAP } from "@gsap/react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -322,7 +324,7 @@ const MobileNav = ({
                   onClick={(e) => handleNavigate(e, link.href)}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
-                  className="mobile-nav-link relative block  transition-colors duration-200  cursor-pointer pb-1 font-butler text-3xl font-semibold tracking-wider text-black"
+                  className="mobile-nav-link relative block  transition-colors duration-200  cursor-pointer pb-1 font-butler text-2xl font-semibold tracking-wider text-black"
                 >
                   {link.title}
                   <span
@@ -365,6 +367,52 @@ const MobileNav = ({
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const logoRef = useRef<HTMLAnchorElement | null>(null);
+  const pathname = usePathname();
+
+  // Register ScrollTrigger once in client
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
+
+  // Logo show/hide on scroll direction
+  useGSAP(() => {
+    const logoEl = logoRef.current;
+    if (!logoEl) return;
+
+    // Only on homepage
+    if (pathname !== "/") {
+      gsap.set(logoEl, { clearProps: "all" });
+      return;
+    }
+
+    // hidden on first load (homepage only)
+    gsap.set(logoEl, { yPercent: -120, opacity: 0 });
+
+    const tl = gsap.timeline({ paused: true });
+    tl.to(logoEl, {
+      yPercent: 0,
+      opacity: 1,
+      duration: 0.45,
+      ease: "power3.out",
+    });
+
+    const st = ScrollTrigger.create({
+      start: 0,
+      onUpdate: (self) => {
+        if (self.direction === 1) {
+          tl.play();
+        } else if (self.direction === -1) {
+          tl.reverse();
+        }
+      },
+    });
+
+    return () => {
+      st.kill();
+      tl.kill();
+    };
+  }, [pathname]);
 
   const handleMouseEnter = useCallback((index: number) => {
     gsap.to(lineRefs.current[index], {
@@ -407,6 +455,7 @@ const Navbar = () => {
               href="/"
               className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
               onClick={(e) => handleLinkClick(e, "/")}
+              ref={logoRef}
             >
               <Image
                 src="/logo/black.svg"

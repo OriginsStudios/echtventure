@@ -26,7 +26,7 @@ const Mission = () => {
             >
               KEITH TAY
             </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight leading-tight font-montserrat mt-1 sm:mt-2 text-gray-300">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight leading-tight font-montserrat  sm:mt-1 text-gray-300 mt-3">
               FOUNDED IN 2019
             </h2>
             <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4 max-w-prose">

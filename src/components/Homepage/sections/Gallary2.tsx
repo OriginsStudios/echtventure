@@ -72,31 +72,15 @@ export default function Mission2() {
           paddingLeft: "8vw",
           paddingRight: "8vw",
           paddingTop: "6vh",
-        });
-      }
-      if (videoImage) {
-        gsap.set(videoImage, {
-          scale: 0.9,
+          scale: 0.95,
           transformOrigin: "center center",
           force3D: true,
         });
       }
 
-      // As user scrolls through the section, reduce side padding to 0 and scale image up
-      if (videoContainer && videoImage) {
+      // As user scrolls through the section, scale image up smoothly
+      if (videoContainer) {
         gsap.to(videoContainer, {
-          paddingLeft: 0,
-          paddingRight: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-
-        gsap.to(videoImage, {
           scale: 1,
           ease: "none",
           transformOrigin: "center center",
@@ -105,7 +89,7 @@ export default function Mission2() {
             trigger: section,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1,
+            scrub: 1.6, // smoother interpolation
           },
         });
       }
@@ -123,7 +107,7 @@ export default function Mission2() {
         <div className="relative flex flex-col lg:flex-row items-center lg:items-center justify-center gap-6 sm:gap-8 lg:gap-20 mb-8 sm:mb-12 lg:px-6">
           {/* Large bold text - left side */}
           <div className="w-full lg:w-auto z-10">
-            <div className="space-y-0 text-center lg:text-left">
+            <div className="space-y-2 text-center lg:text-left">
               <h2
                 data-title-line
                 className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl  3xl:text-9xl font-black text-black leading-[0.95] tracking-tighter break-words"
