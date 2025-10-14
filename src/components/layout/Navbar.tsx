@@ -397,14 +397,27 @@ const Navbar = () => {
       ease: "power3.out",
     });
 
+    // Limit the scroll direction behavior to the top hero section only
+    const heroEl = document.querySelector("#home-hero");
+
     const st = ScrollTrigger.create({
-      start: 0,
+      trigger: heroEl || undefined,
+      start: heroEl ? "top top" : 0,
+      end: heroEl ? "bottom top" : undefined,
       onUpdate: (self) => {
         if (self.direction === 1) {
           tl.play();
         } else if (self.direction === -1) {
           tl.reverse();
         }
+      },
+      onLeave: () => {
+        // Ensure logo is visible once we leave the hero downward
+        tl.play();
+      },
+      onLeaveBack: () => {
+        // Ensure logo is hidden when scrolled above the hero (very top)
+        tl.reverse();
       },
     });
 

@@ -14,9 +14,11 @@ const HomePageHero = () => {
   const containerRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLSpanElement>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Custom scroll effect with resize handling
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -36,9 +38,9 @@ const HomePageHero = () => {
   }, []);
 
   // Calculate diagonal opacity mask based on scroll - responsive
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isMobile = isMounted && window.innerWidth < 768;
   const fadeDistance = isMobile ? 400 : 800; // Shorter fade on mobile
-  const scrollProgress = Math.min(scrollY / fadeDistance, 1);
+  const scrollProgress = isMounted ? Math.min(scrollY / fadeDistance, 1) : 0;
   const maskMovement = isMobile ? 120 : 150; // Less movement on mobile
   const maskPosition = scrollProgress * maskMovement;
   const maskTransition = isMobile ? 20 : 30; // Smoother transition on mobile
@@ -76,6 +78,7 @@ const HomePageHero = () => {
 
   return (
     <section
+      id="home-hero"
       ref={containerRef}
       // Responsive padding: smaller on mobile, larger on desktop
       className="flex flex-col justify-center items-start p-6 md:p-12 2xl:py-12  container-padding "
@@ -83,15 +86,24 @@ const HomePageHero = () => {
       <div
         // Layout: Stacks vertically in column layout
         className="mx-auto w-full flex flex-col items-center justify-center gap-10 md:gap-16"
-        style={{
-          WebkitMask: `linear-gradient(135deg, transparent ${maskPosition}%, black ${
-            maskPosition + maskTransition
-          }%)`,
-          mask: `linear-gradient(135deg, transparent ${maskPosition}%, black ${
-            maskPosition + maskTransition
-          }%)`,
-          transition: "none", // Disable CSS transitions for smooth scroll effect
-        }}
+        style={
+          isMounted
+            ? {
+                WebkitMask: `linear-gradient(135deg, transparent ${maskPosition}%, black ${
+                  maskPosition + maskTransition
+                }%)`,
+                mask: `linear-gradient(135deg, transparent ${maskPosition}%, black ${
+                  maskPosition + maskTransition
+                }%)`,
+                transition: "none",
+              }
+            : {
+                WebkitMask:
+                  "linear-gradient(135deg, transparent 0%, black 20%)",
+                mask: "linear-gradient(135deg, transparent 0%, black 20%)",
+                transition: "none",
+              }
+        }
       >
         {/* Main Headline */}
         <div className="w-full text-center">

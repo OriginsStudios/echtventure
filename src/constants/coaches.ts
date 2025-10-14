@@ -16,7 +16,7 @@ export const coaches: Coach[] = [
     slug: "keith-tay",
     name: "Keith Tay",
     title: "Founder | Thought Leader | Leadership Coach",
-    image: "/coaches/keith/keith1.jpg",
+    image: "/coaches/Keith/1.jpg",
     email: "keith.echtventure@gmail.com",
     bio: [
       "Keith Tay is a leadership coach and thought leader whose work sits at the intersection of purpose, performance, and people. Trained in Mechanical Engineering and Theological Studies, he integrates systems thinking with a deep understanding of human formation to help leaders and teams grow with clarity and conviction.",
