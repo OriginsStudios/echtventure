@@ -369,6 +369,8 @@ const Navbar = () => {
   const lineRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const pathname = usePathname();
+  const logoStRef = useRef<ScrollTrigger | null>(null);
+  const logoTlRef = useRef<gsap.core.Timeline | null>(null);
 
   // Register ScrollTrigger once in client
   useEffect(() => {
@@ -380,8 +382,22 @@ const Navbar = () => {
     const logoEl = logoRef.current;
     if (!logoEl) return;
 
+    // Always clean up any previous trigger/timeline before setting new ones
+    logoStRef.current?.kill();
+    logoStRef.current = null;
+    logoTlRef.current?.kill();
+    logoTlRef.current = null;
+
     // Only on homepage
     if (pathname !== "/") {
+      gsap.set(logoEl, { clearProps: "all" });
+      return;
+    }
+
+    // Limit the scroll direction behavior to the top hero section only
+    const heroEl = document.querySelector("#home-hero");
+    if (!heroEl) {
+      // If hero is not present (other routes or layout changes), clear and skip
       gsap.set(logoEl, { clearProps: "all" });
       return;
     }
@@ -396,14 +412,12 @@ const Navbar = () => {
       duration: 0.45,
       ease: "power3.out",
     });
-
-    // Limit the scroll direction behavior to the top hero section only
-    const heroEl = document.querySelector("#home-hero");
+    logoTlRef.current = tl;
 
     const st = ScrollTrigger.create({
-      trigger: heroEl || undefined,
-      start: heroEl ? "top top" : 0,
-      end: heroEl ? "bottom top" : undefined,
+      trigger: heroEl,
+      start: "top top",
+      end: "bottom top",
       onUpdate: (self) => {
         if (self.direction === 1) {
           tl.play();
@@ -420,10 +434,17 @@ const Navbar = () => {
         tl.reverse();
       },
     });
+    logoStRef.current = st;
 
     return () => {
-      st.kill();
-      tl.kill();
+      logoStRef.current?.kill();
+      logoStRef.current = null;
+      logoTlRef.current?.kill();
+      logoTlRef.current = null;
+      // Clear any inline transforms/opacities when leaving the page
+      if (pathname !== "/") {
+        gsap.set(logoEl, { clearProps: "all" });
+      }
     };
   }, [pathname]);
 
