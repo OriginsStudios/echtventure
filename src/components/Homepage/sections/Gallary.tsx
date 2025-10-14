@@ -83,18 +83,10 @@ export default function Gallary() {
                 data-center
                 className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:row-start-2 text-center px-2 md:pb-12 py-6 "
               >
-                <h1 className="text-2xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-3xl md:text-4xl font-bold ">
+                <h1 className="text-3xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-4xl md:text-5xl font-bold ">
                   Awareness <span className="font-normal">to</span> Mastery{" "}
                   <span className="font-normal">to</span> Leadership
                 </h1>
-                <div className="mt-4 sm:mt-5">
-                  <Link
-                    href="/coaches"
-                    className="inline-flex items-center gap-2 rounded-full bg-neutral-900 text-xl font-medium text-white transition hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/40 px-4 py-2 sm:px-8 sm:py-4 sm:text-md "
-                  >
-                    Our process
-                  </Link>
-                </div>
               </div>
 
               {/* Main "hero" image */}
