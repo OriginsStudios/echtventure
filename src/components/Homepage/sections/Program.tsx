@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/ui/Button";
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -44,18 +45,18 @@ const ProgramsSection = () => {
     <>
       <div
         ref={sectionRef}
-        className=" text-black font-butler flex items-center justify-center pt-0 pb-16  px-4 sm:px-16 rounded-b-xl "
+        className="bg-black text-white font-butler flex items-center justify-center pt-0 pb-16 px-4 sm:px-16 "
       >
         <div className="max-w-8xl mx-auto text-center">
           <h2
             ref={headingRef}
-            className="text-[2.4rem] sm:text-6xl md:text-7xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8 mt-12"
+            className="text-[2.4rem] sm:text-6xl md:text-7xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8 mt-12 text-white"
           >
             The Echtventure Method
           </h2>
           <p
             ref={paragraphRef}
-            className="mt-6 max-w-3xl text-sm sm:text-base mx-auto font-montserrat text-gray-700 leading-relaxed"
+            className="mt-6 max-w-3xl text-md sm:text-lg mx-auto font-montserrat text-gray-300 leading-relaxed"
           >
             We leverage a unique blend of corporate management experience and
             holistic development, using powerful tools like the Enneagram
@@ -63,7 +64,14 @@ const ProgramsSection = () => {
             professional and personal relationships.
           </p>
           <div ref={buttonRef} className="mt-6">
-            <Button>DISCOVER YOUR PATH</Button>
+            <Link href="/coaches">
+              <Button
+                variant="solidDark"
+                className="!font-butler !rounded-full !text-white !bg-[#6a3a3a] hover:!bg-[#7a4a4a] "
+              >
+                Discover Your Path
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

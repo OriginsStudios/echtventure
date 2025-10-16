@@ -107,7 +107,7 @@ export default function Mission2() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-screen bg-transparent flex items-center justify-center pt-12 pb-6 sm:pt-16 sm:pb-10 lg:py-24  overflow-hidden"
+      className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-screen bg-transparent flex items-center justify-center pt-6 pb-6 sm:pt-16 sm:pb-10 lg:py-24   overflow-hidden"
     >
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-16 xl:px-24">
         {/* Title and Description Row */}
@@ -153,7 +153,7 @@ export default function Mission2() {
         </div>
 
         {/* Video container - centered below, full-bleed */}
-        <div className="flex justify-center -mx-4 sm:-mx-6 lg:-mx-16 xl:-mx-24">
+        <div className="flex justify-center -mx-4 sm:-mx-6 lg:-mx-16 xl:-mx-24 mb-12 md:mb-0">
           <div
             data-video
             className="relative w-screen aspect-video rounded-lg overflow-hidden "

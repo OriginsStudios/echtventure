@@ -144,9 +144,9 @@ const SecondProgram = () => {
       ref={sectionRef}
       className="text-black pt-0 pb-5 sm:pt-0 sm:pb-8 px-4 sm:px-16"
     >
-      <div className="max-w-8xl mx-auto">
+      <div className="max-w-8xl mx-auto mt-24">
         {/* --- Cards Grid --- */}
-        <div className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-3 max-w-6xl mx-auto lg:mb-8 mb-6 lg:pb-12">
+        <div className="grid grid-cols-1 gap-12 md:gap-6 md:grid-cols-3 max-w-6xl mx-auto lg:mb-8 mb-6 lg:pb-12">
           {philosophyCards.map((card, index) => (
             <div
               key={index}
@@ -167,24 +167,24 @@ const SecondProgram = () => {
         </div>
       </div>
       {/* --- Philosophy Intro (row layout, condensed copy, full-width bg using wrapper) --- */}
-      <div className="bg-black mt-10 md:mt-16 rounded-lg  ">
-        <div className="mx-auto max-w-6xl mb-16 pt-12 pb-20 px-4 sm:px-6 lg:px-8">
+      <div className="mt-4 md:mt-16 sm:mb-16">
+        <div className="mx-auto max-w-6xl pt-12 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-10">
             <div className="md:w-1/2 md:order-2 text-center md:text-right">
               <h2
                 ref={titleRef}
-                className="text-3xl sm:text-4xl md:text-5xl font-butler font-semibold tracking-tight leading-tight mb-2 sm:mb-3 text-white"
+                className="text-3xl sm:text-4xl md:text-5xl font-butler font-semibold tracking-tight leading-tight mb-2 sm:mb-3 text-black"
               >
                 UNLOCK YOUR TRUE POTENTIAL
               </h2>
-              <h3 className="text-lg sm:text-xl font-butler font-semibold text-gray-300">
+              <h3 className="text-lg sm:text-xl font-butler font-semibold text-gray-800">
                 ENNEAGRAM PERSONALITY PROFILING
               </h3>
             </div>
             <div className="md:w-1/2 md:order-1 text-center md:text-left">
               <p
                 ref={textRef}
-                className="text-sm sm:text-base font-montserrat text-gray-300 leading-relaxed"
+                className="text-sm sm:text-base font-montserrat text-gray-700 leading-relaxed"
               >
                 Understand your core motivations and patterns to lead with
                 clarity and confidence, and create meaningful impact in every

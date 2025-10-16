@@ -26,8 +26,8 @@ const scrollLockStyles = `
 
 // Data for navigation links
 const navLinks = [
-  { title: "enneagram", href: "/enneagram" },
   { title: "coaches", href: "/coaches" },
+  { title: "enneagram", href: "/enneagram" },
   { title: "resources", href: "/resources" },
 ] as const;
 

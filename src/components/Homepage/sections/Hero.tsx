@@ -5,14 +5,13 @@ import Button from "@/components/ui/Button"; // Assuming you have this Button co
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TextPlugin } from "gsap/TextPlugin";
+import Image from "next/image";
 
 // Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 const HomePageHero = () => {
   const containerRef = useRef<HTMLElement>(null);
-  const headlineRef = useRef<HTMLSpanElement>(null);
   const [scrollY, setScrollY] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -47,18 +46,6 @@ const HomePageHero = () => {
 
   useGSAP(
     () => {
-      // Typewriting animation for the main headline on initial load
-      const fullText = "echtventure";
-      if (headlineRef.current) {
-        gsap.set(headlineRef.current, { text: "" });
-        gsap.to(headlineRef.current, {
-          text: fullText,
-          duration: 1.6,
-          ease: "none",
-          delay: 0.2,
-        });
-      }
-
       // Animate the description and button
       gsap.from([".hero-description", ".hero-button"], {
         opacity: 0,
@@ -105,17 +92,18 @@ const HomePageHero = () => {
               }
         }
       >
-        {/* Main Headline */}
-        <div className="w-full text-center">
-          <span
-            ref={headlineRef}
-            className="hero-headline block font-extrabold text-black leading-none whitespace-nowrap 
-                        tracking-widest text-center overflow-hidden max-w-[95vw] text-[clamp(3rem,12vw,12rem)] 
-                       pt-5"
-            style={{ fontFamily: "Butler, Arial, sans-serif" }}
-          >
-            echtventure
-          </span>
+        {/* Main Logo */}
+        <div className="w-full text-center pt-12 md:pt-0">
+          <div className="inline-block pt-5">
+            <Image
+              src="/logo/black.svg"
+              alt="Echtventure Logo"
+              width={1200}
+              height={200}
+              className="w-[min(95vw,1200px)] h-auto"
+              priority
+            />
+          </div>
         </div>
 
         {/* Description and Button */}
@@ -125,7 +113,7 @@ const HomePageHero = () => {
             business potential.
           </p>
           <div className="hero-button">
-            <Button className="text-base md:text-lg lg:text-xl px-8 md:px-10 lg:px-12 py-2.5 md:py-3 lg:py-3 font-semibold">
+            <Button className="text-base md:text-lg lg:text-xl px-8 md:px-10 lg:px-12 py-2.5 md:py-3 lg:py-3 font-semibold !font-butler capitalize">
               View Coaches
             </Button>
           </div>

@@ -51,7 +51,7 @@ const Mission = () => {
       className="relative w-full bg-backgroundColorBlack text-[#f5f5f5] overflow-hidden pt-12"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-16 xl:px-24 flex items-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 2xl:gap-32 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 2xl:gap-32 w-full">
           {/* Left: Combined text */}
           <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left font-butler pb-6 max-w-2xl">
             {/* 4. Remove old animation classes, add data-attribute for GSAP */}
@@ -81,46 +81,59 @@ const Mission = () => {
                 data-mission-fade-up
                 className="font-montserrat text-base sm:text-lg text-gray-300 leading-relaxed sm:leading-8"
               >
-                <span className="font-semibold text-white">
+                {/* Mobile: force 3 lines; Desktop/Tablet: inline */}
+                <span className="font-semibold text-white block sm:inline">
                   Over 2,500 individuals impacted
-                </span>{" "}
-                — through coaching, workshops, and leadership programs.
+                </span>
+                <span className="block sm:inline">
+                  {" "}
+                  through coaching, workshops,
+                </span>
+                <span className="block sm:inline">
+                  {" "}
+                  and leadership programs.
+                </span>
               </p>
               <p
                 data-mission-fade-up
                 className="font-montserrat text-base sm:text-lg text-gray-300 leading-relaxed sm:leading-8"
               >
-                <span className="font-semibold text-white">
+                {/* Mobile: force 3 lines; Desktop/Tablet: inline */}
+                <span className="font-semibold text-white block sm:inline">
                   HRD Corp Accredited Trainer
-                </span>{" "}
-                — delivering recognized, people-centered programs.
+                </span>
+                <span className="block sm:inline"> delivering recognized,</span>
+                <span className="block sm:inline">
+                  {" "}
+                  people-centered programs.
+                </span>
               </p>
             </div>
             {/* Desktop button under text */}
-            <Link
+            <a
               data-mission-fade-up // GSAP target for fade-up
               href="/coaches/keith-tay"
-              className="mt-12 hidden md:inline-block"
+              className="sm:inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105  hidden md:inline-block mt-4"
             >
-              <Button className="bg-[#6a3a3a] hover:bg-[#7a4a4a] text-white text-xs font-bold uppercase px-10 py-4 rounded-full font-montserrat">
-                Book a consultation with Keith
-              </Button>
-            </Link>
+              Book a consultation with Keith
+            </a>
           </div>
 
+          {/* Mobile-only centered button (above image on mobile) */}
+          <div className="flex justify-center md:hidden w-full">
+            <a
+              data-mission-fade-up // GSAP target for fade-up
+              href="/coaches/keith-tay"
+              className="inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105 mb-4"
+            >
+              Book a consultation with Keith
+            </a>
+          </div>
           {/* Right: Keith image */}
           <div className="flex items-center justify-center">
-            <div className="w-[85%] sm:w-[75%] md:w-[90%] lg:w-[80%] xl:w-[70%] md:translate-x-0 translate-x-[2px]">
+            <div className="w-[82%] sm:w-[75%] md:w-[90%] lg:w-[80%] xl:w-[70%] md:translate-x-0 translate-x-[18px]">
               <img src="/PR-KEITH.png" alt="Keith" className="w-full h-auto" />
             </div>
-          </div>
-          {/* Mobile-only centered button (after image) */}
-          <div className="flex justify-center md:hidden w-full">
-            <Link href="/coaches/keith-tay" className="mt-2 mb-12 w-full px-4">
-              <Button className="w-full bg-[#6a3a3a] hover:bg-[#7a4a4a] text-white text-sm md:text-xs font-bold uppercase py-4 rounded-full">
-                Book a consultation with Keith
-              </Button>
-            </Link>
           </div>
         </div>
       </div>

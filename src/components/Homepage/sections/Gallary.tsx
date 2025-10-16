@@ -81,7 +81,7 @@ export default function Gallary() {
               {/* Center content */}
               <div
                 data-center
-                className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:row-start-2 text-center px-2 md:pb-12 py-6 "
+                className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:row-start-2 text-center px-2 pb-12 py-16  "
               >
                 <h1 className="text-4xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-5xl md:text-6xl font-bold ">
                   Unlock Potential, Strengthen Collaboration, Drive Change
