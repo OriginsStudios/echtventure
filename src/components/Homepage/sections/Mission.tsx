@@ -110,24 +110,24 @@ const Mission = () => {
               </p>
             </div>
             {/* Desktop button under text */}
-            <a
+            <Link
               data-mission-fade-up // GSAP target for fade-up
               href="/coaches/keith-tay"
               className="sm:inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105  hidden md:inline-block mt-4"
             >
               Book a consultation with Keith
-            </a>
+            </Link>
           </div>
 
           {/* Mobile-only centered button (above image on mobile) */}
           <div className="flex justify-center md:hidden w-full">
-            <a
+            <Link
               data-mission-fade-up // GSAP target for fade-up
               href="/coaches/keith-tay"
               className="inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105 mb-4"
             >
               Book a consultation with Keith
-            </a>
+            </Link>
           </div>
           {/* Right: Keith image */}
           <div className="flex items-center justify-center">

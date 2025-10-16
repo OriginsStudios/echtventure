@@ -16,9 +16,11 @@ const ProgramsSection = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    const currentSection = sectionRef.current;
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: currentSection,
         start: "top 55%",
         toggleActions: "play none none none",
         once: true,
@@ -36,7 +38,7 @@ const ProgramsSection = () => {
     return () => {
       ScrollTrigger.getAll().forEach((st) => {
         const trig = st.trigger as HTMLElement | undefined;
-        if (trig === sectionRef.current) st.kill();
+        if (trig === currentSection) st.kill();
       });
       tl.kill();
     };
