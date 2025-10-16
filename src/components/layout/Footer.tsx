@@ -116,6 +116,11 @@ const Footer: React.FC = () => {
             </div>
           </form>
         </div>
+        <div className="mt-10 border-t border-gray-800 pt-6 text-center">
+          <p className="text-xs sm:text-sm text-gray-500 tracking-wide">
+            Powered by Origins Studios · © 2025
+          </p>
+        </div>
       </div>
     </footer>
   );

@@ -48,7 +48,7 @@ const ProgramsSection = () => {
     <>
       <div
         ref={sectionRef}
-        className="bg-black text-white font-butler flex items-center justify-center pt-0 pb-16 px-4 sm:px-16 "
+        className="bg-black text-white font-butler flex items-center justify-center pt-6 pb-16 px-4 sm:px-16 "
       >
         <div className="max-w-8xl mx-auto text-center">
           <h2

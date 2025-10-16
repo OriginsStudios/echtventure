@@ -41,13 +41,13 @@ export default async function CoachSlugPage({
                 <a
                   href={`mailto:${coach.email}?subject=Consultation Request with ${coach.name}`}
                 >
-                  <Button className="bg-black text-white border-black hover:opacity-90 text-base px-6 py-2">
+                  <Button className="bg-white text-black border-black hover:bg-black hover:text-white text-base px-6 py-2">
                     Book a Consultation with {coach.name.split(" ")[0]}
                   </Button>
                 </a>
               ) : (
                 <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
-                  <Button className="bg-black text-white border-black hover:opacity-90 text-base px-6 py-2">
+                  <Button className="bg-white text-black border-black hover:bg-black hover:text-white text-base px-6 py-2">
                     Book a Consultation with {coach.name.split(" ")[0]}
                   </Button>
                 </Link>

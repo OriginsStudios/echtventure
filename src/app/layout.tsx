@@ -7,6 +7,7 @@ import LenisScrollProvider from "@/components/LenisScrollProvider";
 import Footer from "@/components/layout/Footer";
 import RouteTransitionOverlay from "@/components/RouteTransitionOverlay";
 import Preloader from "@/components/Preload/Preloader";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // Butler font is now loaded via CSS @font-face declarations in globals.css
 const montserrat = Montserrat({
@@ -41,6 +42,7 @@ export default function RootLayout({
         {/* Page transition overlay */}
         <Preloader />
         <RouteTransitionOverlay />
+        <ScrollToTop />
         <main className="bg-five-lines relative z-10 rounded-b-[100px]">
           {children}
         </main>
