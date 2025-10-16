@@ -111,7 +111,7 @@ const SecondProgram = () => {
               >
                 UNLOCK YOUR TRUE POTENTIAL
               </h2>
-              <h3 className="text-lg sm:text-xl font-butler font-semibold text-gray-800">
+              <h3 className="text-lg sm:text-xl font-montserrat font-semibold text-gray-800">
                 ENNEAGRAM PERSONALITY PROFILING
               </h3>
             </div>
@@ -127,7 +127,7 @@ const SecondProgram = () => {
               <div className="mt-6">
                 <a
                   href="/enneagram"
-                  className="inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105"
+                  className="inline-block bg-white text-black px-6 py-3 rounded-lg font-montserrat font-semibold text-sm sm:text-base transition-colors duration-200 "
                 >
                   DISCOVER THE ENNEAGRAM
                 </a>

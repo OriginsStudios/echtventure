@@ -32,7 +32,7 @@ export default async function CoachSlugPage({
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               {coach.name}
             </h1>
-            <p className="text-neutral-700 font-butler mt-2 text-lg">
+            <p className="text-neutral-700 font-montserrat mt-2 text-lg">
               {coach.title}
             </p>
 
@@ -47,13 +47,13 @@ export default async function CoachSlugPage({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button className="bg-white text-black border-black hover:bg-black hover:text-white text-base px-6 py-2">
+                  <Button className="bg-transparent text-black border border-black hover:!bg-transparent hover:!text-black text-sm px-4 py-1.5">
                     Book a Consultation with {coach.name.split(" ")[0]}
                   </Button>
                 </a>
               ) : (
                 <Link href={`/contact?coach=${encodeURIComponent(coach.name)}`}>
-                  <Button className="bg-white text-black border-black hover:bg-black hover:text-white text-base px-6 py-2">
+                  <Button className="bg-transparent text-black border border-black hover:!bg-transparent hover:!text-black text-sm px-4 py-1.5">
                     Book a Consultation with {coach.name.split(" ")[0]}
                   </Button>
                 </Link>
@@ -65,7 +65,7 @@ export default async function CoachSlugPage({
         {/* Bio */}
         <section className="mt-12 space-y-4">
           {coach.bio.map((para, i) => (
-            <p key={i} className="text-neutral-800 leading-7">
+            <p key={i} className="text-neutral-800 leading-7 font-montserrat">
               {para}
             </p>
           ))}
@@ -81,10 +81,10 @@ export default async function CoachSlugPage({
               .map((t, idx) => (
                 <li key={`${t.year}-${idx}`} className="mb-5 ms-2">
                   <div className="absolute -start-[7px] h-3 w-3 rounded-full bg-black mt-1.5"></div>
-                  <p className="text-sm font-butler text-neutral-500">
+                  <p className="text-sm font-montserrat text-neutral-500">
                     {t.year}
                   </p>
-                  <p className="font-medium font-butler">
+                  <p className="font-medium font-montserrat">
                     {t.role}
                     {t.org ? (
                       <span className="text-neutral-600">, {t.org}</span>
@@ -100,7 +100,7 @@ export default async function CoachSlugPage({
           <h2 className="text-xl font-semibold">
             Credentials & Certifications
           </h2>
-          <ul className="mt-4 list-disc ps-6 space-y-2">
+          <ul className="mt-4 list-disc ps-6 space-y-2 font-montserrat">
             {coach.credentials.map((c, i) => (
               <li key={i} className="text-neutral-800">
                 {c.name}
@@ -118,7 +118,7 @@ export default async function CoachSlugPage({
         {/* Specializations */}
         <section className="mt-12">
           <h2 className="text-xl font-semibold">Areas of Specialization</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-2 font-montserrat">
             {coach.specializations.map((s, i) => (
               <span
                 key={i}

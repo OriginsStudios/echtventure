@@ -113,7 +113,7 @@ const HomePageHero = () => {
             business potential.
           </p>
           <div className="hero-button">
-            <Button className="text-base md:text-lg lg:text-xl px-8 md:px-10 lg:px-12 py-2.5 md:py-3 lg:py-3 font-semibold !font-butler capitalize">
+            <Button className="text-base md:text-lg lg:text-xl px-8 md:px-10 lg:px-12 py-2.5 md:py-3 lg:py-3 font-montserrat !font-medium capitalize">
               View Coaches
             </Button>
           </div>
