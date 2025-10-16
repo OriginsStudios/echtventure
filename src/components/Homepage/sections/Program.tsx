@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import { UserRound, Users, Puzzle } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -50,13 +51,13 @@ const ProgramsSection = () => {
         <div className="max-w-8xl mx-auto text-center">
           <h2
             ref={headingRef}
-            className="text-[2.4rem] sm:text-6xl md:text-7xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8 mt-12 text-white"
+            className="text-[2.1rem] sm:text-5xl md:text-6xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8 mt-12 text-white whitespace-nowrap"
           >
             The Echtventure Method
           </h2>
           <p
             ref={paragraphRef}
-            className="mt-6 max-w-3xl text-md sm:text-lg mx-auto font-montserrat text-gray-300 leading-relaxed"
+            className="mt-6 max-w-3xl text-sm sm:text-base mx-auto font-montserrat text-gray-300 leading-relaxed"
           >
             We leverage a unique blend of corporate management experience and
             holistic development, using powerful tools like the Enneagram
@@ -72,6 +73,50 @@ const ProgramsSection = () => {
                 Discover Your Path
               </Button>
             </Link>
+          </div>
+          {/* Coaching offerings moved here */}
+          <div className="mt-7 max-w-6xl mx-auto">
+            {/* New layout: simple items with divider lines between them */}
+            <div className="flex flex-col md:flex-row text-center md:items-stretch divide-y divide-white/20 md:divide-y-0 md:divide-x md:divide-white/20">
+              <div className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center">
+                <UserRound
+                  className="h-8 w-8 text-white mb-3"
+                  aria-hidden="true"
+                />
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2">
+                  Individual Coaching
+                </h3>
+                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed">
+                  Bespoke 1:1 guidance to clarify direction, build capability,
+                  and sustain measurable momentum.
+                </p>
+              </div>
+
+              <div className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center">
+                <Users className="h-8 w-8 text-white mb-3" aria-hidden="true" />
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2">
+                  Group Coaching
+                </h3>
+                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed">
+                  Facilitated cohort learning that blends expert input with peer
+                  accountability for faster outcomes.
+                </p>
+              </div>
+
+              <div className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center">
+                <Puzzle
+                  className="h-8 w-8 text-white mb-3"
+                  aria-hidden="true"
+                />
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2">
+                  Team Building
+                </h3>
+                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed">
+                  Experiential programs that align purpose, strengthen
+                  collaboration, and elevate performance.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

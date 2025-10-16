@@ -63,35 +63,13 @@ const BrainCircuitIcon = () => (
   </svg>
 );
 
-// --- Data for the cards ---
-const philosophyCards = [
-  {
-    icon: <BriefcaseIcon />,
-    title: "Individual Coaching",
-    description:
-      "Bespoke 1:1 guidance to clarify direction, build capability, and sustain measurable momentum.",
-  },
-  {
-    icon: <LeafIcon />,
-    title: "Group Coaching",
-    description:
-      "Facilitated cohort learning that blends expert input with peer accountability for faster outcomes.",
-  },
-  {
-    icon: <BrainCircuitIcon />,
-    title: "Team Building",
-    description:
-      "Experiential programs that align purpose, strengthen collaboration, and elevate performance.",
-  },
-];
+// (Cards moved to Program.tsx under The Echtventure Method section)
 
 // --- The Main Component ---
 const SecondProgram = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const textRef = useRef(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
-  cardsRef.current = []; // Ensure it's empty on re-renders
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
@@ -112,61 +90,17 @@ const SecondProgram = () => {
         },
       }
     );
-
-    // Staggered animation for the cards
-    gsap.fromTo(
-      cardsRef.current,
-      { y: 50, opacity: 0, scale: 0.95 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: cardsRef.current[0], // Trigger based on the first card
-          start: "top 85%",
-        },
-      }
-    );
   }, []);
 
-  // Helper function to add card elements to our ref array
-  const addToRefs = (el: HTMLDivElement | null) => {
-    if (el && !cardsRef.current.includes(el)) {
-      cardsRef.current.push(el);
-    }
-  };
+  // (Card refs removed)
 
   return (
     <section
       ref={sectionRef}
       className="text-black pt-0 pb-5 sm:pt-0 sm:pb-8 px-4 sm:px-16"
     >
-      <div className="max-w-8xl mx-auto mt-24">
-        {/* --- Cards Grid --- */}
-        <div className="grid grid-cols-1 gap-12 md:gap-6 md:grid-cols-3 max-w-6xl mx-auto lg:mb-8 mb-6 lg:pb-12">
-          {philosophyCards.map((card, index) => (
-            <div
-              key={index}
-              ref={addToRefs}
-              className="flex flex-col text-center p-6 bg-white border border-gray-200 rounded-2xl shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-md hover:border-gray-300"
-            >
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-900 text-white mb-4">
-                {card.icon}
-              </div>
-              <h3 className="text-xl font-butler font-semibold leading-7 text-black tracking-tight mb-4">
-                {card.title}
-              </h3>
-              <p className="text-sm sm:text-base font-montserrat text-gray-700 leading-relaxed flex-grow">
-                {card.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* --- Philosophy Intro (row layout, condensed copy, full-width bg using wrapper) --- */}
+      {/* Cards grid removed – now shown in Program.tsx */}
+      {/* --- Enneagram Promo --- */}
       <div className="mt-4 md:mt-16 sm:mb-16">
         <div className="mx-auto max-w-6xl pt-12 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-10">
