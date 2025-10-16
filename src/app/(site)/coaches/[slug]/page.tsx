@@ -39,7 +39,13 @@ export default async function CoachSlugPage({
             <div className="mt-6">
               {coach.email ? (
                 <a
-                  href={`mailto:${coach.email}?subject=Consultation Request with ${coach.name}`}
+                  href={`https://mail.google.com/mail/u/0/?view=cm&fs=1&to=${encodeURIComponent(
+                    coach.email
+                  )}&su=${encodeURIComponent(
+                    `Consultation Request with ${coach.name}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Button className="bg-white text-black border-black hover:bg-black hover:text-white text-base px-6 py-2">
                     Book a Consultation with {coach.name.split(" ")[0]}

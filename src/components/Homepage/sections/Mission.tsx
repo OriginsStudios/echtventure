@@ -113,9 +113,14 @@ const Mission = () => {
             <Link
               data-mission-fade-up // GSAP target for fade-up
               href="/coaches/keith-tay"
-              className="sm:inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105  hidden md:inline-block mt-4"
+              className="hidden md:inline-block mt-4"
             >
-              Book a consultation with Keith
+              <Button
+                variant="solidLight"
+                className="text-black border border-black hover:bg-gray-200 hover:text-black text-base px-6 py-2 font-butler capitalize"
+              >
+                Book a consultation with Keith
+              </Button>
             </Link>
           </div>
 
@@ -124,9 +129,14 @@ const Mission = () => {
             <Link
               data-mission-fade-up // GSAP target for fade-up
               href="/coaches/keith-tay"
-              className="inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105 mb-4"
+              className="mb-4"
             >
-              Book a consultation with Keith
+              <Button
+                variant="solidLight"
+                className="text-black border border-black hover:bg-gray-200 hover:text-black text-sm sm:text-base px-6 py-3 font-butler capitalize"
+              >
+                Book a consultation with Keith
+              </Button>
             </Link>
           </div>
           {/* Right: Keith image */}
