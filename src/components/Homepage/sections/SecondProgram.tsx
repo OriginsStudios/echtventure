@@ -67,21 +67,21 @@ const BrainCircuitIcon = () => (
 const philosophyCards = [
   {
     icon: <BriefcaseIcon />,
-    title: "Corporate Management Experience",
+    title: "Individual Coaching",
     description:
-      "Real-world business insights from years of corporate leadership and management experience.",
+      "Bespoke 1:1 guidance to clarify direction, build capability, and sustain measurable momentum.",
   },
   {
     icon: <LeafIcon />,
-    title: "Holistic Development",
+    title: "Group Coaching",
     description:
-      "A comprehensive approach that addresses personal, professional, and relational growth.",
+      "Facilitated cohort learning that blends expert input with peer accountability for faster outcomes.",
   },
   {
     icon: <BrainCircuitIcon />,
-    title: "Enneagram Personality Profiling",
+    title: "Team Building",
     description:
-      "Deep personality insights that unlock authentic self-awareness and improved relationships.",
+      "Experiential programs that align purpose, strengthen collaboration, and elevate performance.",
   },
 ];
 
@@ -142,52 +142,18 @@ const SecondProgram = () => {
   return (
     <section
       ref={sectionRef}
-      className="text-black py-8 sm:py-12 px-4 sm:px-16"
+      className="text-black pt-0 pb-5 sm:pt-0 sm:pb-8 px-4 sm:px-16"
     >
       <div className="max-w-8xl mx-auto">
-        {/* --- Philosophy Intro --- */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <div className="bg-gray-900 text-white p-8 sm:p-12 rounded-2xl">
-            <h2
-              ref={titleRef}
-              className="text-[2.4rem] sm:text-6xl md:text-7xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8 text-white"
-            >
-              UNLOCK YOUR TRUE POTENTIAL
-            </h2>
-            <h3 className="text-xl sm:text-2xl font-butler font-semibold text-gray-300 mb-6">
-              ENNEAGRAM PERSONALITY PROFILING
-            </h3>
-            <p
-              ref={textRef}
-              className="mt-8 max-w-3xl text-sm sm:text-base mx-auto font-montserrat text-gray-300 leading-relaxed"
-            >
-              We leverage on “The Enneagram”, a personality profiling tool
-              designed to identify core motivations, fears, and desires,
-              enabling you to lead with genuine confidence and create meaningful
-              impact in every relationship and situation. Transform your
-              leadership style by understanding not just what you do, but why
-              you do it.
-            </p>
-            <div className="mt-8">
-              <a
-                href="/enneagram"
-                className="inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105"
-              >
-                DISCOVER THE ENNEAGRAM
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/* --- Cards Grid --- */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-6xl mx-auto lg:mb-16 mb-12">
+        <div className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-3 max-w-6xl mx-auto lg:mb-8 mb-6 lg:pb-12">
           {philosophyCards.map((card, index) => (
             <div
               key={index}
               ref={addToRefs}
-              className="flex flex-col text-center p-8 border border-gray-300 rounded-2xl transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:border-gray-400"
+              className="flex flex-col text-center p-6 bg-white border border-gray-200 rounded-2xl shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-md hover:border-gray-300"
             >
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 text-gray-800 mb-6">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-900 text-white mb-4">
                 {card.icon}
               </div>
               <h3 className="text-xl font-butler font-semibold leading-7 text-black tracking-tight mb-4">
@@ -198,6 +164,42 @@ const SecondProgram = () => {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+      {/* --- Philosophy Intro (row layout, condensed copy, full-width bg using wrapper) --- */}
+      <div className="bg-black mt-10 md:mt-16 rounded-lg  ">
+        <div className="mx-auto max-w-6xl mb-16 pt-12 pb-20 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-10">
+            <div className="md:w-1/2 md:order-2 text-center md:text-right">
+              <h2
+                ref={titleRef}
+                className="text-3xl sm:text-4xl md:text-5xl font-butler font-semibold tracking-tight leading-tight mb-2 sm:mb-3 text-white"
+              >
+                UNLOCK YOUR TRUE POTENTIAL
+              </h2>
+              <h3 className="text-lg sm:text-xl font-butler font-semibold text-gray-300">
+                ENNEAGRAM PERSONALITY PROFILING
+              </h3>
+            </div>
+            <div className="md:w-1/2 md:order-1 text-center md:text-left">
+              <p
+                ref={textRef}
+                className="text-sm sm:text-base font-montserrat text-gray-300 leading-relaxed"
+              >
+                Understand your core motivations and patterns to lead with
+                clarity and confidence, and create meaningful impact in every
+                relationship and situation.
+              </p>
+              <div className="mt-6">
+                <a
+                  href="/enneagram"
+                  className="inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-butler font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-gray-100 hover:transform hover:scale-105"
+                >
+                  DISCOVER THE ENNEAGRAM
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

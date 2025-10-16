@@ -17,8 +17,9 @@ export default function LogoCard({
       {...rest}
       // Base styles for the card - flexible height with centered content
       className={`
-        relative flex w-52 md:w-68 items-center justify-center 
-        rounded-2xl bg-white p-6 shadow-sm 
+        relative flex items-center justify-center 
+        w-56 md:w-64 h-32 md:h-36
+        rounded-2xl bg-white p-6 shadow-sm overflow-hidden
         transition-transform duration-300 hover:-translate-y-1
         ${className} 
       `}
@@ -28,12 +29,12 @@ export default function LogoCard({
         alt={alt}
         width={260}
         height={156}
-        className="object-contain"
+        className="object-contain max-w-full max-h-full"
         style={{
-          width: "auto",
-          height: "auto",
+          width: "100%",
+          height: "100%",
           maxWidth: "100%",
-          maxHeight: "156px",
+          maxHeight: "100%",
         }}
       />
     </div>
