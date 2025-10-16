@@ -118,7 +118,17 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-10 border-t border-gray-800 pt-6 text-center">
           <p className="text-xs sm:text-sm text-gray-500 tracking-wide">
-            Powered by Origins Studios · © 2025
+            Powered by{" "}
+            <a
+              href="https://www.originskh.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white underline-offset-4 hover:underline transition-colors duration-200"
+              aria-label="Visit Origins Studios website (opens in a new tab)"
+            >
+              Origins Studios
+            </a>{" "}
+            · © 2025
           </p>
         </div>
       </div>
