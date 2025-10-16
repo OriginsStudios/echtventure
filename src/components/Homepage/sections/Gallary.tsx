@@ -83,9 +83,8 @@ export default function Gallary() {
                 data-center
                 className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:row-start-2 text-center px-2 md:pb-12 py-6 "
               >
-                <h1 className="text-3xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-4xl md:text-5xl font-bold ">
-                  Awareness <span className="font-normal">to</span> Mastery{" "}
-                  <span className="font-normal">to</span> Leadership
+                <h1 className="text-4xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-5xl md:text-6xl font-bold ">
+                  Unlock Potential, Strengthen Collaboration, Drive Change
                 </h1>
               </div>
 
@@ -106,7 +105,7 @@ export default function Gallary() {
               <PhotoCard
                 data-card
                 className="hidden md:block col-span-4 md:col-start-8 md:-mt-8 md:row-start-3"
-                src="/gallery/2.jpg"
+                src="/gallery/12.png"
                 alt="Portrait with hat"
                 width={320}
                 height={400}

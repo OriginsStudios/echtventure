@@ -110,9 +110,9 @@ const HomePageHero = () => {
           <span
             ref={headlineRef}
             className="hero-headline block font-extrabold text-black leading-none whitespace-nowrap 
-                       uppercase tracking-tighter text-center overflow-hidden max-w-[95vw] text-ellipsis
-                       text-[clamp(2.25rem,9vw,7rem)] pt-5"
-            style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                        tracking-widest text-center overflow-hidden max-w-[95vw] text-[clamp(3rem,12vw,12rem)] 
+                       pt-5"
+            style={{ fontFamily: "Butler, Arial, sans-serif" }}
           >
             echtventure
           </span>
