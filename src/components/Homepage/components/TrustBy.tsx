@@ -95,11 +95,6 @@ const partners = [
     logo: "/partner/cheesiah.jpg",
     website: "https://csilk.com.my/",
   },
-  {
-    name: "You Matter Here",
-    logo: "/partner/matter.ico",
-    website: "https://youmatterhere.org",
-  },
 ];
 
 export default function TrustedBy() {
