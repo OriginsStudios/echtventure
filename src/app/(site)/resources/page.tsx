@@ -388,7 +388,7 @@ export default function ResourcesPage() {
                     d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 00-15 0v5h5l-5 5-5-5h5V7.5z"
                   />
                 </svg>
-                <span className="font-butler text-slate-700">
+                <span className="font-montserrat text-slate-700">
                   Follow us for regular updates and insights
                 </span>
               </div>
