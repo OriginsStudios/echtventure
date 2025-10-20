@@ -6,12 +6,14 @@ type ButtonProps = {
   children: React.ReactNode;
   className?: string;
   variant?: "outline" | "solidLight" | "solidDark";
+  onClick?: () => void;
 };
 
 export default function Button({
   children,
   className,
   variant = "outline",
+  onClick,
 }: ButtonProps) {
   const base =
     "text-sm px-6 py-3 rounded-full font-montserrat font-semibold uppercase tracking-wide transition-all duration-200 ease-in-out";
@@ -23,7 +25,10 @@ export default function Button({
   };
 
   return (
-    <button className={clsx(base, variants[variant], className)}>
+    <button
+      onClick={onClick}
+      className={clsx(base, variants[variant], className)}
+    >
       {children}
     </button>
   );

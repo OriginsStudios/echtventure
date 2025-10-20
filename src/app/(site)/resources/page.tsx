@@ -47,85 +47,7 @@ export default function ResourcesPage() {
   const descText =
     "Explore our collection of insights, stories, and expertise to support your growth journey.";
 
-  useGSAP(
-    () => {
-      // --- Initial Page Load Animation ---
-      if (techTitleRef.current) {
-        const splitTitle = new SplitType(techTitleRef.current, {
-          types: "chars",
-        });
-
-        // Set initial positions for all elements
-        gsap.set(splitTitle.chars, { y: "110%", opacity: 0 });
-        gsap.set(techParaRef.current, { y: 70, opacity: 0 });
-        gsap.set(leftSvgRef.current, { x: -200, opacity: 0 });
-        gsap.set(rightSvgRef.current, { x: 200, opacity: 0 });
-
-        const tlCover = gsap.timeline({
-          defaults: { ease: "power3.out" },
-          delay: 0.4,
-        });
-
-        // Animate all elements into view on load
-        tlCover
-          .to([leftSvgRef.current, rightSvgRef.current], {
-            x: 0,
-            opacity: 1,
-            duration: 1.0,
-            ease: "power4.out",
-          })
-          .to(
-            splitTitle.chars,
-            {
-              y: "0%",
-              opacity: 1,
-              duration: 0.7,
-              stagger: 0.02,
-              ease: "power4.out",
-            },
-            "-=0.8"
-          )
-          .to(
-            techParaRef.current,
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.6,
-              ease: "power3.out",
-            },
-            "-=0.7"
-          );
-      }
-
-      // Created a new array for elements that should disappear on scroll.
-      // The SVGs are no longer in this list.
-      const textElementsOnScroll = [techTitleRef.current, techParaRef.current];
-
-      // --- Scroll Out/In Animation (Now only for text) ---
-      gsap.fromTo(
-        textElementsOnScroll, // Use the new array here
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-        },
-        {
-          opacity: 0,
-          scale: 0.8,
-          y: -100,
-          ease: "power2.in",
-          scrollTrigger: {
-            trigger: techCoverRef.current,
-            start: "top top",
-            end: "bottom center",
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
-    },
-    { scope: mainRef }
-  );
+  // All animations removed - content displays immediately without fade effects
 
   return (
     <main ref={mainRef} className="min-h-screen">
@@ -141,7 +63,7 @@ export default function ResourcesPage() {
                 className="absolute -left-[30rem] top-0 -translate-y-[30%]"
               >
                 <div
-                  className="h-[25rem] w-[50rem] text-custom-green opacity-20 will-change-transform scale-110"
+                  className="h-[15rem] w-[30rem] text-custom-green opacity-20 will-change-transform scale-110"
                   style={{ filter: "drop-shadow(0 0 2px currentColor)" }}
                 >
                   <LeafSVG />
@@ -152,7 +74,7 @@ export default function ResourcesPage() {
                 className="absolute -right-[30rem] bottom-0 translate-y-[30%] rotate-180"
               >
                 <div
-                  className="h-[25rem] w-[50rem] text-custom-green opacity-20 will-change-transform scale-110"
+                  className="h-[15rem] w-[30rem] text-custom-green opacity-20 will-change-transform scale-110"
                   style={{ filter: "drop-shadow(0 0 2px currentColor)" }}
                 >
                   <LeafSVG />

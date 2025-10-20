@@ -494,8 +494,8 @@ const Navbar = () => {
               <Image
                 src="/logo/black.svg"
                 alt="Echtventure Logo"
-                width={200}
-                height={200}
+                width={160}
+                height={160}
                 unoptimized
               />
             </Link>

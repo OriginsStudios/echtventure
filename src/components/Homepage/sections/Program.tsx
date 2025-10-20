@@ -47,6 +47,7 @@ const ProgramsSection = () => {
   return (
     <>
       <div
+        id="program-section"
         ref={sectionRef}
         className="bg-black text-white font-butler flex items-center justify-center pt-6 pb-16 px-4 sm:px-16 "
       >
