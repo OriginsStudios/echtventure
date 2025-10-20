@@ -1,7 +1,7 @@
 // components/Footer.tsx
 
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,6 +12,68 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const Footer: React.FC = () => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+
+  // Form state
+  const [formData, setFormData] = useState({
+    subject: "",
+    name: "",
+    email: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+    // Clear status when user starts typing again
+    if (submitStatus.type) {
+      setSubmitStatus({ type: null, message: "" });
+    }
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Message sent successfully! We'll get back to you soon.",
+        });
+        // Clear form
+        setFormData({ subject: "", name: "", email: "" });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: data.error || "Failed to send message. Please try again.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useGSAP(
     () => {
@@ -56,7 +118,7 @@ const Footer: React.FC = () => {
           <h2 className="font-butler text-lg sm:text-xl md:text-2xl font-semibold text-white mb-4 sm:mb-6 text-center">
             Send us a Message
           </h2>
-          <form className="space-y-3 sm:space-y-4">
+          <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="subject" className="sr-only">
                 Subject
@@ -65,7 +127,11 @@ const Footer: React.FC = () => {
                 type="text"
                 id="subject"
                 placeholder="Subject"
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+                value={formData.subject}
+                onChange={handleInputChange}
+                required
+                disabled={isSubmitting}
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base disabled:opacity-50"
               />
             </div>
             <div>
@@ -76,7 +142,11 @@ const Footer: React.FC = () => {
                 type="text"
                 id="name"
                 placeholder="Name"
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                disabled={isSubmitting}
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base disabled:opacity-50"
               />
             </div>
             <div>
@@ -87,15 +157,34 @@ const Footer: React.FC = () => {
                 type="email"
                 id="email"
                 placeholder="Email"
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                disabled={isSubmitting}
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base disabled:opacity-50"
               />
             </div>
+
+            {/* Status Messages */}
+            {submitStatus.type && (
+              <div
+                className={`text-center py-2 px-4 rounded-lg text-sm sm:text-base ${
+                  submitStatus.type === "success"
+                    ? "bg-green-900/30 text-green-400 border border-green-700"
+                    : "bg-red-900/30 text-red-400 border border-red-700"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <div className="flex justify-center pt-2 sm:pt-3">
               <button
                 type="submit"
-                className="bg-white text-black font-semibold py-2 px-4 sm:py-3 sm:px-6 md:py-3 md:px-8 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                disabled={isSubmitting}
+                className="bg-white text-black font-semibold py-2 px-4 sm:py-3 sm:px-6 md:py-3 md:px-8 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </div>
           </form>

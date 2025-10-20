@@ -76,7 +76,7 @@ const ProgramsSection = () => {
                   behavior: "smooth",
                 });
               }}
-              className="!font-butler !rounded-full !text-white !bg-[#6a3a3a] hover:!bg-[#7a4a4a] px-8 py-3 transition-all duration-300 transform hover:scale-105"
+              className="!font-montserrat !rounded-full !text-white !bg-[#6a3a3a] hover:!bg-[#7a4a4a] px-8 py-3 transition-all duration-300 transform hover:scale-105 "
             >
               Start Your Transformation
             </button>

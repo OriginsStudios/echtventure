@@ -127,7 +127,7 @@ const SecondProgram = () => {
               <div className="mt-6">
                 <a
                   href="/enneagram"
-                  className="inline-block bg-white text-black px-6 py-3 rounded-lg font-montserrat font-semibold text-sm sm:text-base transition-colors duration-200 "
+                  className="inline-block bg-white text-black px-6 py-3  font-montserrat font-semibold text-sm sm:text-base transition-colors duration-200 rounded-full hover:text-white hover:bg-black"
                 >
                   DISCOVER THE ENNEAGRAM
                 </a>

@@ -41,7 +41,7 @@ export default function RootLayout({
         <Preloader />
         <RouteTransitionOverlay />
         <ScrollToTop />
-        <main className="bg-five-lines relative z-10 rounded-b-[100px]">
+        <main className="bg-five-lines relative z-10 rounded-b-[50px]">
           {children}
         </main>
         <Footer />

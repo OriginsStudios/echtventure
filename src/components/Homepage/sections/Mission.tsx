@@ -53,11 +53,11 @@ const Mission = () => {
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-16 xl:px-24 flex items-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 2xl:gap-32 w-full">
           {/* Left: Combined text */}
-          <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left font-butler pb-6 max-w-2xl">
+          <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left font-butler pb-6 max-w-2xl md:pl-16 lg:pl-0">
             {/* 4. Remove old animation classes, add data-attribute for GSAP */}
             <TextMorph
               as="h1"
-              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-1 sm:mb-2"
+              className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold mb-1 sm:mb-2"
             >
               echtventure
             </TextMorph>
@@ -135,7 +135,7 @@ const Mission = () => {
                 variant="solidLight"
                 className="text-black border border-black hover:bg-gray-200 hover:text-black text-sm sm:text-base px-6 py-3 font-butler capitalize"
               >
-                Book a consultation with Keith
+                About Keith Tay
               </Button>
             </Link>
           </div>
