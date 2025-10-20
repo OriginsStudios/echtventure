@@ -68,7 +68,7 @@ export default function Preloader() {
       {/* Top Logo - positioned above center */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full w-[300px]">
         <Image
-          src="/reload/1.png"
+          src="/reload/T.png"
           width={300}
           height={150}
           loading="eager"
@@ -81,7 +81,7 @@ export default function Preloader() {
       {/* Bottom Logo - positioned below center */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-[300px]">
         <Image
-          src="/reload/2.png"
+          src="/reload/B.png"
           width={300}
           height={150}
           loading="eager"

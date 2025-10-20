@@ -48,27 +48,11 @@ const Footer: React.FC = () => {
       className="h-full sticky bottom-0 z-0 text-white flex flex-col items-center justify-center p-8 pt-24 font-butler antialiased bg-five-lines-blackbg "
     >
       <div className="w-full mx-auto text-center ">
-        <div className="flex justify-center  ">
-          <Image
-            src={"/signature.svg"}
-            alt="keithTay"
-            height={200}
-            width={300}
-          />
-        </div>
-        {/* Quote */}
-        <blockquote className="mb-16">
-          <p className="text-lg italic font-butler text-gray-400 max-w-xl mx-auto leading-relaxed">
-            "Every transformation begins with a single step. I believe in the
-            power of authentic change and the courage it takes to step into your
-            true potential. Let's embark on this journey together."
-          </p>
-          <cite className="block text-gray-500 mt-6 not-italic tracking-wide">
-            — Keith Tay
-          </cite>
-        </blockquote>
-        {/* Contact Form - Centered */}
-        <div className="max-w-sm sm:max-w-md md:max-w-lg mx-auto mb-12">
+        {/* Contact Form - Moved to top for better visibility */}
+        <div
+          id="contact-form"
+          className="max-w-sm sm:max-w-md md:max-w-lg mx-auto mb-16"
+        >
           <h2 className="font-butler text-lg sm:text-xl md:text-2xl font-semibold text-white mb-4 sm:mb-6 text-center">
             Send us a Message
           </h2>
@@ -116,6 +100,18 @@ const Footer: React.FC = () => {
             </div>
           </form>
         </div>
+
+        {/* Quote */}
+        <blockquote className="mb-16">
+          <p className="text-lg italic font-butler text-gray-400 max-w-xl mx-auto leading-relaxed">
+            "Every transformation begins with a single step. I believe in the
+            power of authentic change and the courage it takes to step into your
+            true potential. Let's embark on this journey together."
+          </p>
+          <cite className="block text-gray-500 mt-6 not-italic tracking-wide">
+            — Keith Tay
+          </cite>
+        </blockquote>
         <div className="mt-10 border-t border-gray-800 pt-6 text-center">
           <p className="text-xs sm:text-sm text-gray-500 tracking-wide">
             Powered by{" "}

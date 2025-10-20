@@ -59,11 +59,11 @@ const Mission = () => {
               as="h1"
               className="text-5xl sm:text-6xl md:text-7xl font-bold mb-1 sm:mb-2"
             >
-              Echtventure
+              echtventure
             </TextMorph>
             <TextMorph
               as="h2"
-              className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight leading-tight font-montserrat sm:mt-1 text-gray-300 mt-2"
+              className="text-sm sm:text-base md:text-md font-bold tracking-tight leading-tight font-montserrat sm:mt-1 text-gray-300 mt-2"
             >
               by Keith Tay
             </TextMorph>
@@ -119,7 +119,7 @@ const Mission = () => {
                 variant="solidLight"
                 className="text-black border border-black hover:bg-gray-200 hover:text-black text-base px-6 py-2 font-butler capitalize"
               >
-                Book a consultation with Keith
+                About Keith Tay
               </Button>
             </Link>
           </div>

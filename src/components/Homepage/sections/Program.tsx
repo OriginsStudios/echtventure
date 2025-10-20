@@ -68,57 +68,98 @@ const ProgramsSection = () => {
             professional and personal relationships.
           </p>
           <div ref={buttonRef} className="mt-6">
-            <Link href="/coaches">
-              <Button
-                variant="solidDark"
-                className="!font-butler !rounded-full !text-white !bg-[#6a3a3a] hover:!bg-[#7a4a4a] "
-              >
-                Discover Your Path
-              </Button>
-            </Link>
+            <button
+              onClick={() => {
+                // Simply scroll to the bottom of the page
+                window.scrollTo({
+                  top: document.body.scrollHeight,
+                  behavior: "smooth",
+                });
+              }}
+              className="!font-butler !rounded-full !text-white !bg-[#6a3a3a] hover:!bg-[#7a4a4a] px-8 py-3 transition-all duration-300 transform hover:scale-105"
+            >
+              Start Your Transformation
+            </button>
           </div>
           {/* Coaching offerings moved here */}
           <div className="mt-7 max-w-6xl mx-auto">
             {/* New layout: simple items with divider lines between them */}
             <div className="flex flex-col md:flex-row text-center md:items-stretch divide-y divide-white/20 md:divide-y-0 md:divide-x md:divide-white/20">
-              <div className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center">
+              <button
+                onClick={() => {
+                  // Simply scroll to the bottom of the page
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth",
+                  });
+                }}
+                className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center hover:bg-white/5 transition-all duration-300 transform hover:scale-105 cursor-pointer group"
+              >
                 <UserRound
-                  className="h-8 w-8 text-white mb-3"
+                  className="h-8 w-8 text-white mb-3 group-hover:text-white transition-colors duration-300"
                   aria-hidden="true"
                 />
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2 group-hover:text-white transition-colors duration-300">
                   Individual Coaching
                 </h3>
-                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed">
+                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">
                   Bespoke 1:1 guidance to clarify direction, build capability,
                   and sustain measurable momentum.
                 </p>
-              </div>
+                Start 1-on-1 coaching →
+              </button>
 
-              <div className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center">
-                <Users className="h-8 w-8 text-white mb-3" aria-hidden="true" />
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2">
+              <button
+                onClick={() => {
+                  // Simply scroll to the bottom of the page
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth",
+                  });
+                }}
+                className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center hover:bg-white/5 transition-all duration-300 transform hover:scale-105 cursor-pointer group"
+              >
+                <Users
+                  className="h-8 w-8 text-white mb-3 group-hover:text-white transition-colors duration-300"
+                  aria-hidden="true"
+                />
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2 group-hover:text-white transition-colors duration-300">
                   Group Coaching
                 </h3>
-                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed">
+                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">
                   Facilitated cohort learning that blends expert input with peer
                   accountability for faster outcomes.
                 </p>
-              </div>
+                <div className="mt-4 text-sm font-butler text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Join group sessions →
+                </div>
+              </button>
 
-              <div className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center">
+              <button
+                onClick={() => {
+                  // Simply scroll to the bottom of the page
+                  window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth",
+                  });
+                }}
+                className="px-8 py-8 md:py-10 flex-1 flex flex-col items-center justify-center text-center hover:bg-white/5 transition-all duration-300 transform hover:scale-105 cursor-pointer group"
+              >
                 <Puzzle
-                  className="h-8 w-8 text-white mb-3"
+                  className="h-8 w-8 text-white mb-3 group-hover:text-white transition-colors duration-300"
                   aria-hidden="true"
                 />
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-butler font-semibold leading-tight text-white tracking-tight mb-2 group-hover:text-white transition-colors duration-300">
                   Team Building
                 </h3>
-                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed">
+                <p className="text-sm sm:text-base font-montserrat text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">
                   Experiential programs that align purpose, strengthen
                   collaboration, and elevate performance.
                 </p>
-              </div>
+                <div className="mt-4 text-sm font-butler text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Build your team →
+                </div>
+              </button>
             </div>
           </div>
         </div>
