@@ -50,7 +50,7 @@ const OurStorySection = () => {
         <div className="text-center mb-16">
           <AnimatedTitle>
             <h2 className="font-montserrat text-[48px] leading-[1.1em] font-normal text-black mb-6">
-              Authenticity in Action: The Story of Echtventure
+              Authenticity in Action: The Story of echtventure
             </h2>
           </AnimatedTitle>
         </div>
@@ -59,7 +59,7 @@ const OurStorySection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <p className="font-montserrat text-[20px] text-gray-700 leading-[1.6em]">
-                Founded in 2019, Echtventure emerged from a clear and compelling
+                Founded in 2019, echtventure emerged from a clear and compelling
                 mission: to help working millennials progressively realize their
                 passion and purpose in life.
               </p>

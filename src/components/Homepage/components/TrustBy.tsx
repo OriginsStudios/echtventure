@@ -15,12 +15,12 @@ gsap.registerPlugin(ScrollTrigger);
 const partners = [
   {
     name: "AnyMind Group",
-    logo: "/partner/anymind.svg",
+    logo: "/partner/anymind.png",
     website: "https://anymindgroup.com/",
   },
   {
     name: "Gary Chong Studios",
-    logo: "/partner/garychongstudio.png",
+    logo: "/partner/garychongstudios.png",
     website: "https://garychongstudios.com/",
   },
   {
@@ -36,17 +36,17 @@ const partners = [
   },
   {
     name: "UHY",
-    logo: "/partner/uhy.jpg",
+    logo: "/partner/uhy.png",
     website: "https://www.uhy-th.com/index.php",
   },
   {
     name: "Morison Global",
-    logo: "/partner/morisonglobal.png",
+    logo: "/partner/marisonglobal.png",
     website: "https://www.morisonglobal.com/",
   },
   {
     name: "RCA Wealth",
-    logo: "/partner/RCA.jpg",
+    logo: "/partner/RCA.png",
     website: "https://rcawealth.com.my/",
   },
   {
@@ -71,7 +71,7 @@ const partners = [
   },
   {
     name: "ESP Global",
-    logo: "/partner/esp.jpg",
+    logo: "/partner/esp.png",
     website: "https://www.espglobal.co/",
   },
   {
@@ -81,18 +81,17 @@ const partners = [
   },
   {
     name: "Suree Food",
-    logo: "/partner/sureefood.jpg",
+    logo: "/partner/sureefood.png",
     website: "https://sureefood.com/",
   },
   {
     name: "Marias",
-    logo: "/partner/marias.jpg",
+    logo: "/partner/marias.png",
     website: "https://www.marias.com.my/",
   },
-  { name: "TCG", logo: "/partner/TCG.jpg", website: "https://www.tcg.lt/en" },
   {
     name: "Cheesiah",
-    logo: "/partner/cheesiah.jpg",
+    logo: "/partner/cheesiah.png",
     website: "https://csilk.com.my/",
   },
 ];
@@ -176,12 +175,12 @@ export default function TrustedBy() {
 
         {/* --- Logo Carousel --- */}
         <div
-          className="mt-12 md:mt-16 w-full overflow-x-hidden"
+          className="mt-12 md:mt-16 w-full overflow-x-hidden rounded-2xl"
           style={{ minHeight: "280px" }}
         >
           <div
             ref={carouselRef}
-            className="flex space-x-4 items-center"
+            className="flex space-x-12 items-center rounded-2xl"
             style={{ height: "auto" }}
           >
             {/* First set of logos */}

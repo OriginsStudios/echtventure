@@ -56,7 +56,7 @@ const ProgramsSection = () => {
             ref={headingRef}
             className="text-[2.1rem] sm:text-5xl md:text-6xl font-butler font-extrabold tracking-tighter leading-none mb-4 sm:mb-8 mt-12 text-white whitespace-nowrap"
           >
-            The Echtventure Method
+            The echtventure Method
           </h2>
           <p
             ref={paragraphRef}
@@ -106,7 +106,9 @@ const ProgramsSection = () => {
                   Bespoke 1:1 guidance to clarify direction, build capability,
                   and sustain measurable momentum.
                 </p>
-                Start 1-on-1 coaching →
+                <div className="mt-4 text-sm font-butler text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Start 1-on-1 coaching →
+                </div>
               </button>
 
               <button

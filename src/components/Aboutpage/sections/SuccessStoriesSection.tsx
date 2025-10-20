@@ -40,7 +40,7 @@ const SuccessStoriesSection = () => {
       name: "Michael K.",
       role: "Tech Entrepreneur",
       quote:
-        "Echtventure's authentic approach helped me align my business goals with my personal values.",
+        "echtventure's authentic approach helped me align my business goals with my personal values.",
       result: "Launched successful startup",
     },
     {

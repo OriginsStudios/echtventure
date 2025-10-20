@@ -142,7 +142,11 @@ const Mission = () => {
           {/* Right: Keith image */}
           <div className="flex items-center justify-center">
             <div className="w-[82%] sm:w-[75%] md:w-[90%] lg:w-[80%] xl:w-[70%] md:translate-x-0 translate-x-[18px]">
-              <img src="/PR-KEITH.png" alt="Keith" className="w-full h-auto" />
+              <img
+                src="/keithcutout.png"
+                alt="Keith"
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>

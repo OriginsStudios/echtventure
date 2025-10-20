@@ -76,7 +76,7 @@ const MeetTheTeamSection = () => {
             <div className="relative max-w-md mx-auto">
               <Image
                 src="/cover.jpg"
-                alt="Keith Tay, Founder and Chief Coach of Echtventure"
+                alt="Keith Tay, Founder and Chief Coach of echtventure"
                 width={500}
                 height={600}
                 className="rounded-lg object-cover shadow-lg w-full"

@@ -264,7 +264,7 @@ export default function Approach() {
 
             <div className="keith-image-wrapper absolute w-[70%] md:w-[50%] lg:w-[55%] h-full flex justify-center p-4 md:p-6">
               <img
-                src="/PR-KEITH.png"
+                src="/keithcutout.png"
                 alt="Keith"
                 className="h-auto w-full max-h-[65%] md:max-h-[70%] lg:max-h-[85%] object-contain"
               />

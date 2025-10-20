@@ -63,7 +63,7 @@ const BrainCircuitIcon = () => (
   </svg>
 );
 
-// (Cards moved to Program.tsx under The Echtventure Method section)
+// (Cards moved to Program.tsx under The echtventure Method section)
 
 // --- The Main Component ---
 const SecondProgram = () => {

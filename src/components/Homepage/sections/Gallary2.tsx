@@ -22,10 +22,15 @@ export default function Mission2() {
 
       if (!titleLines.length || !videoContainer || !description) return;
 
-      // Initial state
-      gsap.set([titleLines, videoContainer, description], {
+      // Initial state - keep video container visible on all screen sizes
+      gsap.set([titleLines, description], {
         autoAlpha: 0,
         y: 50,
+      });
+      // Keep video container visible on all screen sizes
+      gsap.set(videoContainer, {
+        autoAlpha: 1,
+        y: 0,
       });
 
       // Animation timeline
@@ -38,33 +43,23 @@ export default function Mission2() {
         },
       });
 
+      // Animate only title and description (video container stays visible)
       tl.to(titleLines, {
         autoAlpha: 1,
         y: 0,
         stagger: 0.1,
         duration: 1,
         ease: "power2.out",
-      })
-        .to(
-          videoContainer,
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-          },
-          "-=0.5"
-        )
-        .to(
-          description,
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-          },
-          "-=0.5"
-        );
+      }).to(
+        description,
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      );
 
       // Set initial padding and scale for the image container and image
       if (videoContainer) {
@@ -107,13 +102,35 @@ export default function Mission2() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-screen bg-transparent flex items-center justify-center pt-6 pb-6 sm:pt-16 sm:pb-10 lg:py-24   overflow-hidden"
+      className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-screen bg-transparent flex items-center justify-center pt-6 pb-6 lg:pb-0 sm:pt-16 sm:pb-10 lg:py-24   overflow-hidden"
     >
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-16 xl:px-24">
-        {/* Title and Description Row */}
-        <div className="relative flex flex-col lg:flex-row items-center lg:items-center justify-center gap-6 sm:gap-8 lg:gap-20 mb-8 sm:mb-12 lg:px-6">
+        {/* Video container - centered, full-bleed - order-1 on mobile, order-2 on lg+ */}
+        <div className="flex justify-center -mx-4 sm:-mx-6 lg:-mx-16 xl:-mx-24 mb-8 sm:mb-12 lg:mb-0 order-1 lg:order-2">
+          <div
+            data-video
+            className="relative w-screen aspect-video rounded-lg overflow-hidden "
+          >
+            <picture>
+              {/* Use mobile-specific image on small screens */}
+              <source
+                media="(max-width: 640px)"
+                srcSet="/gallery/gallerymobile/3.JPG"
+              />
+              <img
+                className="w-full h-full object-cover [backface-visibility:hidden] [transform:translateZ(0)] [will-change:transform]"
+                src="/mission1.jpg"
+                alt="echtventure"
+                style={{ imageRendering: "auto" }}
+              />
+            </picture>
+          </div>
+        </div>
+
+        {/* Title and Description Row - order-2 on mobile, order-1 on lg+ */}
+        <div className="relative flex flex-col lg:flex-row items-center lg:items-center justify-center gap-6 sm:gap-8 lg:gap-20 mb-8 sm:mb-12 lg:px-6 order-2 lg:order-1">
           {/* Large bold text - left side */}
-          <div className="w-full lg:w-auto z-10">
+          <div className="w-full lg:w-auto z-10 lg:pt-24">
             <div className="space-y-2 text-center lg:text-left">
               <h2
                 data-title-line
@@ -145,25 +162,10 @@ export default function Mission2() {
             className="w-full lg:w-[400px] xl:w-[500px] text-black text-center lg:text-left mx-auto"
           >
             <p className="text-sm sm:text-sm md:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-relaxed font-montserrat">
-              Echtventure exists to create impact in every space that we are
+              echtventure exists to create impact in every space that we are
               able to enter. We have seen countless transformations in both
               individuals and teams.
             </p>
-          </div>
-        </div>
-
-        {/* Video container - centered below, full-bleed */}
-        <div className="flex justify-center -mx-4 sm:-mx-6 lg:-mx-16 xl:-mx-24 mb-12 md:mb-0">
-          <div
-            data-video
-            className="relative w-screen aspect-video rounded-lg overflow-hidden "
-          >
-            <img
-              className="w-full h-full object-cover [backface-visibility:hidden] [transform:translateZ(0)] [will-change:transform]"
-              src="/mission1.jpg"
-              alt="Echtventure"
-              style={{ imageRendering: "auto" }}
-            />
           </div>
         </div>
       </div>

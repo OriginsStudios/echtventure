@@ -15,28 +15,26 @@ export default function LogoCard({
   return (
     <div
       {...rest}
-      // Base styles for the card - flexible height with centered content
       className={`
         relative flex items-center justify-center 
-        w-56 md:w-64 h-32 md:h-36
-        rounded-2xl bg-white p-6 shadow-sm overflow-hidden
-        transition-transform duration-300 hover:-translate-y-1
+        w-48 h-48
+        transition-transform duration-300 hover:-translate-y-1 
         ${className} 
       `}
     >
-      <Image
-        src={src}
-        alt={alt}
-        width={260}
-        height={156}
-        className="object-contain max-w-full max-h-full"
-        style={{
-          width: "100%",
-          height: "100%",
-          maxWidth: "100%",
-          maxHeight: "100%",
-        }}
-      />
+      <div className=" h-full overflow-hidden rounded-2xl">
+        <Image
+          src={src}
+          alt={alt}
+          width={260}
+          height={400}
+          className="object-fill h-full border rounded-lg"
+          style={{
+            maxWidth: "100%",
+            maxHeight: "100%",
+          }}
+        />
+      </div>
     </div>
   );
 }

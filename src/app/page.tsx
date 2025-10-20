@@ -12,8 +12,8 @@ const page = () => {
   return (
     <section>
       <HomePageHero />
-      <Gallary />
       <Mission2 />
+      <Gallary />
       <Program />
       <Mission />
       {/* <Approach /> */}

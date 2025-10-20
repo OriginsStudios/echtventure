@@ -17,7 +17,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Echtventure",
+  title: "echtventure",
   description: "Unlocking your full potential.",
   icons: {
     icon: "/logo/EVT_LOGO-WHT.svg",

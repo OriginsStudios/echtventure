@@ -40,7 +40,7 @@ export default function CoachesPage() {
   const rightSvgRef = useRef(null);
 
   const descText =
-    "Meet the people behind ECHTVENTURE—experienced coaches dedicated to leadership development, personal mastery, and impactful teams.";
+    "Meet the people behind echtventure—experienced coaches dedicated to leadership development, personal mastery, and impactful teams.";
 
   useGSAP(
     () => {

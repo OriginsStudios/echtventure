@@ -343,7 +343,7 @@ const MobileNav = ({
             <div className="cover-image relative w-full h-full overflow-hidden rounded-none ">
               <img
                 src="/cover3.jpeg"
-                alt="Echtventure Cover"
+                alt="echtventure Cover"
                 className="w-full h-full object-[25%_45%] object-cover transition-transform duration-300 "
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -493,7 +493,7 @@ const Navbar = () => {
             >
               <Image
                 src="/logo/black.svg"
-                alt="Echtventure Logo"
+                alt="echtventure Logo"
                 width={160}
                 height={160}
                 unoptimized

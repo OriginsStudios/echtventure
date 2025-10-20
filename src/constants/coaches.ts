@@ -25,7 +25,7 @@ export const coaches: Coach[] = [
     ],
     timeline: [
       { year: 2004, role: "Co-Founder", org: "Collective Global" },
-      { year: 2019, role: "Founder", org: "ECHTVENTURE" },
+      { year: 2019, role: "Founder", org: "echtventure" },
       { year: 2019, role: "Co-Founder", org: "Autrui Global" },
       { year: 2022, role: "Managing Director", org: "New Orange Sdn Bhd" },
       {

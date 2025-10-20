@@ -39,7 +39,11 @@ export default function Gallary() {
   }, []);
 
   return (
-    <section ref={component} id="cover" className="relative py-16 sm:py-24">
+    <section
+      ref={component}
+      id="cover"
+      className="relative py-16 pt-0 sm:py-24"
+    >
       {/* ... rest of your JSX remains exactly the same ... */}
       <div className="flex h-full items-center justify-center">
         <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6">
@@ -71,7 +75,7 @@ export default function Gallary() {
                 <PhotoCard
                   data-card
                   className="w-full"
-                  src="/gallery/2.jpg"
+                  src="/gallery/gallerymobile/1.jpg"
                   alt="Portrait with hat"
                   width={320}
                   height={400}
@@ -84,7 +88,7 @@ export default function Gallary() {
                 className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:row-start-2 text-center px-2 pb-12 py-16  "
               >
                 <h1 className="text-4xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-5xl md:text-6xl font-bold ">
-                  Unlock Potential, Strengthen Collaboration, Drive Change
+                  Trust the process
                 </h1>
               </div>
 
@@ -93,7 +97,7 @@ export default function Gallary() {
                 <PhotoCard
                   data-hero
                   className="w-full md:max-w-none"
-                  src="/gallery/10.jpg"
+                  src="/gallery/12.jpg"
                   alt="Creative at work"
                   width={450}
                   height={300}
@@ -105,7 +109,7 @@ export default function Gallary() {
               <PhotoCard
                 data-card
                 className="hidden md:block col-span-4 md:col-start-8 md:-mt-8 md:row-start-3"
-                src="/gallery/12.png"
+                src="/gallery/12b.jpg"
                 alt="Portrait with hat"
                 width={320}
                 height={400}
