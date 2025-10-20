@@ -102,7 +102,7 @@ export default function Mission2() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-screen bg-transparent flex items-center justify-center pt-6 pb-6 lg:pb-0 sm:pt-16 sm:pb-10 lg:py-24   overflow-hidden"
+      className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-screen bg-transparent flex items-center justify-center overflow-hidden"
     >
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-16 xl:px-24">
         {/* Video container - centered, full-bleed - order-1 on mobile, order-2 on lg+ */}

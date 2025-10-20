@@ -33,9 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`font-butler ${montserrat.variable} antialiased bg-five-lines`}
-      >
+      <body className={`font-butler ${montserrat.variable} antialiased`}>
         <LenisScrollProvider />
         <Navbar />
         <CustomCursor />
