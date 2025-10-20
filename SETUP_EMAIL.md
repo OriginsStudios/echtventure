@@ -1,97 +1,58 @@
-# Email Setup Instructions
+# Contact Form Setup
 
-The contact form in the footer is now fully functional! Follow these steps to complete the setup:
+The contact form in the footer uses a simple `mailto:` link approach - no server-side setup required!
 
-## 1. Dependencies
+## How It Works
 
-The following packages have been installed:
+When a user fills out the contact form and clicks "Send Email", their default email client will open with:
 
-- `resend` - Email sending service
-- `@react-email/components` - Email component library (peer dependency)
-- `@react-email/render` - Email rendering engine (peer dependency)
+- **To:** info@echtventure.com
+- **Subject:** Pre-filled with the subject they entered
+- **Body:** Pre-filled with their name and email address
 
-These are already configured in your `package.json`.
+## To Change the Email Address
 
-## 2. Get Resend API Key
-
-1. Go to [Resend](https://resend.com) and create a free account
-2. Navigate to the [API Keys page](https://resend.com/api-keys)
-3. Create a new API key
-4. Copy the API key (you'll only see it once!)
-
-## 3. Configure Environment Variables
-
-Create a `.env.local` file in the root directory of your project with the following:
-
-```env
-# Resend API Configuration
-RESEND_API_KEY=your_resend_api_key_here
-
-# Contact form destination email
-CONTACT_EMAIL=your-email@example.com
-```
-
-Replace:
-
-- `your_resend_api_key_here` with your actual Resend API key
-- `your-email@example.com` with the email address where you want to receive contact form submissions
-
-## 4. Verify Domain (Optional but Recommended)
-
-For production use, you should verify your domain with Resend:
-
-1. Go to [Resend Domains](https://resend.com/domains)
-2. Add your domain
-3. Follow the DNS verification steps
-4. Update the `from` field in `src/app/api/contact/route.ts`:
+To update where contact form submissions are sent, edit the email address in `src/components/layout/Footer.tsx`:
 
 ```typescript
-from: 'Contact Form <noreply@yourdomain.com>',  // Replace with your verified domain
+const mailtoLink = `mailto:info@echtventure.com?subject=...`;
+//                          ^^^^^^^^^^^^^^^^^^^^^^
+//                          Change this email address
 ```
 
-## 5. Test the Form
+## Features
+
+✅ **No setup required**: Works immediately, no API keys or third-party services  
+✅ **Form validation**: Required fields and email format validation  
+✅ **User-friendly**: Opens their familiar email client  
+✅ **Mobile compatible**: Works on all devices and email clients  
+✅ **Privacy-friendly**: No data sent to external servers
+
+## Testing
 
 1. Start your development server: `pnpm dev`
 2. Navigate to your website
 3. Scroll to the footer
 4. Fill out the contact form and submit
-5. Check your email inbox (and spam folder) for the message
+5. Your email client should open with pre-filled information
 
-## Features
+## Advantages
 
-✅ **Form validation**: Required fields and email format validation  
-✅ **Loading states**: Button shows "Sending..." while submitting  
-✅ **Success/Error feedback**: Clear visual feedback to users  
-✅ **Beautiful email template**: HTML-formatted emails with your branding  
-✅ **Reply-to support**: You can reply directly to the sender's email
+- **Zero cost**: No third-party email service fees
+- **No configuration**: Works out of the box
+- **Instant setup**: No API keys or environment variables
+- **Reliable**: Uses the user's own email client
+- **Secure**: No sensitive data passes through your server
 
-## Troubleshooting
+## Customization
 
-### Form doesn't send emails
+You can customize the pre-filled email content by modifying the `body` variable in the `handleSubmit` function:
 
-- Check that `.env.local` exists and has the correct API key
-- Restart your dev server after adding environment variables
-- Check the browser console and server logs for errors
+```typescript
+const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0A`;
+```
 
-### Emails go to spam
-
-- Verify your domain with Resend
-- Use a verified sender email address
-
-### API Key invalid
-
-- Make sure you copied the entire API key
-- Check that there are no extra spaces in `.env.local`
-- Try creating a new API key
-
-## Free Tier Limits
-
-Resend's free tier includes:
-
-- 100 emails per day
-- 3,000 emails per month
-
-Perfect for small business websites!
+Use `%0D%0A` for line breaks and `%0D%0A%0D%0A` for paragraph spacing.
 
 ## Need Help?
 

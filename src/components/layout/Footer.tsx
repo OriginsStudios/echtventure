@@ -19,60 +19,27 @@ const Footer: React.FC = () => {
     name: "",
     email: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: "success" | "error" | null;
-    message: string;
-  }>({ type: null, message: "" });
 
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
-    // Clear status when user starts typing again
-    if (submitStatus.type) {
-      setSubmitStatus({ type: null, message: "" });
-    }
   };
 
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // Handle form submission - opens email client with pre-filled data
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: "" });
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    // Construct the email body with form data
+    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0A`;
 
-      const data = await response.json();
+    // Create mailto link
+    const mailtoLink = `mailto:info@echtventure.com?subject=${encodeURIComponent(
+      formData.subject
+    )}&body=${body}`;
 
-      if (response.ok) {
-        setSubmitStatus({
-          type: "success",
-          message: "Message sent successfully! We'll get back to you soon.",
-        });
-        // Clear form
-        setFormData({ subject: "", name: "", email: "" });
-      } else {
-        setSubmitStatus({
-          type: "error",
-          message: data.error || "Failed to send message. Please try again.",
-        });
-      }
-    } catch (error) {
-      setSubmitStatus({
-        type: "error",
-        message: "An error occurred. Please try again later.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Open email client
+    window.location.href = mailtoLink;
   };
 
   useGSAP(
@@ -130,8 +97,7 @@ const Footer: React.FC = () => {
                 value={formData.subject}
                 onChange={handleInputChange}
                 required
-                disabled={isSubmitting}
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base disabled:opacity-50"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
               />
             </div>
             <div>
@@ -145,8 +111,7 @@ const Footer: React.FC = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                disabled={isSubmitting}
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base disabled:opacity-50"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
               />
             </div>
             <div>
@@ -160,31 +125,16 @@ const Footer: React.FC = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                disabled={isSubmitting}
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base disabled:opacity-50"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
               />
             </div>
-
-            {/* Status Messages */}
-            {submitStatus.type && (
-              <div
-                className={`text-center py-2 px-4 rounded-lg text-sm sm:text-base ${
-                  submitStatus.type === "success"
-                    ? "bg-green-900/30 text-green-400 border border-green-700"
-                    : "bg-red-900/30 text-red-400 border border-red-700"
-                }`}
-              >
-                {submitStatus.message}
-              </div>
-            )}
 
             <div className="flex justify-center pt-2 sm:pt-3">
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="bg-white text-black font-semibold py-2 px-4 sm:py-3 sm:px-6 md:py-3 md:px-8 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-white text-black font-semibold py-2 px-4 sm:py-3 sm:px-6 md:py-3 md:px-8 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                Send Email
               </button>
             </div>
           </form>
