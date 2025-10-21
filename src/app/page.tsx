@@ -1,5 +1,6 @@
 import TrustedBy from "@/components/Homepage/components/TrustBy";
 import Approach from "@/components/Homepage/sections/Approach";
+import EnneagramSection from "@/components/Homepage/sections/EnneagramSection";
 import Gallary from "@/components/Homepage/sections/Gallary";
 import Mission2 from "@/components/Homepage/sections/Gallary2";
 import Gallary2 from "@/components/Homepage/sections/Gallary2";
@@ -13,8 +14,10 @@ const page = () => {
     <section>
       <HomePageHero />
       <Mission2 />
-      <Gallary />
       <Program />
+      <Gallary />
+
+      <EnneagramSection />
       <Mission />
       {/* <Approach /> */}
       <TrustedBy />

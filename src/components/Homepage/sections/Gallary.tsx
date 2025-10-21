@@ -39,13 +39,9 @@ export default function Gallary() {
   }, []);
 
   return (
-    <section
-      ref={component}
-      id="cover"
-      className="relative py-16 pt-0 sm:py-24"
-    >
+    <section ref={component} id="cover" className="relative ">
       {/* ... rest of your JSX remains exactly the same ... */}
-      <div className="flex h-full items-center justify-center">
+      <div className="flex h-full items-center justify-center m-16 lg:m-24 lg:mt-32 ">
         <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6">
           <div data-grid-wrapper>
             <div className="relative grid grid-cols-4 md:grid-cols-12 md:gap-8 gap-6">
@@ -97,7 +93,7 @@ export default function Gallary() {
                 <PhotoCard
                   data-hero
                   className="w-full md:max-w-none aspect-[4/5]"
-                  src="/gallery/12.jpg"
+                  src="/gallery/12.png"
                   alt="Creative at work"
                   width={400}
                   height={500}
@@ -108,7 +104,7 @@ export default function Gallary() {
               {/* Middle-right image */}
               <PhotoCard
                 data-card
-                className="hidden md:block col-span-4 md:col-start-8 md:-mt-8 md:row-start-3 aspect-[4/5]"
+                className="hidden md:block col-span-4 md:col-start-8  md:row-start-3 aspect-[4/5]"
                 src="/gallery/12b.png"
                 alt="Portrait with hat"
                 width={400}

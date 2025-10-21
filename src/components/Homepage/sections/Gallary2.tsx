@@ -102,14 +102,14 @@ export default function Mission2() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[65vh] sm:min-h-[80vh] lg:min-h-screen bg-transparent flex items-center justify-center overflow-hidden"
+      className="relative min-h-[50vh]  bg-transparent flex items-center justify-center overflow-hidden"
     >
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-16 xl:px-24">
         {/* Video container - centered, full-bleed - order-1 on mobile, order-2 on lg+ */}
         <div className="flex justify-center -mx-4 sm:-mx-6 lg:-mx-16 xl:-mx-24 mb-8 sm:mb-12 lg:mb-0 order-1 lg:order-2">
           <div
             data-video
-            className="relative w-screen aspect-video rounded-lg overflow-hidden "
+            className="relative w-screen aspect-video rounded-lg overflow-hidden -mt-7 "
           >
             <picture>
               {/* Use mobile-specific image on small screens */}
@@ -118,8 +118,8 @@ export default function Mission2() {
                 srcSet="/gallery/gallerymobile/3.png"
               />
               <img
-                className="w-full h-full object-cover [backface-visibility:hidden] [transform:translateZ(0)] [will-change:transform]"
-                src="/mission1.jpg"
+                className="w-full h-full object-cover [backface-visibility:hidden] [transform:translateZ(0)] [will-change:transform] rounded-2xl"
+                src="/gallery/12.png"
                 alt="echtventure"
                 style={{ imageRendering: "auto" }}
               />
@@ -128,28 +128,37 @@ export default function Mission2() {
         </div>
 
         {/* Title and Description Row - order-2 on mobile, order-1 on lg+ */}
-        <div className="relative flex flex-col lg:flex-row items-center lg:items-center justify-center gap-6 sm:gap-8 lg:gap-20 mb-8 sm:mb-12 lg:px-6 order-2 lg:order-1">
+        <div className="relative flex flex-col lg:flex-row items-center lg:items-center justify-center gap-6 sm:gap-8 lg:gap-20 lg:px-6 order-2 lg:order-1 lg:-mt-32 xl:-mt-40 mb-20 lg:mb-32 ">
           {/* Large bold text - left side */}
-          <div className="w-full lg:w-auto z-10 lg:pt-24">
+          <div className="w-full lg:w-auto z-20 lg:pt-24">
             <div className="space-y-2 text-center lg:text-left">
               <h2
                 data-title-line
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl  3xl:text-9xl font-black text-black leading-[0.95] tracking-tighter break-words"
-                style={{ fontFamily: "Arial Black, sans-serif" }}
+                className="font-black leading-[0.95] tracking-tighter break-words !text-black"
+                style={{
+                  fontFamily: "Arial Black, sans-serif",
+                  fontSize: "clamp(2rem, 6vw, 6rem)",
+                }}
               >
                 AWARENESS
               </h2>
               <h2
                 data-title-line
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl  3xl:text-9xl font-black text-black leading-[0.95] tracking-tighter break-words whitespace-nowrap"
-                style={{ fontFamily: "Arial Black, sans-serif" }}
+                className="font-black !text-black leading-[0.95] tracking-tighter break-words whitespace-nowrap"
+                style={{
+                  fontFamily: "Arial Black, sans-serif",
+                  fontSize: "clamp(2rem, 6vw, 6rem)",
+                }}
               >
                 {"TO\u00A0MASTERY"}
               </h2>
               <h2
                 data-title-line
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl  3xl:text-9xl font-black text-black leading-[0.95] tracking-tighter break-words whitespace-nowrap"
-                style={{ fontFamily: "Arial Black, sans-serif" }}
+                className="font-black text-black leading-[0.95] tracking-tighter break-words whitespace-nowrap"
+                style={{
+                  fontFamily: "Arial Black, sans-serif",
+                  fontSize: "clamp(2rem, 6vw, 6rem)",
+                }}
               >
                 {"TO\u00A0LEADERSHIP"}
               </h2>
@@ -159,12 +168,11 @@ export default function Mission2() {
           {/* Description text - right side, aligned with title */}
           <div
             data-description
-            className="w-full lg:w-[400px] xl:w-[500px] text-black text-center lg:text-left mx-auto"
+            className="w-full lg:w-[400px] xl:w-[500px] text-black text-center lg:text-justify mx-auto lg:mt-auto"
           >
-            <p className="text-sm sm:text-sm md:text-base lg:text-lg xl:text-lg 2xl:text-2xl leading-relaxed font-montserrat">
-              echtventure exists to create impact in every space that we are
-              able to enter. We have seen countless transformations in both
-              individuals and teams.
+            <p className="text-base sm:text-base md:text-lg lg:text-lg xl:text-lg 2xl:text-2xl leading-relaxed font-montserrat">
+              Creating transformative impact in every spaceunlocking potential
+              and inspiring lasting change in individuals and teams.
             </p>
           </div>
         </div>

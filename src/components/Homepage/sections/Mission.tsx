@@ -52,76 +52,65 @@ const Mission = () => {
     >
       <div className="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-16 xl:px-24 flex items-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16 2xl:gap-32 w-full">
-          {/* Left: Combined text */}
-          <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left font-butler pb-6 max-w-2xl md:pl-16 lg:pl-0">
+          {/* Right: Combined text */}
+          <div className="flex flex-col justify-center items-center md:items-end text-center md:text-right font-butler pb-6 max-w-3xl md:order-2 md:pr-16 lg:pr-0">
             {/* 4. Remove old animation classes, add data-attribute for GSAP */}
-            <TextMorph
-              as="h1"
-              className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold mb-1 sm:mb-2"
-            >
-              echtventure
-            </TextMorph>
+            <div className="flex flex-col lg:flex-row lg:items-end mb-1 sm:mb-2">
+              <TextMorph
+                as="h1"
+                className="lg:text-6xl sm:text-[2.7rem] text-[3.5rem] font-bold"
+              >
+                echtventure
+              </TextMorph>
+            </div>
             <TextMorph
               as="h2"
-              className="text-sm sm:text-base md:text-md font-bold tracking-tight leading-tight font-montserrat sm:mt-1 text-gray-300 mt-2"
+              className="w-full text-center md:text-right text-xs xs:text-sm sm:text-base md:text-sm lg:text-base font-bold tracking-tight leading-tight font-montserrat text-gray-300"
             >
               by Keith Tay
             </TextMorph>
-            <p
-              data-mission-fade-up
-              className="text-sm sm:text-base font-montserrat text-gray-400 mt-2"
-            >
-              Founded in 2019
-            </p>
             <div
               data-mission-fade-up // GSAP target for fade-up
-              className="mt-6 sm:mt-8 space-y-3 sm:space-y-4 max-w-prose"
+              className="mt-4 sm:mt-6 md:mt-8 space-y-3 sm:space-y-4 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-full"
             >
               <p
                 data-mission-fade-up
-                className="font-montserrat text-base sm:text-lg text-gray-300 leading-relaxed sm:leading-8"
+                className="font-montserrat text-sm xs:text-base sm:text-lg md:text-lg text-gray-300 leading-relaxed sm:leading-7 md:leading-8 text-center md:text-right"
               >
-                {/* Mobile: force 3 lines; Desktop/Tablet: inline */}
-                <span className="font-semibold text-white block sm:inline">
+                <span className="font-semibold text-white block">
                   Over 2,500 individuals impacted
                 </span>
-                <span className="block sm:inline">
-                  {" "}
-                  through coaching, workshops,
-                </span>
-                <span className="block sm:inline">
-                  {" "}
-                  and leadership programs.
+                <span className="block">
+                  through coaching, workshops, and leadership programs.
                 </span>
               </p>
               <p
                 data-mission-fade-up
-                className="font-montserrat text-base sm:text-lg text-gray-300 leading-relaxed sm:leading-8"
+                className="font-montserrat text-sm xs:text-base sm:text-lg md:text-lg text-gray-300 leading-relaxed sm:leading-7 md:leading-8 text-center md:text-right"
               >
-                {/* Mobile: force 3 lines; Desktop/Tablet: inline */}
-                <span className="font-semibold text-white block sm:inline">
+                <span className="font-semibold text-white block">
                   HRD Corp Accredited Trainer
                 </span>
-                <span className="block sm:inline"> delivering recognized,</span>
-                <span className="block sm:inline">
-                  {" "}
-                  people-centered programs.
+                <span className="block">
+                  delivering recognized, people centered programs.
                 </span>
               </p>
             </div>
             {/* Desktop button under text */}
-            <Link
-              data-mission-fade-up // GSAP target for fade-up
-              href="/coaches/keith-tay"
-              className="hidden md:inline-block mt-4"
-            >
-              <Button
-                variant="solidLight"
-                className="text-black border border-black hover:bg-gray-200 hover:text-black text-base px-6 py-2 font-butler capitalize"
+            <div className="hidden md:flex justify-end w-full mt-4 sm:mt-6 md:mt-6">
+              <Link
+                data-mission-fade-up // GSAP target for fade-up
+                href="/coaches/keith-tay"
+                className="inline-block"
               >
-                About Keith Tay
-              </Button>
-            </Link>
+                <Button
+                  variant="solidLight"
+                  className="text-black border border-black hover:bg-gray-200 hover:text-black text-sm sm:text-base md:text-base lg:text-lg px-4 sm:px-6 md:px-6 lg:px-8 py-2 sm:py-2 md:py-3 lg:py-3 font-butler capitalize transition-all duration-200"
+                >
+                  About Keith Tay
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Mobile-only centered button (above image on mobile) */}
@@ -129,19 +118,19 @@ const Mission = () => {
             <Link
               data-mission-fade-up // GSAP target for fade-up
               href="/coaches/keith-tay"
-              className="mb-4"
+              className="mb-3 sm:mb-4"
             >
               <Button
                 variant="solidLight"
-                className="text-black border border-black hover:bg-gray-200 hover:text-black text-sm sm:text-base px-6 py-3 font-butler capitalize"
+                className="text-black border border-black hover:bg-gray-200 hover:text-black text-xs xs:text-sm sm:text-base px-4 xs:px-6 sm:px-6 py-2 xs:py-3 sm:py-3 font-butler capitalize transition-all duration-200"
               >
                 About Keith Tay
               </Button>
             </Link>
           </div>
-          {/* Right: Keith image */}
-          <div className="flex items-center justify-center">
-            <div className="w-[82%] sm:w-[75%] md:w-[90%] lg:w-[80%] xl:w-[70%] md:translate-x-0 translate-x-[18px]">
+          {/* Left: Keith image */}
+          <div className="flex items-center justify-center md:order-1">
+            <div className="w-[75%] xs:w-[70%] sm:w-[65%] md:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[65%] md:translate-x-0 translate-x-[12px] xs:translate-x-[16px] sm:translate-x-[18px]">
               <img
                 src="/keithcutout.png"
                 alt="Keith"

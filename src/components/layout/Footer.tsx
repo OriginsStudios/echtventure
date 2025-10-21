@@ -81,12 +81,12 @@ const Footer: React.FC = () => {
           id="contact-form"
           className="max-w-sm sm:max-w-md md:max-w-lg mx-auto mb-16"
         >
-          <h2 className="font-butler text-lg sm:text-xl md:text-2xl font-semibold text-white mb-4 sm:mb-6 text-center">
+          <h2 className=" text-lg sm:text-xl md:text-2xl font-semibold text-white mb-4 sm:mb-6 text-center">
             Send us a Message
           </h2>
           <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="subject" className="sr-only">
+              <label htmlFor="subject" className="sr-only ">
                 Subject
               </label>
               <input
@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
                 value={formData.subject}
                 onChange={handleInputChange}
                 required
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base font-montserrat"
               />
             </div>
             <div>
@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base font-montserrat"
               />
             </div>
             <div>
@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base"
+                className="w-full bg-transparent border-b border-gray-700 text-white placeholder-gray-500 focus:border-white focus:outline-none py-2 sm:py-3 transition-colors duration-300 text-sm sm:text-base font-montserrat"
               />
             </div>
 
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
 
         {/* Quote */}
         <blockquote className="mb-16">
-          <p className="text-lg italic font-butler text-gray-400 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg font-montserrat text-gray-400 max-w-xl mx-auto leading-relaxed">
             "Every transformation begins with a single step. I believe in the
             power of authentic change and the courage it takes to step into your
             true potential. Let's embark on this journey together."

@@ -151,6 +151,12 @@ html.lenis {
   }
 }
 
+/* Text inversion effect */
+.text-invert {
+  color: white;
+  mix-blend-mode: difference;
+}
+
 /* Vimium Overlay Styles */
 :root {
   --vimium-background-color: #1d1d1f;

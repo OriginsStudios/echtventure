@@ -165,9 +165,9 @@ export default function TrustedBy() {
     : partners.slice(0, initialCount);
 
   return (
-    <section className="pt-20 pb-32 sm:pt-24 sm:pb-40 h-full ">
+    <section className="pt-20 pb-32 sm:pt-24 sm:pb-40 h-full bg-white border-b rounded-b-[60px] ">
       {/* Main container for center alignment */}
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12 xl:px-16 bg-[#f0eeeb]">
+      <div className="max-w-full mx-auto px-6 lg:px-12 xl:px-16 bg-white">
         {/* --- Titles (centered) --- */}
         <div className="pb-16 text-center">
           <h2 className="mt-2 font-serif text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl ">
@@ -232,7 +232,7 @@ export default function TrustedBy() {
               type="button"
               onClick={() => setShowAll(!showAll)}
               disabled={isAnimating}
-              className="hover:bg-black text-black font-semibold py-2 px-8 sm:py-3 sm:px-6 md:py-3 md:px-8 rounded-full bg-white hover:text-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="bg-black text-white font-semibold py-2 px-8 sm:py-3 sm:px-6 md:py-3 md:px-8 rounded-full hover:bg-gray-100 hover:text-black transition-all duration-300 transform hover:scale-105 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
               {showAll ? "Show Less" : "Show More"}
             </button>
