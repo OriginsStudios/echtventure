@@ -161,7 +161,7 @@ export default function Mission2() {
             data-description
             className="w-full lg:w-[400px] xl:w-[500px] text-black text-center lg:text-left mx-auto"
           >
-            <p className="text-sm sm:text-sm md:text-base lg:text-lg xl:text-lg 2xl:text-xl leading-relaxed font-montserrat">
+            <p className="text-sm sm:text-sm md:text-base lg:text-lg xl:text-lg 2xl:text-2xl leading-relaxed font-montserrat">
               echtventure exists to create impact in every space that we are
               able to enter. We have seen countless transformations in both
               individuals and teams.
