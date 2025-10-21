@@ -87,8 +87,8 @@ export default function Gallary() {
                 data-center
                 className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:row-start-2 flex items-center justify-center px-2 pb-20 md:pb-24   py-16"
               >
-                <h1 className="text-5xl leading-tight tracking-tight text-neutral-900  md:text-6xl xl:text-8xl font-bold font-montserrat text-center">
-                  Trust The Process
+                <h1 className="text-5xl leading-tight tracking-tight text-neutral-900  md:text-6xl font-bold font-butler text-center">
+                  TRUST THE PROCESS
                 </h1>
               </div>
 
