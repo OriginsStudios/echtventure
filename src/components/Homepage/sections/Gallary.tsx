@@ -52,43 +52,43 @@ export default function Gallary() {
               {/* Top-left image */}
               <PhotoCard
                 data-card
-                className="hidden md:block col-span-2 md:col-span-4 md:col-start-1 md:row-start-1"
+                className="hidden md:block col-span-2 md:col-span-4 md:col-start-1 md:row-start-1 aspect-[4/5]"
                 src="/gallery/6.jpg"
                 alt="Portrait"
-                width={320}
-                height={400}
+                width={400}
+                height={500}
                 priority
               />
 
               {/* Top-right image */}
               <PhotoCard
                 data-card
-                className="hidden md:block col-span-2 md:col-span-4 md:col-start-9 md:row-start-1 "
+                className="hidden md:block col-span-2 md:col-span-4 md:col-start-9 md:row-start-1 aspect-[4/5]"
                 src="/gallery/14.jpg"
                 alt="Family"
-                width={320}
-                height={300}
+                width={400}
+                height={500}
               />
 
               {/* Top image for mobile/tablet */}
               <div className="col-span-4 row-start-1 flex justify-center md:hidden">
                 <PhotoCard
                   data-card
-                  className="w-full"
+                  className="w-full aspect-[4/5]"
                   src="/gallery/gallerymobile/1.jpg"
                   alt="Portrait with hat"
-                  width={320}
-                  height={400}
+                  width={400}
+                  height={500}
                 />
               </div>
 
               {/* Center content */}
               <div
                 data-center
-                className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:row-start-2 text-center px-2 pb-12 py-16  "
+                className="relative z-10 col-span-4 row-start-2 md:col-span-12 md:row-start-2 flex items-center justify-center px-2 pb-20 md:pb-24   py-16"
               >
-                <h1 className="text-5xl font-butler leading-tight tracking-tight text-neutral-900 sm:text-5xl md:text-8xl font-bold ">
-                  Trust the process
+                <h1 className="text-5xl leading-tight tracking-tight text-neutral-900  md:text-6xl xl:text-8xl font-bold font-montserrat text-center">
+                  Trust The Process
                 </h1>
               </div>
 
@@ -96,11 +96,11 @@ export default function Gallary() {
               <div className="col-span-4 row-start-3 flex justify-center md:col-span-5 md:col-start-2 md:-mt-22 z-20 md:mr-24">
                 <PhotoCard
                   data-hero
-                  className="w-full md:max-w-none"
+                  className="w-full md:max-w-none aspect-[4/5]"
                   src="/gallery/12.jpg"
                   alt="Creative at work"
-                  width={450}
-                  height={300}
+                  width={400}
+                  height={500}
                   priority
                 />
               </div>
@@ -108,11 +108,11 @@ export default function Gallary() {
               {/* Middle-right image */}
               <PhotoCard
                 data-card
-                className="hidden md:block col-span-4 md:col-start-8 md:-mt-8 md:row-start-3"
+                className="hidden md:block col-span-4 md:col-start-8 md:-mt-8 md:row-start-3 aspect-[4/5]"
                 src="/gallery/12b.png"
                 alt="Portrait with hat"
-                width={320}
-                height={400}
+                width={400}
+                height={500}
               />
             </div>
           </div>
