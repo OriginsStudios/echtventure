@@ -109,7 +109,7 @@ export default function Gallary() {
               <PhotoCard
                 data-card
                 className="hidden md:block col-span-4 md:col-start-8 md:-mt-8 md:row-start-3"
-                src="/gallery/12b.jpg"
+                src="/gallery/12b.png"
                 alt="Portrait with hat"
                 width={320}
                 height={400}

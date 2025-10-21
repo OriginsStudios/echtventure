@@ -115,7 +115,7 @@ export default function Mission2() {
               {/* Use mobile-specific image on small screens */}
               <source
                 media="(max-width: 640px)"
-                srcSet="/gallery/gallerymobile/3.JPG"
+                srcSet="/gallery/gallerymobile/3.png"
               />
               <img
                 className="w-full h-full object-cover [backface-visibility:hidden] [transform:translateZ(0)] [will-change:transform]"
