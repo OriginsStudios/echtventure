@@ -30,7 +30,7 @@ export default function LogoCard({
           alt={alt}
           width={120}
           height={120}
-          className="object-contain w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28"
+          className="object-contain w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28"
         />
       </div>
     </div>
