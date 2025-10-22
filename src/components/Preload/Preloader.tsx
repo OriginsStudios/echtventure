@@ -62,7 +62,7 @@ export default function Preloader() {
   return (
     <div
       id="preloader"
-      className="fixed inset-0 z-[9999] h-screen w-full bg-[#111]"
+      className="fixed inset-0 z-[9999] h-screen w-full bg-[#000000]"
       ref={preloaderRef}
     >
       {/* Top Logo - positioned above center */}
