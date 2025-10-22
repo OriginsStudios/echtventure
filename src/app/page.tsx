@@ -16,7 +16,6 @@ const page = () => {
       <Mission2 />
       <Program />
       <Gallary />
-
       <EnneagramSection />
       <Mission />
       {/* <Approach /> */}

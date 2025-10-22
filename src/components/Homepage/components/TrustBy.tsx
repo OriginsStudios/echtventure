@@ -25,9 +25,9 @@ const partners = [
     website: "https://www.ytl.com/",
   },
   {
-    name: "Hypergear",
-    logo: "/partner/hypergear.png",
-    website: "https://www.hypergear.com.my/",
+    name: "Morison Global",
+    logo: "/partner/marisonglobal.png",
+    website: "https://www.morisonglobal.com/",
   },
   {
     name: "UHY",
@@ -35,9 +35,9 @@ const partners = [
     website: "https://www.uhy-th.com/index.php",
   },
   {
-    name: "Morison Global",
-    logo: "/partner/marisonglobal.png",
-    website: "https://www.morisonglobal.com/",
+    name: "Hypergear",
+    logo: "/partner/hypergear.png",
+    website: "https://www.hypergear.com.my/",
   },
   {
     name: "RCA Wealth",
@@ -88,6 +88,11 @@ const partners = [
     name: "Suree Food",
     logo: "/partner/sureefood.png",
     website: "https://sureefood.com/",
+  },
+  {
+    name: "6Gency",
+    logo: "/partner/6gency.jpeg",
+    website: "https://www.6gency.co/",
   },
 ];
 

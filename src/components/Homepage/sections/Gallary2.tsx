@@ -119,7 +119,7 @@ export default function Mission2() {
               />
               <img
                 className="w-full h-full object-cover [backface-visibility:hidden] [transform:translateZ(0)] [will-change:transform] rounded-2xl"
-                src="/gallery/12.png"
+                src="/gallery/12b.png"
                 alt="echtventure"
                 style={{ imageRendering: "auto" }}
               />
