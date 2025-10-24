@@ -91,7 +91,7 @@ const partners = [
   },
   {
     name: "6Gency",
-    logo: "/partner/6gency.png",
+    logo: "/partner/gency.png",
     website: "https://www.6gency.co/",
   },
 ];
