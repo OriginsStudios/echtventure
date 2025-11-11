@@ -94,6 +94,16 @@ const partners = [
     logo: "/partner/gency.png",
     website: "https://www.6gency.co/",
   },
+  {
+    name: "AscendCom",
+    logo: "/partner/ascendcom.jpeg",
+    website: "https://ascendcom.my/",
+  },
+  {
+    name: "Zera",
+    logo: "/partner/zera.png",
+    website: "https://www.zera.edu.my/",
+  },
 ];
 
 export default function TrustedBy() {
@@ -136,3 +146,5 @@ export default function TrustedBy() {
     </section>
   );
 }
+
+

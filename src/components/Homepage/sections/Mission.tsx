@@ -69,33 +69,37 @@ const Mission = () => {
             >
               by Keith Tay
             </TextMorph>
-            <div
-              data-mission-fade-up // GSAP target for fade-up
-              className="mt-4 sm:mt-6 md:mt-8 space-y-3 sm:space-y-4 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-full"
-            >
-              <p
-                data-mission-fade-up
-                className="font-montserrat text-sm xs:text-base sm:text-lg md:text-lg text-gray-300 leading-relaxed sm:leading-7 md:leading-8 text-center md:text-right"
+              <div
+                data-mission-fade-up // GSAP target for fade-up
+                className="mt-4 sm:mt-6 md:mt-8 space-y-3 sm:space-y-4 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-full"
               >
-                <span className="font-semibold text-white block">
-                  Over 2,500 individuals impacted
-                </span>
-                <span className="block">
-                  through coaching, workshops, and leadership programs.
-                </span>
-              </p>
-              <p
-                data-mission-fade-up
-                className="font-montserrat text-sm xs:text-base sm:text-lg md:text-lg text-gray-300 leading-relaxed sm:leading-7 md:leading-8 text-center md:text-right"
-              >
-                <span className="font-semibold text-white block">
-                  HRD Corp Accredited Trainer
-                </span>
-                <span className="block">
-                  delivering recognized, people centered programs.
-                </span>
-              </p>
-            </div>
+                <p
+                  data-mission-fade-up
+                  className="font-montserrat text-sm xs:text-base sm:text-lg md:text-lg text-gray-300 leading-relaxed sm:leading-7 md:leading-8 text-center md:text-right"
+                >
+                  <span className="font-semibold text-white block">
+                    Over 2,500 individuals impacted
+                  </span>
+                  <span className="block">
+                    through coaching, workshops, and leadership programs.
+                  </span>
+                  
+                </p>
+                <p
+                  data-mission-fade-up
+                  className="font-montserrat text-sm xs:text-base sm:text-lg md:text-lg text-gray-300 leading-relaxed sm:leading-7 md:leading-8 text-center md:text-right"
+                >
+                  <span className="font-semibold text-white block">
+                    ICF Certified Professional Coach
+                  </span>
+                  <span className="font-semibold text-white block">
+                    & HRD Corp Accredited Trainer
+                  </span>
+                  <span className="block">
+                    delivering recognized, people centered programs.
+                  </span>
+                </p>
+              </div>
             {/* Desktop button under text */}
             <div className="hidden md:flex justify-end w-full mt-4 sm:mt-6 md:mt-6">
               <Link
