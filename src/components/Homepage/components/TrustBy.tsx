@@ -114,7 +114,7 @@ export default function TrustedBy() {
         {/* --- Titles (centered) --- */}
         <div className="pb-16 text-center">
           <h2 className="mt-2 font-serif text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl ">
-            People We Work Wit
+            People We Work With
           </h2>
         </div>
 
