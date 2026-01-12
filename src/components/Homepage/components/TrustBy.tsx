@@ -5,9 +5,34 @@ import LogoCard from "./LogoCard";
 // --- Partner Data ---
 const partners = [
   {
+    name: "IQVIA",
+    logo: "/partner/iqvia.png",
+    website: "https://www.iqvia.com",
+  },
+  {
     name: "AnyMind Group",
     logo: "/partner/anymind.png",
     website: "https://anymindgroup.com/",
+  },
+  {
+    name: "YTL",
+    logo: "/partner/ytl.png",
+    website: "https://www.ytl.com/",
+  },
+    {
+    name: "Morison Global",
+    logo: "/partner/marisonglobal.png",
+    website: "https://www.morisonglobal.com/",
+  },
+  {
+    name: "UHY",
+    logo: "/partner/uhy.png",
+    website: "https://www.uhy-th.com/index.php",
+  },
+  {
+    name: "CSILK",
+    logo: "/partner/csilk.png",
+    website: "https://csilk.com.my/",
   },
   {
     name: "Gary Chong Studios",
@@ -20,54 +45,54 @@ const partners = [
     website: "https://sevenvault.com/",
   },
   {
-    name: "YTL",
-    logo: "/partner/ytl.png",
-    website: "https://www.ytl.com/",
+    name: "Zera",
+    logo: "/partner/zera.png",
+    website: "https://www.zera.edu.my/",
   },
   {
-    name: "Morison Global",
-    logo: "/partner/marisonglobal.png",
-    website: "https://www.morisonglobal.com/",
+    name: "KL",
+    logo: "/partner/kl.png",
+    website: "https://kl.com/",
   },
-  {
-    name: "UHY",
-    logo: "/partner/uhy.png",
-    website: "https://www.uhy-th.com/index.php",
+    {
+    name: "ESP",
+    logo: "/partner/esp.png",
+    website: "https://esp.com/",
   },
-  {
-    name: "Hypergear",
-    logo: "/partner/hypergear.png",
-    website: "https://www.hypergear.com.my/",
+    {
+    name: "Voskos Advisory Group",
+    logo: "/partner/voskos.png",
+    website: "https://www.linkedin.com/company/voskos-advisory-group/",
   },
-  {
+    {
     name: "RCA Wealth",
     logo: "/partner/RCA.png",
     website: "https://rcawealth.com.my/",
   },
   {
-    name: "Voskos Advisory Group",
-    logo: "/partner/voskos.png",
-    website: "https://www.linkedin.com/company/voskos-advisory-group/",
+    name: "TCG",
+    logo: "/partner/tcg.jpg",
+    website: "https://www.telecomconsulting.com.au/",
+  },
+    {
+    name: "6Gency",
+    logo: "/partner/gency.png",
+    website: "https://www.6gency.co/",
   },
   {
-    name: "IQVIA",
-    logo: "/partner/iqvia.png",
-    website: "https://www.iqvia.com",
+    name: "salon.ebteq",
+    logo: "/partner/salon-ebteq.jpg",
+    website: "https://salon.ebteq.com/",
   },
-  {
+   {
     name: "Alpha Omega",
     logo: "/partner/alphaomega.png",
     website: "https://alphaomegasp.weebly.com/",
   },
-  {
-    name: "Cheesiah",
-    logo: "/partner/cheesiah.png",
-    website: "https://cheesiah.com/",
-  },
-  {
-    name: "ESP",
-    logo: "/partner/esp.png",
-    website: "https://esp.com/",
+    {
+    name: "Maria's",
+    logo: "/partner/marias.png",
+    website: "https://marias.com/",
   },
   {
     name: "Kith & Kin",
@@ -75,35 +100,15 @@ const partners = [
     website: "https://kithandkin.com/",
   },
   {
-    name: "KL",
-    logo: "/partner/kl.png",
-    website: "https://kl.com/",
-  },
-  {
-    name: "Maria's",
-    logo: "/partner/marias.png",
-    website: "https://marias.com/",
-  },
-  {
     name: "Suree Food",
     logo: "/partner/sureefood.png",
     website: "https://sureefood.com/",
   },
   {
-    name: "6Gency",
-    logo: "/partner/gency.png",
-    website: "https://www.6gency.co/",
+    name: "wripple",
+    logo: "/partner/wripple.jpg",
   },
-  {
-    name: "AscendCom",
-    logo: "/partner/ascendcom.jpeg",
-    website: "https://ascendcom.my/",
-  },
-  {
-    name: "Zera",
-    logo: "/partner/zera.png",
-    website: "https://www.zera.edu.my/",
-  },
+
 ];
 
 export default function TrustedBy() {

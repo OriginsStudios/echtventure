@@ -1,5 +1,7 @@
-"use client";
 
+
+
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
@@ -167,6 +169,7 @@ export default function CoachesPage() {
               </div>
             </div>
           </div>
+
           <div className="relative flex flex-col items-center justify-center w-full h-full text-black text-center px-4 sm:px-6 md:px-8 z-10">
             <h1
               ref={techTitleRef}
@@ -183,6 +186,7 @@ export default function CoachesPage() {
           </div>
         </div>
       </div>
+
       {/* Coaches Grid Section */}
       <section className="max-w-6xl mx-auto px-6 md:px-10 lg:px-16 pb-14">
         <ul className="coaches-grid grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -197,8 +201,15 @@ export default function CoachesPage() {
                     src={coach.image}
                     alt={coach.name}
                     fill
-                    className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
+                    className="
+                      object-contain 
+                      object-center 
+                      bg-neutral-50
+                      transition-transform duration-300 
+                      group-hover:scale-105
+                    "
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={false}
                   />
                 </div>
                 <div className="p-5 pb-8">

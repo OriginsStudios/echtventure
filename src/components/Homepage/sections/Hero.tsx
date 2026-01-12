@@ -62,7 +62,7 @@ const HomePageHero = () => {
         {/* Description and Button */}
         <div className="flex flex-col items-center text-center max-w-2xl pb-6">
           <p className="hero-description text-center font-montserrat text-gray-700 text-lg md:text-xl mb-8">
-            Believing in the progressive realisation of purpose and passion!
+            Grounded in Purpose. Sharpened by Mastery. Driven by Ownership
           </p>
           <div className="hero-button">
             <Button

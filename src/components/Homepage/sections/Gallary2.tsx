@@ -1,311 +1,3 @@
-// // "use client";
-// // import { useRef } from "react";
-// // import gsap from "gsap";
-// // import { ScrollTrigger } from "gsap/ScrollTrigger";
-// // import { useGSAP } from "@gsap/react";
-
-// // gsap.registerPlugin(ScrollTrigger);
-
-// // export default function Mission2() {
-// //   const sectionRef = useRef<HTMLElement | null>(null);
-
-// //   useGSAP(
-// //     () => {
-// //       const section = sectionRef.current;
-// //       if (!section) return;
-
-// //       const titleLines = section.querySelectorAll("[data-title-line]");
-// //       const videoContainer = section.querySelector("[data-video]");
-// //       const videoImage = section.querySelector("[data-video] img");
-// //       const description = section.querySelector("[data-description]");
-
-// //       if (!titleLines.length || !videoContainer || !description) return;
-
-// //       // Initial state
-// //       gsap.set([titleLines, description], {
-// //         autoAlpha: 0,
-// //         y: 50,
-// //       });
-
-// //       gsap.set(videoContainer, {
-// //         autoAlpha: 1,
-// //         y: 0,
-// //       });
-
-// //       // Title & Description Animation
-// //       const tl = gsap.timeline({
-// //         scrollTrigger: {
-// //           trigger: section,
-// //           start: "top 60%",
-// //           end: "top 20%",
-// //           scrub: 1,
-// //         },
-// //       });
-
-// //       tl.to(titleLines, {
-// //         autoAlpha: 1,
-// //         y: 0,
-// //         stagger: 0.1,
-// //         duration: 1,
-// //         ease: "power2.out",
-// //       }).to(
-// //         description,
-// //         {
-// //           autoAlpha: 1,
-// //           y: 0,
-// //           duration: 1,
-// //           ease: "power2.out",
-// //         },
-// //         "-=0.5"
-// //       );
-
-// //       // Image container padding & scale setup
-// //       if (videoContainer) {
-// //         gsap.set(videoContainer, {
-// //           paddingLeft: "8vw",
-// //           paddingRight: "8vw",
-// //           paddingTop: "10vh", // Increased top padding to prevent cutoff
-// //           paddingBottom: "6vh",
-// //           transformOrigin: "center center",
-// //           force3D: true,
-// //         });
-// //       }
-
-// //       if (videoImage) {
-// //         gsap.set(videoImage, {
-// //           scale: 0.92,
-// //           transformOrigin: "center center",
-// //           force3D: true,
-// //         });
-
-// //         gsap.to(videoImage, {
-// //           scale: 1.06,
-// //           ease: "none",
-// //           scrollTrigger: {
-// //             trigger: section,
-// //             start: "top 85%",
-// //             end: "bottom 20%",
-// //             scrub: 1.6,
-// //             invalidateOnRefresh: true,
-// //           },
-// //         });
-// //       }
-// //     },
-// //     { scope: sectionRef }
-// //   );
-
-// //   return (
-// //     <section
-// //       ref={sectionRef}
-// //       className="relative min-h-[80vh] bg-transparent flex items-center justify-center overflow-visible"
-// //     >
-// //       <div className="mx-auto w-full px-4 sm:px-6 lg:px-16 xl:px-24">
-// //         {/* Video Container */}
-// //         <div className="flex justify-center -mx-4 sm:-mx-6 lg:-mx-16 xl:-mx-24 mb-8 sm:mb-12 lg:mb-0 order-1 lg:order-2">
-// //           <div
-// //             data-video
-// //             className="relative w-screen max-w-full aspect-video rounded-lg overflow-hidden"
-// //             style={{ marginTop: "2vh" }} // Prevents top cutoff
-// //           >
-// //             <picture>
-// //               <source media="(max-width: 640px)" srcSet="/gallery/gallerymobile/3.png" />
-// //               <img
-// //                 className="w-full h-full object-cover [backface-visibility:hidden] [transform:translateZ(0)] [will-change:transform] rounded-2xl"
-// //                 src="/gallery/12b.png"
-// //                 alt="echtventure"
-// //                 style={{ imageRendering: "auto" }}
-// //               />
-// //             </picture>
-// //           </div>
-// //         </div>
-
-// //         {/* Title + Description */}
-// //         <div className="relative flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-20 lg:px-6 order-2 lg:order-1 lg:-mt-32 xl:-mt-40 mb-20 lg:mb-32">
-// //           {/* Titles */}
-// //           <div className="w-full lg:w-auto z-20 lg:pt-48">
-// //             <div className="space-y-2 text-center lg:text-left">
-// //                 {["AWARENESS", "MASTERY", "LEADERSHIP", "IMPACT"].map((word) => (
-// //                   <h2
-// //                     key={word}
-// //                     data-title-line
-// //                     className="font-black !text-black leading-[0.95] tracking-tighter break-words text-[clamp(2.75rem,9vw,6rem)] sm:text-[clamp(2rem,6vw,6rem)]"
-// //                     style={{
-// //                       fontFamily: "Arial Black, sans-serif",
-// //                       // Mobile: larger base size
-// //                       fontSize: "clamp(2.75rem, 9vw, 6rem)",
-// //                     }}
-// //                     // Override with original size on sm+
-// //                     // We use style for mobile, class for sm+ to avoid conflicts
-// //                   >
-// //                     {word}
-// //                   </h2>
-// //                 ))}
-// //             </div>
-// //           </div>
-
-// //           {/* Description - vertically centered with titles */}
-// //           <div
-// //             data-description
-// //             className="w-full lg:w-[400px] xl:w-[500px] text-black text-center lg:text-justify mx-auto lg:pt-48 lg:mt-0"
-// //           >
-// //             <p className="text-base sm:text-base md:text-lg lg:text-lg xl:text-lg 2xl:text-2xl leading-relaxed font-montserrat">
-// //               Creating transformative impact in every space — unlocking potential and inspiring lasting change in individuals and teams.
-// //             </p>
-// //           </div>
-// //         </div>
-// //       </div>
-// //     </section>
-// //   );
-// // }
-
-
-// "use client";
-// import { useRef } from "react";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { useGSAP } from "@gsap/react";
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// export default function Mission2() {
-//   const sectionRef = useRef<HTMLElement | null>(null);
-
-//   useGSAP(
-//     () => {
-//       const section = sectionRef.current;
-//       if (!section) return;
-
-//       const titleLines = section.querySelectorAll("[data-title-line]");
-//       const videoContainer = section.querySelector("[data-video]");
-//       const videoImage = section.querySelector("[data-video] img");
-//       const description = section.querySelector("[data-description]");
-
-//       if (!titleLines.length || !videoContainer || !description) return;
-
-//       // Initial state
-//       gsap.set([titleLines, description], {
-//         autoAlpha: 0,
-//         y: 50,
-//       });
-
-//       gsap.set(videoContainer, {
-//         autoAlpha: 1,
-//         y: 0,
-//       });
-
-//       // Title & Description Animation
-//       const tl = gsap.timeline({
-//         scrollTrigger: {
-//           trigger: section,
-//           start: "top 60%",
-//           end: "top 20%",
-//           scrub: 1,
-//         },
-//       });
-
-//       tl.to(titleLines, {
-//         autoAlpha: 1,
-//         y: 0,
-//         stagger: 0.1,
-//         duration: 1,
-//         ease: "power2.out",
-//       }).to(
-//         description,
-//         {
-//           autoAlpha: 1,
-//           y: 0,
-//           duration: 1,
-//           ease: "power2.out",
-//         },
-//         "-=0.5"
-//       );
-
-//       // Image scale animation (no padding in GSAP)
-//       if (videoImage) {
-//         gsap.set(videoImage, {
-//           scale: 0.92,
-//           transformOrigin: "center center",
-//           force3D: true,
-//         });
-
-//         gsap.to(videoImage, {
-//           scale: 1.06,
-//           ease: "none",
-//           scrollTrigger: {
-//             trigger: section,
-//             start: "top 85%",
-//             end: "bottom 20%",
-//             scrub: 1.6,
-//             invalidateOnRefresh: true,
-//           },
-//         });
-//       }
-//     },
-//     { scope: sectionRef }
-//   );
-
-//   return (
-//     <section
-//       ref={sectionRef}
-//       className="relative min-h-[80vh] bg-transparent flex items-center justify-center overflow-visible"
-//     >
-//       <div className="mx-auto w-full px-4 sm:px-6 lg:px-16 xl:px-24">
-//         {/* Video Container */}
-//         <div className="flex justify-center px-4 sm:px-6 lg:px-16 xl:px-24 mb-8 sm:mb-12 lg:mb-0 order-1 lg:order-2">
-//           <div
-//             data-video
-//             className="relative w-full max-w-full aspect-video rounded-lg overflow-hidden px-[8vw] pt-[10vh] pb-[6vh] lg:px-0 lg:pt-0 lg:pb-0"
-//             style={{ marginTop: "2vh" }}
-//           >
-//             <picture className="block w-full h-full">
-//               <source media="(max-width: 640px)" srcSet="/gallery/gallerymobile/3.png" />
-//               <source media="(min-width: 641px)" srcSet="/gallery/12b.png" />
-//               <img
-//                 src="/gallery/12b.png"
-//                 alt="echtventure"
-//                 className="absolute inset-0 w-full h-full object-cover [backface-visibility:hidden] [transform:translateZ(0)] [will-change:transform] rounded-2xl"
-//                 style={{ imageRendering: "auto" }}
-//                 loading="lazy"
-//               />
-//             </picture>
-//           </div>
-//         </div>
-
-//         {/* Title + Description */}
-//         <div className="relative flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-20 lg:px-6 order-2 lg:order-1 lg:-mt-32 xl:-mt-40 mb-20 lg:mb-32">
-//           {/* Titles */}
-//           <div className="w-full lg:w-auto z-20 lg:pt-48">
-//             <div className="space-y-2 text-center lg:text-left">
-//               {["AWARENESS", "MASTERY", "LEADERSHIP", "IMPACT"].map((word) => (
-//                 <h2
-//                   key={word}
-//                   data-title-line
-//                   className="font-black !text-black leading-[0.95] tracking-tighter break-words text-[clamp(2.75rem,9vw,6rem)] sm:text-[clamp(2rem,6vw,6rem)]"
-//                   style={{
-//                     fontFamily: "Arial Black, sans-serif",
-//                   }}
-//                 >
-//                   {word}
-//                 </h2>
-//               ))}
-//             </div>
-//           </div>
-
-//           {/* Description */}
-//           <div
-//             data-description
-//             className="w-full lg:w-[400px] xl:w-[500px] text-black text-center lg:text-justify mx-auto lg:pt-48 lg:mt-0"
-//           >
-//             <p className="text-base sm:text-base md:text-lg lg:text-lg xl:text-lg 2xl:text-2xl leading-relaxed font-montserrat">
-//               Creating transformative impact in every space — unlocking potential and inspiring lasting change in individuals and teams.
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 
 "use client";
 import { useRef } from "react";
@@ -323,61 +15,37 @@ export default function Mission2() {
       const section = sectionRef.current;
       if (!section) return;
 
-      const titleLines = section.querySelectorAll("[data-title-line]");
-      const videoContainer = section.querySelector("[data-video]");
-      const videoImage = section.querySelector("[data-video] img");
+      const missionTitle = section.querySelector("[data-mission-title]");
+      const stepLines = section.querySelectorAll("[data-step-line]");
       const description = section.querySelector("[data-description]");
+      const videoImage = section.querySelector("[data-video] img");
 
-      if (!titleLines.length || !videoContainer || !description) return;
+      if (!missionTitle || !stepLines.length) return;
 
-      // Initial state
-      gsap.set([titleLines, description], { autoAlpha: 0, y: 50 });
-      gsap.set(videoContainer, { autoAlpha: 1, y: 0 });
+      gsap.set([missionTitle, stepLines, description], { autoAlpha: 0, y: 40 });
 
-      // Title + description animation
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top 60%",
-          end: "top 20%",
+          start: "top 70%",
+          end: "top 30%",
           scrub: 1,
         },
       });
 
-      tl.to(titleLines, {
-        autoAlpha: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 1,
-        ease: "power2.out",
-      }).to(
-        description,
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-        },
-        "-=0.5"
-      );
+      tl.to(missionTitle, { autoAlpha: 1, y: 0, ease: "power3.out" })
+        .to(stepLines, { autoAlpha: 1, y: 0, stagger: 0.12, ease: "power3.out" }, "-=0.5")
+        .to(description, { autoAlpha: 1, y: 0, ease: "power2.out" }, "-=0.6");
 
-      // Image scale only (no padding in GSAP)
       if (videoImage) {
-        gsap.set(videoImage, {
-          scale: 0.92,
-          transformOrigin: "center center",
-          force3D: true,
-        });
-
+        gsap.set(videoImage, { scale: 0.96 });
         gsap.to(videoImage, {
-          scale: 1.06,
-          ease: "none",
+          scale: 1.04,
           scrollTrigger: {
             trigger: section,
             start: "top 85%",
-            end: "bottom 20%",
-            scrub: 1.6,
-            invalidateOnRefresh: true,
+            end: "bottom 15%",
+            scrub: 1.5,
           },
         });
       }
@@ -388,64 +56,105 @@ export default function Mission2() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[80vh] bg-transparent flex items-center justify-center overflow-visible"
+      className="relative bg-transparent overflow-x-hidden py-16 md:py-24"
     >
-      <div className="mx-auto w-full px-4 sm:px-6 lg:px-16 xl:px-24">
-        {/* ====================== IMAGE CONTAINER ====================== */}
-        <div className="flex justify-center mb-8 sm:mb-12 lg:mb-0 order-1 lg:order-2">
+      <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-10 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+        {/* Hero Image - unchanged */}
+        <div className="flex justify-center mb-10 lg:mb-16">
           <div
             data-video
-            className="relative w-full max-w-full aspect-video rounded-lg overflow-hidden
-                       px-[8vw] pt-[10vh] pb-[6vh]
-                       lg:px-[8vw] lg:pt-[10vh] lg:pb-[6vh]"
-            style={{ marginTop: "2vh" }}
+            className="
+              relative w-full aspect-video max-w-full rounded-2xl overflow-hidden
+              shadow-2xl px-6 pt-8 pb-6
+              sm:px-12 sm:pt-12 sm:pb-10
+              lg:px-16 lg:pt-16 lg:pb-12
+              xl:px-20
+            "
           >
             <picture className="block w-full h-full">
               <source media="(max-width: 640px)" srcSet="/gallery/gallerymobile/3.png" />
-              <source media="(min-width: 641px)" srcSet="/gallery/12b.png" />
               <img
                 src="/gallery/12b.png"
-                alt="echtventure"
-                className="absolute inset-0 w-full h-full object-cover
-                           [backface-visibility:hidden] [transform:translateZ(0)]
-                           [will-change:transform] rounded-2xl"
-                style={{ imageRendering: "auto" }}
+                alt="Echtventure mission visual"
+                className="absolute inset-0 w-full h-full object-cover rounded-2xl"
                 loading="lazy"
               />
             </picture>
           </div>
         </div>
 
-        {/* ====================== TITLE + DESCRIPTION ====================== */}
-        <div className="relative flex flex-col lg:flex-row items-center justify-center
-                        gap-6 sm:gap-8 lg:gap-20
-                        order-2 lg:order-1
-                        lg:-mt-32 xl:-mt-40 mb-20 lg:mb-32">
-          {/* ---- TITLES ---- */}
-          <div className="w-full lg:w-auto z-20 lg:pt-48">
-            <div className="space-y-2 text-center lg:text-left">
-              {["AWARENESS", "MASTERY", "LEADERSHIP", "IMPACT"].map((word) => (
-                <h2
-                  key={word}
-                  data-title-line
-                  className="font-black !text-black leading-[0.95] tracking-tighter break-words
-                             text-[clamp(2.75rem,9vw,6rem)] sm:text-[clamp(2rem,6vw,6rem)]"
-                  style={{ fontFamily: "Arial Black, sans-serif" }}
-                >
-                  {word}
-                </h2>
-              ))}
-            </div>
+        {/* ──────────────────────────────────────────────── */}
+        {/* Mobile: OUR MISSION at top → Steps below (right aligned) */}
+        {/* Desktop: side by side (mission left, steps right)       */}
+        {/* ──────────────────────────────────────────────── */}
+
+        <div className="pt-12 lg:pt-24 relative min-h-[50vh] lg:min-h-[65vh] flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-10 xl:gap-14">
+          {/* OUR MISSION – always first in DOM for mobile */}
+          <div className="order-1 lg:order-1 flex items-start lg:items-end justify-center lg:justify-start">
+            <h2
+              data-mission-title
+              className="
+                font-black tracking-tighter leading-[0.85]
+                text-[clamp(3.2rem,8.5vw,4.8rem)]           /* smaller on mobile */
+                md:text-[clamp(4rem,8vw,5.8rem)]
+                lg:text-[clamp(4.8rem,7.5vw,7.5rem)]
+                text-center lg:text-left
+              "
+              style={{ fontFamily: "Arial Black, Arial, sans-serif" }}
+            >
+              OUR
+              <br />
+              MISSION
+            </h2>
           </div>
 
-          {/* ---- DESCRIPTION: SAME WIDTH AS BEFORE ---- */}
+          {/* Steps – right aligned on both mobile & desktop */}
+          <div className="order-2 lg:order-2 flex flex-col items-center lg:items-end gap-3 md:gap-4 lg:gap-5 xl:gap-6">
+            {[
+              { text: "Build", accent: "AWARENESS" },
+              { text: "Grow in", accent: "MASTERY" },
+              { text: "step into", accent: "LEADERSHIP" },
+              { text: "create lasting", accent: "IMPACT" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                data-step-line
+                className="
+                  flex flex-col sm:flex-row sm:items-baseline
+                  gap-1 sm:gap-2.5
+                  text-center lg:text-right w-full lg:w-auto
+                  justify-center lg:justify-end
+                "
+              >
+                <span className="text-base sm:text-lg md:text-xl font-bold opacity-80">
+                  {item.text}
+                </span>
+                <span
+                  className="
+                    font-black tracking-tight leading-none
+                    text-[clamp(1.85rem,4.8vw,2.6rem)]          /* much smaller on mobile */
+                    sm:text-[clamp(2.1rem,5vw,3rem)]
+                    md:text-[clamp(2.4rem,4.8vw,3.4rem)]
+                    lg:text-[clamp(2.8rem,4vw,4.2rem)]
+                  "
+                  style={{ fontFamily: "Arial Black, Arial, sans-serif" }}
+                >
+                  {item.accent}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Description (if you'll use it later) */}
           <div
             data-description
-            className="w-full lg:w-[400px] xl:w-[500px] text-black text-center lg:text-justify mx-auto lg:pt-48 lg:mt-0"
+            className="
+              order-3 col-span-2 mx-auto mt-8 lg:mt-12
+              max-w-2xl text-center text-sm sm:text-base md:text-lg
+              leading-relaxed font-montserrat text-black/85
+            "
           >
-            <p className="text-base sm:text-base md:text-lg lg:text-lg xl:text-lg 2xl:text-2xl leading-relaxed font-montserrat">
-              Creating transformative impact in every space — unlocking potential and inspiring lasting change in individuals and teams.
-            </p>
+            {/* Your description text here when ready */}
           </div>
         </div>
       </div>
