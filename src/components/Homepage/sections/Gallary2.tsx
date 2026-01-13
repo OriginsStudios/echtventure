@@ -289,7 +289,7 @@ export default function Mission2() {
                   justify-center md:justify-end
                 "
               >
-                <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-light opacity-80 tracking-wide">
+                <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-montserrat opacity-80 tracking-wide">
                   {item.text}
                 </span>
                 <span

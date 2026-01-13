@@ -204,7 +204,7 @@ export default function CoachesPage() {
                     className="
                       object-contain 
                       object-center 
-                      bg-neutral-50
+                      bg-five-lines
                       transition-transform duration-300 
                       group-hover:scale-105
                     "

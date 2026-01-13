@@ -32,7 +32,7 @@ export default async function CoachSlugPage({
               className="
                 object-contain 
                 object-center 
-                bg-neutral-50
+                bg-five-lines
                 transition-transform duration-300 
                 hover:scale-105
               "
