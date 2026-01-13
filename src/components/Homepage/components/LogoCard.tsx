@@ -1,5 +1,7 @@
+
+
 import Image from "next/image";
-import type { HTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
 interface LogoCardProps extends HTMLAttributes<HTMLDivElement> {
   src: string;
@@ -11,28 +13,38 @@ export default function LogoCard({
   src,
   alt,
   name,
-  className,
+  className = "",
   ...rest
 }: LogoCardProps) {
   return (
     <div
       {...rest}
       className={`
-        relative flex items-center justify-center h-full w-full
-        transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]
+        group relative 
+        flex items-center justify-center 
+        transition-all duration-300 ease-out
+        overflow-hidden
         ${className}
       `}
     >
-      {/* --- Logo --- */}
-      <div className="relative flex items-center justify-center transition-transform duration-500">
+      <div className="relative w-[90%] h-[90%] p-4 sm:p-5 md:p-6">
         <Image
           src={src}
           alt={alt}
-          width={120}
-          height={120}
-          className="object-contain w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28"
+          fill
+          className={`
+            object-contain 
+            transition-transform duration-400 ease-out
+            group-hover:scale-105
+          `}
+          sizes="(max-width: 640px) 120px, (max-width: 1024px) 160px, 200px"
+          quality={88}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAErgJ9aA9l9gAAAABJRU5ErkJggg=="
         />
       </div>
     </div>
   );
 }
+
+

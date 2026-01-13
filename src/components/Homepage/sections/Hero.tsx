@@ -13,18 +13,16 @@ gsap.registerPlugin(ScrollTrigger);
 const HomePageHero = () => {
   const containerRef = useRef<HTMLElement>(null);
 
-  // Scroll fade animation removed
-
   useGSAP(
     () => {
-      // Animate the description and button
-      gsap.from([".hero-description", ".hero-button"], {
+      // Animate the text lines and the button
+      gsap.from([".hero-text-line", ".hero-button"], {
         opacity: 0,
         y: 50,
         duration: 0.8,
         ease: "power3.out",
-        stagger: 0.2, // Animate them one after the other
-        delay: 0.2, // Wait for the headline animation to start
+        stagger: 0.2,
+        delay: 0.2,
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 80%",
@@ -38,13 +36,9 @@ const HomePageHero = () => {
     <section
       id="home-hero"
       ref={containerRef}
-      // Responsive padding: smaller on mobile, larger on desktop
-      className="flex flex-col justify-center items-start p-6 md:p-12 2xl:py-12  container-padding "
+      className="flex flex-col justify-center items-start p-6 md:p-12 2xl:py-12 container-padding"
     >
-      <div
-        // Layout: Stacks vertically in column layout
-        className="mx-auto w-full flex flex-col items-center justify-center gap-10 md:gap-16"
-      >
+      <div className="mx-auto w-full flex flex-col items-center justify-center gap-10 md:gap-16">
         {/* Main Logo */}
         <div className="w-full text-center pt-12 md:pt-0">
           <div className="inline-block pt-5">
@@ -61,15 +55,31 @@ const HomePageHero = () => {
 
         {/* Description and Button */}
         <div className="flex flex-col items-center text-center max-w-2xl pb-6">
-          <p className="hero-description text-center font-montserrat text-gray-700 text-lg md:text-xl mb-8">
-            Grounded in Purpose. Sharpened by Mastery. Driven by Ownership
-          </p>
+          
+          {/* Container for the lines */}
+          {/* Mobile: flex-col (stacked vertically) */}
+          {/* Desktop: md:flex-row md:flex-wrap (side-by-side like a paragraph) */}
+          <div className="hero-description flex flex-col md:flex-row md:flex-wrap justify-center items-center gap-2 md:gap-3 mb-8">
+            
+            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-xl">
+              Grounded in Purpose.
+            </div>
+            
+            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-xl">
+              Sharpened by Mastery.
+            </div>
+            
+            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-xl">
+              Driven by Ownership
+            </div>
+
+          </div>
+
           <div className="hero-button">
             <Button
               onClick={() => {
                 console.log("Button clicked - attempting to scroll");
 
-                // Try multiple approaches with debugging
                 const programSection =
                   document.getElementById("program-section");
                 console.log("Program section found:", !!programSection);
@@ -92,7 +102,6 @@ const HomePageHero = () => {
                   }
                 } else {
                   console.log("Program section not found, scrolling down");
-                  // Scroll down by viewport height
                   const lenis = (window as any).lenis;
                   if (lenis) {
                     lenis.scrollTo(window.scrollY + window.innerHeight);
