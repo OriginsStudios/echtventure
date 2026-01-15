@@ -70,7 +70,7 @@ const HomePageHero = () => {
             </div>
             
             <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-xl">
-              Driven by Ownership
+              Driven by Ownership.
             </div>
 
           </div>
