@@ -1,7 +1,8 @@
-"use client";
 
+
+"use client";
 import React, { useRef } from "react";
-import Button from "@/components/ui/Button"; // Assuming you have this Button component
+import Button from "@/components/ui/Button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -55,46 +56,40 @@ const HomePageHero = () => {
 
         {/* Description and Button */}
         <div className="flex flex-col items-center text-center max-w-2xl pb-6">
-          
-          {/* Container for the lines */}
-          {/* Mobile: flex-col (stacked vertically) */}
-          {/* Desktop: md:flex-row md:flex-wrap (side-by-side like a paragraph) */}
-          <div className="hero-description flex flex-col md:flex-row md:flex-wrap justify-center items-center gap-2 md:gap-3 mb-8">
-            
-            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-xl">
+          {/* Container for the taglines */}
+          <div
+            className="
+              hero-description flex flex-col md:flex-row md:flex-nowrap 
+              justify-center items-center md:items-baseline 
+              gap-2 md:gap-4 lg:gap-6 mb-8 md:mb-10
+            "
+          >
+            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-lg whitespace-nowrap">
               Grounded in Purpose.
             </div>
-            
-            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-xl">
+            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-lg whitespace-nowrap">
               Sharpened by Mastery.
             </div>
-            
-            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-xl">
+            <div className="hero-text-line font-montserrat text-gray-700 text-sm md:text-lg whitespace-nowrap">
               Driven by Ownership.
             </div>
-
           </div>
 
           <div className="hero-button">
             <Button
               onClick={() => {
                 console.log("Button clicked - attempting to scroll");
-
-                const programSection =
-                  document.getElementById("program-section");
+                const programSection = document.getElementById("program-section");
                 console.log("Program section found:", !!programSection);
 
                 if (programSection) {
                   console.log("Scrolling to program section");
-
-                  // Try Lenis first
                   const lenis = (window as any).lenis;
                   console.log("Lenis available:", !!lenis);
 
                   if (lenis) {
                     lenis.scrollTo(programSection, { offset: -50 });
                   } else {
-                    // Fallback to native scroll
                     programSection.scrollIntoView({
                       behavior: "smooth",
                       block: "start",

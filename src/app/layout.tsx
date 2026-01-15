@@ -1,6 +1,10 @@
+
+
+
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+
 import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import LenisScrollProvider from "@/components/LenisScrollProvider";
@@ -9,7 +13,7 @@ import RouteTransitionOverlay from "@/components/RouteTransitionOverlay";
 import Preloader from "@/components/Preload/Preloader";
 import ScrollToTop from "@/components/ScrollToTop";
 
-// Butler font is now loaded via CSS @font-face declarations in globals.css
+// Butler font is loaded via CSS @font-face in globals.css
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -35,16 +39,27 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-butler ${montserrat.variable} antialiased`}>
         <LenisScrollProvider />
+        
+        {/* Navbar is now a client component with scroll hide/show logic */}
         <Navbar />
+        
         <CustomCursor />
-        {/* Page transition overlay */}
         <Preloader />
         <RouteTransitionOverlay />
         <ScrollToTop />
-        <main className="bg-five-lines relative z-10 rounded-b-[50px] ">
+
+        <main 
+          className="
+            bg-five-lines relative z-10 rounded-b-[50px] 
+            pt-16 md:pt-0               /* ← space for fixed mobile navbar */
+            min-h-screen
+          "
+        >
           {children}
         </main>
+
         <Footer />
+
         <canvas className="noise-overlay" width="1920" height="945"></canvas>
       </body>
     </html>
