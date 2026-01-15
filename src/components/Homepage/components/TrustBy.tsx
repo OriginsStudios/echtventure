@@ -1,8 +1,6 @@
 
 
-
 "use client";
-
 import LogoCard from "./LogoCard";
 
 type Partner = {
@@ -17,7 +15,6 @@ const partners: Partner[] = [
   { name: "YTL", logo: "/partner/ytl.png", website: "https://www.ytl.com/" },
   { name: "Morison Global", logo: "/partner/marisonglobal.png", website: "https://www.morisonglobal.com/" },
   { name: "UHY", logo: "/partner/uhy.png", website: "https://www.uhy-th.com/" },
-
   { name: "CSILK", logo: "/partner/csilk.png", website: "https://csilk.com.my/" },
   { name: "Gary Chong Studios", logo: "/partner/garychongstudios.png", website: "https://garychongstudios.com/" },
   { name: "Seven Vault", logo: "/partner/sevenvault.png", website: "https://sevenvault.com/" },
@@ -26,7 +23,6 @@ const partners: Partner[] = [
   { name: "ESP", logo: "/partner/esp.png", website: "https://esp.com.my/" },
   { name: "Voskos Advisory", logo: "/partner/voskos.png", website: "https://www.linkedin.com/company/voskos-advisory-group/" },
   { name: "RCA Wealth", logo: "/partner/RCA.png", website: "https://rcawealth.com.my/" },
-
   { name: "TCG", logo: "/partner/tcg.png", website: "https://www.telecomconsulting.com.au/" },
   { name: "6Gency", logo: "/partner/gency.png", website: "https://www.6gency.co/" },
   { name: "salon.ebteq", logo: "/partner/salon-ebteq.png", website: "https://salon.ebteq.com/" },
@@ -61,7 +57,7 @@ export default function TrustedBy() {
         <LogoCard
           src={partner.logo}
           alt={`${partner.name} logo`}
-          className={`${mobileHeight} md:${desktopHeight} aspect-[4/3] mx-auto`}
+          className={`${mobileHeight} md:${desktopHeight} aspect-[4/3] mx-auto object-contain transition-transform duration-300 hover:scale-105`}
         />
       </a>
     </div>
@@ -76,28 +72,28 @@ export default function TrustedBy() {
           </h2>
         </div>
 
-        <div className="space-y-10 md:space-y-12">
-          {/* ✅ Row 1 — mobile: 2 per row, last one centered if alone */}
+        <div className="space-y-10 md:space-y-14">
+          {/* Featured row — bigger logos, more prominent */}
           <div
             className="
-              grid grid-cols-2 gap-6 place-items-center
+              grid grid-cols-2 gap-8 place-items-center
               [&>*:last-child]:col-span-2
               sm:grid-cols-3 sm:[&>*:last-child]:col-span-1
-              md:grid-cols-5
+              md:grid-cols-5 md:gap-10 lg:gap-12
             "
           >
             {row1.map((p) =>
               renderLogo(
                 p,
-                "h-40",
-                "max-w-[320px]",
-                "h-32 sm:h-36",
-                "max-w-[280px] sm:max-w-[260px]"
+                "h-32 md:h-48",                    // clearly bigger on desktop
+                "max-w-[380px] md:max-w-[420px]",  // generous width
+                "h-36 sm:h-44",                    // improved mobile too
+                "max-w-[320px] sm:max-w-[300px]"
               )
             )}
           </div>
 
-          {/* ❌ Row 2 — NORMAL grid (no centering trick) */}
+          {/* Supporting partners — smaller & tighter */}
           <div
             className="
               grid grid-cols-2 gap-6 place-items-center
@@ -109,15 +105,14 @@ export default function TrustedBy() {
             {row2.map((p) =>
               renderLogo(
                 p,
-                "h-28",
-                "max-w-[120px]",
+                "h-28 md:h-32",
+                "max-w-[140px] md:max-w-[160px]",
                 "h-28 sm:h-32",
                 "max-w-[240px] sm:max-w-[180px]"
               )
             )}
           </div>
 
-          {/* ❌ Row 3 — NORMAL grid (no centering trick) */}
           <div
             className="
               grid grid-cols-2 gap-6 place-items-center
@@ -129,8 +124,8 @@ export default function TrustedBy() {
             {row3.map((p) =>
               renderLogo(
                 p,
-                "h-32",
-                "max-w-[120px]",
+                "h-28 md:h-32",
+                "max-w-[140px] md:max-w-[160px]",
                 "h-28 sm:h-32",
                 "max-w-[240px] sm:max-w-[180px]"
               )
