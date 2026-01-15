@@ -23,7 +23,7 @@ export default async function CoachSlugPage({
     <main className="min-h-screen px-6 md:px-10 lg:px-16 py-14 bg-five-lines">
       <article className="max-w-5xl mx-auto bg-five-lines">
         {/* Header - Image + Name + Title */}
-        <div className="grid gap-8 md:grid-cols-[280px,1fr] items-center">
+        <div className="pt-12 grid gap-8 md:grid-cols-[280px,1fr] items-center">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100">
             <Image
               src={coach.image}
