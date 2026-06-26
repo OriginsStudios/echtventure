@@ -10,6 +10,7 @@ type Partner = {
 };
 
 const partners: Partner[] = [
+  { name: "BASF", logo: "/partner/basf.svg", website: "https://www.basf.com/my/en" },
   { name: "IQVIA", logo: "/partner/iqvia.png", website: "https://www.iqvia.com" },
   { name: "AnyMind Group", logo: "/partner/anymind.png", website: "https://anymindgroup.com/" },
   { name: "YTL", logo: "/partner/ytl.png", website: "https://www.ytl.com/" },
@@ -85,8 +86,8 @@ export default function TrustedBy() {
                 p,
                 "h-32 md:h-48",
                 "max-w-[380px] md:max-w-[420px]",
-                idx < 5 ? "h-36" : "h-28",
-                idx < 5 ? "max-w-[320px]" : "max-w-[240px]",
+                idx < 6 ? "h-36" : "h-28",
+                idx < 6 ? "max-w-[320px]" : "max-w-[240px]",
                 isOdd && idx === lastIndex // ✅ only last one, only if odd
               )
             )}
@@ -96,8 +97,8 @@ export default function TrustedBy() {
         {/* ✅ DESKTOP — unchanged layout */}
         <div className="hidden md:block">
           <div className="space-y-10 md:space-y-14">
-            <div className="grid sm:grid-cols-3 md:grid-cols-5 md:gap-10 lg:gap-12 place-items-center">
-              {partners.slice(0, 5).map((p) =>
+            <div className="grid sm:grid-cols-3 md:grid-cols-6 md:gap-10 lg:gap-12 place-items-center">
+              {partners.slice(0, 6).map((p) =>
                 renderLogo(
                   p,
                   "h-32 md:h-48",
@@ -109,7 +110,7 @@ export default function TrustedBy() {
             </div>
 
             <div className="grid md:grid-cols-6 lg:grid-cols-8 md:gap-5 place-items-center">
-              {partners.slice(5, 13).map((p) =>
+              {partners.slice(6, 14).map((p) =>
                 renderLogo(
                   p,
                   "h-28 md:h-32",
@@ -121,7 +122,7 @@ export default function TrustedBy() {
             </div>
 
             <div className="grid md:grid-cols-6 lg:grid-cols-8 md:gap-5 place-items-center">
-              {partners.slice(13).map((p) =>
+              {partners.slice(14).map((p) =>
                 renderLogo(
                   p,
                   "h-28 md:h-32",
