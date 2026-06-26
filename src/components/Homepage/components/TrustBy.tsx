@@ -65,7 +65,7 @@ export default function TrustedBy() {
           alt={`${partner.name} logo`}
           className={`${mobileHeight} md:${desktopHeight} aspect-[4/3] mx-auto object-contain transition-transform duration-300 group-hover:scale-105`}
         />
-        <span className="mt-2 text-xs md:text-sm font-medium text-gray-500 text-center transition-colors duration-300 group-hover:text-gray-900">
+        <span className="mt-2 font-montserrat text-xs md:text-base font-medium text-gray-500 text-center transition-colors duration-300 group-hover:text-gray-900">
           {partner.name}
         </span>
       </a>
