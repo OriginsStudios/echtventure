@@ -106,7 +106,7 @@ export default function TrustedBy() {
               )}
             </div>
 
-            <div className="grid md:grid-cols-6 lg:grid-cols-8 md:gap-5 place-items-center">
+            <div className="grid md:grid-cols-4 lg:grid-cols-8 md:gap-5 place-items-center">
               {partners.slice(6, 14).map((p) =>
                 renderLogo(
                   p,
@@ -116,7 +116,7 @@ export default function TrustedBy() {
               )}
             </div>
 
-            <div className="grid md:grid-cols-6 lg:grid-cols-8 md:gap-5 place-items-center">
+            <div className="grid md:grid-cols-4 lg:grid-cols-8 md:gap-5 place-items-center">
               {partners.slice(14).map((p) =>
                 renderLogo(
                   p,
