@@ -56,15 +56,18 @@ export default function TrustedBy() {
         href={partner.website}
         target={partner.website ? "_blank" : undefined}
         rel={partner.website ? "noopener noreferrer" : undefined}
-        className={`block w-full ${mobileMaxWidth} md:${desktopMaxWidth} ${
+        className={`group flex flex-col items-center w-full ${mobileMaxWidth} md:${desktopMaxWidth} ${
           partner.website ? "" : "pointer-events-none"
         }`}
       >
         <LogoCard
           src={partner.logo}
           alt={`${partner.name} logo`}
-          className={`${mobileHeight} md:${desktopHeight} aspect-[4/3] mx-auto object-contain transition-transform duration-300 hover:scale-105`}
+          className={`${mobileHeight} md:${desktopHeight} aspect-[4/3] mx-auto object-contain transition-transform duration-300 group-hover:scale-105`}
         />
+        <span className="mt-2 text-xs md:text-sm font-medium text-gray-500 text-center transition-colors duration-300 group-hover:text-gray-900">
+          {partner.name}
+        </span>
       </a>
     </div>
   );
