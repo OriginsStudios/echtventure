@@ -23,7 +23,7 @@ const partners: Partner[] = [
   { name: "Zera", logo: "/partner/zera.png", website: "https://www.zera.edu.my/" },
   { name: "KL Dental", logo: "/partner/kl.png", website: "https://kldental.my/" },
   { name: "ESP", logo: "/partner/esp.png", website: "https://esp.com.my/" },
-  { name: "Voskos Advisory", logo: "/partner/voskos.png", website: "https://www.linkedin.com/company/voskos-advisory-group/" },
+  { name: "Voskos Advisory", logo: "/partner/voskos.png", website: "https://voskosadvisory.com/" },
   { name: "RCA Wealth", logo: "/partner/RCA.png", website: "https://rcawealth.com.my/" },
 
   { name: "TCG", logo: "/partner/tcg.png", website: "https://www.telecomconsulting.com.au/" },
@@ -31,7 +31,7 @@ const partners: Partner[] = [
   { name: "Ebteq", logo: "/partner/salon-ebteq.png", website: "https://salon.ebteq.com/" },
   { name: "Alpha Omega", logo: "/partner/alphaomega.png", website: "https://alphaomegasp.weebly.com/" },
   { name: "Maria's", logo: "/partner/marias.png", website: "https://marias.com.my/" },
-  { name: "Kith & Kin", logo: "/partner/kithandkin.png", website: "https://kithandkin.com/" },
+  { name: "Kith & Kin", logo: "/partner/kithandkin.png" },
   { name: "Suree Food", logo: "/partner/sureefood.png", website: "https://sureefood.com/" },
   { name: "wRipple", logo: "/partner/wripple.png" },
 ];
