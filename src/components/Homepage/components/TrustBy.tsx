@@ -42,15 +42,13 @@ export default function TrustedBy() {
 
   const renderLogo = (
     partner: Partner,
-    desktopHeight: string,
     desktopMaxWidth: string,
-    mobileHeight: string = "h-28",
-    mobileMaxWidth: string = "max-w-[240px]",
+    mobileMaxWidth: string,
     isLastCentered = false
   ) => (
     <div
       key={partner.name}
-      className={`flex justify-center ${isLastCentered ? "col-span-2" : ""}`}
+      className={`flex justify-center w-full ${isLastCentered ? "col-span-2" : ""}`}
     >
       <a
         href={partner.website}
@@ -63,9 +61,9 @@ export default function TrustedBy() {
         <LogoCard
           src={partner.logo}
           alt={`${partner.name} logo`}
-          className={`${mobileHeight} md:${desktopHeight} aspect-[4/3] mx-auto object-contain transition-transform duration-300 group-hover:scale-105`}
+          className="w-full aspect-[4/3] mx-auto object-contain transition-transform duration-300 group-hover:scale-105"
         />
-        <span className="mt-2 font-montserrat text-xs md:text-base font-medium text-gray-500 text-center transition-colors duration-300 group-hover:text-gray-900">
+        <span className="mt-2 font-montserrat text-xs md:text-sm lg:text-base font-medium text-gray-500 text-center transition-colors duration-300 group-hover:text-gray-900">
           {partner.name}
         </span>
       </a>
@@ -83,14 +81,12 @@ export default function TrustedBy() {
 
         {/* ✅ MOBILE — continuous 2-column grid */}
         <div className="md:hidden">
-          <div className="grid grid-cols-2 gap-6 place-items-center">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-6 place-items-center">
             {partners.map((p, idx) =>
               renderLogo(
                 p,
-                "h-32 md:h-48",
-                "max-w-[380px] md:max-w-[420px]",
-                idx < 6 ? "h-36" : "h-28",
-                idx < 6 ? "max-w-[320px]" : "max-w-[240px]",
+                idx < 6 ? "max-w-[220px] lg:max-w-[260px]" : "max-w-[140px] lg:max-w-[160px]",
+                idx < 6 ? "max-w-[160px] sm:max-w-[200px]" : "max-w-[110px] sm:max-w-[130px]",
                 isOdd && idx === lastIndex // ✅ only last one, only if odd
               )
             )}
@@ -104,10 +100,8 @@ export default function TrustedBy() {
               {partners.slice(0, 6).map((p) =>
                 renderLogo(
                   p,
-                  "h-32 md:h-48",
-                  "max-w-[380px] md:max-w-[420px]",
-                  "h-36 sm:h-44",
-                  "max-w-[320px] sm:max-w-[300px]"
+                  "max-w-[220px] lg:max-w-[260px]",
+                  "max-w-[160px] sm:max-w-[200px]"
                 )
               )}
             </div>
@@ -116,10 +110,8 @@ export default function TrustedBy() {
               {partners.slice(6, 14).map((p) =>
                 renderLogo(
                   p,
-                  "h-28 md:h-32",
-                  "max-w-[140px] md:max-w-[160px]",
-                  "h-28 sm:h-32",
-                  "max-w-[240px] sm:max-w-[180px]"
+                  "max-w-[140px] lg:max-w-[160px]",
+                  "max-w-[110px] sm:max-w-[130px]"
                 )
               )}
             </div>
@@ -128,10 +120,8 @@ export default function TrustedBy() {
               {partners.slice(14).map((p) =>
                 renderLogo(
                   p,
-                  "h-28 md:h-32",
-                  "max-w-[140px] md:max-w-[160px]",
-                  "h-28 sm:h-32",
-                  "max-w-[240px] sm:max-w-[180px]"
+                  "max-w-[140px] lg:max-w-[160px]",
+                  "max-w-[110px] sm:max-w-[130px]"
                 )
               )}
             </div>
