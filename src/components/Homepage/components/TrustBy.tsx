@@ -28,7 +28,7 @@ const partners: Partner[] = [
 
   { name: "TCG", logo: "/partner/tcg.png", website: "https://www.telecomconsulting.com.au/" },
   { name: "6Gency", logo: "/partner/gency.png", website: "https://www.6gency.co/" },
-  { name: "salon.ebteq", logo: "/partner/salon-ebteq.png", website: "https://salon.ebteq.com/" },
+  { name: "Ebteq", logo: "/partner/salon-ebteq.png", website: "https://salon.ebteq.com/" },
   { name: "Alpha Omega", logo: "/partner/alphaomega.png", website: "https://alphaomegasp.weebly.com/" },
   { name: "Maria's", logo: "/partner/marias.png", website: "https://marias.com.my/" },
   { name: "Kith & Kin", logo: "/partner/kithandkin.png", website: "https://kithandkin.com/" },
