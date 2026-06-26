@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Butler Font Family */
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Ultra_Light.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Butler";
+  src: url("/Fonts/butler/Butler_Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base styles */
+body {
+  font-family: "Butler", serif;
+  background-color: #f0eeeb;
+}
+
+/* Lenis smooth scrolling styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.bg-five-lines {
+  background-color: #f0eeeb;
+  background-image: linear-gradient(#eae8e7, #eae8e7),
+    linear-gradient(#eae8e7, #eae8e7), linear-gradient(#eae8e7, #eae8e7),
+    linear-gradient(#eae8e7, #eae8e7), linear-gradient(#eae8e7, #eae8e7);
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: 2% 0, 25% 0, 50% 0, 75% 0, 98% 0;
+}
+
+.bg-five-lines-blackbg {
+  background-color: #0e0e0e;
+  background-image: linear-gradient(#eae8e727, #eae8e727),
+    linear-gradient(#eae8e727, #eae8e727), linear-gradient(#eae8e727, #eae8e727),
+    linear-gradient(#eae8e727, #eae8e727), linear-gradient(#eae8e727, #eae8e727);
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: 2% 0, 25% 0, 50% 0, 75% 0, 98% 0;
+}
+@media (pointer: fine) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  display: none;
+  transform: translate(-50%, -50%);
+}
+
+/* Dot with inversion */
+.cursor-dot {
+  width: 12px;
+  height: 12px;
+  background: white; /* white + difference = inversion */
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  z-index: 10000;
+}
+
+/* Ring with transparent border */
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #535353;
+  border-radius: 50%;
+  background: transparent;
+  z-index: 9999;
+}
+
+/* Only show custom cursor on fine pointers */
+@media (pointer: fine) {
+  .cursor-dot,
+  .cursor-ring {
+    display: block;
+  }
+}
+
+/* Text inversion effect */
+.text-invert {
+  color: white;
+  mix-blend-mode: difference;
+}
+
+/* Vimium Overlay Styles */
+:root {
+  --vimium-background-color: #1d1d1f;
+  --vimium-background-text-color: #e3e3e3;
+  --vimium-foreground-color: #292a2d;
+  --vimium-foreground-text-color: #e8eaed;
+  --vimium-link-color: #8ab4f8;
+}
+
+.noise-overlay {
+  font-family: "Butler", serif;
+  text-rendering: optimizelegibility;
+  font-synthesis: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  aspect-ratio: auto 1920 / 945;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Carousel styles handled by GSAP */
+
+/* SVG background styles */
+.svg-wrapper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Ensure SVG backgrounds are visible */
+.content-page-cover svg path {
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+/* SVG path styles */
+svg path {
+  stroke: currentColor;
+  stroke-width: 1;
+  fill: none;
+}
